@@ -1,0 +1,353 @@
+% common packages
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage{courier}
+
+\usepackage[ngerman]{babel}
+\usepackage[german=guillemets]{csquotes}
+
+\usepackage{amsmath}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usetikzlibrary{positioning,%
+  shapes.geometric,%
+  shapes.misc,%
+  calc,%
+  fit,%
+  decorations,%
+  decorations.pathreplacing,%
+  backgrounds,%
+  arrows,%
+  automata,%
+  trees%
+}
+
+\usepackage{pifont}
+\newcommand{\goodmark}{\textcolor<presentation>{green!50!black}{\Pisymbol{pzd}{52}}}
+\newcommand{\badmark}{\textcolor<presentation>{red}{\Pisymbol{pzd}{56}}}
+
+% define colors used by presentation theme AND article
+\xdefinecolor{bordeaux}{RGB}{128,0,50}
+\xdefinecolor{niceblue}{RGB}{13,41,79}
+\xdefinecolor{nicegreen}{RGB}{13,79,18}
+\xdefinecolor{niceviolet}{RGB}{79,13,74}
+\colorlet{maincolor}{orange}
+\colorlet{alertedcolor}{maincolor}
+\colorlet{examplecolor}{green!50!black}
+\usetheme{latex}
+
+% color system
+% - color!9 used as light fill color (e.g. for block content)
+% - color!18 used as default fill color (e.g. for state)
+% - color!30 used as highlight fill color (e.g. for block header)
+% - color!50 used as strong highlight fill color (e.g. for header row)
+
+\usepackage{listings}
+\lstset{%
+  basicstyle=\ttfamily,%
+  keywordstyle=\color{maincolor}\bfseries,%
+  identifierstyle=\color{blue},%
+  numbers=none,%
+  frame=lines,%
+  captionpos={b},% set caption pos to bottom
+  backgroundcolor=\color{maincolor!10},%
+  rulecolor=\color{maincolor!70},%
+  framerule=1pt,%
+  showstringspaces=false,%
+  upquote=true,%
+  framexleftmargin=3pt,%
+  framexrightmargin=3pt,%
+  upquote=true}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, for},
+  ndkeywords={boolean, throw, this},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\usepackage{tabularx}
+
+% zebra tables
+\newcommand{\mainrowcolors}{\rowcolors{1}{maincolor!30}{maincolor!9}}
+\newenvironment{zebratabular}{\mainrowcolors\begin{tabular}}{\end{tabular}}
+\newcommand{\setrownumber}[1]{\global\rownum#1\relax}
+\newcommand{\headerrow}{\rowcolor{maincolor!50}\setrownumber1}
+
+\AtBeginDocument{\hypersetup{
+  pdftitle={\titlestring},
+  pdfauthor={\authorstring}}
+  \title[\shorttitlestring]{\titlestring}
+  \author[\shortauthorstring]{\authorstring}
+  \date{\datestring}}
+
+% set texts used later
+\newcommand{\targetsname}{Ziele dieses Vortrags}
+\newcommand{\targetscontentname}{Ziele und Inhalt}
+\newcommand{\outlinename}{Gliederung}
+
+% often used sets
+\newcommand{\set}[1]{\mathbb{#1}}
+\newcommand{\R}{\set{R}}
+\newcommand{\N}{\set{N}}
+\newcommand{\Z}{\set{Z}}
+\newcommand{\Q}{\set{Q}}
+
+% easier use of operatorname
+\newcommand{\op}[1]{\operatorname{#1}}
+
+% display vectors in bold
+\let\oldvec\vec
+\let\vec\boldsymbol
+
+\newcommand{\xskip}{\only<presentation>{\vskip1em}}
+
+\newcommand{\website}{
+  \begin{frame}{Website}
+    \only<article>{Auf der Seite}
+    {\only<presentation>{\huge}\url{mlte.de/latex}}
+    \only<article>{befinden sich}
+    \begin{itemize}
+      \item diese Präsentation,
+      \item das Skript zum Vortrag,
+      \item der Link zum Github-Repository und
+      \item Links zu weiteren Quellen.
+    \end{itemize}
+  \end{frame}
+}
+
+
+
+
+% set options for article
+\mode
+<article>
+
+\newcommand{\itemref}[1]{#1}
+\newcommand{\term}[1]{#1}
+
+\KOMAoption{fontsize}{10pt}
+\KOMAoption{parskip}{half}
+\KOMAoption{headings}{normal}
+\KOMAoption{numbers}{noendperiod}
+
+\usepackage[paper=a4paper, left=3cm, right=4cm, top=3cm, bottom=4cm, headsep=1cm, marginparsep=0em, marginparwidth=3em]{geometry}
+
+\usepackage{paralist}
+% use compactitem as default itemize environment
+\newenvironment{looseitemize}{}{}
+\let\looseitemize\itemize
+\let\endlooseitemize\enditemize
+\let\itemize\compactitem
+\let\enditemize\endcompactitem
+% use compactenum as default enumerate environment
+\newenvironment{looseenumerate}{}{}
+\let\looseenumerate\enumerate
+\let\endlooseenumerate\endenumerate
+\let\enumerate\compactenum
+\let\endenumerate\endcompactenum
+
+% create head and foot line
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+
+% stretch headline above margin (scrguide -- page 244)
+\setheadwidth[0pt]{textwithmarginpar}
+
+\usepackage{tocstyle}
+\usetocstyle[allwithdot]{standard}
+\makeatletter
+\newcommand{\targets}[1]{
+  \parbox[t]{0.48\textwidth}{\raggedright
+    \paragraph*{\targetsname}\ \\[2ex]
+    \begin{enumerate}#1\end{enumerate}
+  }
+  \hskip0.04\textwidth
+  \parbox[t]{0.48\textwidth}{\raggedright
+    \paragraph*{\contentsname}\ \\[2ex]
+    \@starttoc{toc}
+  }
+  % emulate two frames
+  \frame{}
+  \frame{}
+}
+\makeatother
+
+
+\clearscrheadfoot % clear all default settings
+\automark{section} % \automark[\rightmark]{\leftmark}
+
+\ihead{\shorttitlestring\ \textcolor{maincolor}{\bfseries |} \leftmark \hfill \pagemark}
+\setkomafont{pageheadfoot}{\normalfont\sffamily}
+\setkomafont{pagenumber}{\usekomafont{pageheadfoot}\color{maincolor}}
+\setheadsepline{0.5pt}[\color{maincolor}]
+
+
+
+
+% hide block title in article mode
+\setbeamertemplate{block begin}{}
+\setbeamertemplate{block end}{}
+
+% display block title in Block environment
+\newenvironment{Block}{%
+  \setbeamertemplate{block begin}[default]
+  \setbeamertemplate{block end}[default]
+  \begin{block}}{\end{block}}
+
+% hide frame title and subtitle in article mode for default frame environment
+\setbeamertemplate{frametitle}{}
+
+% display frame title of Frame environment
+\newenvironment{Frame}{%
+  \setbeamertemplate{frametitle}{%
+    \paragraph*{%
+      \insertframetitle%
+      \ifx\insertframesubtitle\empty\else%
+        \newline%
+        \mdseries\insertframesubtitle%
+      \fi%
+    }\ \par}
+  \begin{frame}}{\end{frame}}
+
+% hide effect of beameritemize
+\newenvironment{beameritemize}{%
+  \let\item\relax\ignorespaces}{%
+  \ignorespacesafterend}
+  
+% map beamerenumerate to inparaenum
+\newenvironment{beamerenumerate}{%
+  \begin{inparaenum}\ignorespaces}{%
+  \end{inparaenum}\ignorespacesafterend}
+
+% map plain command to frame
+\newcommand{\plain}[1]{\frame{#1}}
+
+% display frame number
+\setbeamertemplate{frame end}{%
+  \marginpar{\hfill\scriptsize\sffamily\color{maincolor}$\to\,$\insertframenumber}}
+      
+\usepackage{hyperref}
+\hypersetup{breaklinks=true,
+            pdfborder={0 0 0},
+            pdfhighlight={/N}}
+
+\usepackage{verbatim} % for the comment environment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Set options for beamer
+\mode
+<presentation>
+
+\AtBeginSection[]{
+  \begingroup
+  \setbeamercolor{background canvas}{bg=maincolor!9}
+  \plain{
+    \Huge
+    
+    \vskip11ex
+    \begin{center}
+      \color{maincolor}\bfseries \insertsection
+    \end{center}
+  }
+  \endgroup
+}
+
+\newcommand{\scedule}{
+  \plain{
+    \begin{center}
+      \vskip3ex
+      \textbf{\fontsize{36pt}{36pt}\selectfont\rmfamily\color{maincolor}\LaTeX}
+      \par\vskip2ex
+      \large Johannes und Malte auf der MetaNook 2013
+    \end{center}
+    
+    \vskip2ex\hskip5em
+    \begin{minipage}{20em}\Large
+      18:00 Uhr\\
+      \hspace*{1em}\textbf{\color{maincolor}Grundlagen}
+
+      \vskip1ex
+      19:00 Uhr\\
+      \hspace*{1em}\textbf{\color{maincolor}fortgeschrittene Verwendung}
+
+      \vskip1ex
+      20:00 Uhr\\
+      \hspace*{1em}\textbf{\color{maincolor}Beamer}
+
+      \vskip1ex
+      21:00 Uhr\\
+      \hspace*{1em}\textbf{\color{maincolor}Ti\emph{k}Z}
+    \end{minipage}
+  }
+}
+
+\newcommand{\mypartvalue}{}
+\newcommand{\chapter}[1]{
+  \part{}
+  \renewcommand{\mypartvalue}{#1}
+  \title{\LaTeX\\#1}
+
+  \scedule
+
+  \plain{
+    \begin{center}
+      \vskip14ex
+      \textbf{\fontsize{36pt}{36pt}\selectfont\rmfamily\color{maincolor}\LaTeX}
+      \par\vskip2ex
+      {\Large\color{maincolor}\mypartvalue}
+      \par\vskip8ex
+      \large Johannes und Malte auf der MetaNook 2013
+    \end{center}
+  }
+}
+
+\newcommand{\itemref}[1]{\textbf{\color{maincolor}#1}}
+
+\newcommand{\term}[1]{{\color{blue}#1}}
+  
+\newcommand{\targets}[1]{\section*{\targetscontentname}
+  \frame[plain]{\frametitle{\targetsname}%
+  \begin{enumerate}#1\end{enumerate}}
+  \frame[plain]{\frametitle{\outlinename}\tableofcontents}}
+
+% create new environment Block behaving exactly like block
+\newenvironment{Block}{%
+  \begin{block}}{\end{block}}
+
+% create new environment Frame behaving exactly like frame in beamer mode
+\newenvironment{Frame}[1][]{%
+  \begin{frame}[environment=Frame,#1]}{\end{frame}}
+
+% create new environment beameritemize behaving exactly like itemize
+\newenvironment{beameritemize}{%
+  \begin{itemize}}{\end{itemize}}
+
+% create new environment beamerenumerate behaving exactly like enumerate
+\newenvironment{beamerenumerate}{%
+  \begin{enumerate}}{\end{enumerate}}
+
+
+\mode
+<all>

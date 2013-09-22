@@ -1,0 +1,34 @@
+\newcommand{\authorstring}{Malte Schmitz, Johannes Thorn}
+\newcommand{\shortauthorstring}{Johannes \& Malte}
+\newcommand{\titlestring}{\LaTeX}
+\newcommand{\shorttitlestring}{\LaTeX}
+\newcommand{\datestring}{MetaNook 2013}
+
+\begin{document}
+
+\mode
+<article>
+
+\begin{frame}
+  \thispagestyle{plain}
+  \begin{center}
+    \color{maincolor}\sffamily
+    \huge\titlestring
+    \par\large
+    \authorstring\ -- \datestring
+  \end{center}
+  \vskip2em
+\end{frame}
+
+\mode
+<all>
+
+\input{basics}
+\input{advanced}
+\input{beamer}
+\input{tikz}
+
+\mode
+<all>
+
+\end{document}

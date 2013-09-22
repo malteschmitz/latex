@@ -1,0 +1,87 @@
+\PassOptionsToPackage{right}{beamerouterthemesidebar}
+\PassOptionsToPackage{width=2cm}{beamerouterthemesidebar}
+
+\ProcessOptionsBeamer
+
+\newcommand{\plain}[1]{\frame[plain,t]{%
+  \hspace*{-\beamer@leftmargin}%
+  \vspace*{-5em}%
+  \minipage[c][\textheight][t]{\paperwidth}%
+    #1
+  \endminipage%
+}}
+
+\useinnertheme{default} % circles, rounded, rectangles
+
+\usefonttheme{structurebold}
+
+\setbeamertemplate{navigation symbols}{} % hide navigation symbols
+
+\useoutertheme[height=0pt]{sidebar}
+
+\setbeamertemplate{sidebar right}
+{
+  \beamer@tempdim=\beamer@sidebarwidth%
+  \advance\beamer@tempdim by -6pt%
+  {%
+    \usebeamerfont{title in sidebar}%
+    \vskip3ex%
+    \hskip3pt%
+    \usebeamercolor[fg]{title in sidebar}%
+	  \insertshorttitle[width=\beamer@tempdim,center,respectlinebreaks]\par%
+  }%
+  {%
+    \vskip4ex
+    \hskip3pt%
+    \usebeamercolor[fg]{author in sidebar}%
+    \usebeamerfont{author in sidebar}%
+    \insertshortauthor[width=\beamer@tempdim,center,respectlinebreaks]\par%
+    \par\vskip1ex%
+    \hskip3pt\hbox to \beamer@tempdim{\hfill\rule{5em}{0.2pt}\hfill}
+    \vskip2ex
+  }%
+  \insertverticalnavigation{\beamer@sidebarwidth}%
+  
+  \vfill
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \hbox to2cm{\hss\insertframenumber\hss}
+  \vskip6ex
+}
+
+\setbeamerfont{page number in head/foot}{size=\tiny,series=\bfseries}
+
+
+
+
+% set colors
+
+\setbeamercolor{structure}{fg=maincolor}
+
+\setbeamercolor{block title}{fg=black,bg=maincolor!30}
+\setbeamercolor{block title alerted}{fg=black,bg=alertedcolor!30}
+\setbeamercolor{block title example}{fg=black,bg=examplecolor!30}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=maincolor!9}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title,bg=alertedcolor!9}
+\setbeamercolor{block body example}{parent=normal text,use=block title,bg=examplecolor!9}
+
+\setbeamercolor{sidebar}{bg=maincolor!9}
+
+\setbeamercolor{palette sidebar primary}{fg=black}
+\setbeamercolor{palette sidebar secondary}{fg=black}
+\setbeamercolor{palette sidebar tertiary}{fg=maincolor}
+\setbeamercolor{palette sidebar quaternary}{fg=maincolor}
+
+\setbeamercolor*{section in sidebar shaded}{parent=palette sidebar secondary}
+\setbeamercolor*{section in sidebar}
+  {parent=section in sidebar shaded,fg=maincolor}
+    
+\setbeamercolor*{subsection in sidebar shaded}{parent=palette sidebar primary}
+\setbeamercolor*{subsection in sidebar}
+  {parent=subsection in sidebar shaded,fg=maincolor}
+
+\setbeamercolor{page number in head/foot}{fg=black}
+
+\setbeamercolor{alerted text}{fg=alertedcolor}
+\setbeamercolor{example text}{fg=examplecolor}

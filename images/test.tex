@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage{courier}
+
+\usepackage{amsmath}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usetikzlibrary{positioning,%
+  shapes.geometric,%
+  shapes.misc,%
+  calc,%
+  fit,%
+  decorations,%
+  decorations.pathreplacing,%
+  backgrounds,%
+  arrows,%
+  automata,%
+  trees
+}
+
+% define colors used by presentation theme AND article
+\xdefinecolor{bordeaux}{RGB}{128,0,50}
+\xdefinecolor{niceblue}{RGB}{13,41,79}
+\xdefinecolor{nicegreen}{RGB}{13,79,18}
+\xdefinecolor{niceviolet}{RGB}{79,13,74}
+\colorlet{maincolor}{niceviolet}
+\colorlet{alertedcolor}{red}
+\colorlet{examplecolor}{green!50!black}
+
+% color system
+% - color!9 used as light fill color (e.g. for block content)
+% - color!18 used as default fill color (e.g. for state)
+% - color!30 used as highlight fill color (e.g. for block header)
+% - color!50 used as strong highlight fill color (e.g. for header row)
+
+\usepackage{tikz}
+
+\begin{document}
+  \input{many-to-many}
+\end{document}
