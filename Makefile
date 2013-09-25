@@ -1,37 +1,41 @@
-rerun = "(There were undefined references|Rerun to get (cross-references|the bars) right)"
-latex = pdflatex
-doc = latex
 TEXINPUTS := ./inc:./content:$(TEXINPUTS)
 
-all: $(doc).pdf
+all: script presentation
 
-dist: FORCE $(doc).pdf $(doc)-script.pdf
+script:
+	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf latex-script
 
-$(doc).pdf: $(doc).tex inc/*.tex inc/*.sty content/*.tex images/*.tex
-	TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc).tex
-	(egrep -q $(rerun) $(doc).log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc).tex) || true
-	(egrep -q $(rerun) $(doc).log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc).tex) || true
-	
-$(doc)-script.pdf: $(doc)-script.tex inc/*.tex inc/*.sty content/*.tex images/*.tex
-	TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc)-script.tex
-	(egrep -q $(rerun) $(doc)-script.log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc)-script.tex) || true
-	(egrep -q $(rerun) $(doc)-script.log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc)-script.tex) || true
+presentation:
+	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf latex
 
-clean:
+force-all: force-script force-presentation
+
+force-script:
+	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf -g -f latex-script
+
+force-presentation:
+	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf -g -f latex
+
+rm-extra-files:
 	rm -f \
-		$(doc).log \
-		$(doc).out \
-		$(doc).nav \
-		$(doc).aux \
-		$(doc).snm \
-		$(doc).toc \
-		$(doc).vrb \
-		$(doc)-script.log \
-		$(doc)-script.out \
-		$(doc)-script.nav \
-		$(doc)-script.aux \
-		$(doc)-script.snm \
-		$(doc)-script.toc \
-		$(doc)-script.vrb
+		latex.nav \
+		latex.snm \
+		latex.vrb \
+		latex-script.bbl \
+		latex-script.maf \
+		latex-script.mtc*
 
-FORCE:
+clean: rm-extra-files
+	latexmk -pdf -c latex
+	latexmk -pdf -c latex-script
+
+clear: rm-extra-files
+	latexmk -pdf -C latex
+	latexmk -pdf -C latex-script
+
+
+.PHONY: clean
+
+.PHONY: clear
+
+.PHONY: rm-extra-files
