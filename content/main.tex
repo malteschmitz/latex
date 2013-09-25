@@ -1,4 +1,4 @@
-\newcommand{\authorstring}{Malte Schmitz, Johannes Thorn}
+\newcommand{\authorstring}{Malte und Johannes}
 \newcommand{\shortauthorstring}{Johannes \& Malte}
 \newcommand{\titlestring}{\LaTeX}
 \newcommand{\shorttitlestring}{\LaTeX}
@@ -9,16 +9,9 @@
 \mode
 <article>
 
-\begin{frame}
-  \thispagestyle{plain}
-  \begin{center}
-    \color{maincolor}\sffamily
-    \huge\titlestring
-    \par\large
-    \authorstring\ -- \datestring
-  \end{center}
-  \vskip2em
-\end{frame}
+\input{titlepage}
+\dominitoc
+\tableofcontents
 
 \mode
 <all>

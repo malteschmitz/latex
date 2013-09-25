@@ -109,21 +109,8 @@
 
 \newcommand{\xskip}{\only<presentation>{\vskip1em}}
 
-\newcommand{\website}{
-  \begin{frame}{Website}
-    \only<article>{Auf der Seite}
-    {\only<presentation>{\huge}\url{mlte.de/latex}}
-    \only<article>{befinden sich}
-    \begin{itemize}
-      \item diese Präsentation,
-      \item das Skript zum Vortrag,
-      \item der Link zum Github-Repository und
-      \item Links zu weiteren Quellen.
-    \end{itemize}
-  \end{frame}
-}
-
-
+% load common user macros
+\input{macros.tex}
 
 
 % set options for article
@@ -133,12 +120,14 @@
 \newcommand{\itemref}[1]{#1}
 \newcommand{\term}[1]{#1}
 
-\KOMAoption{fontsize}{10pt}
+\KOMAoption{fontsize}{12pt}
 \KOMAoption{parskip}{half}
-\KOMAoption{headings}{normal}
+\KOMAoption{open}{any}
+\KOMAoption{headings}{big}
 \KOMAoption{numbers}{noendperiod}
-
-\usepackage[paper=a4paper, left=3cm, right=4cm, top=3cm, bottom=4cm, headsep=1cm, marginparsep=0em, marginparwidth=3em]{geometry}
+\KOMAoption{twoside}{false}
+\KOMAoption{mpinclude}{true}
+\KOMAoption{DIV}{14}
 
 \usepackage{paralist}
 % use compactitem as default itemize environment
@@ -161,36 +150,73 @@
 % stretch headline above margin (scrguide -- page 244)
 \setheadwidth[0pt]{textwithmarginpar}
 
-\usepackage{tocstyle}
-\usetocstyle[allwithdot]{standard}
+% create targets block
+\usepackage{minitoc}
+\nomtcrule
+\ktightmtctrue
+\tightmtctrue
+\setlength{\mtcindent}{0pt}
+\mtcsetfont{minitoc}{*}{\normalsize\rmfamily\upshape\mdseries}
+\mtcsetfont{minitoc}{section}{\normalsize\rmfamily\upshape\mdseries}
+\mtcsetfont{minitoc}{subsection}{\normalsize\rmfamily\upshape\mdseries}
+\mtcsettitlefont{minitoc}{\normalsize\sffamily\upshape\bfseries}
+
 \makeatletter
 \newcommand{\targets}[1]{
-  \parbox[t]{0.48\textwidth}{\raggedright
-    \paragraph*{\targetsname}\ \\[2ex]
+  \parbox[t]{0.46\textwidth}{\raggedright
+    \kern-0.8\baselineskip\nopagebreak[4]%
+    \par\noindent %%
+    \begin{tabular}{@{}p{\columnwidth}@{}}
+    \reset@font\mtifont\do@mtitc{\mtc@v\targetsname}\\
+    \end{tabular}%
+    \begin{mtc@verse}{\mtcoffset}
     \begin{enumerate}#1\end{enumerate}
+    \end{mtc@verse}
   }
   \hskip0.04\textwidth
   \parbox[t]{0.48\textwidth}{\raggedright
-    \paragraph*{\contentsname}\ \\[2ex]
-    \@starttoc{toc}
+    \minitoc
   }
   % emulate two frames
-  \frame{}
-  \frame{}
+  \addtocounter{slidenumber}{2}
+  \addtocounter{framenumber}{2}
 }
 \makeatother
 
+% keep the name of the current chapter and the current section
 
 \clearscrheadfoot % clear all default settings
-\automark{section} % \automark[\rightmark]{\leftmark}
+\automark[chapter]{section} % \automark[\rightmark]{\leftmark}
 
-\ihead{\shorttitlestring\ \textcolor{maincolor}{\bfseries |} \leftmark \hfill \pagemark}
+\ihead{\shorttitlestring\ \rightmark\ \textcolor{maincolor}{\bfseries |} \leftmark \hfill \pagemark}
 \setkomafont{pageheadfoot}{\normalfont\sffamily}
 \setkomafont{pagenumber}{\usekomafont{pageheadfoot}\color{maincolor}}
 \setheadsepline{0.5pt}[\color{maincolor}]
 
 
+% Create own counter as replacement for framenumber. framenumber is
+% incremented in article mode as \refstepcounter{framenumber} by
+% beamer and hyperref complains about duplicated targets if framenumber
+% gets resetted after each chapter.
+\newcounter{slidenumber}
 
+\makeatletter
+% create AtBeginChapter analog to AtBeginDocument
+\def\AtBeginChapter{\g@addto@macro\@beginchapterhook}
+
+\@onlypreamble\AtBeginChapter
+
+\let\oldchapter\chapter
+\long\def\chapter{\@beginchapterhook
+  \oldchapter}
+  
+\ifx\@beginchapterhook\@undefined
+  \let\@beginchapterhook\@empty
+\fi
+\makeatother
+
+% slidenumbers starts over with every new chapter with 2 on chapterframe
+\AtBeginChapter{\setcounter{slidenumber}{2}}
 
 % hide block title in article mode
 \setbeamertemplate{block begin}{}
@@ -231,8 +257,21 @@
 \newcommand{\plain}[1]{\frame{#1}}
 
 % display frame number
+%\setbeamertemplate{frame end}{%
+%  \marginpar{\hfill\scriptsize\sffamily\color{maincolor}$\to\,$\insertframenumber}}
+
+% display framenumber as chapter number and slide number
+\renewcommand{\insertframenumber}{\thechapter-\theslidenumber}
+
+% incremend slide number
+\setbeamertemplate{frame begin}{\stepcounter{slidenumber}}
+% display slide number
 \setbeamertemplate{frame end}{%
-  \marginpar{\hfill\scriptsize\sffamily\color{maincolor}$\to\,$\insertframenumber}}
+  \marginpar%
+    [\scriptsize\sffamily\color{maincolor}\insertframenumber$\,\leftarrow$\hfill]%
+    {\hfill\scriptsize\sffamily\color{maincolor}$\rightarrow\,$\insertframenumber}}
+      
+\newcommand{\script}{\addtomargin{Script}\mode<article>}
       
 \usepackage{hyperref}
 \hypersetup{breaklinks=true,
@@ -260,67 +299,48 @@
 \mode
 <presentation>
 
+\makeatletter
+% Reverts "Heiko's fix for correct generation of section* and
+% subsection* bookmarks" in beamerbasecompatibility.sty which
+% disables bookmarks in \section* and \subsection*.
+% This is done by disabling \Hy@writebookmark in \beamer@section
+% and \beamer@subsection if their second argument is empty.
+% This is the case for \section* and \subsection* as these
+% commands are mapped to \beamer@section[{#1}]{} resp.
+% \beamer@subsection[{#1}]{}. By defining \beamer@section and
+% \beamer@subsection again to the original and not patched version
+% in the macro \beamer@lastminutepatches where the patch is applied
+% this behaviour gets disabled. This is mainly reverted because
+% bookmarks of parts are not added after \section*{Conclusion} due
+% to this patch.
+\g@addto@macro\beamer@lastminutepatches{
+  \ifx\org@beamer@section\undefined{}%
+  \else
+    \let\beamer@section\org@beamer@section{}%
+  \fi
+  \ifx\org@beamer@subsection\undefined{}%
+  \else
+    \let\beamer@subsection\org@beamer@subsection{}%
+  \fi
+}
+\makeatother
+
+% display framenumber as part number and frame number
+\renewcommand{\insertframenumber}{\thepart-\theframenumber}
+
+% reset frame number at the beginning of each chapter
+\AtBeginPart{
+  \setcounter{framenumber}{0}
+}
+
 \AtBeginSection[]{
-  \begingroup
-  \setbeamercolor{background canvas}{bg=maincolor!9}
-  \plain{
-    \Huge
-    
-    \vskip11ex
-    \begin{center}
-      \color{maincolor}\bfseries \insertsection
-    \end{center}
-  }
-  \endgroup
+  \input{sectionframe}
 }
 
-\newcommand{\scedule}{
-  \plain{
-    \begin{center}
-      \vskip3ex
-      \textbf{\fontsize{36pt}{36pt}\selectfont\rmfamily\color{maincolor}\LaTeX}
-      \par\vskip2ex
-      \large Johannes und Malte auf der MetaNook 2013
-    \end{center}
-    
-    \vskip2ex\hskip5em
-    \begin{minipage}{20em}\Large
-      18:00 Uhr\\
-      \hspace*{1em}\textbf{\color{maincolor}Grundlagen}
-
-      \vskip1ex
-      19:00 Uhr\\
-      \hspace*{1em}\textbf{\color{maincolor}fortgeschrittene Verwendung}
-
-      \vskip1ex
-      20:00 Uhr\\
-      \hspace*{1em}\textbf{\color{maincolor}Beamer}
-
-      \vskip1ex
-      21:00 Uhr\\
-      \hspace*{1em}\textbf{\color{maincolor}Ti\emph{k}Z}
-    \end{minipage}
-  }
-}
-
-\newcommand{\mypartvalue}{}
 \newcommand{\chapter}[1]{
-  \part{}
-  \renewcommand{\mypartvalue}{#1}
+  \part{#1}
   \title{\LaTeX\\#1}
-
-  \scedule
-
-  \plain{
-    \begin{center}
-      \vskip14ex
-      \textbf{\fontsize{36pt}{36pt}\selectfont\rmfamily\color{maincolor}\LaTeX}
-      \par\vskip2ex
-      {\Large\color{maincolor}\mypartvalue}
-      \par\vskip8ex
-      \large Johannes und Malte auf der MetaNook 2013
-    \end{center}
-  }
+  \input{titleframes}
 }
 
 \newcommand{\itemref}[1]{\textbf{\color{maincolor}#1}}
