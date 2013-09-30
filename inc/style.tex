@@ -36,7 +36,7 @@
 \xdefinecolor{nicegreen}{RGB}{13,79,18}
 \xdefinecolor{niceviolet}{RGB}{79,13,74}
 \colorlet{maincolor}{orange}
-\colorlet{alertedcolor}{maincolor}
+\colorlet{alertedcolor}{red}
 \colorlet{examplecolor}{green!50!black}
 \usetheme{latex}
 
@@ -48,7 +48,8 @@
 
 \usepackage{listings}
 \lstset{%
-  basicstyle=\ttfamily,%
+  basicstyle=\scriptsize\ttfamily,%
+  language=[LaTeX]TeX,%
   keywordstyle=\color{maincolor}\bfseries,%
   identifierstyle=\color{blue},%
   numbers=none,%
@@ -62,16 +63,6 @@
   framexleftmargin=3pt,%
   framexrightmargin=3pt,%
   upquote=true}
-
-\lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, for},
-  ndkeywords={boolean, throw, this},
-  sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]',
-  morestring=[b]"
-}
 
 \usepackage{tabularx}
 
@@ -107,7 +98,7 @@
 \let\oldvec\vec
 \let\vec\boldsymbol
 
-\newcommand{\xskip}{\only<presentation>{\vskip1em}}
+\newcommand{\xxx}{\only<presentation>{\vskip1em}}
 
 % load common user macros
 \input{macros.tex}

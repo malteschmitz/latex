@@ -9,36 +9,102 @@
 
 \website
 
-\section{erster Abschnitt}
+\section{Was ist \LaTeX?}
 
-\begin{Frame}{Hier passierts}
-  \ldots
+\subsection{Einordnung}
+
+\begin{Frame}{Dimensionen eines Dokumentes}
+  \begin{description}
+    \item[Inhalt] ist die \alert{Bedeutung} eines Textes
+    \item[Struktur] ist der \alert{Aufbau} eines Textes
+    \item[Form] ist das \alert{Aussehen} eines Textes
+  \end{description}
 \end{Frame}
 
-\begin{Frame}{Hier passierts}
-  \ldots
+\begin{Frame}{Struktur vs. Form}
+  \begin{Beispiel}[Strukturelemente]
+    \begin{itemize}
+      \item Überschrift
+      \item Listeneintrag
+      \item Tabellenzelle
+    \end{itemize}
+  \end{Beispiel}
+
+  \xxx
+
+  \begin{Beispiel}[Formen]
+    \begin{itemize}
+      \item 16~pt, Arial, Fett, 2~em Abstand
+      \item 2~cm Einzug, Bullet-Zeichen \textbullet\ am Zeilenanfang
+      \item 3~cm breiter umrandeter Kasten
+    \end{itemize}
+  \end{Beispiel}
 \end{Frame}
 
-\begin{Frame}{Hier passierts}
-  \ldots
+\begin{Frame}[fragile]{Seitenbeschreibungssprachen}
+  \newcommand{\entry}[2]{\draw[maincolor, thick] (-.2,#1) -- (.2,#1) node[right] {\color{black}#2};}
+  \hskip 8ex\begin{tikzpicture}
+    \draw[maincolor, thick] (0,0) node[below] {\textbf{Form}} edge[<->] (0,6);
+    \draw[maincolor] (0,6) node[above] {\textbf{Struktur}};
+    \entry{.5}{Pixelgrafiken bzw. Paint};
+    \entry{1}{Vektorgrafiken bzw. Inkscape};
+    \entry{1.5}{PDF};
+    \entry{2.5}{\TeX};
+    \entry{3}{DTP-Tools wie z.\,B. Scribus};
+    \entry{3.5}{Office Word, Writer, \ldots};
+    \entry{4}{\alert{\LaTeX}};
+    \entry{4.75}{HTML};
+    \entry{5.5}{Outliner};
+  \end{tikzpicture}
 \end{Frame}
 
-\begin{Frame}{Hier passierts}
-  \ldots
+\begin{Frame}{\LaTeX}
+  \begin{itemize}
+    \item basiert auf dem Satzsystem \TeX
+      \begin{itemize}
+        \item \TeX\ wurde 1977 von Donald E. Knuth enwickelt
+        \item Aktuelle Version: 3.1415926 (März 2008)
+      \end{itemize}
+    \item wurde Anfang der 1980er von Leslie Lamport entwickelt
+    \item Aktuelle Version: 2011/06/27
+  \end{itemize}
 \end{Frame}
 
-\begin{Frame}{Hier passierts}
-  \ldots
+\subsection{Aufbau}
+
+\begin{Frame}{Ein \TeX-Dokument}{Quelltext \texttt{story.tex}}
+  \lstinputlisting[firstline=7]{demo/story.tex}
 \end{Frame}
 
-\begin{Frame}{Hier passierts}
-  \ldots
+\begin{Frame}[fragile]{Ein \TeX-Dokument}{Kompilieren}
+  \begin{lstlisting}[language={},morekeywords={tex,dvips,pstopdf},gobble=4]
+    tex story
+    dvips story
+    pstopdf story.ps
+  \end{lstlisting}
+
+  \xxx
+  \pause
+
+  \begin{onlyenv}<presentation>
+    \vskip -2.3cm
+    \begin{tikzpicture}
+      \draw[red,very thick] (0,0) -- (2.5cm, 2cm);
+    \end{tikzpicture}
+    \vskip .5cm
+  \end{onlyenv}
+
+  \begin{lstlisting}[language={},morekeywords={pdftex},gobble=4]
+    pdftex story
+  \end{lstlisting}
 \end{Frame}
 
-\subsection{erster Unterabschnitt}
+\begin{Frame}[t]{Ein \TeX-Dokument}{Quelltext \texttt{story.tex} und Dokument \texttt{story.pdf}}
+  \lstinputlisting[firstline=7]{demo/story.tex}
 
-\begin{Frame}
-  Es fehlt noch an Inhalt!
+  \begin{center}
+    \includegraphics[width=10cm]{demo/story.pdf}
+  \end{center}
 \end{Frame}
 
 \section*{Zusammenfassung}
