@@ -59,14 +59,25 @@
 \end{Frame}
 
 \begin{Frame}{\LaTeX}
+  \textbf{\color{maincolor}Historie}
   \begin{itemize}
-    \item basiert auf dem Satzsystem \TeX
+    \item \LaTeX\ ist ein Makropaket für das Satzsystem \TeX
       \begin{itemize}
         \item \TeX\ wurde 1977 von Donald E. Knuth enwickelt
         \item Aktuelle Version: 3.1415926 (März 2008)
       \end{itemize}
-    \item wurde Anfang der 1980er von Leslie Lamport entwickelt
+    \item \LaTeX\ wurde 1980 von Leslie Lamport entwickelt
     \item Aktuelle Version: 2011/06/27
+  \end{itemize}
+
+  \xxx
+  \pause
+
+  \textbf{\color{maincolor}Verwendung}
+  \begin{itemize}
+    \item Ein \LaTeX-Dokument ist ein \alert{reines Textdokument}.
+    \item Das \LaTeX-Dokument enthält \alert{Inhalt und Struktur}.
+    \item \LaTeX\ setzt den Inhalt und kümmert sich um \alert{gute Form}.
   \end{itemize}
 \end{Frame}
 
@@ -104,6 +115,194 @@
 
   \begin{center}
     \includegraphics[width=10cm]{demo/story.pdf}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}{Ein \LaTeX-Dokument}{Quelltext \texttt{hello.tex}}
+  \lstinputlisting{demo/hello.tex}
+\end{Frame}
+
+\begin{Frame}[fragile]{Ein \LaTeX-Dokument}{Kompilieren}
+  \begin{lstlisting}[language={},morekeywords={pdflatex},gobble=4]
+    pdflatex hello
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t]{Ein \LaTeX-Dokument}{Quelltext \texttt{hello.tex} und Dokument \texttt{hello.pdf}}
+  \lstinputlisting{demo/hello.tex}
+
+  \strut\vskip-2.7cm\strut
+
+  \begin{center}
+    \includegraphics[width=8cm]{demo/hello.pdf}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}[fragile]{Befehle}
+  \begin{Definition}[Befehl]
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,morekeywords={commandname}]
+      \commandname*[opt1][opt2]{arg1}{arg2}
+    \end{lstlisting}
+
+    \begin{tabular}{rl}
+      \lstinline[morekeywords={commandname}]-commandname- & Name des Befehls \\
+      \lstinline-*- & optionaler Schalter \\
+      \lstinline-[opt1]- & optionaler Parameter \\
+      \lstinline-{arg1}- & Parameter
+    \end{tabular}
+  \end{Definition}
+
+  \xxx
+
+  \begin{Beispiel}[Befehl]
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no]
+      \section[Kurzform]{Überschrift}
+      \section*{noch eine Überschrift}
+    \end{lstlisting}
+  \end{Beispiel}
+\end{Frame}
+
+\begin{Frame}[fragile]{Umgebungen}
+  \begin{Definition}[Umgebung]
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no]
+      \begin{envname}
+        Inhalt
+      \end{envname}
+    \end{lstlisting}
+
+    \begin{tabular}{rl}
+      \lstinline-envname- & Name der Umgebunng \\
+      \lstinline-Inhalt- & Inhalt der Umgebung
+    \end{tabular}
+  \end{Definition}
+
+  \xxx
+
+  \begin{Beispiel}[Umgebung]
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no]
+      \begin{center}
+        Ich bin zentriert.
+      \end{center}
+    \end{lstlisting}
+  \end{Beispiel}
+\end{Frame}
+
+\begin{Frame}[fragile]{Aufbau eines Dokuments}
+  \begin{tikzpicture}[%
+      auto,
+      every edge/.style={
+        draw,
+        decorate,
+        decoration=brace,
+        maincolor,
+        very thick
+      }
+    ]
+    \node[text width=\textwidth, anchor=south] (tex) {
+      \begin{lstlisting}[gobble=8]
+        \documentclass{scrartcl}
+
+        \usepackage[babel]{ngerman}
+        \usepackage[utf]{inputenc}
+        \usepackage[T1]{fontenc}
+
+        \title{Hallo Welt}
+        \author{Malte Schmitz}
+
+        \begin{document}
+          \maketitle
+
+          \section{erster Abschnitt}
+          Hier beginnt's \ldots
+        \end{document}
+      \end{lstlisting}
+    };
+
+    \pause
+    \draw
+      (1,5.5) edge node {Dokumentenklasse} (1,5.2);
+    \pause
+    \draw
+      (3,4.9) edge node {Präambel} (3,2.8)
+      (0,4.8) edge node {\shortstack{Pakete\\laden}} (0,3.8)
+      (0,3.5) edge node {Einstellungen} (0,2.8);
+    \pause
+    \draw
+      (1,2.2) edge node {Dokumentenkörper} (1,.8);
+  \end{tikzpicture}
+\end{Frame}
+
+\newcommand{\icon}[1]{%
+  \tikz\draw[very thick, line join=round]
+    (-.5,.5) -- ++(.7,0) -- ++(.3,-.3) --
+    ++(-.3,0) -- ++(0,.3) -- ++(.3,-.3) -- ++(0,-.8) -- ++(-1,0) -- cycle
+    ++ (0,-.3) node[fill, text=white,
+      inner sep=2pt, minimum width=8mm, anchor=center] {#1}
+    ++ (.1,-.3) -- ++(.8,0) -- ++(0,-.1)
+    -- ++(-.8,0) -- ++(0,-.1)
+    -- ++(.8,0) -- ++(0,-.1)
+    -- ++(-.8,0) -- ++(0,-.1)
+    -- ++(.8,0);
+  }
+
+\begin{Frame}{Mehrfach kompilieren hilft}{Rerun to get cross-references right.}
+  \begin{center}
+    \begin{tikzpicture}[on grid, node distance=18mm and 35mm]
+      \node[examplecolor] (tex) {\icon{TEX}};
+      \uncover<2->{
+        \node[right=of tex, node font=\rmfamily\Large\bfseries]
+          (pdfTeX1) {pdf\TeX};
+      }
+      \uncover<3>{
+        \node[right=of pdfTeX1, maincolor] (pdf1) {\icon{PDF}};
+        \node[below=of pdfTeX1, xshift=1cm] (log1) {\icon{LOG}};
+      }
+      \uncover<4->{
+        \node[right=of pdfTeX1, maincolor!30] (pdf1) {\icon{PDF}};
+        \node[below=of pdfTeX1, xshift=1cm, black!30] (log1) {\icon{LOG}};
+      }
+      \uncover<3->{
+        \node[below=of pdfTeX1, xshift=-1cm, blue] (aux1) {\icon{AUX}};
+      }
+      \uncover<4->{
+        \node[below=of aux1, xshift=1cm, node font=\rmfamily\Large\bfseries]
+          (pdfTeX2) {pdf\TeX};
+      }
+      \uncover<5>{
+        \node[right=of pdfTeX2, maincolor] (pdf2) {\icon{PDF}};
+        \node[below=of pdfTeX2, xshift=1cm] (log2) {\icon{LOG}};
+        \node[below=of pdfTeX2, xshift=-1cm, blue] (aux2) {\icon{AUX}};
+      }
+      \only<2->{
+        \draw[very thick]
+          (tex) edge[->] (pdfTeX1);
+      }
+      \only<3->{
+        \draw[very thick]
+          (pdfTeX1) edge[->] (aux1);
+      }
+      \only<3>{
+        \draw[very thick]
+          (pdfTeX1) edge[->] (pdf1)
+                    edge[->] (log1);
+      }
+      \only<4->{
+        \draw[very thick, black!30]
+          (pdfTeX1) edge[->] (pdf1)
+                    edge[->] (log1);
+      }
+      \only<4->{
+        \draw[very thick]
+          (aux1) edge[->] (pdfTeX2);
+        \draw[->, very thick] (tex.south) ++ (.2,0) |- (pdfTeX2);
+      }
+      \only<5->{
+        \draw[very thick]
+          (pdfTeX2) edge[->] (pdf2)
+                    edge[->] (aux2)
+                    edge[->] (log2);
+      }
+    \end{tikzpicture}
   \end{center}
 \end{Frame}
 

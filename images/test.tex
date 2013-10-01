@@ -28,7 +28,7 @@
 \xdefinecolor{niceblue}{RGB}{13,41,79}
 \xdefinecolor{nicegreen}{RGB}{13,79,18}
 \xdefinecolor{niceviolet}{RGB}{79,13,74}
-\colorlet{maincolor}{niceviolet}
+\colorlet{maincolor}{orange}
 \colorlet{alertedcolor}{red}
 \colorlet{examplecolor}{green!50!black}
 
@@ -41,5 +41,22 @@
 \usepackage{tikz}
 
 \begin{document}
-  \input{many-to-many}
+  \newcommand{\icon}[2]{%
+    \draw[very thick, maincolor, line join=round]
+      #1 ++(-.5,.5) -- ++(.7,0) -- ++(.3,-.3) --
+      ++(-.3,0) -- ++(0,.3) -- ++(.3,-.3) -- ++(0,-1) -- ++(-1,0) -- cycle
+      ++ (0,-.3) node[fill, text=white] {#2}
+      ++ (.1,-.3) -- ++(.8,0) -- ++(0,-.1)
+      -- ++(-.8,0) -- ++(0,-.1)
+      -- ++(.8,0) -- ++(0,-.1)
+      -- ++(-.8,0) -- ++(0,-.1)
+      -- ++(.8,0) -- ++(0,-.1)
+      -- ++(-.8,0) -- ++(0,-.1)
+      -- ++(.8,0);
+    }
+
+  \begin{tikzpicture}
+    \icon{(0,0)}{PDF}
+    \icon{(2,0)}{AUX}
+  \end{tikzpicture}
 \end{document}

@@ -1,0 +1,47 @@
+\documentclass{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{courier}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{textcomp}
+
+\colorlet{maincolor}{orange}
+
+\lstset{%
+  basicstyle=\scriptsize\ttfamily,%
+  language=[LaTeX]TeX,%
+  keywordstyle=\color{maincolor}\bfseries,%
+  identifierstyle=,%
+  commentstyle=\itshape\color{green!50!black},%
+  numbers=none,%
+  frame=lines,%
+  backgroundcolor=\color{maincolor!10},%
+  rulecolor=\color{maincolor!70},%
+  framerule=1pt,%
+  showstringspaces=false,%
+  upquote=true,%
+  framexleftmargin=3pt,%
+  framexrightmargin=3pt,%
+  upquote=true}
+
+% german umlauts
+\lstset{
+  literate={ö}{{\"o}}1
+           {Ö}{{\"O}}1
+           {ä}{{\"a}}1
+           {Ä}{{\"A}}1
+           {ü}{{\"u}}1
+           {Ü}{{\"U}}1
+           {ß}{{\ss}}1
+}
+
+% This line contains no umlauts.
+% ae = ä, ue = ü, oe = ö, ss = ß
+% AE = Ä, UE = Ü, OE = Ö
+
+\begin{document}
+  \lstinputlisting\jobname
+\end{document}

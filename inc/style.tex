@@ -51,10 +51,10 @@
   basicstyle=\scriptsize\ttfamily,%
   language=[LaTeX]TeX,%
   keywordstyle=\color{maincolor}\bfseries,%
-  identifierstyle=\color{blue},%
+  identifierstyle=,%
+  commentstyle=\itshape\color{green!50!black},%
   numbers=none,%
   frame=lines,%
-  captionpos={b},% set caption pos to bottom
   backgroundcolor=\color{maincolor!10},%
   rulecolor=\color{maincolor!70},%
   framerule=1pt,%
@@ -63,6 +63,17 @@
   framexleftmargin=3pt,%
   framexrightmargin=3pt,%
   upquote=true}
+
+% german umlauts
+\lstset{
+  literate={ö}{{\"o}}1
+           {Ö}{{\"O}}1
+           {ä}{{\"a}}1
+           {Ä}{{\"A}}1
+           {ü}{{\"u}}1
+           {Ü}{{\"U}}1
+           {ß}{{\ss}}1
+}
 
 \usepackage{tabularx}
 
