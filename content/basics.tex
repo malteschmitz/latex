@@ -81,7 +81,7 @@
   \end{itemize}
 \end{Frame}
 
-\subsection{Aufbau}
+\subsection{\TeX}
 
 \begin{Frame}{Ein \TeX-Dokument}{Quelltext \texttt{story.tex}}
   \lstinputlisting[firstline=7]{demo/story.tex}
@@ -118,23 +118,27 @@
   \end{center}
 \end{Frame}
 
-\begin{Frame}{Ein \LaTeX-Dokument}{Quelltext \texttt{hello.tex}}
-  \lstinputlisting{demo/hello.tex}
-\end{Frame}
+\subsection{Aufbau}
 
-\begin{Frame}[fragile]{Ein \LaTeX-Dokument}{Kompilieren}
+\begin{Frame}[fragile,t]{Ein \LaTeX-Dokument}
+  \textbf{\ttfamily\color{maincolor}hello.tex}
+  \lstinputlisting{demo/hello.tex}
+
+  \pause
+  \xxx
+
+  \textbf{\color{maincolor}Kompilieren}
   \begin{lstlisting}[language={},morekeywords={pdflatex},gobble=4]
     pdflatex hello
   \end{lstlisting}
-\end{Frame}
 
-\begin{Frame}[t]{Ein \LaTeX-Dokument}{Quelltext \texttt{hello.tex} und Dokument \texttt{hello.pdf}}
-  \lstinputlisting{demo/hello.tex}
+  \pause
+  \xxx
 
-  \strut\vskip-2.7cm\strut
-
+  \textbf{\ttfamily\color{maincolor}hello.pdf}
+  \only<presentation>{\vskip-2cm\strut}
   \begin{center}
-    \includegraphics[width=8cm]{demo/hello.pdf}
+    \includegraphics[width=10cm]{demo/hello.pdf}
   \end{center}
 \end{Frame}
 
@@ -203,7 +207,7 @@
         \documentclass{scrartcl}
 
         \usepackage[babel]{ngerman}
-        \usepackage[utf]{inputenc}
+        \usepackage[utf8]{inputenc}
         \usepackage[T1]{fontenc}
 
         \title{Hallo Welt}
@@ -231,6 +235,81 @@
       (1,2.2) edge node {Dokumentenkörper} (1,.8);
   \end{tikzpicture}
 \end{Frame}
+
+\subsection{Präambel}
+
+\begin{Frame}[fragile]{typische Präambel}{Dokumentenklasse}
+  \lstinline-\documentclass{scrartcl}-\\
+  kurzer Artikel
+
+  \xxx
+
+  \lstinline-\documentclass{scrreprt}-\\
+  Bericht mit Titelseite und Kapiteln
+
+  \xxx
+
+  \lstinline-\documentclass{scrbook}-\\
+  doppelseitiges Buch mit Teilen, Kapiteln und Kopfzeile
+
+  \xxx
+
+  \begin{alertblock}{amerikanische Dokumentenklassen}
+    Wir verwenden die deutschen Dokumentenklassen aus KOMA-Script statt der 
+    amerikanischen \lstinline-article-, \lstinline-report- und \lstinline-book-.
+  \end{alertblock}
+\end{Frame}
+
+\begin{Frame}[fragile]{typische Präambel}{KOMA-Script-Optionen}
+  \begin{lstlisting}[gobble=4]
+    \documentclass[
+      parskip=full,
+      % full - Absätze haben großen Abstand
+      % half - Absätze haben kleinen Abstand
+      % off - Absätze haben Einzug (default)
+      fontsize=12pt,
+      % Grunschriftgröße (10pt default)
+      headings=small,
+      % small - kleine Überschriften
+      % normal - normale Überschriften (default)
+      % big - große Überschriften
+      paper=a5,
+      % Papierformat (a4 default)
+      pagesize=auto
+      % Papierformat auch für PDF verwenden
+    ]{scrartcl}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{typische Präambel}{Pakete}
+  \lstset{
+    backgroundcolor={},
+    frame=no,
+    gobble=4,
+    aboveskip=3ex,
+    belowskip=0pt
+  }
+  \begin{lstlisting}
+    \usepackage[babel]{ngerman}
+  \end{lstlisting}
+  Deutsche Silbentrennung und deutsche Übersetzung
+  \begin{lstlisting}
+    \usepackage[utf8]{inputenc}
+  \end{lstlisting}
+  UTF-8 als Zeichenkodierung verwenden
+  \begin{lstlisting}
+    \usepackage[T1]{fontenc}
+    \usepackage{lmodern}
+  \end{lstlisting}
+  schönere Schriftarten
+  \begin{lstlisting}
+    \usepackage[breaklinks=true, pdfborder={0 0 0},
+                pdfhighlight={/N}]{hyperref}
+  \end{lstlisting}
+  bessere Unterstützung der PDF-Ausgabe
+\end{Frame}
+
+\section{Zeug}
 
 \newcommand{\icon}[1]{%
   \tikz\draw[very thick, line join=round]
