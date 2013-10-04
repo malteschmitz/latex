@@ -1,10 +1,10 @@
 \chapter{Grundlagen}
 
 \targets{
-  \item Erstes Ziel
-  \item Zweites Ziel
-  \item Drittes Ziel
-  \item Viertes Ziel
+  \item \LaTeX kennen lernen
+  \item Aufbau von \LaTeX-Dokumente, -Befehle und Umgebungen kennen
+  \item \LaTeX verwenden können
+  \item Verstehen, wofür man \LaTeX einsetzen kann und wofür nicht
 }
 
 \website
@@ -81,7 +81,7 @@
   \end{itemize}
 \end{Frame}
 
-\subsection{\TeX}
+\subsection{Beispiele}
 
 \begin{Frame}{Ein \TeX-Dokument}{Quelltext \texttt{story.tex}}
   \lstinputlisting[firstline=7]{demo/story.tex}
@@ -118,8 +118,6 @@
   \end{center}
 \end{Frame}
 
-\subsection{Aufbau}
-
 \begin{Frame}[fragile,t]{Ein \LaTeX-Dokument}
   \textbf{\ttfamily\color{maincolor}hello.tex}
   \lstinputlisting{demo/hello.tex}
@@ -141,6 +139,130 @@
     \includegraphics[width=10cm]{demo/hello.pdf}
   \end{center}
 \end{Frame}
+
+\subsection{Installation}
+
+\begin{Frame}[t]{Distributionen}
+  \begin{Block}{Windows}
+    \begin{columns}
+      \column{1mm}
+      \column{5cm}
+      \vskip2pt\par
+      \includegraphics[width=3.5cm]{images/miktex}\\
+      \column{5cm}
+      installiert Pakete bei\\ erster Verwendung automatisch
+    \end{columns}
+    \url{www.miktex.org}
+  \end{Block}
+
+  \begin{Block}{Linux}
+    \begin{columns}
+      \column{1mm}
+      \column{5cm}
+      \vskip4pt\par
+      \xdefinecolor{texlive}{RGB}{12,99,170}
+      \textcolor{texlive}{\Huge\bfseries\TeX\ Live}
+      \column{5cm}
+      mit Installer als\\ DVD-Image verfügbar
+    \end{columns}
+    \vskip4pt\par
+    \url{www.tug.org/texlive}
+  \end{Block}
+
+  \begin{Block}{Mac}
+    \begin{columns}
+      \column{1mm}
+      \column{4.5cm}
+      \includegraphics[width=3.5cm]{images/mactex}
+      \column{5cm}
+      \TeX\ Live und Tools\\ für Mac OS
+    \end{columns}
+    \url{www.tug.org/mactex}
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}{Pakete nachinstallieren und aktualisieren}{Windows}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8cm]{images/miktex-update}
+    \caption{MiK\TeX\ Updater}
+  \end{figure}
+\end{Frame}
+
+\begin{Frame}{Pakete nachinstallieren und aktualisieren}{Linux}
+  \begin{figure}
+    \centering
+    \includegraphics[width=7cm]{images/texlive-update}
+    \caption{\TeX\ Live Manager}
+  \end{figure}
+\end{Frame}
+
+\begin{Frame}{Pakete nachinstallieren und aktualisieren}{Mac}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8cm]{images/mactex-update}
+    \caption{\TeX\ Live Utiliy}
+  \end{figure}
+\end{Frame}
+
+
+\begin{Frame}[fragile]{\TeX-Live-Pakete unter Ubuntu/Debian}
+  \begin{lstlisting}[gobble=4,language={}]
+    sudo apt-get install texlive \
+      texlive-lang-german texlive-latex-extra
+  \end{lstlisting}
+
+  installiert die Pakete
+
+  \begin{description}
+    \item[texlive] vollständiges \TeX-System, 
+    \item[texlive-lang-german] deutsche Sprachunterstützung und
+    \item[texlive-latex-extra] viele zusätzliche \LaTeX-Pakete.
+  \end{description}
+
+  \begin{alertblock}{Manuelle Installation}
+    \begin{itemize}
+      \item manuelle Installation ist oft aktueller
+      \item vor Ubuntu 12.10 nur \TeX\ Live 2009 verfügbar
+      \item Paketmanagement mit Paket \texttt{texlive-dummy} austricksen
+        (vgl. Anleitung von ubuntuusers)
+    \end{itemize}
+  \end{alertblock}
+\end{Frame}
+
+\begin{Frame}{Editoren und IDEs}
+  \begin{Block}{Editoren}
+    \begin{itemize}
+      \item Notepad++ (Windows)
+      \item GEdit (Linux)
+      \item Sublime Text (Windows, Linux, Mac)
+    \end{itemize}
+  \end{Block}
+
+  \pause
+
+  \begin{Block}{IDEs}
+    \begin{itemize}
+      \item \TeX works
+        \begin{itemize}
+          \item in MiK\TeX, \TeX\ Live und Mac\TeX\ enthalten
+        \end{itemize}
+      \item \TeX Shop
+        \begin{itemize}
+          \item Apple Design Award 2002
+          \item in Mac\TeX\ enthalten
+        \end{itemize}
+      \item Kile (Linux)
+      %\item Texmaker (Windows, Linux, Mac)
+      %\item \TeX studio (Windows, Linux, Mac)
+      \item \TeX nicCenter (Windows)
+    \end{itemize}
+  \end{Block}
+\end{Frame}
+
+\section{\LaTeX\ verwenden}
+
+\subsection{Aufbau und Präambel}
 
 \begin{Frame}[fragile]{Befehle}
   \begin{Definition}[Befehl]
@@ -236,8 +358,6 @@
   \end{tikzpicture}
 \end{Frame}
 
-\subsection{Präambel}
-
 \begin{Frame}[fragile]{typische Präambel}{Dokumentenklasse}
   \lstinline-\documentclass{scrartcl}-\\
   kurzer Artikel
@@ -309,7 +429,15 @@
   bessere Unterstützung der PDF-Ausgabe
 \end{Frame}
 
-\section{Zeug}
+\subsection{Auszeichnungen}
+
+% maketitle
+
+\subsection{Tabellen und Listen}
+
+\section{Verweise und Verzeichnisse}
+
+\subsection{Verweise}
 
 \newcommand{\icon}[1]{%
   \tikz\draw[very thick, line join=round]
@@ -384,6 +512,12 @@
     \end{tikzpicture}
   \end{center}
 \end{Frame}
+
+\subsection{Abbildungen}
+
+% Float-Umgebungen
+
+\subsection{Verzeichnisse}
 
 \section*{Zusammenfassung}
 
