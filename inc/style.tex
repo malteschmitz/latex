@@ -128,7 +128,6 @@
 \KOMAoption{numbers}{noendperiod}
 \KOMAoption{twoside}{false}
 \KOMAoption{mpinclude}{true}
-\KOMAoption{DIV}{14}
 
 \usepackage{paralist}
 % use compactitem as default itemize environment
@@ -352,6 +351,9 @@
   \frame[plain]{\frametitle{\targetsname}%
   \begin{enumerate}#1\end{enumerate}}
   \frame[plain]{\frametitle{\outlinename}\tableofcontents}}
+
+% display math in serif font on the slides
+\usefonttheme[onlymath]{serif}
 
 % create new environment Block behaving exactly like block
 \newenvironment{Block}{%

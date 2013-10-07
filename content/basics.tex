@@ -431,9 +431,271 @@
 
 \subsection{Auszeichnungen}
 
-% maketitle
+\begin{Frame}[fragile]{Absätze}
+  \begin{Block}{Absatz}
+    \begin{itemize}
+      \item leere Zeile in der Eingabe
+      \item Aussehen je nach Einstellungen (\lstinline-parskip-, \ldots)
+    \end{itemize}
+  \end{Block}
+
+  \begin{Block}{manuelle Umbrüche}
+    \begin{itemize}
+      \item braucht man nicht
+      \item machen das Dokument kaputt
+      \item Zeilenumbruch: \lstinline-\\-
+      \item Seitenumbruch: \lstinline-\newpage-
+    \end{itemize}
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}[fragile]{Ausrichtung}
+  \newcommand{\lorem}{\textcolor{black!40}{Auch in der zweiten Zeile. Lorem ipsum dolor sit amet, consectetur, adipisci velit, \ldots}}
+
+  \begin{minipage}{\textwidth}
+    Ohne Umgebung wird Text immer im Blocksatz gesetzt.
+    \lorem
+  \end{minipage}
+
+  \xxx
+
+  \begin{center}
+    Text in der Umgebung \lstinline-center- wird \alert{zentriert}
+    gesetzt.
+    \lorem
+  \end{center}
+
+  \xxx
+
+  \begin{flushleft}
+    Text in der Umgebung \lstinline-flushleft- wird als
+    \alert{linksbündiger Flattersatz} gesetzt.
+    \lorem
+  \end{flushleft}
+
+  \xxx
+
+  \begin{flushright}
+    Text in der Umgebung \lstinline-flushright- wird als
+    \alert{rechtsbündiger Flattersatz} gesetzt.
+    \lorem
+  \end{flushright}
+\end{Frame}
+
+\begin{Frame}[fragile]{Auszeichnungen}
+  \begin{Block}{Text hervorheben}
+    \begin{itemize}
+      \item \lstinline-\emph{hervor}- hebt \emph{hervor}
+      \item \lstinline-\textit{kursiv}- setzt \textit{kursiv}
+      \item \lstinline-\textsl{schräg}- setzt \textsl{schräg}
+      \item \lstinline-\textsc{in Kapitälchen}- setzt \textsc{in Kapitälchen}
+      \item \lstinline-\textbf{fett}- setzt \textbf{fett} \uncover<2>{\alert{(nicht!)}}
+      \item \lstinline-\underline{unterstrichen}- setzt \underline{unterstrichen} \uncover<2>{\alert{(nicht!)}}
+    \end{itemize}
+  \end{Block}
+  
+  \begin{Block}{Schriftarten}
+    \begin{itemize}
+      \item \lstinline-\textsf{serifenlos}- setzt \textsf{serifenlos}
+      \item \lstinline-\textrm{mit Serifen}- setzt \textrm{mit Serifen}
+      \item \lstinline-\texttt{nichtproportional}- setzt \texttt{nichtproportional}
+    \end{itemize}
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}[fragile]{Schriftgröße}
+  \begin{itemize}
+    \item \lstinline-{\tiny winzig}- setzt {\tiny winzig}
+    \item \lstinline-{\scriptsize in Indexgröße}- setzt {\scriptsize in Indexgröße}
+    \item \lstinline-{\footnotesize in Fußzeilengröße}- setzt {\footnotesize in Fußzeilengröße}
+    \item \lstinline-{\small klein}- setzt {\small klein}
+    \item \lstinline-{\normalsize in Normalgröße}- setzt {\normalsize in Normalgröße}
+    \item \lstinline-{\large groß}- setzt {\large groß}
+    \item \lstinline-{\Large größer}- setzt {\Large größer}
+    \item \lstinline-{\LARGE am größten}- setzt {\LARGE am größten}
+    \item \lstinline-{\huge riesig}- setzt {\huge riesig}
+    \item \lstinline-{\Huge riesiger}- setzt {\Huge riesiger}
+  \end{itemize}
+\end{Frame}
+
+\subsection{Formelsatz}
+
+\begin{Frame}[fragile]{Formelsatz}
+  \textbf{\color{maincolor}in der Präambel}
+  \begin{lstlisting}[gobble=4]
+    \usepackage{amsmath}
+    \usepackage{amssymb}
+  \end{lstlisting}
+
+  \textbf{\color{maincolor}Formelsatz in Matheumgebung}
+  \begin{itemize}
+    \item in normalen Text: \lstinline-$x^y$- erzeugt $x^y$
+    \item abgesetzt: \lstinline-\[ x^3 \]- erzeugt
+      \[ x^3 \]
+    \item mehrzeilig: \lstinline-align-, ausgerichtet an \lstinline-&-, neue Zeile mit \lstinline-\\- 
+      \begin{lstlisting}[gobble=8]
+        \begin{align} % ohne Nummerierung mit align*
+          f(x) &= x^3 \\
+               &= x \cdot x \cdot x
+        \end{align}
+      \end{lstlisting}
+      \begin{align}
+        f(x) &= x^3 \\
+             &= x \cdot x \cdot x
+      \end{align}
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Formelsatz}
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \alpha^{22} + \beta_{12}
+          = \gamma^2_a
+      \end{lstlisting}
+    \column{4cm}
+      $\displaystyle\displaystyle\alpha^{22} + \beta_{12} = \gamma^2_a$
+  \end{columns}
+
+  \pause
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \sum_{i=1}^{n} i =
+          \frac{n(n+1)}{2}
+      \end{lstlisting}
+    \column{4cm}
+      $\displaystyle\sum_{i=1}^n i = \frac{n(n+1)}{2}$
+  \end{columns}
+
+  \pause
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \sqrt{x^{4}} = x^{2}
+      \end{lstlisting}
+    \column{4cm}
+      $\displaystyle\sqrt{x^4} = x^2$
+  \end{columns}
+
+  \pause
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \lim_{n\to\infty}
+          \frac{1}{n^{2}} = 0
+      \end{lstlisting}
+    \column{4cm}
+      $\displaystyle\lim_{n\to\infty} \frac{1}{n^2} = 0$
+  \end{columns}
+  
+  \pause
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \int_{-1}^{2}
+          x\,\mathrm{d}x = \left[
+            \frac{1}{2}x^{2}
+          \right]_{1}^{2}
+      \end{lstlisting}
+    \column{4cm}
+      $\displaystyle\int_{-1}^{2} x\,\mathrm{d}x=\left[ \frac{1}{2}x^2 \right]_1^2$
+  \end{columns}
+\end{Frame}
 
 \subsection{Tabellen und Listen}
+
+\begin{Frame}[fragile]{Listen}
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \begin{itemize}
+          \item Apfel
+            \begin{itemize}
+              \item Holsteiner Cox
+              \item Braeburn
+            \end{itemize}
+          \item Birne
+        \end{itemize}
+      \end{lstlisting}
+    \column{4cm}
+      \begin{itemize}
+        \item Apfel
+          \begin{itemize}
+            \item Holsteiner Cox
+            \item Braeburn
+          \end{itemize}
+        \item Birne
+      \end{itemize}
+  \end{columns}
+  
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \begin{enumerate}
+          \item Apfel
+            \begin{enumerate}
+              \item Holsteiner Cox
+              \item Braeburn
+            \end{enumerate}
+          \item Birne
+        \end{enumerate}
+      \end{lstlisting}
+    \column{4cm}
+      \begin{enumerate}
+        \item Apfel
+          \begin{enumerate}
+            \item Holsteiner Cox
+            \item Braeburn
+          \end{enumerate}
+        \item Birne
+      \end{enumerate}
+  \end{columns}
+\end{Frame}
+
+\begin{Frame}[fragile]{Listen}{Definitionslisten}
+  \begin{lstlisting}[gobble=4]
+    \begin{description}
+      \item[Das Schlagwort] steht am Anfang einer Zeile und
+        wird hervorgehoben, während der zugehörige
+      \item[Text] dahinter in normaler Schrift erscheint.
+    \end{description}
+  \end{lstlisting}
+
+  \begin{description}
+    \item[Das Schlagwort] steht am Anfang einer Zeile und wird
+      hervorgehoben, während der zugehörige
+    \item[Text] dahinter in normaler Schrift erscheint.
+  \end{description}
+\end{Frame}
+
+\begin{Frame}[fragile]{Tabellen}
+  \begin{lstlisting}[gobble=4]
+    \begin{tabular}{l|lr}
+      \textbf{Jahr} & \textbf{Prozessor} & \textbf{MHz} \\
+      \hline
+      1975 & 6502 (C64) & 1 \\
+      1985 & 80386 & 16 \\
+      2005 & Pentium 4 & 2\,800 \\
+      2030 & Phoenix 3 & 7\,320\,000
+    \end{tabular}
+  \end{lstlisting}
+
+  \begin{center}
+    \begin{tabular}{l|lr}
+      \textbf{Jahr} & \textbf{Prozessor} & \textbf{MHz} \\
+      \hline
+      1975 & 6502 (C64) & 1 \\
+      1985 & 80386 & 16 \\
+      2005 & Pentium 4 & 2\,800 \\
+      2030 & Phoenix 3 & 7\,320\,000
+    \end{tabular}
+  \end{center}
+\end{Frame}
 
 \section{Verweise und Verzeichnisse}
 
@@ -518,6 +780,18 @@
 % Float-Umgebungen
 
 \subsection{Verzeichnisse}
+
+\begin{Frame}[fragile]{Struktur eines Dokuments}
+  \begin{Block}{Strukturbefehle}
+    \begin{itemize}
+      \item \lstinline-\part{name}- für Teile (nur in Büchern)
+      \item \lstinline-\chapter{name}- für Kapitel (nicht in Artikeln)
+      \item \lstinline-\section{name}- für Abschnitte
+    \end{itemize}
+  \end{Block}
+\end{Frame}
+
+% maketitle
 
 \section*{Zusammenfassung}
 
