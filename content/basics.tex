@@ -518,7 +518,11 @@
   \end{itemize}
 \end{Frame}
 
-\subsection{Formelsatz}
+\subsection{Detailtypographie}
+
+
+
+\subsection{weitere Elemente}
 
 \begin{Frame}[fragile]{Formelsatz}
   \textbf{\color{maincolor}in der Präambel}
@@ -607,8 +611,6 @@
   \end{columns}
 \end{Frame}
 
-\subsection{Tabellen und Listen}
-
 \begin{Frame}[fragile]{Listen}
   \begin{columns}
     \column{5cm}
@@ -695,6 +697,42 @@
       2030 & Phoenix 3 & 7\,320\,000
     \end{tabular}
   \end{center}
+\end{Frame}
+
+\begin{Frame}[fragile]{Grafiken}
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8,morekeywords=includegraphics]
+        \includegraphics%
+          [width=3.5cm]{miktex}
+      \end{lstlisting}
+    \column{4cm}
+      \includegraphics[width=3.5cm]{images/miktex}
+  \end{columns}
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8,morekeywords=includegraphics]
+        \includegraphics%
+          [width=3.5cm,%
+           angle=20]{miktex}
+      \end{lstlisting}
+    \column{4cm}
+      \includegraphics[width=3.5cm,angle=20]{images/miktex}
+  \end{columns}
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8,morekeywords=includegraphics]
+        \includegraphics%
+          [width=3.5cm,%
+           trim=3cm 5mm 4cm 12mm,%
+           clip=true]{miktex}
+      \end{lstlisting}
+    \column{4cm}
+      \includegraphics[width=3.5cm,trim=3cm 5mm 4cm 12mm,clip=true]{images/miktex}
+  \end{columns}
+  schneidet links 3\,cm, unten 5\,mm,\\ rechts 4\,cm und oben 12\,mm ab
 \end{Frame}
 
 \section{Verweise und Verzeichnisse}
