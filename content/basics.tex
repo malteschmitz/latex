@@ -73,7 +73,7 @@
   \xxx
   \pause
 
-  \textbf{\color{maincolor}Verwendung}
+  \inhead{Verwendung}
   \begin{itemize}
     \item Ein \LaTeX-Dokument ist ein \alert{reines Textdokument}.
     \item Das \LaTeX-Dokument enthält \alert{Inhalt und Struktur}.
@@ -119,13 +119,13 @@
 \end{Frame}
 
 \begin{Frame}[fragile,t]{Ein \LaTeX-Dokument}
-  \textbf{\ttfamily\color{maincolor}hello.tex}
+  \inhead{\texttt{hello.tex}}
   \lstinputlisting{demo/hello.tex}
 
   \pause
   \xxx
 
-  \textbf{\color{maincolor}Kompilieren}
+  \inhead{Kompilieren}
   \begin{lstlisting}[language={},morekeywords={pdflatex},gobble=4]
     pdflatex hello
   \end{lstlisting}
@@ -133,7 +133,7 @@
   \pause
   \xxx
 
-  \textbf{\ttfamily\color{maincolor}hello.pdf}
+  \inhead{\texttt{hello.pdf}}
   \only<presentation>{\vskip-2cm\strut}
   \begin{center}
     \includegraphics[width=10cm]{demo/hello.pdf}
@@ -207,7 +207,7 @@
 
 
 \begin{Frame}[fragile]{\TeX-Live-Pakete unter Ubuntu/Debian}
-  \begin{lstlisting}[gobble=4,language={}]
+  \begin{lstlisting}[gobble=4,language={},morekeywords={sudo,apt,get}]
     sudo apt-get install texlive \
       texlive-lang-german texlive-latex-extra
   \end{lstlisting}
@@ -266,7 +266,7 @@
 
 \begin{Frame}[fragile]{Befehle}
   \begin{Definition}[Befehl]
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,morekeywords={commandname}]
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt,morekeywords={commandname}]
       \commandname*[opt1][opt2]{arg1}{arg2}
     \end{lstlisting}
 
@@ -281,7 +281,7 @@
   \xxx
 
   \begin{Beispiel}[Befehl]
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no]
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
       \section[Kurzform]{Überschrift}
       \section*{noch eine Überschrift}
     \end{lstlisting}
@@ -290,7 +290,7 @@
 
 \begin{Frame}[fragile]{Umgebungen}
   \begin{Definition}[Umgebung]
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no]
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
       \begin{envname}
         Inhalt
       \end{envname}
@@ -305,7 +305,7 @@
   \xxx
 
   \begin{Beispiel}[Umgebung]
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no]
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
       \begin{center}
         Ich bin zentriert.
       \end{center}
@@ -520,18 +520,80 @@
 
 \subsection{Detailtypographie}
 
+\begin{Frame}[fragile]{Abkürzungen}
+  \begin{Block}{Mehrgliedrige Abkürzungen}
+    \begin{tabular}{rll}
+      nicht: & \lstinline-z.B.- & z.B. \\
+      auch nicht: & \lstinline-z.~B.- & z.~B. \\
+      sondern: & \lstinline-z.\,B.- & z.\,B. \\
+    \end{tabular}
+  \end{Block}
+  
+  \begin{Block}{Trennung von Abkürzungen}
+    \begin{itemize}
+      \item Abkürzungen nicht trennen
+      \item Maß- und Währungszeichen nicht von der Zahl trennen
+      \item geschütztes Leerzeichen \lstinline-~- verwenden\\
+        Beispiele: \lstinline-Seite~5, 4~km, S.~5~ff.-
+    \end{itemize}
+  \end{Block}
+\end{Frame}
 
+\begin{Frame}[fragile]{Anführungszeichen}
+  \begin{alertblock}{Verwendung}
+    Anführungszeichen sind nur für \alert{wörtliche Zitate}.
+  \end{alertblock}
+  
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+      \usepackage[german=guillemets]{csquotes}
+      %      oder german=quotes
+      %      oder english=british oder english=american
+    \end{lstlisting}
+  \end{Block}
+
+  \begin{lstlisting}[gobble=4]
+    Hans sagt: \enquote{Er rief: \enquote{Franz' Auto!}}
+  \end{lstlisting}
+
+  Hans sagt: \enquote{Er rief: \enquote{Franz' Auto!}}
+\end{Frame}
+
+\begin{Frame}[fragile]{Binde- und sonstige Striche}
+  \begin{itemize}
+    \item Bindestrich\newline
+      \lstinline|SOS-Ruf|\newline
+      SOS-Ruf
+    \item deutscher Gedankenstrich mit Leerzeichen\newline
+      \lstinline|Er kam -- und ging gleich wieder.|\newline
+      Er kam -- und ging gleich wieder.
+    \item britischer Gedankenstrich ohne Leerzeichen\newline
+      \lstinline|He came---and went.|\newline
+      He came---and went.
+    \item Gedankenstrich für Bereiche ohne Leerzeichen\newline
+      \lstinline|Das Buch darf 10--12 Euro kosten.|\newline
+      Das Buch darf 10--12 Euro kosten.
+    \item Minuszeichen als binärer und unärer Operator\newline
+      \lstinline|$2-4=-2$ (nicht -2)|\newline
+      $2-4=-2$ (nicht -2)
+      \only<article>{
+        \newline Als binärer Operator wird das Minuszeichen mit einem kleinen Abstand gesetzt.
+        Als unärer Operator wird das Minuszeichen als Vorzeichen ohne Abstand gesetzt.
+        \LaTeX\ übernimmt dies automatisch.
+      }
+  \end{itemize}
+\end{Frame}
 
 \subsection{weitere Elemente}
 
-\begin{Frame}[fragile]{Formelsatz}
-  \textbf{\color{maincolor}in der Präambel}
-  \begin{lstlisting}[gobble=4]
-    \usepackage{amsmath}
-    \usepackage{amssymb}
-  \end{lstlisting}
-
-  \textbf{\color{maincolor}Formelsatz in Matheumgebung}
+\begin{Frame}[fragile]{Formelsatz in der Matheumgebung}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+      \usepackage{amsmath}
+      \usepackage{amssymb}
+    \end{lstlisting}
+  \end{Block}
+  
   \begin{itemize}
     \item in normalen Text: \lstinline-$x^y$- erzeugt $x^y$
     \item abgesetzt: \lstinline-\[ x^3 \]- erzeugt
@@ -550,7 +612,7 @@
   \end{itemize}
 \end{Frame}
 
-\begin{Frame}[fragile]{Formelsatz}
+\begin{Frame}[fragile]{Beispiele zum Formelsatz}
   \begin{columns}
     \column{5cm}
       \begin{lstlisting}[gobble=8]
@@ -702,7 +764,7 @@
 \begin{Frame}[fragile]{Grafiken}
   \begin{columns}
     \column{5cm}
-      \begin{lstlisting}[gobble=8,morekeywords=includegraphics]
+      \begin{lstlisting}[gobble=8]
         \includegraphics%
           [width=3.5cm]{miktex}
       \end{lstlisting}
@@ -712,7 +774,7 @@
 
   \begin{columns}
     \column{5cm}
-      \begin{lstlisting}[gobble=8,morekeywords=includegraphics]
+      \begin{lstlisting}[gobble=8]
         \includegraphics%
           [width=3.5cm,%
            angle=20]{miktex}
@@ -723,7 +785,7 @@
 
   \begin{columns}
     \column{5cm}
-      \begin{lstlisting}[gobble=8,morekeywords=includegraphics]
+      \begin{lstlisting}[gobble=8]
         \includegraphics%
           [width=3.5cm,%
            trim=3cm 5mm 4cm 12mm,%
@@ -735,9 +797,153 @@
   schneidet links 3\,cm, unten 5\,mm,\\ rechts 4\,cm und oben 12\,mm ab
 \end{Frame}
 
-\section{Verweise und Verzeichnisse}
+\section{Verzeichnisse und Verweise}
+
+\subsection{Struktur des Dokuments}
+
+\begin{Frame}[fragile]{Inhaltsverzeichnis}
+  \begin{Block}{Strukturbefehle}
+    \begin{itemize}
+      \item \lstinline-\part{name}- für Teile (nur in Büchern)
+      \item \lstinline-\chapter{name}- für Kapitel (nicht in Artikeln)
+      \item \lstinline-\section{name}- für Abschnitte
+      \item \lstinline-\subsection{name}- für Unterabschnitte
+      \item \lstinline-\subsubsection{name}- für Unterunterabschnitte
+      \item \lstinline-\paragraph{name}- für Absätze
+    \end{itemize}
+  \end{Block}
+
+  \begin{lstlisting}[gobble=4]
+    \tableofcontents
+  \end{lstlisting}
+  setzt das zugehörige Inhaltsverzeichnis.
+\end{Frame}
+
+\begin{Frame}[fragile]{Titelseite}{automatisch}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+       \title{Meine Arbeit}
+       \author{Malte Schmitz}
+       \date{September 2013} % aktuelles Datum bei Auslassung
+    \end{lstlisting}
+  \end{Block}
+
+  \begin{Block}{Am Anfang des Dokuments}
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+      \maketitle
+    \end{lstlisting}
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}[fragile]{Titelseite}{manuell}
+  \begin{lstlisting}[gobble=4]
+    \begin{titlepage}
+      \begin{center}
+        \textsf{\textbf{\Huge Meine Arbeit}}
+
+        \textsf{\Large Malte Schmitz}
+      \end{center}
+    \end{titlepage}
+  \end{lstlisting}
+\end{Frame}
+
+\subsection{Abbildungen}
+
+\begin{Frame}[fragile]{Abbildungen und Tabellen}
+  \begin{Block}{Fließumgebungen}
+    Abbildungen und Tabellen werden\\
+    automatisch im Dokument positioniert.
+  \end{Block}
+
+  \begin{lstlisting}[gobble=4]
+    \begin{figure}
+      \includegraphics[width=3.5cm]{miktex}
+      \caption{Mik\TeX-Logo}
+    \end{figure}
+  \end{lstlisting}
+
+  \begin{lstlisting}[gobble=4]
+    \begin{table}
+      \begin{tabular}{ll}
+        Umgebung & Verwendung \\
+        table & Tabellen \\
+        figure & Abbildungen
+      \end{tabular}
+      \caption{Verwendung von Abbildungen und Tabellen}
+    \end{table}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Positionierungshinweise}
+  \begin{lstlisting}[gobble=4]
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[width=3.5cm]{miktex}
+      \caption{Mik\TeX-Logo}
+    \end{figure}
+  \end{lstlisting}
+
+  \xxx
+
+  Element platzieren
+  \begin{description}
+    \item[h] an Position im Quelltext
+    \item[b] am Ende einer Seite
+    \item[t] am Anfang einer Seite
+    \item[p] auf einer eigenen Abbildungsseite
+    \item[!] \LaTeX s Bewertung der Platzierung abschalten
+  \end{description}
+\end{Frame}
+
+\begin{Frame}[fragile]{Verzeichnisse}
+  \begin{Block}{Inhaltsverzeichnis}
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+      \tableofcontents
+    \end{lstlisting}
+  \end{Block}
+
+  \begin{Block}{Abbildungsverzeichnis}
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+      \listoffigures
+    \end{lstlisting}
+  \end{Block}
+
+  \begin{Block}{Tabellenverzeichnis}
+    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+      \listoftables
+    \end{lstlisting}
+  \end{Block}
+
+  \xxx
+
+  \begin{alertblock}{Warnung}
+    Welchen Nutzen haben Abbildungs- und Tabellenverzeichnis?
+  \end{alertblock}
+\end{Frame}
 
 \subsection{Verweise}
+
+\begin{Frame}[fragile]{Verweise}
+  \begin{itemize}
+    \item \alert{Nach} dem Strukturbefehl Label angeben
+      \begin{lstlisting}[gobble=8]
+        \section{Verzeichnisse und Verweise}
+        \label{sec-verweise}
+        % ...
+        \begin{figure}
+          \includegraphics[width=3.5cm]{miktex}
+          \caption{Mik\TeX-Logo}
+          \label{fig-miktex}
+        \end{figure}
+      \end{lstlisting}
+     \item Label referenzieren
+       \begin{lstlisting}[gobble=8]
+         \ldots Mik\TeX-Logo auf \autoref{fig-miktex}
+         in \autoref{sec-verweise} \ldots
+       \end{lstlisting}
+       \ldots Mik\TeX-Logo auf Abbildung 5 in Abschnitt 3.2 \ldots
+  \end{itemize}
+\end{Frame}
 
 \newcommand{\icon}[1]{%
   \tikz\draw[very thick, line join=round]
@@ -813,28 +1019,10 @@
   \end{center}
 \end{Frame}
 
-\subsection{Abbildungen}
-
-% Float-Umgebungen
-
-\subsection{Verzeichnisse}
-
-\begin{Frame}[fragile]{Struktur eines Dokuments}
-  \begin{Block}{Strukturbefehle}
-    \begin{itemize}
-      \item \lstinline-\part{name}- für Teile (nur in Büchern)
-      \item \lstinline-\chapter{name}- für Kapitel (nicht in Artikeln)
-      \item \lstinline-\section{name}- für Abschnitte
-    \end{itemize}
-  \end{Block}
-\end{Frame}
-
-% maketitle
-
 \section*{Zusammenfassung}
 
 \begin{frame}{Zusammenfassung}
   \begin{enumerate}
-    \item Zusammenfassung.
+    \item \LaTeX\ ist toll.
   \end{enumerate}
 \end{frame}

@@ -50,9 +50,12 @@
 \lstset{%
   basicstyle=\scriptsize\ttfamily,%
   language=[LaTeX]TeX,%
-  keywordstyle=\color{maincolor}\bfseries,%
+  morekeywords={enquote,includegraphics,part,chapter,%
+    tableofcontents,listoffigures,listoftables,maketitle,%
+    subsection,subsubsection,paragraph,autoref,it},%
+  keywordstyle=\bfseries,%
   identifierstyle=,%
-  commentstyle=\itshape\color{green!50!black},%
+  commentstyle=\itshape,%
   numbers=none,%
   frame=lines,%
   backgroundcolor=\color{maincolor!10},%
@@ -109,6 +112,8 @@
 \let\vec\boldsymbol
 
 \newcommand{\xxx}{\only<presentation>{\vskip1em}}
+
+\newcommand{\inhead}[1]{\textbf{\color{maincolor}#1}}
 
 % load common user macros
 \input{macros.tex}
