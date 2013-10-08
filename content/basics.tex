@@ -266,7 +266,7 @@
 
 \begin{Frame}[fragile]{Befehle}
   \begin{Definition}[Befehl]
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt,morekeywords={commandname}]
+    \begin{lstlisting}[gobble=6,style=block,morekeywords={commandname}]
       \commandname*[opt1][opt2]{arg1}{arg2}
     \end{lstlisting}
 
@@ -281,7 +281,7 @@
   \xxx
 
   \begin{Beispiel}[Befehl]
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+    \begin{lstlisting}[gobble=6,style=block]
       \section[Kurzform]{Überschrift}
       \section*{noch eine Überschrift}
     \end{lstlisting}
@@ -290,7 +290,7 @@
 
 \begin{Frame}[fragile]{Umgebungen}
   \begin{Definition}[Umgebung]
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+    \begin{lstlisting}[gobble=6,style=block]
       \begin{envname}
         Inhalt
       \end{envname}
@@ -305,7 +305,7 @@
   \xxx
 
   \begin{Beispiel}[Umgebung]
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+    \begin{lstlisting}[gobble=6,style=block]
       \begin{center}
         Ich bin zentriert.
       \end{center}
@@ -543,7 +543,7 @@
   \end{alertblock}
   
   \begin{Block}{In der Präambel}
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+    \begin{lstlisting}[gobble=6,style=block]
       \usepackage[german=guillemets]{csquotes}
       %      oder german=quotes
       %      oder english=british oder english=american
@@ -586,7 +586,7 @@
 
 \begin{Frame}[fragile]{Formelsatz in der Matheumgebung}
   \begin{Block}{In der Präambel}
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+    \begin{lstlisting}[gobble=6,style=block]
       \usepackage{amsmath}
       \usepackage{amssymb}
     \end{lstlisting}
@@ -821,7 +821,7 @@
 
 \begin{Frame}[fragile]{Titelseite}{automatisch}
   \begin{Block}{In der Präambel}
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+    \begin{lstlisting}[gobble=6,style=block]
        \title{Meine Arbeit}
        \author{Malte Schmitz}
        \date{September 2013} % aktuelles Datum bei Auslassung
@@ -829,7 +829,7 @@
   \end{Block}
 
   \begin{Block}{Am Anfang des Dokuments}
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+    \begin{lstlisting}[gobble=6,style=block]
       \maketitle
     \end{lstlisting}
   \end{Block}
@@ -897,19 +897,19 @@
 
 \begin{Frame}[fragile]{Verzeichnisse}
   \begin{Block}{Inhaltsverzeichnis}
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+    \begin{lstlisting}[gobble=6,style=block]
       \tableofcontents
     \end{lstlisting}
   \end{Block}
 
   \begin{Block}{Abbildungsverzeichnis}
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+    \begin{lstlisting}[gobble=6,style=block]
       \listoffigures
     \end{lstlisting}
   \end{Block}
 
   \begin{Block}{Tabellenverzeichnis}
-    \begin{lstlisting}[gobble=6,backgroundcolor={},frame=no,aboveskip=0pt,belowskip=0pt]
+    \begin{lstlisting}[gobble=6,style=block]
       \listoftables
     \end{lstlisting}
   \end{Block}
