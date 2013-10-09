@@ -127,12 +127,154 @@
   \end{center}
 \end{Frame}
 
-\subsection{eigene Befehle und Umgebungen}
+\subsection{Eigene Befehle und Umgebungen}
 
-%newcommand
-%newenvironment
+\begin{Frame}[fragile]{Eigene Befehle}
+  \begin{lstlisting}[gobble=4,morekeywords={mycommand}]
+    \newcommand{\mycommand}[2]{#1 liest #2.}
+    \mycommand{Malte}{ein Buch}
+  \end{lstlisting}
+  \newcommand{\mycommand}[2]{#1 liest #2.}
+  \mycommand{Malte}{ein Buch}
+
+  \xxx\pause
+
+  \begin{Beispiel}[weniger Redundanz]
+    \begin{lstlisting}[gobble=6,style=block,morekeywords={colorsample}]
+      \newcommand{\colorsample}[1]{%
+        \textcolor{#1}{\rule[-.5ex]{2em}{2ex}}
+        \texttt{#1}}
+      \colorsample{red}
+    \end{lstlisting}
+    \colorsample{red}
+  \end{Beispiel}
+
+  \pause
+
+  \begin{Beispiel}[Mehr Struktur]
+    \begin{lstlisting}[gobble=6,style=block,morekeywords={user,gui}]
+      \newcommand{\gui}[1]{\textsl{\textsf{#1}}}
+      \newcommand{\user}[1]{\texttt{#1}}
+      Geben Sie in das Feld \gui{Prüfziffer}
+      den Wert \user{fgdhsjk} ein.
+    \end{lstlisting}
+    \newcommand{\gui}[1]{\textsl{\textsf{#1}}}
+    \newcommand{\user}[1]{\texttt{#1}}
+    \textrm{Geben Sie in das Feld \gui{Prüfziffer}
+    den Wert \user{fgdhsjk} ein.}
+  \end{Beispiel}
+\end{Frame}
+
+\begin{Frame}[fragile]{Eigene Befehle}{optionaler Parameter}
+  \begin{itemize}
+    \item Es ist \alert{genau ein} optionales Argument zulässig.
+    \item Nur das \alert{erste Argument} des Befehls kann optional werden.
+  \end{itemize}
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4,morekeywords={wichtig}]
+    \newcommand{\wichtig}[2]%
+      [red]{\textcolor{#1}{\emph{#2}}}
+    \wichtig{Hier} sind \wichtig[orange]{Worte}
+    unterschiedlich \wichtig[blue]{hervorgehoben}.
+  \end{lstlisting}
+  \newcommand{\wichtig}[2]%
+    [red]{\textcolor{#1}{\emph{#2}}}
+  \wichtig{Hier} sind \wichtig[orange]{Worte}
+  unterschiedlich \wichtig[blue]{hervorgehoben}.
+\end{Frame}
+
+\begin{Frame}[fragile]{Befehle umdefinieren}
+  \begin{lstlisting}[gobble=4]
+    Ich bin \emph{hervorgehoben}.
+  \end{lstlisting}
+  Ich bin \emph{hervorgehoben}.
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \renewcommand{\emph}[1]{\textsl{#1}}
+    Ich bin \emph{hervorgehoben}.
+  \end{lstlisting}
+  \renewcommand{\emph}[1]{\textsc{#1}}
+  Ich bin \emph{hervorgehoben}.
+\end{Frame}
+
+\begin{Frame}[fragile]{Eigene Umgebungen}
+  \begin{lstlisting}[gobble=4]
+    \newenvironment{achtung}[1][Achtung]{%
+      \rule{\textwidth}{1pt}\\%
+      \textbf{#1}: %
+    }{%
+      \rule[1ex]{\textwidth}{1pt}%
+    }
+
+    \begin{achtung}
+      Bitte verwenden [...] Neufassung.
+    \end{achtung}
+  
+    \begin{achtung}[Hinweis]
+      Bitte nicht knicken.
+    \end{achtung}
+  \end{lstlisting}
+  \newenvironment{achtung}[1][Achtung]{%
+    \rule{\textwidth}{1pt}\\%
+    \textbf{#1}: %
+  }{%
+    \rule[1ex]{\textwidth}{1pt}%
+  }
+
+  \begin{achtung}
+    Bitte verwenden Sie diesen Artikel nicht.
+    Sie erhalten in Kürze eine berichtigte Neufassung.
+  \end{achtung}
+
+  \begin{achtung}[Hinweis]
+    Bitte nicht knicken.
+  \end{achtung}
+
+  %\begin{Block}{Umgebungen umdefinieren}
+  %  \lstinline-\renewenvironment- funktioniert
+  %  analog zu \lstinline-\renewcommand-.
+  %\end{Block}
+\end{Frame}
 
 \subsection{Quelltext und Pseudocode}
+
+\begin{Frame}[fragile]{Quelltext}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[style=block,gobble=6]
+      \usepackage{listings}
+      \lstset{%
+        basicstyle=\ttfamily,%
+        showstringspaces=false,%
+        upquote=true}
+      \usepackage{textcomp} % für upquote
+      \usepackage{courier} % für schönere Schriftart
+    \end{lstlisting}
+  \end{Block}
+
+  \lstinputlisting{listing.tex}
+  \lstset{style=block}
+  \input{listing.tex}
+\end{Frame}
+
+\begin{Frame}[fragile]{Umlaute}
+  \texttt{listings} hat Probleme mit UTF-8 und Umlauten
+  \begin{lstlisting}[gobble=4]
+    % german umlauts
+    \lstset{
+      literate={ö}{{\"o}}1
+               {Ö}{{\"O}}1
+               {ä}{{\"a}}1
+               {Ä}{{\"A}}1
+               {ü}{{\"u}}1
+               {Ü}{{\"U}}1
+               {ß}{{\ss}}1
+    }
+  \end{lstlisting}
+\end{Frame}
 
 \begin{Frame}[fragile]{Pseudocode}
   \begin{Block}{In der Präambel}
@@ -147,7 +289,7 @@
   \end{Block}
 
   \lstinputlisting[language={},morekeywords={begin,end}]{pseudocode.tex}
-  
+  \lstset{style=block}
   \input{pseudocode}
 \end{Frame}
 

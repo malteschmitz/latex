@@ -267,13 +267,13 @@
 \begin{Frame}[fragile]{Befehle}
   \begin{Definition}[Befehl]
     \begin{lstlisting}[gobble=6,style=block,morekeywords={commandname}]
-      \commandname*[opt1][opt2]{arg1}{arg2}
+      \commandname*[opt]{arg1}{arg2}
     \end{lstlisting}
 
     \begin{tabular}{rl}
       \lstinline[morekeywords={commandname}]-commandname- & Name des Befehls \\
       \lstinline-*- & optionaler Schalter \\
-      \lstinline-[opt1]- & optionaler Parameter \\
+      \lstinline-[opt]- & optionaler Parameter \\
       \lstinline-{arg1}- & Parameter
     \end{tabular}
   \end{Definition}
@@ -291,7 +291,7 @@
 \begin{Frame}[fragile]{Umgebungen}
   \begin{Definition}[Umgebung]
     \begin{lstlisting}[gobble=6,style=block]
-      \begin{envname}
+      \begin{envname}[opt]{arg1}{arg2}
         Inhalt
       \end{envname}
     \end{lstlisting}
