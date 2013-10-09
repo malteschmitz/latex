@@ -1,0 +1,64 @@
+* {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+}
+
+input, button {
+  font-family: sans-serif;
+}
+
+a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+tt {
+  font-family: monospace;
+}
+
+code {
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-size: 12pt;
+  margin: 0 2px;
+  padding: 0px 5px;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+.fork {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+@media print {
+  .fork {
+    display: none;
+  }
+}
+
+body {
+  font-size: 13pt;
+}
+
+body.doc {
+  max-width: 650px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+p.authors {
+  margin-bottom: 20pt;
+  position: relative;
+  text-align: right;
+  font-size: 16pt;
+}
+
+p.authors a {
+  padding-left: 25pt;
+}
