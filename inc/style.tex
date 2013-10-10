@@ -54,7 +54,7 @@
     tableofcontents,listoffigures,listoftables,maketitle,%
     subsection,subsubsection,paragraph,autoref,it,
     textcolor,colorbox,xdefinecolor,colorlet,foreach,
-    rowcolors,rowcolor,lstdefinestyle,lstset},%
+    rowcolors,rowcolor,lstdefinestyle,lstset,KOMAoptions},%
   keywordstyle=\bfseries,%
   identifierstyle=,%
   commentstyle=\itshape,%
@@ -92,6 +92,17 @@
            {Ü}{{\"U}}1
            {ß}{{\ss}}1
 }
+
+\lstdefinelanguage{BibTeX}
+  {keywords={%
+      @article,@book,@collectedbook,@conference,@electronic,@ieeetranbstctl,%
+      @inbook,@incollectedbook,@incollection,@injournal,@inproceedings,%
+      @manual,@mastersthesis,@misc,@patent,@periodical,@phdthesis,@preamble,%
+      @proceedings,@standard,@string,@techreport,@unpublished%
+      },
+   comment=[l][\itshape]{@comment},
+   sensitive=false,
+  }
 
 \usepackage{tabularx}
 
@@ -131,8 +142,16 @@
 
 \newcommand{\inhead}[1]{\textbf{\color{maincolor}#1}}
 
+% load logo collection from "Die TeXnische Komödie"
+\usepackage{dtklogos}
+
 % load common user macros
 \input{macros.tex}
+
+
+
+
+
 
 
 % set options for article

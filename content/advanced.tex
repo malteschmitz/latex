@@ -295,11 +295,342 @@
 
 \section{Literatur}
 
-\subsection{Verwendung von Bib\TeX}
+\subsection{Verwendung von \BibTeX}
 
-\subsection{Bib\TeX-Einträge}
+\begin{Frame}[fragile]{Was ist \BibTeX?}
+  \begin{itemize}
+    \item \BibTeX\ ist ein \alert{eigenständiges Programm},\\
+    das \LaTeX\ ergänzt.
+    \item \BibTeX\ erzeugt aus einer \alert{Literaturdatenbank}\\
+      ein \alert{Literaturverzeichnis}.
+    \item Das Literaturverzeichnis enthält \alert{nur} die\\
+      mit \lstinline-\cite- \alert{zitierten Einträge} der Datenbank.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[t]{Ein Beispieldokument \texttt{arbeit.pdf}}
+  \includegraphics[width=\textwidth]{demo/arbeit.pdf}
+\end{Frame}
+
+\begin{Frame}[fragile]{Das \LaTeX-Dokument \texttt{arbeit.tex}}
+  \begin{lstlisting}[gobble=4]
+    \documentclass{scrartcl}
+    
+    % ...
+    
+    \begin{document}
+      In \cite{rltl} wird die reguläre lineare
+      Temporallogik (RLTL) vorgestellt.
+      Dazu wird der in \cite[S. 101--106]{Hopcroft}
+      beschriebenen Algorithmus verwendet
+
+      \bibliographystyle{alphadin}
+      \bibliography{datenbank}
+    \end{document}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}{Die Literaturdatenbank \texttt{datenbank.bib}}
+  \lstinputlisting[language=BibTeX]{demo/datenbank.bib}
+\end{Frame}
+
+\begin{Frame}[fragile]{Kompilieren}
+  \begin{lstlisting}[language={},morekeywords={pdflatex,bibtex},gobble=4]
+    pdflatex arbeit
+    bibtex arbeit
+    pdflatex arbeit
+    pdflatex arbeit
+  \end{lstlisting}
+
+  \xxx
+  \pause
+
+  \begin{onlyenv}<presentation>
+    \vskip -2.4cm
+    \begin{tikzpicture}
+      \draw[red,very thick] (0,0) -- (2.5cm, 2cm);
+    \end{tikzpicture}
+    \vskip .5cm
+  \end{onlyenv}
+
+  \begin{lstlisting}[language={},morekeywords={latexmk},gobble=4]
+    latexmk -pdf arbeit
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}{Wie funktioniert \BibTeX?}
+  \begin{center}
+    \begin{tikzpicture}[
+        on grid,
+        node distance=14mm and 35mm,
+        engine/.style={
+          node font=\rmfamily\Large\bfseries,
+          inner sep=2pt
+        }
+      ]
+      \node[examplecolor] (tex) {\icon{TEX}};
+      \uncover<2->{
+        \node[right=of tex, engine]
+          (pdfTeX1) {pdf\TeX};
+      }
+      \only<3>{
+        \node[right=of pdfTeX1, pdficon] (pdf1) {\icon{PDF}};
+      }
+      \only<4->{
+        \node[right=of pdfTeX1, pdficon!30] (pdf1) {\icon{PDF}};
+      }
+      \uncover<3->{
+        \node[below=of pdfTeX1, xshift=-18mm, auxicon] (aux1) {\icon{AUX}};
+      }
+      \uncover<4->{
+        \node[right=25mm of aux1, engine] (BibTeX) {\BibTeX};
+      }
+      \uncover<5->{
+        \node[right=28mm of BibTeX, yshift=-7mm, bblicon] (bbl) {\icon{BBL}};
+      }
+      \uncover<6->{
+        \node[below=of BibTeX, engine] (pdfTeX2) {pdf\TeX};
+      }
+      \only<7>{
+        \node[below=10mm of pdfTeX2, xshift=18mm, pdficon] (pdf2) {\icon{PDF}};
+      }
+      \only<8->{
+        \node[below=10mm of pdfTeX2, xshift=18mm, pdficon!30] (pdf2) {\icon{PDF}};
+      }
+      \uncover<7->{
+        \node[below=10mm of pdfTeX2, xshift=-25mm, auxicon] (aux2) {\icon{AUX}};
+      }
+      \uncover<8->{
+        \node[below=10mm of aux2, xshift=25mm, engine] (pdfTeX3) {pdf\TeX};
+      }
+      \only<9>{
+        \node[below=10mm of pdfTeX3, xshift=-25mm, auxicon] (aux3) {\icon{AUX}};
+      }
+      \only<10->{
+        \node[below=10mm of pdfTeX3, xshift=-25mm, auxicon!30] (aux3) {\icon{AUX}};
+      }
+      \uncover<9->{
+        \node[below=10mm of pdfTeX3, xshift=18mm, pdficon] (pdf3) {\icon{PDF}};
+      }
+
+      \only<2->{
+        \draw[very thick]
+          (tex) edge[->] (pdfTeX1);
+      }
+      \only<3->{
+        \draw[very thick]
+          (pdfTeX1) edge[->] (aux1);
+        \draw[very thick]
+          (pdfTeX1) edge[->] (pdf1);
+      }
+      \only<4->{
+        \draw[very thick]
+          (aux1) edge[->] (BibTeX);
+      }
+      \only<5->{
+        \draw[very thick]
+          (BibTeX) edge[->] (bbl);
+      }
+      \only<6->{
+        \draw[very thick]
+          (aux1) edge[->] (pdfTeX2)
+          (bbl) edge[->] (pdfTeX2);
+        \draw[->, very thick] (tex.south) ++ (.2,0) |- (pdfTeX2);
+      }
+      \only<7->{
+        \draw[very thick]
+          (pdfTeX2) edge[->] (pdf2)
+                    edge[->] (aux2);
+      }
+      \only<8->{
+        \draw[very thick]
+          (aux2) edge[->] (pdfTeX3);
+        \draw[very thick, ->]
+          (tex.south) ++ (.2,0) |- (pdfTeX3);
+        \draw[very thick, ->]
+          (bbl.south) ++ (.2,0) |- (pdfTeX3);
+      }
+      \only<9->{
+        \draw[very thick]
+          (pdfTeX3) edge[->] (aux3)
+                    edge[->] (pdf3);
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{Frame}
+
+\subsection{\BibTeX-Einträge}
+
+\begin{Frame}[fragile]{Quellenarten}
+  \begin{lstlisting}[gobble=4,language=BibTeX]
+    @book{texbook,
+      author = {Donald E. Knuth},
+      title = {The {\TeX book}},
+      year = {1984},
+      publisher = {Addison-Wesley Professional},
+    }
+  \end{lstlisting}
+
+  \xxx
+
+  \lstset{language=BibTeX}
+  \begin{tabular}{r@{ }l}
+    \lstinline-@book- & Buch \\
+    \lstinline-@article- & Zeitschriftenartikel \\
+    \lstinline-@inproceedings- & Tagungsbeitrag im Tagungsband \\
+    \lstinline-@techreport- & Technischer Bericht \\
+    \lstinline-@phdthesis- & Dissertation \\
+    \lstinline-@mastersthesis- & Master- oder Diplomarbeit \\
+    \lstinline-@misc- & andere Quelle (zum Beispiel Website)
+  \end{tabular}
+\end{Frame}
+
+\begin{Frame}[allowframebreaks]{Wichtige Angaben in \BibTeX-Einträgen}
+  \begin{Block}{\texttt{author}}
+    Autoren der Arbeit\newline
+    getrennt durch \texttt{and}
+  \end{Block}
+
+  \begin{Block}{\texttt{editor}}
+    Herausgeber der Zeitschrift oder Organisator der Tagung\\
+    getrennt durch \texttt{and}
+  \end{Block}
+
+  \begin{Block}{\texttt{title}}
+    Titel der zitierten Quelle\\
+    (nicht des Bandes, der Zeitschrift, \ldots)
+  \end{Block}
+
+  \framebreak
+
+  \begin{Block}{\texttt{booktitle}}
+    Titel des Tagungsbandes\\
+    bei \lstinline-@inproceedings-
+  \end{Block}
+
+  \begin{Block}{\texttt{journal}}
+    Name der Zeitschrift\\
+    bei \lstinline-@article-
+  \end{Block}
+
+  \begin{Block}{\texttt{publisher}}
+    Verlag des Buches, der Zeitschift oder des Tagungsbandes
+  \end{Block}
+
+  \framebreak
+
+  \begin{Block}{\texttt{series}}
+    Name der Serie (Verlage fassen Bücher\\
+    oder Tagungsbände zu Serien zusammen)
+  \end{Block}
+
+  \begin{Block}{\texttt{volume}}
+    Nummer des Buches oder Tagungsbandes in der Serie\\
+    bei Verwendung von \texttt{series}
+  \end{Block}
+
+  \begin{Block}{\texttt{number}}
+    Unternummer des Bandes bei Zeitschriften\\
+    (Verlage fassen Zeitschriften zu Bänden zusammen)
+  \end{Block}
+
+  \framebreak
+
+  \begin{Block}{\texttt{pages}}
+    Seitenzahlen eines Artikels innerhalb\\
+    eines Buches oder einer Zeitschrift\\
+    \alert{nicht für \lstinline-@book-!}
+  \end{Block}
+
+  \begin{Block}{\texttt{year}}
+    Jahr der Veröffentlichung
+  \end{Block}
+
+  \begin{Block}{\texttt{institution}}
+    Institution, an der die Arbeit angefertigt wurde\\
+    bei \lstinline-@phdthesis- oder \lstinline-@masterthesis-
+  \end{Block}
+
+  \begin{Block}{\texttt{note}}
+    Beliebiger Text; Bemerkungen aller Art,\\
+    die mit angezeigt werden sollen
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}[fragile]{Websites zitieren}
+  \begin{alertblock}{Wichtig}
+    \begin{itemize}
+      \item \BibTeX\ hat \alert{keine Quellenart} für Websites
+      \item veröffentlichte Arbeiten, die online verfügbar sind,\\
+        sind \alert{keine Websites}
+      \item Websites sind die \alert{unseriöseste Quelle}
+      \item Wenn der \alert{Autor seriös} ist,\\
+        ist die Art der Veröffentlichung nicht so wichtig
+    \end{itemize}
+  \end{alertblock}
+
+  \xxx
+
+  \begin{lstlisting}[language=BibTeX]
+    @Misc{codecommit,
+      author = {Daniel Spiewak},
+      title = {The {M}agic {B}ehind {P}arser {C}ombinators},
+      year = {2011},
+      howpublished = "\url{http://www.codecommit.com/blog/
+      	scala/the-magic-behind-parser-combinators}",
+      note = "[Online; Zugriff am 30.11.2011]"
+    }
+  \end{lstlisting}
+\end{Frame}
 
 \subsection{Stile}
+
+\begin{Frame}{typische Stile}
+  \begin{zebratabular}{llll}
+    \headerrow Stil & Referenzierung & Verzeichnis \\
+    \texttt{plain} & [1] &  \\
+    \texttt{abbrv} & [1] & nur Initialen \\
+    \texttt{unsrt} & [1] & Reihenfolge \\
+    \texttt{alpha} & [HMU01] & \\
+    \texttt{apalike} & [Hopcroft et al., 2001] & 
+  \end{zebratabular}
+
+  \xxx
+
+  \begin{Block}{deutsche Stile nach DIN 1502}
+    \texttt{plaindin}, \texttt{abbrvdin}, \texttt{unsrtdin}
+    und \texttt{alphadin}\\
+    analog zu obigen Stilen
+  \end{Block}
+
+  \xxx
+
+  \begin{Block}{Empfehlung}
+    \texttt{alphadin} ist deutsch, kurz und semantisch
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}[fragile]{KOMA-Script-Optionen}
+  \begin{description}
+    \item[\texttt{nottotoc}]
+      kein Eintrag im Inhaltsverzeichnis
+    \item[\texttt{totoc}]
+      unnummerierter Eintrag im Inhaltsverzeichnis
+    \item[\texttt{totocnumbered}]
+      nummerierter Eintrag im Inhaltsverzeichnis
+    \item[\texttt{openstyle}]
+      untergliederte, offene Formatierung
+    \item[\texttt{klassische, kompakte Formatierung}]
+  \end{description}
+
+  \begin{Beispiel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \KOMAoptions{%
+        bibliography=totocnumbered,%
+        bibliography=openstyle}
+    \end{lstlisting}
+  \end{Beispiel}
+\end{Frame}
 
 \section{Eigene Layouts}
 

@@ -945,19 +945,6 @@
   \end{itemize}
 \end{Frame}
 
-\newcommand{\icon}[1]{%
-  \tikz\draw[very thick, line join=round]
-    (-.5,.5) -- ++(.7,0) -- ++(.3,-.3) --
-    ++(-.3,0) -- ++(0,.3) -- ++(.3,-.3) -- ++(0,-.8) -- ++(-1,0) -- cycle
-    ++ (0,-.3) node[fill, text=white,
-      inner sep=2pt, minimum width=8mm, anchor=center] {#1}
-    ++ (.1,-.3) -- ++(.8,0) -- ++(0,-.1)
-    -- ++(-.8,0) -- ++(0,-.1)
-    -- ++(.8,0) -- ++(0,-.1)
-    -- ++(-.8,0) -- ++(0,-.1)
-    -- ++(.8,0);
-  }
-
 \begin{Frame}{Mehrfach kompilieren hilft}{Rerun to get cross-references right.}
   \begin{center}
     \begin{tikzpicture}[on grid, node distance=18mm and 35mm]
@@ -967,24 +954,24 @@
           (pdfTeX1) {pdf\TeX};
       }
       \uncover<3>{
-        \node[right=of pdfTeX1, maincolor] (pdf1) {\icon{PDF}};
-        \node[below=of pdfTeX1, xshift=1cm] (log1) {\icon{LOG}};
+        \node[right=of pdfTeX1, pdficon] (pdf1) {\icon{PDF}};
+        \node[below=of pdfTeX1, logicon, xshift=1cm] (log1) {\icon{LOG}};
       }
       \uncover<4->{
-        \node[right=of pdfTeX1, maincolor!30] (pdf1) {\icon{PDF}};
-        \node[below=of pdfTeX1, xshift=1cm, black!30] (log1) {\icon{LOG}};
+        \node[right=of pdfTeX1, pdficon!30] (pdf1) {\icon{PDF}};
+        \node[below=of pdfTeX1, xshift=1cm, logicon!30] (log1) {\icon{LOG}};
       }
       \uncover<3->{
-        \node[below=of pdfTeX1, xshift=-1cm, blue] (aux1) {\icon{AUX}};
+        \node[below=of pdfTeX1, xshift=-1cm, auxicon] (aux1) {\icon{AUX}};
       }
       \uncover<4->{
         \node[below=of aux1, xshift=1cm, node font=\rmfamily\Large\bfseries]
           (pdfTeX2) {pdf\TeX};
       }
       \uncover<5>{
-        \node[right=of pdfTeX2, maincolor] (pdf2) {\icon{PDF}};
-        \node[below=of pdfTeX2, xshift=1cm] (log2) {\icon{LOG}};
-        \node[below=of pdfTeX2, xshift=-1cm, blue] (aux2) {\icon{AUX}};
+        \node[right=of pdfTeX2, pdficon] (pdf2) {\icon{PDF}};
+        \node[below=of pdfTeX2, xshift=1cm, logicon] (log2) {\icon{LOG}};
+        \node[below=of pdfTeX2, xshift=-1cm, auxicon] (aux2) {\icon{AUX}};
       }
       \only<2->{
         \draw[very thick]
