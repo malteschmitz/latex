@@ -1,0 +1,10 @@
+\documentclass{scrartcl}
+
+\KOMAoptions{paper=a6,pagesize=automedia,DIV=100,fontsize=12,parskip=full}
+
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+
+\begin{document}
+  Franz jagt im komplett verwahrlosten Taxi quer durch Berlin. 0123456789
+\end{document}

@@ -571,7 +571,7 @@
 
   \xxx
 
-  \begin{lstlisting}[language=BibTeX]
+  \begin{lstlisting}[language=BibTeX,gobble=4]
     @Misc{codecommit,
       author = {Daniel Spiewak},
       title = {The {M}agic {B}ehind {P}arser {C}ombinators},
@@ -588,40 +588,38 @@
 \begin{Frame}{typische Stile}
   \begin{zebratabular}{llll}
     \headerrow Stil & Referenzierung & Verzeichnis \\
-    \texttt{plain} & [1] &  \\
-    \texttt{abbrv} & [1] & nur Initialen \\
-    \texttt{unsrt} & [1] & Reihenfolge \\
-    \texttt{alpha} & [HMU01] & \\
-    \texttt{apalike} & [Hopcroft et al., 2001] & 
+    \lstinline-plain- & [1] &  \\
+    \lstinline-abbrv- & [1] & nur Initialen \\
+    \lstinline-unsrt- & [1] & Reihenfolge \\
+    \lstinline-alpha- & [HMU01] & \\
+    \lstinline-apalike- & [Hopcroft et al., 2001] & 
   \end{zebratabular}
 
   \xxx
 
   \begin{Block}{deutsche Stile nach DIN 1502}
-    \texttt{plaindin}, \texttt{abbrvdin}, \texttt{unsrtdin}
-    und \texttt{alphadin}\\
+    \lstinline-plaindin-, \lstinline-abbrvdin-, \lstinline-unsrtdin-
+    und \lstinline-alphadin-\\
     analog zu obigen Stilen
   \end{Block}
 
   \xxx
 
   \begin{Block}{Empfehlung}
-    \texttt{alphadin} ist deutsch, kurz und semantisch
+    \lstinline-alphadin- ist deutsch, kurz und semantisch
   \end{Block}
 \end{Frame}
 
 \begin{Frame}[fragile]{KOMA-Script-Optionen}
-  \begin{description}
-    \item[\texttt{nottotoc}]
-      kein Eintrag im Inhaltsverzeichnis
-    \item[\texttt{totoc}]
-      unnummerierter Eintrag im Inhaltsverzeichnis
-    \item[\texttt{totocnumbered}]
-      nummerierter Eintrag im Inhaltsverzeichnis
-    \item[\texttt{openstyle}]
-      untergliederte, offene Formatierung
-    \item[\texttt{klassische, kompakte Formatierung}]
-  \end{description}
+  \begin{tabular}{r@{ }l}
+    \lstinline-nottotoc- & kein Eintrag im Inhaltsverzeichnis\\
+    \lstinline-totoc- & kein Eintrag im Inhaltsverzeichnis\\
+    \lstinline-totocnumbered- & nummerierter Eintrag im Inhaltsverzeichnis\\
+    \lstinline-openstyle- & openstyle\\
+    \lstinline-oldstyle- & klassische, kompakte Formatierung
+  \end{tabular}
+
+  \xxx
 
   \begin{Beispiel}
     \begin{lstlisting}[gobble=6,style=block]
@@ -636,7 +634,140 @@
 
 \subsection{Briefe}
 
+\begin{Frame}[fragile]{Briefe nach DIN 5008}
+  \begin{itemize}
+    \item KOMA-Script hat eine eigene Dokumentenklasse für Briefe.
+    \item Ohne Option entstehen Geschäftsbriefe nach DIN 5008.
+    \item Sehr viele Einstellungsmöglichkeiten. \\
+      \alert{Lies die Anleitung! Sie ist sehr gut!}
+  \end{itemize}
+
+  \xxx
+
+  \begin{Block}{Präambel}
+    \begin{lstlisting}[style=block,gobble=6]
+      \documentclass{scrlttr2}
+      \KOMAoptions{fromalign=right}
+ 
+      \usepackage[utf8]{inputenc}
+      \usepackage[ngerman]{babel}
+      \usepackage[T1]{fontenc}
+      \usepackage{lmodern}
+     \end{lstlisting}
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}[fragile]{Schreiben an den Vorstand}
+  \begin{lstlisting}[gobble=4]
+    \begin{document}
+
+    \setkomavar{fromname}{Peter Musterfrau}
+    \setkomavar{fromaddress}{Hinter dem Tal 2\\
+      54321 Musterheim}
+    \setkomavar{subject}{Mitgliederversammlung vermisst}
+    
+    \begin{letter}{Petra Mustermann\\
+      Vor dem Berg 1\\
+      12345 Musterhausen}
+    
+    \opening{Sehr geehrte Frau Mustermann,}
+    ich fordere den Vorstand auf, umgehend
+    eine Mitgliederversammlung anzusetzen.
+    \closing{mit freundlichen Grüßen}
+    
+    \setkomavar*{enclseparator}{Anlage}
+    \encl{Auszug aus der Satzung}
+    \end{letter}
+    
+    \end{document}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{frame}[t]{Schreiben an den Vorstand}
+  \vskip-4ex
+  \includegraphics[width=10cm]{demo/brief}
+\end{frame}
+
 \subsection{Schriftarten}
+
+\begin{Frame}[fragile]{Schriftarten}
+  Ein Dokument besitzt
+  \begin{itemize}
+    \item eine serifenlose Schriftfamilie\\
+      (zum Beispiel für Überschriften)\\
+      Verwendung durch \lstinline-\textrm- oder \lstinline-\rmfamily-
+    \item eine Schriftfamilie mit Serifen\\
+      (zum Beispiel für den Fließtext)\\
+      Verwendung durch \lstinline-\textsf- oder \lstinline-\sffamily-
+    \item eine nichtproportionale Schriftfamilie\\
+      (zum Beispiel für Quelltext)\\
+      Verwendung durch \lstinline-\texttt- oder \lstinline-\ttfamily-
+  \end{itemize}
+
+  \begin{alertblock}{Das reicht!}
+    Wer in einem Dokument \alert{mehr als drei Schriftfamilien} verwenden will,
+    braucht eine \alert{gute Begründung}!
+  \end{alertblock}
+\end{Frame}
+
+\begin{Frame}[fragile]{einige bekanntere Schriftarten}
+  \newcommand{\fnt}[2]{{\fontfamily{#1}\selectfont #2}}
+
+  \begin{lstlisting}[gobble=4]
+    \usepackage{lmodern}
+  \end{lstlisting}
+  \fnt{lmr}{Setzt Serifen auf \emph{Latin Modern Roman}.}\\
+  \fnt{lmss}{Setzt Serienlose auf \emph{Latin Modern Sans Serif}.}\\
+  \fnt{lmtt}{Setzt Nichtprop. auf \emph{Latin Modern Typewriter}.}
+
+  \vskip2ex
+  \begin{lstlisting}[gobble=4]
+    \usepackage{mathptmx}
+  \end{lstlisting}
+  \fnt{ptm}{Setzt Serifen auf \emph{URW Nimbus Roman} (Nachbau von Times).}
+
+  \vskip2ex
+  \begin{lstlisting}[gobble=4]
+    \usepackage[scaled]{helvet}
+  \end{lstlisting}
+  \fnt{phv}{Setzt Serienlose auf \emph{Helvetica} (Nachbau von Arial).}
+
+  \vskip2ex
+  \begin{lstlisting}[gobble=4]
+    \usepackage{courier}
+  \end{lstlisting}
+  \fnt{pcr}{Setzt Nichtproportionale auf \emph{Courier}.}
+\end{Frame}
+
+\begin{Frame}[fragile]{Ganz viele weitere Schriftarten}
+  \begin{thebibliography}{10}
+    \bibitem{FontCatalogue}
+      Palle Jørgensen.
+      \newblock \emph{The \LaTeX\ Font Catalogue},
+      \newblock \alt<presentation>{\href{http://www.tug.dk/FontCatalogue/}{\texttt{tug.dk/FontCatalogue}}}{\url{http://www.tug.dk/FontCatalogue/}}.
+  \end{thebibliography}
+
+  \xxx
+  \pause
+
+  \begin{Beispiel}[Auriocus Kalligraphicus]
+    \begin{lstlisting}[gobble=6,style=block]
+      \usepackage{la}
+    \end{lstlisting}
+    {\Fontauri Setzt keine Familie, sondern liefert
+    Schriftumschalter \textbackslash Fontauri.}
+  \end{Beispiel}
+
+  \xxx
+  \pause
+
+  \begin{alertblock}{Verfügbarkeit}
+    \begin{itemize}
+      \item Die \TeX-Distributionen enthalten nicht alle Schriften.
+      \item Schriften in \TeX\ manuell installieren ist kompliziert.
+    \end{itemize}
+  \end{alertblock}
+\end{Frame}
 
 \subsection{Kopf- und Fußzeilen}
 

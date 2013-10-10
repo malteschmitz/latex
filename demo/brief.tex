@@ -1,0 +1,29 @@
+\documentclass{scrlttr2}
+\KOMAoptions{fromalign=right}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\begin{document}
+
+\setkomavar{fromname}{Peter Musterfrau}
+\setkomavar{fromaddress}{Hinter dem Tal 2\\
+  54321 Musterheim}
+\setkomavar{subject}{Mitgliederversammlung vermisst}
+
+\begin{letter}{Petra Mustermann\\
+  Vor dem Berg 1\\
+  12345 Musterhausen}
+
+\opening{Sehr geehrte Frau Mustermann,}
+ich fordere den Vorstand auf, umgehend
+eine Mitgliederversammlung anzusetzen.
+\closing{mit freundlichen Grüßen}
+
+\setkomavar*{enclseparator}{Anlage}
+\encl{Auszug aus der Satzung}
+\end{letter}
+
+\end{document}
