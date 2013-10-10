@@ -1,13 +1,17 @@
 \newcommand{\website}{
-  \begin{Frame}{Website}
-    \only<article>{Auf der Seite}
-    {\only<presentation>{\huge}\url{mlte.de/latex}}
-    \only<article>{befinden sich}
+  \begin{Frame}[t]{Website}
+    \alt<presentation>{%
+      \vskip-4ex\hfill\parbox{6cm}{\centering
+        \includegraphics[width=6cm]{images/qrcode}\\[1ex]
+        \href{http://www.mlte.de/latex}{\huge\texttt{mlte.de/latex}}
+      }
+      \par\vskip2ex}{%
+        Auf der Seite \url{http://www.mlte.de/latex} befinden sich
+      }
     \begin{itemize}
-      \item diese Präsentation,
-      \item das Skript zum Vortrag,
-      \item der Link zum Github-Repository und
-      \item Links zu weiteren Quellen.
+      \item diese Präsentation, das Skript zum Vortrag,
+      \item Beispieldokumente, Links zu weiteren Quellen und
+      \item der Link zum Github-Repository.
     \end{itemize}
   \end{Frame}
 }
