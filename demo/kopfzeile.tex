@@ -1,0 +1,69 @@
+\documentclass{scrreprt}
+
+\KOMAoptions{parskip=full}
+
+\KOMAoptions{DIV=6}
+%\addtolength{\marginparwidth}{4cm}
+%\addtolength{\textwidth}{-4cm}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage[ngerman]{babel}
+\usepackage{blindtext}
+
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+
+%\ihead[scrplain-innen]{scrheadings-innen}
+%\chead[scrplain-zentriert]{scrheadings-zentriert}
+%\ohead[scrplain-außen]{scrheadings-außen}
+%\ifoot[scrplain-innen]{scrheadings-innen}
+%\cfoot[scrplain-zentriert]{scrheadings-zentriert}
+%\ofoot[scrplain-außen]{scrheadings-außen}
+
+\clearscrheadfoot
+\automark[section]{chapter}
+\cfoot[\pagemark]{\pagemark}
+\ohead{Foo \leftmark \rightmark}
+
+\usepackage{hyperref}
+\hypersetup{breaklinks=true,
+            pdfborder={0 0 0},
+            pdfhighlight={/N}}
+
+\title{Blindtext}
+\subtitle{Demonstration von Kopf- und Fußzeile}
+\author{Maria Mustermann}
+
+\begin{document}
+  \maketitle
+  \tableofcontents
+
+  \chapter{Einleitung}
+
+  \blindtext\marginpar{Ein\-lei\-tungs\-be\-ginn\-hin\-weis\-text}
+
+  \blindtext\marginpar{\rule{\marginparwidth}{1pt}}
+
+  \Blindtext\marginpar{\blindtext}
+
+  \section{Hinweis}
+
+  \blindtext
+
+  \blindtext
+
+  \blindtext
+
+  \section{Der Beginn}
+
+  Hier geht alles los.\marginpar{Beginn}
+
+  %\Blinddocument
+  %\Blinddocument
+  %\Blinddocument
+  %\Blinddocument
+  %\Blinddocument
+\end{document}

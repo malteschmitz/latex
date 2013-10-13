@@ -769,11 +769,304 @@
   \end{alertblock}
 \end{Frame}
 
-\subsection{Kopf- und Fußzeilen}
-
 \subsection{Papierformate und Satzspiegel}
 
-% geometry
+\begin{Frame}[fragile]{TODO}
+  \begin{verbatim}
+    paper
+    pagesize=automedia
+    
+    margin
+  \end{verbatim}
+\end{Frame}
+
+\begin{Frame}{Satzspiegel}{doppelseitiger Druck}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[very thick,maincolor,dashed]
+        (0,-.5) -- (0,6.5);
+      \draw[thick,maincolor]
+        (-4,6) -- (4,6) -- (4,0) -- (-4,0) -- cycle;
+      \fill[maincolor!30]
+        (-3,1.5) -- (-.5,1.5) -- (-.5,5.25) -- (-3,5.25) -- cycle
+        (3,1.5) -- (.5,1.5) -- (.5,5.25) -- (3,5.25) -- cycle;
+      \node[rotate=90,fill=white] at (0,3) {innere Rand};
+      \node[text width=3cm,anchor=north west,font=\LARGE] at (-3,5.25) {Satz-\newline spiegel\vskip1ex\par linke\newline Seite};
+      \node[text width=3cm,anchor=north west,font=\LARGE] at (.5,5.25) {Satz-\newline spiegel\vskip1ex\par rechte\newline Seite};
+      \node at (-2,5.625) {oberer Rand};
+      \node at (2,5.625) {oberer Rand};
+      \node at (-2,.75) {unterer Rand};
+      \node at (2,.75) {unterer Rand};
+      \node[rotate=90] at (-3.5,3) {äußerer Rand};
+      \node[rotate=90] at (3.5,3) {äußerer Rand};
+    \end{tikzpicture}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}{Satzspiegelberechnung}{doppelseitiger Druck}
+  \[ \frac{\text{Satzspiegelhöhe}}{\text{Satzspiegelbreite}} =
+    \frac{\text{Seitenhöhe}}{\text{Seitenbreite}} \]
+
+  \[ \frac{\text{oberer\ Rand}}{\text{unterer\ Rand}} = \frac12 \]
+
+  \[ \text{innerer\ Rand} = \text{äußerer\ Rand} \]
+
+  \xxx
+
+  \begin{Definition}[innerer Rand]
+    Der \alert{innere Rand} ist dabei die\\
+    \alert{Summe des Randes beider Seiten}.
+  \end{Definition}
+\end{Frame}
+
+\begin{Frame}{Satzspiegel}{einseitiger Druck}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[thick,maincolor]
+        (0,6) -- (4,6) -- (4,0) -- (0,0) -- cycle;
+      \fill[maincolor!30]
+        (3.25,1.5) -- (.75,1.5) -- (.75,5.25) -- (3.25,5.25) -- cycle;
+      \node[rotate=90] at (.375,3) {linker Rand};
+      \node[text width=3cm,anchor=north west,font=\LARGE] at (.75,5.25) {Satz-\newline spiegel\vskip1ex\par rechte\newline Seite};
+      \node at (2,5.625) {oberer Rand};
+      \node at (2,.75) {unterer Rand};
+      \node[rotate=90] at (3.625,3) {rechter Rand};
+    \end{tikzpicture}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}{Satzspiegelberechnung}{einseitiger Druck}
+  \[ \frac{\op{Satzspiegelhöhe}}{\op{Satzspiegelbreite}} =
+      \frac{\op{Seitenhöhe}}{\op{Seitenbreite}} \]
+
+  \[ \frac{\op{oberer\ Rand}}{\op{unterer\ Rand}} = \frac12 \]
+
+  \[ \op{linker\ Rand} = \op{rechter\ Rand} \]
+\end{Frame}
+
+\begin{Frame}{Satzspiegelkonstruktion durch Teilung}{Am Beispiel von $\op{DIV}=8$ Teilen und doppelseitigem Druck}
+  \begin{center}
+    \begin{tikzpicture}
+      \fill[maincolor!30]
+        (-3,1.5) -- (-.5,1.5) -- (-.5,5.25) -- (-3,5.25) -- cycle
+        (3,1.5) -- (.5,1.5) -- (.5,5.25) -- (3,5.25) -- cycle;
+      \foreach \y in {.75,1.5,...,5.25} {
+        \draw (-4,\y) -- (4,\y);
+      }
+      \foreach \x in {-3.5,-3,...,-.5} {
+        \draw (\x,0) -- (\x,6);
+      }
+      \foreach \x in {.5,1,...,3.5} {
+        \draw (\x,0) -- (\x,6);
+      }
+      \draw[very thick,white]
+        (0,-.5) -- (0,6.5);
+      \draw[very thick,maincolor,dashed]
+        (0,-.5) -- (0,6.5);
+      \draw[thick,maincolor]
+        (-4,6) -- (4,6) -- (4,0) -- (-4,0) -- cycle;
+      \foreach \y in {1,2,...,8} {
+        \node at ($(-3.75,6.375) - \y*(0,.75)$) {\y};
+        \node at ($(3.75,6.375) - \y*(0,.75)$) {\y};
+      }
+      \foreach \x in {2,...,8} {
+        \node at ($(-4.25,5.625) + \x*(.5,0)$) {\x};
+        \node at ($(4.25,5.625) - \x*(.5,0)$) {\x};
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}[fragile]{TODO}
+  \begin{verbatim}
+    Satzspiegelberechnung
+      Bindekorrektur
+    
+    8 (10pt), 10 (11pt), 12 (12pt)
+    \KOMAoptions{DIV=calc} nach dem Laden anderer Schriftarten verwenden
+    
+    BCOR
+    
+    headinclude
+    foodinclude
+    mpinclude
+    
+    \areaset
+    
+    geometry (nur kurz!)
+  \end{verbatim}
+\end{Frame}
+
+\subsection{Kopf- und Fußzeilen}
+
+\begin{Frame}[fragile]{TODO}
+  \begin{verbatim}
+    Seitenstile
+    
+    \pagestyle{scrheadings}
+    \pagestyle{scrplain}
+    \pagestyle{empty}
+    
+    manuelle Kolumnentitle
+    
+    \markright
+    \markboth
+    
+    automatische Kolumnentitel
+    
+    \automark[section]{chapter}
+    
+    Seitenstil konfigurieren
+  \end{verbatim}
+\end{Frame}
+
+\begin{Frame}[fragile]{Seitenstil konfigurieren}{Zuordnung der Befehle zur Konfiguration der Seitenstile}
+  \begin{center}
+    \begin{tikzpicture}[
+        node distance=1cm,
+        on grid
+      ]
+      \draw[maincolor,very thick,dashed]
+        (1,0) -- (5,0) -- (5,6) -- (1,6) -- cycle
+        (-1,0) -- (-5,0) -- (-5,6) -- (-1,6) -- cycle;
+      
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (-4.25,5.5) (lehead) {};
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (-3,5.5) (cehead) {};
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (-1.75,5.5) (rehead) {};
+      
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (-4.25,.5) (lefoot) {};
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (-3,.5) (cefoot) {};
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (-1.75,.5) (refoot) {};
+
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (4.25,5.5) (rohead) {};
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (3,5.5) (cohead) {};
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (1.75,5.5) (lohead) {};
+      
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (4.25,.5) (rofoot) {};
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (3,.5) (cofoot) {};
+      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+        at (1.75,.5) (lofoot) {};
+
+      \node at (-3,3)
+        {\shortstack{\strut linke Seite,\\ \strut gerade Seitenzahl,\\ \strut even page}};
+      \node at (3,3)
+        {\shortstack{\strut linke Seite,\\ \strut ungerade Seitenzahl,\\ \strut odd page}};
+
+      \node[above=of lehead] (lehead label) {\lstinline-\lehead-};
+      \node[above=of cehead] (cehead label) {\lstinline-\cehead-};
+      \node[above=of rehead] (rehead label) {\lstinline-\rehead-};
+      \node[below=of lefoot] (lefoot label) {\lstinline-\lefoot-};
+      \node[below=of cefoot] (cefoot label) {\lstinline-\cefoot-};
+      \node[below=of refoot] (refoot label) {\lstinline-\refoot-};
+      \node[above=of lohead] (lohead label) {\lstinline-\lohead-};
+      \node[above=of cohead] (cohead label) {\lstinline-\cohead-};
+      \node[above=of rohead] (rohead label) {\lstinline-\rohead-};
+      \node[below=of lofoot] (lofoot label) {\lstinline-\lofoot-};
+      \node[below=of cofoot] (cofoot label) {\lstinline-\cofoot-};
+      \node[below=of rofoot] (rofoot label) {\lstinline-\rofoot-};
+
+      \node at (0,1) (ifoot label) {\lstinline-\ifoot-};
+      \node at (0,1.5) (cfoot label) {\lstinline-\cfoot-};
+      \node at (0,2) (ofoot label) {\lstinline-\ofoot-};
+      \node at (0,4) (ohead label) {\lstinline-\ohead-};
+      \node at (0,4.5) (chead label) {\lstinline-\chead-};
+      \node at (0,5) (ihead label) {\lstinline-\ihead-};
+
+      \draw[every edge/.style={draw,thick,->}]
+        (lehead label) edge (lehead)
+        (cehead label) edge (cehead)
+        (rehead label) edge (rehead)
+        (lefoot label) edge (lefoot)
+        (cefoot label) edge (cefoot)
+        (refoot label) edge (refoot)
+        (lohead label) edge (lohead)
+        (cohead label) edge (cohead)
+        (rohead label) edge (rohead)
+        (lofoot label) edge (lofoot)
+        (cofoot label) edge (cofoot)
+        (rofoot label) edge (rofoot);
+      \draw[every edge/.style={draw,thick,->},
+             to path={-| (\tikztotarget) \tikztonodes}]
+        (ifoot label) edge (refoot)
+                      edge (lofoot)
+        (cfoot label) edge (cefoot)
+                      edge (cofoot)
+        (ofoot label) edge (lefoot)
+                      edge (rofoot)
+        (ihead label) edge (rehead)
+                      edge (lohead)
+        (chead label) edge (cehead)
+                      edge (cohead)
+        (ohead label) edge (lehead)
+                      edge (rohead);
+    \end{tikzpicture}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}[fragile,allowframebreaks]{TODO}
+  \begin{verbatim}
+    \cfoot[\pagemark]{\pagemark}
+    \ohead{Foo \leftmark \rightmark}
+    
+    \clearscrheadings -- nur scrheadings
+    \clearscrplain -- nur scrplain
+    \clearscrheadfoot  -- scrheadings und scrplain
+    
+    Formatierung
+     \setkomafont{pagehead}{%
+       \normalfont\sffamily\bfseries}
+     \setkomafont{pagefoot}{%
+       \normalfont\sffamily}
+     \setkomafont{pagenumber}{%
+       \normalfont\rmfamily\slshape}
+    
+     \setheadwidth[Verschiebung]{Breite}
+     \setfootwidth[Verschiebung]{Breite}
+       Werte für Breite
+         paper
+         page
+         text
+         textwithmarginpar
+         head
+         foot
+    
+    Linien
+      Optionen
+        headtopline
+        plainheadtopline
+        headsepline
+        plainheadsepline
+        footsepline
+        plainfootsepline
+        footbotline
+        plainfootbotline
+      Länge und Dicke
+        \setheadtopline[Laenge]{Dicke}
+        \setheadsepline[Laenge]{Dicke}
+        \setfootsepline[Laenge]{Dicke}
+        \setfootbotline[Laenge]{Dicke}
+      Farbe \setkomafont
+        headtopline
+        headsepline
+        footsepline
+        footbotline
+      Ausrichtung mit den Optionen
+        ilines
+        clines
+        olines
+  \end{verbatim}
+\end{Frame}
 
 \section*{Zusammenfassung}
 

@@ -39,69 +39,36 @@
 % - color!50 used as strong highlight fill color (e.g. for header row)
 
 \usepackage{tikz}
-
+\usepackage{listings}
 \usepackage{dtklogos}
 
-\begin{document}
-  \newcommand{\icon}[1]{%
-    \tikz\draw[very thick, line join=round]
-      (-.5,.5) -- ++(.7,0) -- ++(.3,-.3) --
-      ++(-.3,0) -- ++(0,.3) -- ++(.3,-.3) -- ++(0,-.8) -- ++(-1,0) -- cycle
-      ++ (0,-.3) node[fill, text=white,
-        inner sep=2pt, minimum width=8mm, anchor=center] {#1}
-      ++ (.1,-.3) -- ++(.8,0) -- ++(0,-.1)
-      -- ++(-.8,0) -- ++(0,-.1)
-      -- ++(.8,0) -- ++(0,-.1)
-      -- ++(-.8,0) -- ++(0,-.1)
-      -- ++(.8,0);
-  }
+\lstset{%
+  basicstyle=\scriptsize\ttfamily,%
+  language=[LaTeX]TeX,%
+  morekeywords={enquote,includegraphics,part,chapter,%
+    tableofcontents,listoffigures,listoftables,maketitle,%
+    subsection,subsubsection,paragraph,autoref,it,
+    textcolor,colorbox,xdefinecolor,colorlet,foreach,
+    rowcolors,rowcolor,lstdefinestyle,lstset,KOMAoptions,
+    setkomavar,opening,closing,encl,
+    lehead,cehead,rehead,lefoot,cefoot,refoot,
+    lohead,cohead,rohead,lofoot,cofoot,rofoot,
+    ohead,chead,ihead,ofoot,cfoot,ifoot},%
+  keywordstyle=\bfseries,%
+  identifierstyle=,%
+  commentstyle=\itshape,%
+  numbers=none,%
+  frame=lines,%
+  backgroundcolor=\color{maincolor!10},%
+  rulecolor=\color{maincolor!70},%
+  framerule=1pt,%
+  showstringspaces=false,%
+  upquote=true,%
+  framexleftmargin=3pt,%
+  framexrightmargin=3pt}
 
-  \begin{tikzpicture}[
-      on grid,
-      node distance=14mm and 35mm,
-      engine/.style={
-        node font=\rmfamily\Large\bfseries,
-        inner sep=2pt
-      }
-    ]
-    \node[examplecolor] (tex) {\icon{TEX}};
-    \node[right=of tex, engine]
-      (pdfTeX1) {pdf\TeX};
-    \node[right=of pdfTeX1, maincolor] (pdf1) {\icon{PDF}};
-    \node[below=of pdfTeX1, xshift=-18mm, color=-examplecolor] (aux1) {\icon{AUX}};
-    \node[right=25mm of aux1, engine] (BibTeX) {\BibTeX};
-    \node[right=28mm of BibTeX, yshift=-7mm, color=-maincolor] (bbl) {\icon{BBL}};
-    \node[below=of BibTeX, engine]
-      (pdfTeX2) {pdf\TeX};
-    \node[below=10mm of pdfTeX2, xshift=-25mm, color=-examplecolor] (aux2) {\icon{AUX}};
-    \node[below=10mm of pdfTeX2, xshift=18mm, maincolor] (pdf2) {\icon{PDF}};
-    \node[below=10mm of aux2, xshift=25mm, engine] (pdfTeX3) {pdf\TeX};
-    \node[below=10mm of pdfTeX3, xshift=-25mm, color=-examplecolor] (aux3) {\icon{AUX}};
-    \node[below=10mm of pdfTeX3, xshift=18mm, maincolor] (pdf3) {\icon{PDF}};
-    \draw[very thick]
-      (tex) edge[->] (pdfTeX1);
-    \draw[very thick]
-      (pdfTeX1) edge[->] (aux1);
-    \draw[very thick]
-      (pdfTeX1) edge[->] (pdf1);
-    \draw[very thick]
-      (aux1) edge[->] (BibTeX)
-      (BibTeX) edge[->] (bbl);
-    \draw[very thick]
-      (aux1) edge[->] (pdfTeX2)
-      (bbl) edge[->] (pdfTeX2);
-    \draw[->, very thick] (tex.south) ++ (.2,0) |- (pdfTeX2);
-    \draw[very thick]
-      (pdfTeX2) edge[->] (pdf2)
-                edge[->] (aux2);
-    \draw[very thick]
-      (aux2) edge[->] (pdfTeX3);
-    \draw[very thick, ->]
-      (tex.south) ++ (.2,0) |- (pdfTeX3);
-    \draw[very thick, ->]
-      (bbl.south) ++ (.2,0) |- (pdfTeX3);
-    \draw[very thick]
-      (pdfTeX3) edge[->] (aux3)
-                edge[->] (pdf3);
+\begin{document}
+  \begin{tikzpicture}
+    \node {Hallo Welt};
   \end{tikzpicture}
 \end{document}
