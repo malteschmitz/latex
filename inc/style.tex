@@ -149,6 +149,14 @@
 
 \newcommand{\inhead}[1]{\textbf{\color{maincolor}#1}}
 
+\newenvironment{mybib}{%
+  % temporary disable \section command to get rid of bibliography heading
+  \renewcommand{\chapter}[2]{}
+  \begin{thebibliography}{10}
+}{%
+  \end{thebibliography}
+}
+
 % load logo collection from "Die TeXnische Komödie"
 \usepackage{dtklogos}
 
