@@ -233,11 +233,6 @@
   \begin{achtung}[Hinweis]
     Bitte nicht knicken.
   \end{achtung}
-
-  %\begin{Block}{Umgebungen umdefinieren}
-  %  \lstinline-\renewenvironment- funktioniert
-  %  analog zu \lstinline-\renewcommand-.
-  %\end{Block}
 \end{Frame}
 
 \subsection{Quelltext und Pseudocode}
@@ -771,18 +766,42 @@
 
 \subsection{Papierformate und Satzspiegel}
 
-\begin{Frame}[fragile]{TODO}
-  \begin{verbatim}
-    paper
-    pagesize=automedia
-    
-    Randnotizen
-      \marginpar{wichtiger Hinweis}
-      \marginpar[linke Seite]{rechte Seite}
-        je nach dem, ob die aktuelle Seite eine linke oder eine rechte Seite ist
+\begin{Frame}[fragile]{Papierformate}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \KOMAoptions{%
+        % Papierformat für LaTeX setzen
+        paper=a5,
+        % Querformat aktivieren
+        paper=landscape,
+        % Papierformat für Ausgabetreiber übernehmen
+        pagesize=automedia
+      }
+    \end{lstlisting}
+  \end{Block}
 
-      Randnotizen werden \alert{nicht} auf mehrere Seite verteilt
-  \end{verbatim}
+  \xxx
+
+  Mögliche Formate:
+  \begin{itemize}
+    \item Reihen A bis D ab Klasse 0 nach ISO 216
+    \item \lstinline-letter- ($8\nicefrac12'' \times 11''$)
+    \item \lstinline-legal- ($8\nicefrac12'' \times 14''$)
+    \item \lstinline-executive- ($7\nicefrac14'' \times 10\nicefrac12''$)
+    \item Eigene Formate in der Form \lstinline-Breite:Höhe-,\\
+      zum Beispiel \lstinline-10cm:20cm-
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Randnotizen}
+  \begin{lstlisting}[gobble=4]
+    Als Marginalien\marginpar{\textsl{Marginalie}} werden
+    kurze Notizen in der Randspalte eines Textes %...
+  \end{lstlisting}
+
+  \begin{center}
+    \includegraphics[width=10cm]{demo/margin.pdf}
+  \end{center}
 \end{Frame}
 
 \begin{Frame}{Satzspiegel}{doppelseitiger Druck}
@@ -841,12 +860,12 @@
 \end{Frame}
 
 \begin{Frame}{Satzspiegelberechnung}{einseitiger Druck}
-  \[ \frac{\op{Satzspiegelhöhe}}{\op{Satzspiegelbreite}} =
-      \frac{\op{Seitenhöhe}}{\op{Seitenbreite}} \]
+  \[ \frac{\text{Satzspiegelhöhe}}{\text{Satzspiegelbreite}} =
+      \frac{\text{Seitenhöhe}}{\text{Seitenbreite}} \]
 
-  \[ \frac{\op{oberer\ Rand}}{\op{unterer\ Rand}} = \frac12 \]
+  \[ \frac{\text{oberer\ Rand}}{\text{unterer\ Rand}} = \frac12 \]
 
-  \[ \op{linker\ Rand} = \op{rechter\ Rand} \]
+  \[ \text{linker\ Rand} = \text{rechter\ Rand} \]
 \end{Frame}
 
 \begin{Frame}{Satzspiegelkonstruktion durch Teilung}{Am Beispiel von $\op{DIV}=8$ Teilen und doppelseitigem Druck}
@@ -882,36 +901,104 @@
   \end{center}
 \end{Frame}
 
-\begin{Frame}[fragile]{TODO}
-  \begin{verbatim}
-    Satzspiegelberechnung
-      Bindekorrektur
-    
-    8 (10pt), 10 (11pt), 12 (12pt)
-    \KOMAoptions{DIV=calc} nach dem Laden anderer Schriftarten verwenden
-    
-    BCOR
-    
-    headinclude
-    foodinclude
-    mpinclude
-    
-    \areaset
-    
-    geometry (nur kurz!)
-  \end{verbatim}
+\begin{Frame}[fragile]{DIV=?}{Wie groß ist der optimale Satzspiegel?}
+  \begin{Block}{Ziel}
+    66 Zeichen pro Zeile
+  \end{Block}
+
+  \xxx
+
+  Gute Teilungszahl hängt von Schriftart ab, deswegen
+  \begin{lstlisting}[gobble=4]
+    \usepackage{mathptmx} % erst Schriftart laden
+    \KOMAoptions{DIV=calc} % dann DIV berechnen
+  \end{lstlisting}
+
+  \xxx
+
+  Richtwerte\\[1ex]
+  \begin{zebratabular}{llll}
+    Schriftgröße & 10pt & 11pt & 12pt \\
+    DIV & 8 & 10 & 12
+  \end{zebratabular}
+\end{Frame}
+
+\begin{Frame}[fragile]{Was ist Teil des Satzspiegels?}
+  \begin{itemize}
+    \item \lstinline-\KOMAoptions{mpinclude=true}-\newline 
+      Randspalte erhält eine Breiteneinheit vom Satzspiegel\newline
+      \alert{Nur bei sehr vielen Randnotizen verwenden!}
+    \item \lstinline-\KOMAoptions{headinclude=true}-\newline 
+      Kopfzeile wird zum Teil des Satzspiegels\newline
+      \alert{Bei gut gefüllter Kopfzeile oder Trennlinie verwenden.}
+    \item \lstinline-\KOMAoptions{footinclude=true}-\newline 
+      Fußzeile wird zum Teil des Satzspiegels\newline
+      \alert{Nicht bei einsamer Seitenzahl verwenden.}
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Manueller Satzspiegel}
+  \begin{Block}{In der Präambel für eigenen Satzspiegel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \areaset{15cm}{15cm}
+    \end{lstlisting}
+    Es gilt weiterhin
+    \begin{align*}
+      \text{oberer\ Rand} : \text{unterer\ Rand} &= 1 : 2, \\
+      \text{innerer\ Rand} &= \text{äußerer\ Rand} \text{ und} \\
+      \text{linker\ Rand} &= \text{rechter\ Rand}.
+    \end{align*}
+  \end{Block}
+
+  \xxx
+
+  \begin{Block}{In der Präambel für eigeneren Satzspiegel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \usepackage{geometry}
+      \geometry{a5paper,%
+        top=2cm,bottom=4cm,left=2cm,right=4cm}
+      % oder auch
+      \geometry{papersize={20cm,30cm},%
+        top=2cm,bottom=4cm,inner=2cm,outer=4cm}
+    \end{lstlisting}
+  \end{Block}
 \end{Frame}
 
 \subsection{Kopf- und Fußzeilen}
 
+\begin{Frame}[fragile]{Seitenstil}{Wieviel Kopf- und Fußzeile darf es sein?}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \usepackage{scrpage2}
+      \pagestyle{scrheadings}
+    \end{lstlisting}
+  \end{Block}
+
+  \xxx
+
+  \begin{tabular}{r@{ }l}
+    \lstinline-empty- & keine Kopf- und keine Fußzeile \\
+    & (automatisch auf Titelseite) \\
+    \lstinline-scrplain- & wenig Kopf- und keine Fußzeile \\
+      & zum Beispiel nur Seitenzahl \\
+    & (automatisch auf erster Seite eines Kapitels) \\
+    \lstinline-scrheadings- & normale Kopf- und Fußzeile \\
+      & zum Beispiel Kolumnentitel \\
+    & (automatisch auf normalen Seiten)
+  \end{tabular}
+
+  \xxx
+
+  \begin{Block}{Seitenstil manuell wechseln}
+    \begin{lstlisting}[gobble=6,style=block]
+      \pagestyle{empty} % ab aktueller Seite für alle Seiten
+      \thispagestyle{empty} % nur für diese Seite  
+    \end{lstlisting}
+  \end{Block}
+\end{Frame}
+
 \begin{Frame}[fragile]{TODO}
   \begin{verbatim}
-    Seitenstile
-    
-    \pagestyle{scrheadings}
-    \pagestyle{scrplain}
-    \pagestyle{empty}
-    
     manuelle Kolumnentitle
     
     \markright
@@ -920,8 +1007,7 @@
     automatische Kolumnentitel
     
     \automark[section]{chapter}
-    
-    Seitenstil konfigurieren
+            rechte Seite, linke Seite
   \end{verbatim}
 \end{Frame}
 
@@ -966,7 +1052,7 @@
       \node at (-3,3)
         {\shortstack{\strut linke Seite,\\ \strut gerade Seitenzahl,\\ \strut even page}};
       \node at (3,3)
-        {\shortstack{\strut linke Seite,\\ \strut ungerade Seitenzahl,\\ \strut odd page}};
+        {\shortstack{\strut rechte Seite,\\ \strut ungerade Seitenzahl,\\ \strut odd page}};
 
       \node[above=of lehead] (lehead label) {\lstinline-\lehead-};
       \node[above=of cehead] (cehead label) {\lstinline-\cehead-};
@@ -1021,12 +1107,19 @@
 
 \begin{Frame}[fragile,allowframebreaks]{TODO}
   \begin{verbatim}
+    Seitenstil konfigurieren
+
+    pagemark, headmark, leftmark, rightmark
+
     \cfoot[\pagemark]{\pagemark}
     \ohead{Foo \leftmark \rightmark}
     
-    \clearscrheadings -- nur scrheadings
-    \clearscrplain -- nur scrplain
-    \clearscrheadfoot  -- scrheadings und scrplain
+    \clearscrheadfoot
+    \ohead{\pagemark}
+    \rehead{Jahresbericht 2001}
+    \lohead{\headmark} -- hat man damit nur section marks, aber keine chapter marks???
+    \cfoot[\pagemark]{Firma WasWeißIch}
+    \cofoot{Abteilung Entwicklung}
     
     Formatierung
      \setkomafont{pagehead}{%

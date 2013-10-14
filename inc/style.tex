@@ -14,7 +14,8 @@
 \usepackage[german=guillemets]{csquotes}
 
 \usepackage{amsmath}
-\usepackage{stmaryrd}
+\usepackage{nicefrac}
+
 \usepackage{tikz}
 \usetikzlibrary{positioning,%
   shapes.geometric,%
@@ -61,10 +62,11 @@
     setkomavar,opening,closing,encl,
     lehead,cehead,rehead,lefoot,cefoot,refoot,
     lohead,cohead,rohead,lofoot,cofoot,rofoot,
-    ohead,chead,ihead,ofoot,cfoot,ifoot},%
+    ohead,chead,ihead,ofoot,cfoot,ifoot,
+    geometry,areaset},%
   keywordstyle=\bfseries,%
   identifierstyle=,%
-  commentstyle=\itshape,%
+  commentstyle=\itshape\color{gray},%
   numbers=none,%
   frame=lines,%
   backgroundcolor=\color{maincolor!10},%
