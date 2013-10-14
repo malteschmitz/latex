@@ -1,10 +1,12 @@
-\documentclass{scrreprt}
+\documentclass{scrbook}
 
 \KOMAoptions{parskip=full}
 
 \KOMAoptions{DIV=6}
 %\addtolength{\marginparwidth}{4cm}
 %\addtolength{\textwidth}{-4cm}
+
+\areaset{15cm}{15cm}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -26,6 +28,7 @@
 \clearscrheadfoot
 \automark[section]{chapter}
 \cfoot[\pagemark]{\pagemark}
+\ifoot[Hallo]{Hallo}
 \ohead{Foo \leftmark \rightmark}
 
 \usepackage{hyperref}
@@ -37,33 +40,15 @@
 \subtitle{Demonstration von Kopf- und Fußzeile}
 \author{Maria Mustermann}
 
+\extratitle{\vspace*{4\baselineskip} \begin{center}\textbf{\Huge Me}\end{center}}
+
 \begin{document}
   \maketitle
   \tableofcontents
 
-  \chapter{Einleitung}
-
-  \blindtext\marginpar{Ein\-lei\-tungs\-be\-ginn\-hin\-weis\-text}
-
-  \blindtext\marginpar{\rule{\marginparwidth}{1pt}}
-
-  \Blindtext\marginpar{\blindtext}
-
-  \section{Hinweis}
-
-  \blindtext
-
-  \blindtext
-
-  \blindtext
-
-  \section{Der Beginn}
-
-  Hier geht alles los.\marginpar{Beginn}
-
-  %\Blinddocument
-  %\Blinddocument
-  %\Blinddocument
-  %\Blinddocument
-  %\Blinddocument
+  \Blinddocument
+  \Blinddocument
+  \Blinddocument
+  \Blinddocument
+  \Blinddocument
 \end{document}
