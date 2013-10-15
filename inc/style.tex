@@ -8,7 +8,7 @@
 \usepackage[scaled]{helvet}
 \usepackage{lmodern}
 \usepackage{textcomp}
-\usepackage{courier}
+\usepackage{DejaVuSansMono}
 
 \usepackage[ngerman]{babel}
 \usepackage[german=guillemets]{csquotes}
@@ -51,22 +51,56 @@
 % - color!50 used as strong highlight fill color (e.g. for header row)
 
 \usepackage{listings}
+\lstdefinelanguage[MyLaTeX]{TeX}[LaTeX]{TeX}%
+  % TeX commands
+  {moretexcs={enquote,includegraphics,%
+    part,chapter,section,subsection,paragraph,subparagraph%
+    tableofcontents,listoffigures,listoftables,maketitle,%
+    subsection,subsubsection,paragraph,autoref,it,%
+    textcolor,colorbox,xdefinecolor,colorlet,foreach,%
+    rowcolors,rowcolor,lstdefinestyle,lstset,KOMAoptions,%
+    setkomavar,opening,closing,encl,%
+    lehead,cehead,rehead,lefoot,cefoot,refoot,%
+    lohead,cohead,rohead,lofoot,cofoot,rofoot,%
+    ohead,chead,ihead,ofoot,cfoot,ifoot,%
+    areaset,%
+    automark,manualmark,markright,markboth,%
+    tableofcontents,url},%
+  % LaTeX environments
+  morekeywords={[2]lstlisting,document,letter,center,flushleft,%
+    flushright,align,itemize,enumerate,description,tabular,
+    titlepage,figure%
+    },%
+  % other things (like packages) to highlight
+  morekeywords={[3]listings,textcomp,courier,xcolor,scrartcl,%
+    scrlttr2,inputenc,babel,%
+    fontenc,lmodern,mathptmx,%
+    helvet,geometry,scrpage2,scrreprt,scrbook,%
+    article,report,book,hyperref,%
+    csquotes,amsmath,amssymb,la},
+  alsoletter={0123456789}
+  }%
+
+\lstdefinelanguage{BibTeX}
+  {keywords={%
+      @article,@book,@collectedbook,@conference,@electronic,@ieeetranbstctl,%
+      @inbook,@incollectedbook,@incollection,@injournal,@inproceedings,%
+      @manual,@mastersthesis,@misc,@patent,@periodical,@phdthesis,@preamble,%
+      @proceedings,@standard,@string,@techreport,@unpublished%
+      },
+   comment=[l][\itshape]{@comment},
+   morekeywords={[2]author,title,year,publisher,editor,booktitle,journal,series,volume,number,pages,institution,note,howpublished},
+  }
+
 \lstset{%
   basicstyle=\scriptsize\ttfamily,%
-  language=[LaTeX]TeX,%
-  morekeywords={enquote,includegraphics,part,chapter,%
-    tableofcontents,listoffigures,listoftables,maketitle,%
-    subsection,subsubsection,paragraph,autoref,it,
-    textcolor,colorbox,xdefinecolor,colorlet,foreach,
-    rowcolors,rowcolor,lstdefinestyle,lstset,KOMAoptions,
-    setkomavar,opening,closing,encl,
-    lehead,cehead,rehead,lefoot,cefoot,refoot,
-    lohead,cohead,rohead,lofoot,cofoot,rofoot,
-    ohead,chead,ihead,ofoot,cfoot,ifoot,
-    geometry,areaset},%
-  keywordstyle=\bfseries,%
-  identifierstyle=,%
-  commentstyle=\itshape\color{gray},%
+  language=[MyLaTeX]TeX,%
+  texcsstyle=*\color{violet}\bfseries,%
+  keywordstyle=\color{violet}\bfseries,%
+  keywordstyle={[2]\color{green!70!black}\bfseries},%
+  keywordstyle={[3]\color{maincolor!70!black}\bfseries},%
+  commentstyle=\color{gray}\itshape,%
+  stringstyle=\itshape,%
   numbers=none,%
   frame=lines,%
   backgroundcolor=\color{maincolor!10},%
@@ -91,7 +125,7 @@
   belowskip=0pt
 }
 
-% german umlauts
+% german umlauts and red braces
 \lstset{
   literate={ö}{{\"o}}1
            {Ö}{{\"O}}1
@@ -100,18 +134,11 @@
            {ü}{{\"u}}1
            {Ü}{{\"U}}1
            {ß}{{\ss}}1
+           {\{}{{\textbf{\color{red}\{}}}1
+           {\}}{{\textbf{\color{red}\}}}}1
+           {[}{{\textbf{\color{red}[}}}1
+           {]}{{\textbf{\color{red}]}}}1
 }
-
-\lstdefinelanguage{BibTeX}
-  {keywords={%
-      @article,@book,@collectedbook,@conference,@electronic,@ieeetranbstctl,%
-      @inbook,@incollectedbook,@incollection,@injournal,@inproceedings,%
-      @manual,@mastersthesis,@misc,@patent,@periodical,@phdthesis,@preamble,%
-      @proceedings,@standard,@string,@techreport,@unpublished%
-      },
-   comment=[l][\itshape]{@comment},
-   sensitive=false,
-  }
 
 \usepackage{tabularx}
 

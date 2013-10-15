@@ -130,7 +130,7 @@
 \subsection{Eigene Befehle und Umgebungen}
 
 \begin{Frame}[fragile]{Eigene Befehle}
-  \begin{lstlisting}[gobble=4,morekeywords={mycommand}]
+  \begin{lstlisting}[gobble=4,moretexcs={mycommand}]
     \newcommand{\mycommand}[2]{#1 liest #2.}
     \mycommand{Malte}{ein Buch}
   \end{lstlisting}
@@ -140,7 +140,7 @@
   \xxx\pause
 
   \begin{Beispiel}[weniger Redundanz]
-    \begin{lstlisting}[gobble=6,style=block,morekeywords={colorsample}]
+    \begin{lstlisting}[gobble=6,style=block,moretexcs={colorsample}]
       \newcommand{\colorsample}[1]{%
         \textcolor{#1}{\rule[-.5ex]{2em}{2ex}}
         \texttt{#1}}
@@ -152,7 +152,7 @@
   \pause
 
   \begin{Beispiel}[Mehr Struktur]
-    \begin{lstlisting}[gobble=6,style=block,morekeywords={user,gui}]
+    \begin{lstlisting}[gobble=6,style=block,moretexcs={user,gui}]
       \newcommand{\gui}[1]{\textsl{\textsf{#1}}}
       \newcommand{\user}[1]{\texttt{#1}}
       Geben Sie in das Feld \gui{Prüfziffer}
@@ -173,7 +173,7 @@
 
   \xxx
 
-  \begin{lstlisting}[gobble=4,morekeywords={wichtig}]
+  \begin{lstlisting}[gobble=4,moretexcs={wichtig}]
     \newcommand{\wichtig}[2]%
       [red]{\textcolor{#1}{\emph{#2}}}
     \wichtig{Hier} sind \wichtig[orange]{Worte}
@@ -202,7 +202,7 @@
 \end{Frame}
 
 \begin{Frame}[fragile]{Eigene Umgebungen}
-  \begin{lstlisting}[gobble=4]
+  \begin{lstlisting}[gobble=4,morekeywords={[2]achtung}]
     \newenvironment{achtung}[1][Achtung]{%
       \rule{\textwidth}{1pt}\\%
       \textbf{#1}: %
@@ -211,7 +211,7 @@
     }
 
     \begin{achtung}
-      Bitte verwenden [...] Neufassung.
+      Bitte verwenden ... Neufassung.
     \end{achtung}
   
     \begin{achtung}[Hinweis]
@@ -251,7 +251,7 @@
   \end{Block}
 
   \lstinputlisting{listing.tex}
-  \lstset{style=block}
+  \lstset{style=block,keywordstyle=\bfseries,literate={}}
   \input{listing.tex}
 \end{Frame}
 
@@ -283,8 +283,8 @@
     \end{lstlisting}
   \end{Block}
 
-  \lstinputlisting[language={},morekeywords={begin,end}]{pseudocode.tex}
-  \lstset{style=block}
+  \lstinputlisting{pseudocode.tex}
+  \lstset{style=block,keywordstyle=\bfseries,literate={}}
   \input{pseudocode}
 \end{Frame}
 
@@ -480,73 +480,74 @@
   \end{tabular}
 \end{Frame}
 
-\begin{Frame}[allowframebreaks]{Wichtige Angaben in \BibTeX-Einträgen}
-  \begin{Block}{\texttt{author}}
+\begin{Frame}[fragile,allowframebreaks]{Wichtige Angaben in \BibTeX-Einträgen}
+  \lstset{language=BibTeX}
+  \begin{Block}{\lstinline-author-}
     Autoren der Arbeit\newline
-    getrennt durch \texttt{and}
+    getrennt durch \lstinline-and-
   \end{Block}
 
-  \begin{Block}{\texttt{editor}}
+  \begin{Block}{\lstinline-editor-}
     Herausgeber der Zeitschrift oder Organisator der Tagung\\
-    getrennt durch \texttt{and}
+    getrennt durch \lstinline-and-
   \end{Block}
 
-  \begin{Block}{\texttt{title}}
+  \begin{Block}{\lstinline-title-}
     Titel der zitierten Quelle\\
     (nicht des Bandes, der Zeitschrift, \ldots)
   \end{Block}
 
   \framebreak
 
-  \begin{Block}{\texttt{booktitle}}
+  \begin{Block}{\lstinline-booktitle-}
     Titel des Tagungsbandes\\
     bei \lstinline-@inproceedings-
   \end{Block}
 
-  \begin{Block}{\texttt{journal}}
+  \begin{Block}{\lstinline-journal-}
     Name der Zeitschrift\\
     bei \lstinline-@article-
   \end{Block}
 
-  \begin{Block}{\texttt{publisher}}
+  \begin{Block}{\lstinline-publisher-}
     Verlag des Buches, der Zeitschift oder des Tagungsbandes
   \end{Block}
 
   \framebreak
 
-  \begin{Block}{\texttt{series}}
+  \begin{Block}{\lstinline-series-}
     Name der Serie (Verlage fassen Bücher\\
     oder Tagungsbände zu Serien zusammen)
   \end{Block}
 
-  \begin{Block}{\texttt{volume}}
+  \begin{Block}{\lstinline-volume-}
     Nummer des Buches oder Tagungsbandes in der Serie\\
-    bei Verwendung von \texttt{series}
+    bei Verwendung von \lstinline-series-
   \end{Block}
 
-  \begin{Block}{\texttt{number}}
+  \begin{Block}{\lstinline-number-}
     Unternummer des Bandes bei Zeitschriften\\
     (Verlage fassen Zeitschriften zu Bänden zusammen)
   \end{Block}
 
   \framebreak
 
-  \begin{Block}{\texttt{pages}}
+  \begin{Block}{\lstinline-pages-}
     Seitenzahlen eines Artikels innerhalb\\
     eines Buches oder einer Zeitschrift\\
     \alert{nicht für \lstinline-@book-!}
   \end{Block}
 
-  \begin{Block}{\texttt{year}}
+  \begin{Block}{\lstinline-year-}
     Jahr der Veröffentlichung
   \end{Block}
 
-  \begin{Block}{\texttt{institution}}
+  \begin{Block}{\lstinline-institution-}
     Institution, an der die Arbeit angefertigt wurde\\
-    bei \lstinline-@phdthesis- oder \lstinline-@masterthesis-
+    bei \lstinline-@phdthesis- oder \lstinline-@mastersthesis-
   \end{Block}
 
-  \begin{Block}{\texttt{note}}
+  \begin{Block}{\lstinline-note-}
     Beliebiger Text; Bemerkungen aller Art,\\
     die mit angezeigt werden sollen
   \end{Block}
@@ -567,7 +568,7 @@
   \xxx
 
   \begin{lstlisting}[language=BibTeX,gobble=4]
-    @Misc{codecommit,
+    @misc{codecommit,
       author = {Daniel Spiewak},
       title = {The {M}agic {B}ehind {P}arser {C}ombinators},
       year = {2011},
@@ -785,7 +786,7 @@
   Mögliche Formate:
   \begin{itemize}
     \item Reihen A bis D ab Klasse 0 nach ISO 216
-    \item \lstinline-letter- ($8\nicefrac12'' \times 11''$)
+    \item \lstinline[language={}]-letter- ($8\nicefrac12'' \times 11''$)
     \item \lstinline-legal- ($8\nicefrac12'' \times 14''$)
     \item \lstinline-executive- ($7\nicefrac14'' \times 10\nicefrac12''$)
     \item Eigene Formate in der Form \lstinline-Breite:Höhe-,\\
@@ -954,12 +955,11 @@
 
   \begin{Block}{In der Präambel für eigeneren Satzspiegel}
     \begin{lstlisting}[gobble=6,style=block]
-      \usepackage{geometry}
-      \geometry{a5paper,%
-        top=2cm,bottom=4cm,left=2cm,right=4cm}
+      \usepackage[a5paper,top=2cm,bottom=4cm,%
+        left=2cm,right=4cm]{geometry}
       % oder auch
-      \geometry{papersize={20cm,30cm},%
-        top=2cm,bottom=4cm,inner=2cm,outer=4cm}
+      \usepackage[papersize={20cm,30cm},top=2cm,%
+        bottom=4cm,inner=2cm,outer=4cm]{geometry}
     \end{lstlisting}
   \end{Block}
 \end{Frame}
@@ -978,13 +978,13 @@
 
   \begin{tabular}{r@{ }l}
     \lstinline-empty- & keine Kopf- und keine Fußzeile \\
-    & (automatisch auf Titelseite) \\
+      & (automatisch auf Titelseite) \\
     \lstinline-scrplain- & wenig Kopf- und keine Fußzeile \\
       & zum Beispiel nur Seitenzahl \\
-    & (automatisch auf erster Seite eines Kapitels) \\
+      & (automatisch auf erster Seite eines Kapitels) \\
     \lstinline-scrheadings- & normale Kopf- und Fußzeile \\
       & zum Beispiel Kolumnentitel \\
-    & (automatisch auf normalen Seiten)
+      & (automatisch auf normalen Seiten)
   \end{tabular}
 
   \xxx
