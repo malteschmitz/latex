@@ -974,20 +974,20 @@
     \end{lstlisting}
   \end{Block}
 
-  \xxx
+  \vskip1ex
 
   \begin{tabular}{r@{ }l}
     \lstinline-empty- & keine Kopf- und keine Fußzeile \\
-      & (automatisch auf Titelseite) \\
+      & (automatisch auf Titelseite) \\[1ex]
     \lstinline-scrplain- & wenig Kopf- und keine Fußzeile \\
       & zum Beispiel nur Seitenzahl \\
-      & (automatisch auf erster Seite eines Kapitels) \\
+      & (automatisch auf erster Seite eines Kapitels) \\[1ex]
     \lstinline-scrheadings- & normale Kopf- und Fußzeile \\
       & zum Beispiel Kolumnentitel \\
       & (automatisch auf normalen Seiten)
   \end{tabular}
 
-  \xxx
+  \vskip1ex
 
   \begin{Block}{Seitenstil manuell wechseln}
     \begin{lstlisting}[gobble=6,style=block]
@@ -997,18 +997,37 @@
   \end{Block}
 \end{Frame}
 
-\begin{Frame}[fragile]{TODO}
-  \begin{verbatim}
-    manuelle Kolumnentitle
-    
-    \markright
-    \markboth
-    
-    automatische Kolumnentitel
-    
+\begin{Frame}[fragile]{Kolumnentitel}
+  \begin{Definition}[Lebende Kolumnentitel]
+    Textabhängige Informationen in der Kopfzeile.\\
+    Zum Beispiel aktuelles Kapitel und aktueller Abschnitt.
+  \end{Definition}
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
     \automark[section]{chapter}
-            rechte Seite, linke Seite
-  \end{verbatim}
+  \end{lstlisting}
+  Automatische Kolumnentitel:
+  \begin{itemize}
+    \item Kapitel auf linken/geraden Seiten
+    \item Abschnitt auf rechten/ungeraden Seiten
+  \end{itemize}
+  
+  \only<article>{%
+    Mögliche Werte sind dabei: \lstinline-part-, \lstinline-chapter-,
+    \lstinline-section-, \lstinline-subsection-, \lstinline-subsubsection-,
+    \lstinline-paragraph- und \lstinline-subparagraph-.}
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \manualmark % automatische Kolumnentitel abschalten
+    \markboth{linke Seite}{rechte Seite}
+    % oder nur
+    \markright{rechte Seite}
+  \end{lstlisting}
+  Manuelle Kolumnentitel
 \end{Frame}
 
 \begin{Frame}[fragile]{Seitenstil konfigurieren}{Zuordnung der Befehle zur Konfiguration der Seitenstile}
