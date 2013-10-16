@@ -8,7 +8,7 @@
 \usepackage[scaled]{helvet}
 \usepackage{lmodern}
 \usepackage{textcomp}
-\usepackage{DejaVuSansMono}
+\usepackage[scaled=.88]{DejaVuSansMono}
 
 \usepackage[ngerman]{babel}
 \usepackage[german=guillemets]{csquotes}
@@ -67,11 +67,12 @@
     automark,manualmark,markright,markboth,%
     tableofcontents,url,clearscrheadfoot,pagemark,headmark,%
     setheadtopline,setkomafont,setheadsepline,setfootsepline,%
-    setfootbotline,chaptermark},%
+    setfootbotline,chaptermark,thesection,thechapter,%
+    thesubsection},%
   % LaTeX environments
   morekeywords={[2]lstlisting,document,letter,center,flushleft,%
     flushright,align,itemize,enumerate,description,tabular,
-    titlepage,figure%
+    titlepage,figure,table%
     },%
   % other things (like packages) to highlight
   morekeywords={[3]listings,textcomp,courier,xcolor,scrartcl,%
@@ -95,7 +96,7 @@
   }
 
 \lstset{%
-  basicstyle=\scriptsize\ttfamily,%
+  basicstyle=\ttfamily,%
   language=[MyLaTeX]TeX,%
   texcsstyle=*\color{violet}\bfseries,%
   keywordstyle=\color{violet}\bfseries,%

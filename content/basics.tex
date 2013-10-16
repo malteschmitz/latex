@@ -98,9 +98,9 @@
   \pause
 
   \begin{onlyenv}<presentation>
-    \vskip -2.3cm
+    \vskip -2.7cm
     \begin{tikzpicture}
-      \draw[red,very thick] (0,0) -- (2.5cm, 2cm);
+      \draw[red,very thick] (0,0) -- (2.5cm, 2.5cm);
     \end{tikzpicture}
     \vskip .5cm
   \end{onlyenv}
@@ -110,17 +110,28 @@
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[t]{Ein \TeX-Dokument}{Quelltext \texttt{story.tex} und Dokument \texttt{story.pdf}}
+\begin{Frame}[fragile]{Ein \TeX-Dokument}
+  \inhead{\texttt{story.tex}}
   \lstinputlisting[firstline=7]{demo/story.tex}
 
+  \xxx
+
+  \inhead{Kompilieren}
+  \begin{lstlisting}[language={},morekeywords={pdflatex},gobble=4]
+    pdftex story
+  \end{lstlisting}
+
+  \xxx
+
+  \inhead{\texttt{story.pdf}}
   \begin{center}
-    \includegraphics[width=10cm]{demo/story.pdf}
+    \includegraphics[width=4in]{demo/story.pdf}
   \end{center}
 \end{Frame}
 
 \begin{Frame}[fragile,t]{Ein \LaTeX-Dokument}
   \inhead{\texttt{hello.tex}}
-  \lstinputlisting{demo/hello.tex}
+  \lstinputlisting[linerange={1-2,5-8}]{demo/hello.tex}
 
   \pause
   \xxx
@@ -134,9 +145,8 @@
   \xxx
 
   \inhead{\texttt{hello.pdf}}
-  \only<presentation>{\vskip-2cm\strut}
   \begin{center}
-    \includegraphics[width=10cm]{demo/hello.pdf}
+    \includegraphics[width=4in]{demo/hello.pdf}
   \end{center}
 \end{Frame}
 
@@ -320,7 +330,6 @@
         draw,
         decorate,
         decoration=brace,
-        maincolor,
         very thick
       }
     ]
@@ -328,7 +337,7 @@
       \begin{lstlisting}[gobble=8]
         \documentclass{scrartcl}
 
-        \usepackage[babel]{ngerman}
+        \usepackage[ngerman]{babel}
         \usepackage[utf8]{inputenc}
         \usepackage[T1]{fontenc}
 
@@ -338,7 +347,7 @@
         \begin{document}
           \maketitle
 
-          \section{erster Abschnitt}
+          \section{Ein Abschnitt}
           Hier beginnt's \ldots
         \end{document}
       \end{lstlisting}
@@ -346,19 +355,19 @@
 
     \pause
     \draw
-      (1,5.5) edge node {Dokumentenklasse} (1,5.2);
+      (1,7.6) edge node {Dokumentenklasse} (1,7.2);
     \pause
     \draw
-      (3,4.9) edge node {Präambel} (3,2.8)
-      (0,4.8) edge node {\shortstack{Pakete\\laden}} (0,3.8)
-      (0,3.5) edge node {Einstellungen} (0,2.8);
+      (3,6.6) edge node {Präambel} (3,3.9)
+      (1,6.6) edge node {\shortstack{Pakete\\laden}} (1,5.3)
+      (0,4.7) edge node {Einstellungen} (0,3.9);
     \pause
     \draw
-      (1,2.2) edge node {Dokumentenkörper} (1,.8);
+      (1,3) edge node {Dokumentenkörper} (1,.9);
   \end{tikzpicture}
 \end{Frame}
 
-\begin{Frame}[fragile]{typische Präambel}{Dokumentenklasse}
+\begin{Frame}[fragile]{Präambel: Dokumentenklasse}
   \lstinline-\documentclass{scrartcl}-\\
   kurzer Artikel
 
@@ -380,7 +389,7 @@
   \end{alertblock}
 \end{Frame}
 
-\begin{Frame}[fragile]{typische Präambel}{KOMA-Script-Optionen}
+\begin{Frame}[fragile]{Präambel: KOMA-Script-Optionen}
   \begin{lstlisting}[gobble=4]
     \documentclass[
       parskip=full,
@@ -401,7 +410,7 @@
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[fragile]{typische Präambel}{Pakete}
+\begin{Frame}[fragile]{Präambel: Pakete}
   \lstset{
     backgroundcolor={},
     frame=no,
@@ -489,8 +498,8 @@
       \item \lstinline-\textit{kursiv}- setzt \textit{kursiv}
       \item \lstinline-\textsl{schräg}- setzt \textsl{schräg}
       \item \lstinline-\textsc{in Kapitälchen}- setzt \textsc{in Kapitälchen}
-      \item \lstinline-\textbf{fett}- setzt \textbf{fett} \uncover<2>{\alert{(nicht!)}}
-      \item \lstinline-\underline{unterstrichen}- setzt \underline{unterstrichen} \uncover<2>{\alert{(nicht!)}}
+      \item \lstinline-\textbf{fett}- setzt \textbf{fett}
+      \item \lstinline-\underline{unterstrichen}- setzt \underline{unterstrichen}
     \end{itemize}
   \end{Block}
   
@@ -507,9 +516,9 @@
   \begin{itemize}
     \item \lstinline-{\tiny winzig}- setzt {\tiny winzig}
     \item \lstinline-{\scriptsize in Indexgröße}- setzt {\scriptsize in Indexgröße}
-    \item \lstinline-{\footnotesize in Fußzeilengröße}- setzt {\footnotesize in Fußzeilengröße}
+    \item \lstinline-{\footnotesize in Fußzeilengröße}-\\ setzt {\footnotesize in Fußzeilengröße}
     \item \lstinline-{\small klein}- setzt {\small klein}
-    \item \lstinline-{\normalsize in Normalgröße}- setzt {\normalsize in Normalgröße}
+    \item \lstinline-{\normalsize in Normalgröße}-\\ setzt {\normalsize in Normalgröße}
     \item \lstinline-{\large groß}- setzt {\large groß}
     \item \lstinline-{\Large größer}- setzt {\Large größer}
     \item \lstinline-{\LARGE am größten}- setzt {\LARGE am größten}
@@ -545,16 +554,17 @@
   \begin{Block}{In der Präambel}
     \begin{lstlisting}[gobble=6,style=block]
       \usepackage[german=guillemets]{csquotes}
-      %      oder german=quotes
-      %      oder english=british oder english=american
+      % oder german=quotes
+      % oder english=british oder english=american
     \end{lstlisting}
   \end{Block}
 
   \begin{lstlisting}[gobble=4]
-    Hans sagt: \enquote{Er rief: \enquote{Franz' Auto!}}
+    Hans sagt: \enquote{Er habe \enquote{Franz'
+    Auto!} gerufen.}
   \end{lstlisting}
 
-  Hans sagt: \enquote{Er rief: \enquote{Franz' Auto!}}
+  Hans sagt: \enquote{Er habe \enquote{Franz' Auto!} gerufen.}
 \end{Frame}
 
 \begin{Frame}[fragile]{Binde- und sonstige Striche}
@@ -611,6 +621,8 @@
 \end{Frame}
 
 \begin{Frame}[fragile]{Beispiele zum Formelsatz}
+  \only<presentation>{\lstset{aboveskip=3pt,belowskip=3pt}}
+
   \begin{columns}
     \column{5cm}
       \begin{lstlisting}[gobble=8]
@@ -698,7 +710,7 @@
         \begin{itemize}
           \item Apfel
             \begin{itemize}
-              \item Holsteiner Cox
+              \item Elstar
               \item Braeburn
             \end{itemize}
           \item Birne
@@ -708,7 +720,7 @@
       \begin{itemize}
         \item Apfel
           \begin{itemize}
-            \item Holsteiner Cox
+            \item Elstar
             \item Braeburn
           \end{itemize}
         \item Birne
@@ -719,22 +731,16 @@
     \column{5cm}
       \begin{lstlisting}[gobble=8]
         \begin{enumerate}
-          \item Apfel
-            \begin{enumerate}
-              \item Holsteiner Cox
-              \item Braeburn
-            \end{enumerate}
-          \item Birne
+          \item Begrüßung
+          \item Eröffnung
+          \item Anträge
         \end{enumerate}
       \end{lstlisting}
     \column{4cm}
       \begin{enumerate}
-        \item Apfel
-          \begin{enumerate}
-            \item Holsteiner Cox
-            \item Braeburn
-          \end{enumerate}
-        \item Birne
+        \item Begrüßung
+        \item Eröffnung
+        \item Anträge
       \end{enumerate}
   \end{columns}
 \end{Frame}
@@ -742,9 +748,11 @@
 \begin{Frame}[fragile]{Listen}{Definitionslisten}
   \begin{lstlisting}[gobble=4]
     \begin{description}
-      \item[Das Schlagwort] steht am Anfang einer Zeile und
-        wird hervorgehoben, während der zugehörige
-      \item[Text] dahinter in normaler Schrift erscheint.
+      \item[Das Schlagwort] steht am Anfang
+        einer Zeile und wird hervorgehoben,
+        während der zugehörige
+      \item[Text] dahinter in normaler
+        Schrift erscheint.
     \end{description}
   \end{lstlisting}
 
@@ -758,7 +766,8 @@
 \begin{Frame}[fragile]{Tabellen}
   \begin{lstlisting}[gobble=4]
     \begin{tabular}{l|lr}
-      \textbf{Jahr} & \textbf{Prozessor} & \textbf{MHz} \\
+      \textbf{Jahr} & \textbf{Prozessor} &
+          \textbf{MHz} \\
       \hline
       1975 & 6502 (C64) & 1 \\
       1985 & 80386 & 16 \\
@@ -769,7 +778,8 @@
 
   \begin{center}
     \begin{tabular}{l|lr}
-      \textbf{Jahr} & \textbf{Prozessor} & \textbf{MHz} \\
+      \textbf{Jahr} & \textbf{Prozessor} &
+          \textbf{MHz} \\
       \hline
       1975 & 6502 (C64) & 1 \\
       1985 & 80386 & 16 \\
@@ -805,8 +815,8 @@
     \column{5cm}
       \begin{lstlisting}[gobble=8]
         \includegraphics%
-          [width=3.5cm,%
-           trim=3cm 5mm 4cm 12mm,%
+          [width=3.5cm,trim=%
+           3cm 5mm 4cm 12mm,%
            clip=true]{miktex}
       \end{lstlisting}
     \column{4cm}
@@ -840,9 +850,10 @@
 \begin{Frame}[fragile]{Titelseite}{automatisch}
   \begin{Block}{In der Präambel}
     \begin{lstlisting}[gobble=6,style=block]
-       \title{Meine Arbeit}
-       \author{Malte Schmitz}
-       \date{September 2013} % aktuelles Datum bei Auslassung
+      \title{Meine Arbeit}
+      \author{Malte Schmitz}
+      \date{September 2013}
+      % aktuelles Datum bei Auslassung
     \end{lstlisting}
   \end{Block}
 
@@ -876,18 +887,17 @@
   \begin{lstlisting}[gobble=4]
     \begin{figure}
       \includegraphics[width=3.5cm]{miktex}
-      \caption{Mik\TeX-Logo}
+      \caption{MiK\TeX-Logo}
     \end{figure}
   \end{lstlisting}
 
   \begin{lstlisting}[gobble=4]
     \begin{table}
       \begin{tabular}{ll}
-        Umgebung & Verwendung \\
-        table & Tabellen \\
-        figure & Abbildungen
+        Schafgarbe & gelb \\
+        Ochsenzunge & violett
       \end{tabular}
-      \caption{Verwendung von Abbildungen und Tabellen}
+      \caption{Färberpflanzen}
     \end{table}
   \end{lstlisting}
 \end{Frame}
@@ -904,13 +914,13 @@
   \xxx
 
   Element platzieren
-  \begin{description}
-    \item[h] an Position im Quelltext
-    \item[b] am Ende einer Seite
-    \item[t] am Anfang einer Seite
-    \item[p] auf einer eigenen Abbildungsseite
-    \item[!] \LaTeX s Bewertung der Platzierung abschalten
-  \end{description}
+  \begin{tabular}{lr@{ }l}
+    & \lstinline-h- & an Position im Quelltext \\
+    & \lstinline-b- & am Ende einer Seite \\
+    & \lstinline-t- & am Anfang einer Seite \\
+    & \lstinline-p- & auf einer eigenen Abbildungsseite \\
+    & \lstinline-!- & \LaTeX s Bewertung der Platzierung abschalten
+  \end{tabular}
 \end{Frame}
 
 \begin{Frame}[fragile]{Verzeichnisse}
@@ -950,16 +960,16 @@
         % ...
         \begin{figure}
           \includegraphics[width=3.5cm]{miktex}
-          \caption{Mik\TeX-Logo}
+          \caption{MiK\TeX-Logo}
           \label{fig-miktex}
         \end{figure}
       \end{lstlisting}
      \item Label referenzieren
        \begin{lstlisting}[gobble=8]
-         \ldots Mik\TeX-Logo auf \autoref{fig-miktex}
+         \ldots MiK\TeX-Logo auf \autoref{fig-miktex}
          in \autoref{sec-verweise} \ldots
        \end{lstlisting}
-       \ldots Mik\TeX-Logo auf Abbildung 5 in Abschnitt 3.2 \ldots
+       \ldots MiK\TeX-Logo auf Abbildung 5 in Abschnitt 3.2 \ldots
   \end{itemize}
 \end{Frame}
 

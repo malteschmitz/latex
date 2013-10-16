@@ -1,4 +1,4 @@
-\documentclass[paper=a6,pagesize=automedia]{scrartcl}
+\documentclass[paper=10cm:8cm,pagesize=automedia]{scrartcl}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -23,7 +23,13 @@
 \setkomafont{pagehead}{%
 \normalfont\color{orange!70!black}\sffamily}
 \setkomafont{pagenumber}{\Huge}
-\KOMAoptions{headlines=3.5,headinclude,DIV=200}
+
+\usepackage{pgffor}
+
+\KOMAoptions{%
+  headlines=3.5,
+  headinclude,
+  DIV=50}
 
 \usepackage{hyperref}
 \hypersetup{breaklinks=true,
@@ -36,8 +42,8 @@
   \section{Kassenbericht}
   \subsection{Einnahmen}
   \subsection{Ausgaben}
-  \blindtext\blindtext\blindtext\blindtext
-  \blindtext\blindtext\blindtext\blindtext
-  \section{Wahlen}
-  \section{Zusammenfassung}
+
+  \foreach \i in {1,...,100} {
+    \blindtext
+  }
 \end{document}

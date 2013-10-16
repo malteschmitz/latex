@@ -51,15 +51,15 @@
 \end{Frame}
 
 \begin{Frame}[fragile]{Eigene Farben}
+  % Red, Green, Blue von 0 bis 1
+  % \xdefinecolor{uni-luebeck}{rgb}{0, 0.47, 0.55}
+  % Hue, Saturation, Brightness von 0 bis 1
+  % \xdefinecolor{skyblue}{rgb}{0.9, 0.2, 0.36}
   \begin{lstlisting}[gobble=4]
     % Red, Green, Blue von 0 bis 255
     \xdefinecolor{uni-luebeck}{RGB}{0, 120, 140}
-    % Red, Green, Blue von 0 bis 1
-    \xdefinecolor{uni-luebeck}{rgb}{0, 0.47, 0.55}
     % Hue, Saturation, Brightness von 0 bis 240
     \xdefinecolor{skyblue}{HSV}{217, 47, 87}
-    % Hue, Saturation, Brightness von 0 bis 1
-    \xdefinecolor{skyblue}{rgb}{0.9, 0.2, 0.36}
     % neuer Name für mehr Struktur
     \colorlet{maincolor}{uni-luebeck}
   \end{lstlisting}
@@ -67,7 +67,7 @@
   \xxx
 
   \begin{lstlisting}[gobble=4]
-    \foreach \h in {0, ..., 240} {% see pgffor package
+    \foreach \h in {0, ..., 240} {% pgffor package
       \xdefinecolor{current}{HSB}{\h, 240, 240}%
       \textcolor{current}{\rule{1pt}{3ex}}%
     }%
@@ -109,7 +109,7 @@
   \begin{lstlisting}[gobble=4]
     \rowcolors{1}{maincolor!25}{maincolor!5}
     \begin{tabular}{lr}
-      \rowcolor{maincolor!50} Posten & Betrag (EUR) \\
+      \rowcolor{maincolor!50} Posten & Betrag \\
       Messe & 333,20 \\
       Kombüse & 47,60 \\
       Summe & 380,80
@@ -119,7 +119,7 @@
   \rowcolors{1}{maincolor!25}{maincolor!5}
   \begin{center}
     \begin{tabular}{lr}
-      \rowcolor{maincolor!50} Posten & Betrag (EUR) \\
+      \rowcolor{maincolor!50} Posten & Betrag \\
       Messe & 333,20 \\
       Kombüse & 47,60 \\
       Summe & 380,80
@@ -137,32 +137,34 @@
   \newcommand{\mycommand}[2]{#1 liest #2.}
   \mycommand{Malte}{ein Buch}
 
-  \xxx\pause
+  \xxx
 
-  \begin{Beispiel}[weniger Redundanz]
-    \begin{lstlisting}[gobble=6,style=block,moretexcs={colorsample}]
-      \newcommand{\colorsample}[1]{%
-        \textcolor{#1}{\rule[-.5ex]{2em}{2ex}}
-        \texttt{#1}}
+  \begin{onlyenv}<2>
+    \begin{Beispiel}[weniger Redundanz]
+      \begin{lstlisting}[gobble=8,style=block,moretexcs={colorsample}]
+        \newcommand{\colorsample}[1]{%
+          \textcolor{#1}{\rule[-.5ex]{2em}{2ex}}
+          \texttt{#1}}
+        \colorsample{red}
+      \end{lstlisting}
       \colorsample{red}
-    \end{lstlisting}
-    \colorsample{red}
-  \end{Beispiel}
+    \end{Beispiel}
+  \end{onlyenv}
 
-  \pause
-
-  \begin{Beispiel}[Mehr Struktur]
-    \begin{lstlisting}[gobble=6,style=block,moretexcs={user,gui}]
+  \begin{onlyenv}<3>
+    \begin{Beispiel}[Mehr Struktur]
+      \begin{lstlisting}[gobble=8,style=block,moretexcs={user,gui}]
+        \newcommand{\gui}[1]{\textsl{\textsf{#1}}}
+        \newcommand{\user}[1]{\texttt{#1}}
+        Geben Sie in das Feld \gui{Prüfziffer}
+        den Wert \user{fgdhsjk} ein.
+      \end{lstlisting}
       \newcommand{\gui}[1]{\textsl{\textsf{#1}}}
       \newcommand{\user}[1]{\texttt{#1}}
-      Geben Sie in das Feld \gui{Prüfziffer}
-      den Wert \user{fgdhsjk} ein.
-    \end{lstlisting}
-    \newcommand{\gui}[1]{\textsl{\textsf{#1}}}
-    \newcommand{\user}[1]{\texttt{#1}}
-    \textrm{Geben Sie in das Feld \gui{Prüfziffer}
-    den Wert \user{fgdhsjk} ein.}
-  \end{Beispiel}
+      \textrm{Geben Sie in das Feld \gui{Prüfziffer}
+      den Wert \user{fgdhsjk} ein.}
+    \end{Beispiel}
+  \end{onlyenv}
 \end{Frame}
 
 \begin{Frame}[fragile]{Eigene Befehle}{optionaler Parameter}
@@ -201,23 +203,7 @@
   Ich bin \emph{hervorgehoben}.
 \end{Frame}
 
-\begin{Frame}[fragile]{Eigene Umgebungen}
-  \begin{lstlisting}[gobble=4,morekeywords={[2]achtung}]
-    \newenvironment{achtung}[1][Achtung]{%
-      \rule{\textwidth}{1pt}\\%
-      \textbf{#1}: %
-    }{%
-      \rule[1ex]{\textwidth}{1pt}%
-    }
-
-    \begin{achtung}
-      Bitte verwenden ... Neufassung.
-    \end{achtung}
-  
-    \begin{achtung}[Hinweis]
-      Bitte nicht knicken.
-    \end{achtung}
-  \end{lstlisting}
+\begin{Frame}[fragile,t]{Eigene Umgebungen}
   \newenvironment{achtung}[1][Achtung]{%
     \rule{\textwidth}{1pt}\\%
     \textbf{#1}: %
@@ -225,14 +211,44 @@
     \rule[1ex]{\textwidth}{1pt}%
   }
 
-  \begin{achtung}
-    Bitte verwenden Sie diesen Artikel nicht.
-    Sie erhalten in Kürze eine berichtigte Neufassung.
-  \end{achtung}
+  \begin{onlyenv}<1>
+    \begin{lstlisting}[gobble=6,morekeywords={[2]achtung}]
+      \newenvironment{achtung}[1][Achtung]{%
+        \rule{\textwidth}{1pt}\\%
+        \textbf{#1}: %
+      }{%
+        \rule[1ex]{\textwidth}{1pt}%
+      }
 
-  \begin{achtung}[Hinweis]
-    Bitte nicht knicken.
-  \end{achtung}
+      \begin{achtung}%
+        Bitte verwenden ... Neufassung.
+      \end{achtung}
+    \end{lstlisting}
+
+    \begin{achtung}%
+      Bitte verwenden Sie diesen Artikel nicht.
+      Sie erhalten in Kürze eine berichtigte Neufassung.
+    \end{achtung}
+  \end{onlyenv}
+
+  \begin{onlyenv}<2>
+    \begin{lstlisting}[gobble=6,morekeywords={[2]achtung}]
+      \newenvironment{achtung}[1][Achtung]{%
+        \rule{\textwidth}{1pt}\\%
+        \textbf{#1}: %
+      }{%
+        \rule[1ex]{\textwidth}{1pt}%
+      }
+
+      \begin{achtung}[Hinweis]%
+        Bitte nicht knicken.
+      \end{achtung}
+    \end{lstlisting}
+    
+    \begin{achtung}[Hinweis]%
+      Bitte nicht knicken.
+    \end{achtung}
+  \end{onlyenv}
 \end{Frame}
 
 \subsection{Quelltext und Pseudocode}
@@ -249,8 +265,13 @@
       \usepackage{courier} % für schönere Schriftart
     \end{lstlisting}
   \end{Block}
+\end{Frame}
 
+\begin{Frame}{Quelltext}{Am Beispiel von Java-Code}
   \lstinputlisting{listing.tex}
+
+  \xxx
+
   \lstset{style=block,keywordstyle=\bfseries,literate={}}
   \input{listing.tex}
 \end{Frame}
@@ -282,8 +303,13 @@
         columns=fullflexible}
     \end{lstlisting}
   \end{Block}
+\end{Frame}
 
+\begin{Frame}{Pseudocode}{Am Beispiel einer sinnlosen Schleife}
   \lstinputlisting{pseudocode.tex}
+
+  \xxx
+
   \lstset{style=block,keywordstyle=\bfseries,literate={}}
   \input{pseudocode}
 \end{Frame}
@@ -304,20 +330,19 @@
 \end{Frame}
 
 \begin{Frame}[t]{Ein Beispieldokument \texttt{arbeit.pdf}}
-  \includegraphics[width=\textwidth]{demo/arbeit.pdf}
+  \includegraphics[width=9cm]{demo/arbeit.pdf}
 \end{Frame}
 
 \begin{Frame}[fragile]{Das \LaTeX-Dokument \texttt{arbeit.tex}}
   \begin{lstlisting}[gobble=4]
     \documentclass{scrartcl}
-    
-    % ...
-    
+    %...
+
     \begin{document}
-      In \cite{rltl} wird die reguläre lineare
-      Temporallogik (RLTL) vorgestellt.
-      Dazu wird der in \cite[S. 101--106]{Hopcroft}
-      beschriebenen Algorithmus verwendet
+      In \cite{Knuth} wird das Satzsystem \TeX{}
+      vom Autor des Systems vorgestellt. Jedes
+      Zeichen hat dabei einen Category Code
+      (vergleiche dazu \cite[S.~28~ff.]{Eijkhout}).
 
       \bibliographystyle{alphadin}
       \bibliography{datenbank}
@@ -341,9 +366,9 @@
   \pause
 
   \begin{onlyenv}<presentation>
-    \vskip -2.4cm
+    \vskip -3.1cm
     \begin{tikzpicture}
-      \draw[red,very thick] (0,0) -- (2.5cm, 2cm);
+      \draw[red,very thick] (0,0) -- (2.8cm, 2.7cm);
     \end{tikzpicture}
     \vskip .5cm
   \end{onlyenv}
@@ -556,12 +581,9 @@
 \begin{Frame}[fragile]{Websites zitieren}
   \begin{alertblock}{Wichtig}
     \begin{itemize}
-      \item \BibTeX\ hat \alert{keine Quellenart} für Websites
-      \item veröffentlichte Arbeiten, die online verfügbar sind,\\
-        sind \alert{keine Websites}
-      \item Websites sind die \alert{unseriöseste Quelle}
-      \item Wenn der \alert{Autor seriös} ist,\\
-        ist die Art der Veröffentlichung nicht so wichtig
+      \item \BibTeX\ hat \alert{keine eigene Quellenart} für Websites
+      \item \alert{Artikel von Autoren} auf einer Website nur zitieren,\\
+        wenn die Website und die \alert{Autoren seriös} sind.
     \end{itemize}
   \end{alertblock}
 
@@ -570,10 +592,12 @@
   \begin{lstlisting}[language=BibTeX,gobble=4]
     @misc{codecommit,
       author = {Daniel Spiewak},
-      title = {The {M}agic {B}ehind {P}arser {C}ombinators},
+      title = {The Magic Behind Parser
+        Combinators},
       year = {2011},
-      howpublished = "\url{http://www.codecommit.com/blog/
-      	scala/the-magic-behind-parser-combinators}",
+      howpublished =
+        "\url{http://www.codecommit.com/blog/
+        scala/the-magic-behind-parser-combinators}",
       note = "[Online; Zugriff am 30.11.2011]"
     }
   \end{lstlisting}
@@ -656,25 +680,20 @@
 \begin{Frame}[fragile]{Schreiben an den Vorstand}
   \begin{lstlisting}[gobble=4]
     \begin{document}
-
-    \setkomavar{fromname}{Peter Musterfrau}
-    \setkomavar{fromaddress}{Hinter dem Tal 2\\
-      54321 Musterheim}
-    \setkomavar{subject}{Mitgliederversammlung vermisst}
-    
-    \begin{letter}{Petra Mustermann\\
-      Vor dem Berg 1\\
-      12345 Musterhausen}
-    
-    \opening{Sehr geehrte Frau Mustermann,}
-    ich fordere den Vorstand auf, umgehend
-    eine Mitgliederversammlung anzusetzen.
-    \closing{mit freundlichen Grüßen}
-    
-    \setkomavar*{enclseparator}{Anlage}
-    \encl{Auszug aus der Satzung}
-    \end{letter}
-    
+      \setkomavar{fromname}{Peter Musterfrau}
+      \setkomavar{fromaddress}{Hinter dem Tal 2\\
+        54321 Musterheim}
+      \setkomavar{subject}{Mitgliederversammlung}
+      \begin{letter}{Petra Mustermann\\
+          Vor dem Berg 1\\
+          12345 Musterhausen}
+        \opening{Sehr geehrte Frau Mustermann,}
+        ich fordere den Vorstand auf, umgehend
+        eine Mitgliederversammlung anzusetzen.
+        \closing{mit freundlichen Grüßen}
+        \setkomavar*{enclseparator}{Anlage}
+        \encl{Auszug aus der Satzung}
+      \end{letter}
     \end{document}
   \end{lstlisting}
 \end{Frame}
@@ -786,9 +805,9 @@
   Mögliche Formate:
   \begin{itemize}
     \item Reihen A bis D ab Klasse 0 nach ISO 216
-    \item \lstinline[language={}]-letter- ($8\nicefrac12'' \times 11''$)
-    \item \lstinline-legal- ($8\nicefrac12'' \times 14''$)
-    \item \lstinline-executive- ($7\nicefrac14'' \times 10\nicefrac12''$)
+    \item \lstinline[language={}]-letter-~($8\nicefrac12'' \times 11''$),
+      \lstinline-legal-~($8\nicefrac12'' \times 14''$) und
+      \lstinline-executive-~($7\nicefrac14'' \times 10\nicefrac12''$)
     \item Eigene Formate in der Form \lstinline-Breite:Höhe-,\\
       zum Beispiel \lstinline-10cm:20cm-
   \end{itemize}
@@ -796,8 +815,8 @@
 
 \begin{Frame}[t,fragile]{Randnotizen}
   \begin{lstlisting}[gobble=4]
-    Als Marginalien\marginpar{\textsl{Marginalie}} werden
-    kurze Notizen in der Randspalte eines Textes %...
+    Als Marginalien\marginpar{\textsl{Marginalie}}
+    werden kurze Notizen in der Randspalte %...
   \end{lstlisting}
 
   \begin{center}
@@ -979,11 +998,9 @@
   \begin{tabular}{r@{ }l}
     \lstinline-empty- & keine Kopf- und keine Fußzeile \\
       & (automatisch auf Titelseite) \\[1ex]
-    \lstinline-scrplain- & wenig Kopf- und keine Fußzeile \\
-      & zum Beispiel nur Seitenzahl \\
+    \lstinline-scrplain- & wenig Kopf- und Fußzeile \\
       & (automatisch auf erster Seite eines Kapitels) \\[1ex]
     \lstinline-scrheadings- & normale Kopf- und Fußzeile \\
-      & zum Beispiel Kolumnentitel \\
       & (automatisch auf normalen Seiten)
   \end{tabular}
 
@@ -991,7 +1008,7 @@
 
   \begin{Block}{Seitenstil manuell wechseln}
     \begin{lstlisting}[gobble=6,style=block]
-      \pagestyle{empty} % ab aktueller Seite für alle Seiten
+      \pagestyle{empty} % ab jetzt
       \thispagestyle{empty} % nur für diese Seite  
     \end{lstlisting}
   \end{Block}
@@ -1022,7 +1039,7 @@
 
 \begin{Frame}[fragile]{Manuelle Kolumnentitle}
   \begin{lstlisting}[gobble=4]
-    \manualmark % automatische Kolumnentitel abschalten
+    \manualmark % Automatik aus
     \markboth{linke Seite}{rechte Seite}
     % oder nur
     \markright{rechte Seite}
@@ -1032,7 +1049,7 @@
   \xxx
 
   \begin{lstlisting}[gobble=4]
-    \manualmark % automatische Kolumnentitel abschalten
+    \manualmark % Automatik aus
     \renewcommand{\chaptermark}[1]{%
       \markboth{Kapitel \thechapter\ #1}{}}
     \renewcommand{\sectionmark}[1]{%
@@ -1042,98 +1059,96 @@
   jeden neuen Kapitels mit dem Namen des Kapitels aufgerufen.
 \end{Frame}
 
-\begin{Frame}[fragile]{Seitenstil konfigurieren}{Zuordnung der Befehle zur Konfiguration der Seitenstile}
-  \begin{center}
-    \begin{tikzpicture}[
-        node distance=1cm,
-        on grid
-      ]
-      \draw[maincolor,very thick,dashed]
-        (1,0) -- (5,0) -- (5,6) -- (1,6) -- cycle
-        (-1,0) -- (-5,0) -- (-5,6) -- (-1,6) -- cycle;
-      
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (-4.25,5.5) (lehead) {};
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (-3,5.5) (cehead) {};
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (-1.75,5.5) (rehead) {};
-      
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (-4.25,.5) (lefoot) {};
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (-3,.5) (cefoot) {};
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (-1.75,.5) (refoot) {};
+\begin{Frame}[fragile]{Befehle zur Konfiguration des Seitenstils}
+  \begin{tikzpicture}[
+      node distance=9mm,
+      on grid
+    ]
+    \draw[maincolor,very thick,dashed]
+      (1,0) -- (5,0) -- (5,6) -- (1,6) -- cycle
+      (-1,0) -- (-5,0) -- (-5,6) -- (-1,6) -- cycle;
+    
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (-4.25,5.5) (lehead) {};
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (-3,5.5) (cehead) {};
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (-1.75,5.5) (rehead) {};
+    
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (-4.25,.5) (lefoot) {};
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (-3,.5) (cefoot) {};
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (-1.75,.5) (refoot) {};
 
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (4.25,5.5) (rohead) {};
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (3,5.5) (cohead) {};
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (1.75,5.5) (lohead) {};
-      
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (4.25,.5) (rofoot) {};
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (3,.5) (cofoot) {};
-      \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
-        at (1.75,.5) (lofoot) {};
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (4.25,5.5) (rohead) {};
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (3,5.5) (cohead) {};
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (1.75,5.5) (lohead) {};
+    
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (4.25,.5) (rofoot) {};
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (3,.5) (cofoot) {};
+    \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
+      at (1.75,.5) (lofoot) {};
 
-      \node at (-3,3)
-        {\shortstack{\strut linke Seite,\\ \strut gerade Seitenzahl,\\ \strut Rückseite}};
-      \node at (3,3)
-        {\shortstack{\strut rechte Seite,\\ \strut ungerade Seitenzahl,\\ \strut Vorderseite}};
+    \node at (-3,3)
+      {\shortstack{\strut linke Seite,\\ \strut gerade Seitenzahl,\\ \strut Rückseite}};
+    \node at (3,3)
+      {\shortstack{\strut rechte Seite,\\ \strut ungerade Seitenzahl,\\ \strut Vorderseite}};
 
-      \node[above=of lehead] (lehead label) {\lstinline-\lehead-};
-      \node[above=of cehead] (cehead label) {\lstinline-\cehead-};
-      \node[above=of rehead] (rehead label) {\lstinline-\rehead-};
-      \node[below=of lefoot] (lefoot label) {\lstinline-\lefoot-};
-      \node[below=of cefoot] (cefoot label) {\lstinline-\cefoot-};
-      \node[below=of refoot] (refoot label) {\lstinline-\refoot-};
-      \node[above=of lohead] (lohead label) {\lstinline-\lohead-};
-      \node[above=of cohead] (cohead label) {\lstinline-\cohead-};
-      \node[above=of rohead] (rohead label) {\lstinline-\rohead-};
-      \node[below=of lofoot] (lofoot label) {\lstinline-\lofoot-};
-      \node[below=of cofoot] (cofoot label) {\lstinline-\cofoot-};
-      \node[below=of rofoot] (rofoot label) {\lstinline-\rofoot-};
+    \node[above=of lehead] (lehead label) {\lstinline-\lehead-};
+    \node[above=14mm of cehead] (cehead label) {\lstinline-\cehead-};
+    \node[above=of rehead] (rehead label) {\lstinline-\rehead-};
+    \node[below=of lefoot] (lefoot label) {\lstinline-\lefoot-};
+    \node[below=14mm of cefoot] (cefoot label) {\lstinline-\cefoot-};
+    \node[below=of refoot] (refoot label) {\lstinline-\refoot-};
+    \node[above=of lohead] (lohead label) {\lstinline-\lohead-};
+    \node[above=14mm of cohead] (cohead label) {\lstinline-\cohead-};
+    \node[above=of rohead] (rohead label) {\lstinline-\rohead-};
+    \node[below=of lofoot] (lofoot label) {\lstinline-\lofoot-};
+    \node[below=14mm of cofoot] (cofoot label) {\lstinline-\cofoot-};
+    \node[below=of rofoot] (rofoot label) {\lstinline-\rofoot-};
 
-      \node at (0,1) (ifoot label) {\lstinline-\ifoot-};
-      \node at (0,1.5) (cfoot label) {\lstinline-\cfoot-};
-      \node at (0,2) (ofoot label) {\lstinline-\ofoot-};
-      \node at (0,4) (ohead label) {\lstinline-\ohead-};
-      \node at (0,4.5) (chead label) {\lstinline-\chead-};
-      \node at (0,5) (ihead label) {\lstinline-\ihead-};
+    \node at (0,1) (ifoot label) {\lstinline-\ifoot-};
+    \node at (0,1.5) (cfoot label) {\lstinline-\cfoot-};
+    \node at (0,2) (ofoot label) {\lstinline-\ofoot-};
+    \node at (0,4) (ohead label) {\lstinline-\ohead-};
+    \node at (0,4.5) (chead label) {\lstinline-\chead-};
+    \node at (0,5) (ihead label) {\lstinline-\ihead-};
 
-      \draw[every edge/.style={draw,thick,->}]
-        (lehead label) edge (lehead)
-        (cehead label) edge (cehead)
-        (rehead label) edge (rehead)
-        (lefoot label) edge (lefoot)
-        (cefoot label) edge (cefoot)
-        (refoot label) edge (refoot)
-        (lohead label) edge (lohead)
-        (cohead label) edge (cohead)
-        (rohead label) edge (rohead)
-        (lofoot label) edge (lofoot)
-        (cofoot label) edge (cofoot)
-        (rofoot label) edge (rofoot);
-      \draw[every edge/.style={draw,thick,->},
-             to path={-| (\tikztotarget) \tikztonodes}]
-        (ifoot label) edge (refoot)
-                      edge (lofoot)
-        (cfoot label) edge (cefoot)
-                      edge (cofoot)
-        (ofoot label) edge (lefoot)
-                      edge (rofoot)
-        (ihead label) edge (rehead)
-                      edge (lohead)
-        (chead label) edge (cehead)
-                      edge (cohead)
-        (ohead label) edge (lehead)
-                      edge (rohead);
-    \end{tikzpicture}
-  \end{center}
+    \draw[every edge/.style={draw,thick,->}]
+      (lehead label) edge (lehead)
+      (cehead label) edge (cehead)
+      (rehead label) edge (rehead)
+      (lefoot label) edge (lefoot)
+      (cefoot label) edge (cefoot)
+      (refoot label) edge (refoot)
+      (lohead label) edge (lohead)
+      (cohead label) edge (cohead)
+      (rohead label) edge (rohead)
+      (lofoot label) edge (lofoot)
+      (cofoot label) edge (cofoot)
+      (rofoot label) edge (rofoot);
+    \draw[every edge/.style={draw,thick,->},
+           to path={-| (\tikztotarget) \tikztonodes}]
+      (ifoot label) edge (refoot)
+                    edge (lofoot)
+      (cfoot label) edge (cefoot)
+                    edge (cofoot)
+      (ofoot label) edge (lefoot)
+                    edge (rofoot)
+      (ihead label) edge (rehead)
+                    edge (lohead)
+      (chead label) edge (cehead)
+                    edge (cohead)
+      (ohead label) edge (lehead)
+                    edge (rohead);
+  \end{tikzpicture}
 \end{Frame}
 
 \begin{Frame}[fragile]{Seitenstil konfigurieren}
@@ -1153,41 +1168,58 @@
   \xxx
 
   \begin{lstlisting}[gobble=4]
-    \pagemark % aktulle Seitenzahl
-    \leftmark % aktueller linker/gerader Kolumnentitel
-    \rightmark % aktueller rechter/ungerader Kolumnentitel
-    \headmark % aktueller Kolumnentitel dieser Seite
+    \pagemark % Seitenzahl
+    \leftmark % linker/gerader Kolumnentitel
+    \rightmark % rechter/ungerader Kolumnentitel
+    \headmark % Kolumnentitel dieser Seite
   \end{lstlisting}
   Zugriff auf aktuelle Seitenzahl und Kolumnentitel
 \end{Frame}
 
-\begin{Frame}[fragile]{Beispiele für konfigurierte Seitenstile}
+\begin{Frame}[fragile,allowframebreaks]{Beispiele für konfigurierte Seitenstile}
   \begin{lstlisting}[gobble=4]
+    % Alles löschen
     \clearscrheadfoot
+    % Kapitel als linker Kolumnentitel
+    % Abschnitt als rechter Kolumnentitel
     \automark[section]{chapter}
-    % Kapitel links oben, Abschnitt rechts oben
+    % Kapitel links oben auf linken Seiten
+    % Abschnitt rechts oben auf rechten Seiten
     \ohead{\headmark}
-    \ofoot[\pagemark]{\pagemark} % Seitenzahl unten außen
+     % Seitenzahl unten außen
+    \ofoot[\pagemark]{\pagemark}
   \end{lstlisting}
-  \only<article>{Obige Konfigurationen erzeugen den Standard von KOMA-Script.}
+  Standardkonfiguration von KOMA-Script
 
-  \xxx\pause
+  \framebreak
 
   \begin{lstlisting}[gobble=4]
+    % Alles löschen
     \clearscrheadfoot
+    % Kapitel als linker Kolumnentitel
+    % Abschnitt als rechter Kolumnentitel
     \automark[section]{chapter}
-    \chead{\headmark} % Kolumnentitel in der Mitte
-    \ohead[\pagemark]{\pagemark} % Seitenzahl oben
-    \cfoot{\jobname .pdf} % Dateiname unten mittig
+    % Kapitel mittig oben auf linken Seiten
+    % Abschnitt mittig oben auf rechten Seiten
+    \chead{\headmark}
+    % Seitenzahl oben außen auch auf scrplain
+    \ohead[\pagemark]{\pagemark}
+    % Dateiname unten mittig
+    \cfoot{\jobname .pdf}
   \end{lstlisting}
 
-  \xxx\pause
+  \framebreak
 
   \begin{lstlisting}[gobble=4]
+    % Alles löschen
     \clearscrheadfoot
+    % Kapitel als linker Kolumnentitel
+    % Abschnitt als rechter Kolumnentitel
     \automark[section]{chapter}
-    % Kapitel und Abschnitt auf beiden Seiten
-    \ihead{\leftmark{} | \rightmark}
+    % Kapitel und Abschnitt immer links oben
+    \lehead{\leftmark{} | \rightmark}
+    \lohead{\leftmark{} | \rightmark}
+    % Seitenzahl unten mittig
     \cfoot[\pagemark]{Seite \pagemark}
   \end{lstlisting}
 \end{Frame}
@@ -1216,30 +1248,31 @@
   Seitenzahl \alert{zusätzlich} größer setzen.
 \end{Frame}
 
-\begin{Frame}[fragile]{Linien}
+\begin{Frame}[fragile]{Linien aktivieren}
   \begin{lstlisting}[gobble=4]
     \KOMAoptions{%
-      headtopline,%       Linie über der Kopfzeile
-      plainheadtopline,%  auch auf scrplain
-      headsepline,plainheadsepline,% unter der Kopfzeile
-      footsepline,plainfootsepline,% über der Fußzeile
-      footbotline,plainfootbotline}% unter der Fußzeile
+      headtopline,%      über der Kopfzeile
+      plainheadtopline,% auch auf scrplain
+      headsepline,%      unter der Kopfzeile
+      plainheadsepline,% auch auf scrplain
+      footsepline,%      über der Fußzeile
+      plainfootsepline,% auch auf scrplain
+      footbotline,%      unter der Fußzeile
+      plainfootbotline}% auch auf scrplain
   \end{lstlisting}
-  Linien aktivieren.
+\end{Frame}
 
-  \xxx
-
+\begin{Frame}[fragile]{Dicke und Farbe der Linien}
   \begin{lstlisting}[gobble=4]
-    \setheadtopline{2pt}  % Linie über der Kopfzeile
+    \setheadtopline{2pt}  % über der Kopfzeile
     \setkomafont{headtopline}{\color{orange}}
-    \setheadsepline{.5pt} % Linie unter der Kopfzeile
+    \setheadsepline{.5pt} % unter der Kopfzeile
     \setkomafont{headsepline}{\color{megenta}}
-    \setfootsepline{.5pt} % Linie über der Fußzeile
+    \setfootsepline{.5pt} % über der Fußzeile
     \setkomafont{footsepline}{\color{megenta}}
-    \setfootbotline{2pt}  % Linie unter der Fußzeile
+    \setfootbotline{2pt}  % unter der Fußzeile
     \setkomafont{footbotline}{\color{orange}}
   \end{lstlisting}
-  Dicke und Farbe der Linien setzen.
 \end{Frame}
 
 \begin{Frame}[fragile]{Größere Kopf- und Fußzeilen}
@@ -1274,14 +1307,17 @@
       \leftmark\ \\\rightmark}
     \ohead{\pagemark}
     \setheadsepline{2pt}
-    \setkomafont{headsepline}{\color{orange!70!black}}
+    \setkomafont{headsepline}{%
+      \color{orange!70!black}}
     \setkomafont{pagehead}{%
       \normalfont\color{orange!70!black}\sffamily}
     \setkomafont{pagenumber}{\Huge}
     \KOMAoptions{headlines=3.5,headinclude,DIV=calc}
   \end{lstlisting}
+\end{Frame}
 
-  \includegraphics[width=10cm,page=2]{demo/kopfzeile}
+\begin{Frame}{Die ultimative Beispielkopfzeile}
+  \includegraphics[width=10cm,page=42]{demo/kopfzeile}
 \end{Frame}
 
 \section*{Zusammenfassung}
