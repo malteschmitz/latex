@@ -1,9 +1,4 @@
-\documentclass{scrartcl}
-
-\KOMAoptions{parskip=full,DIV=calc}
-
-
-\areaset{15cm}{15cm}
+\documentclass[paper=a6,pagesize=automedia]{scrartcl}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -17,53 +12,32 @@
 \usepackage{scrpage2}
 \pagestyle{scrheadings}
 
-%\clearscrheadfoot
-%\automark[section]{chapter}
-%% Kapitel und Abschnitt auf beiden Seiten
-%\ihead{\leftmark{}{} | \rightmark}
-%\cfoot[\pagemark]{Seite \pagemark}
-%
-%\setkomafont{pagehead}{%
-%   \normalfont\sffamily\bfseries}
-%
-%\setkomafont{pagefoot}{%
-%    \color{blue}}
-%
-%\setkomafont{pagenumber}{%
-%    \LARGE}
-
 \manualmark
 \renewcommand{\sectionmark}[1]{\markboth{\thesection\ #1}{}}
 \renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}{}}
 \clearscrheadfoot
 \ihead{\textbf{Jahresbericht 2013}\\\leftmark\ \\\rightmark}
 \ohead{\pagemark}
-\cfoot[\pagemark]{}
 \setheadsepline{2pt}
 \setkomafont{headsepline}{\color{orange!70!black}}
 \setkomafont{pagehead}{%
 \normalfont\color{orange!70!black}\sffamily}
 \setkomafont{pagenumber}{\Huge}
-\KOMAoptions{headlines=3.5,headinclude,DIV=calc}
-
+\KOMAoptions{headlines=3.5,headinclude,DIV=200}
 
 \usepackage{hyperref}
 \hypersetup{breaklinks=true,
             pdfborder={0 0 0},
             pdfhighlight={/N}}
 
-\title{Blindtext}
-\subtitle{Demonstration von Kopf- und Fußzeile}
-\author{Maria Mustermann}
-
 \begin{document}
-  \maketitle
-  \markboth{Inhaltsverzeichnis}{}
-  \tableofcontents
-
-  \Blinddocument
-  \Blinddocument
-  \Blinddocument
-  \Blinddocument
-  \Blinddocument
+  \section{Einleitung}
+  \section{Vorstandsbericht}
+  \section{Kassenbericht}
+  \subsection{Einnahmen}
+  \subsection{Ausgaben}
+  \blindtext\blindtext\blindtext\blindtext
+  \blindtext\blindtext\blindtext\blindtext
+  \section{Wahlen}
+  \section{Zusammenfassung}
 \end{document}

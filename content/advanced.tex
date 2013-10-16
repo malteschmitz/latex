@@ -1014,20 +1014,32 @@
     \item Abschnitt auf rechten/ungeraden Seiten
   \end{itemize}
   
-  \only<article>{%
-    Mögliche Werte sind dabei: \lstinline-part-, \lstinline-chapter-,
-    \lstinline-section-, \lstinline-subsection-, \lstinline-subsubsection-,
-    \lstinline-paragraph- und \lstinline-subparagraph-.}
+  
+  Mögliche Werte sind dabei: \lstinline-part-, \lstinline-chapter-,
+  \lstinline-section-, \lstinline-subsection-, \lstinline-subsubsection-,
+  \lstinline-paragraph- und \lstinline-subparagraph-.
+\end{Frame}
 
-  \xxx
-
+\begin{Frame}[fragile]{Manuelle Kolumnentitle}
   \begin{lstlisting}[gobble=4]
     \manualmark % automatische Kolumnentitel abschalten
     \markboth{linke Seite}{rechte Seite}
     % oder nur
     \markright{rechte Seite}
   \end{lstlisting}
-  Manuelle Kolumnentitel
+  Manuelle Kolumnentitel setzen.
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \manualmark % automatische Kolumnentitel abschalten
+    \renewcommand{\chaptermark}[1]{%
+      \markboth{Kapitel \thechapter\ #1}{}}
+    \renewcommand{\sectionmark}[1]{%
+      \markboth{Abschnitt \thesection\ #1}{}}
+  \end{lstlisting}
+  \lstinline-\chaptermark- wird von \LaTeX\ mit Beginn
+  jeden neuen Kapitels mit dem Namen des Kapitels aufgerufen.
 \end{Frame}
 
 \begin{Frame}[fragile]{Seitenstil konfigurieren}{Zuordnung der Befehle zur Konfiguration der Seitenstile}
@@ -1069,9 +1081,9 @@
         at (1.75,.5) (lofoot) {};
 
       \node at (-3,3)
-        {\shortstack{\strut linke Seite,\\ \strut gerade Seitenzahl,\\ \strut even page}};
+        {\shortstack{\strut linke Seite,\\ \strut gerade Seitenzahl,\\ \strut Rückseite}};
       \node at (3,3)
-        {\shortstack{\strut rechte Seite,\\ \strut ungerade Seitenzahl,\\ \strut odd page}};
+        {\shortstack{\strut rechte Seite,\\ \strut ungerade Seitenzahl,\\ \strut Vorderseite}};
 
       \node[above=of lehead] (lehead label) {\lstinline-\lehead-};
       \node[above=of cehead] (cehead label) {\lstinline-\cehead-};
@@ -1124,76 +1136,195 @@
   \end{center}
 \end{Frame}
 
-\begin{Frame}[fragile,allowframebreaks]{TODO}
-  \begin{verbatim}
-    Seitenstil konfigurieren
+\begin{Frame}[fragile]{Seitenstil konfigurieren}
+  \begin{lstlisting}[gobble=4]
+    \cfoot[Wert für scrplain]{Wert für scrheadings}
+  \end{lstlisting}
+  Alle Befehle zur Konfiguration der Seitenstile konfigurieren\\
+  den Stil \lstinline-scrheadings- und optional den Stil \lstinline-scrplain-.
 
-    pagemark, headmark, leftmark, rightmark
+  \xxx
 
-    \cfoot[\pagemark]{\pagemark}
-    \ohead{Foo \leftmark \rightmark}
-    
+  \begin{lstlisting}[gobble=4]
     \clearscrheadfoot
+  \end{lstlisting}
+  Löscht alle aktuellen Konfigurationen.
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \pagemark % aktulle Seitenzahl
+    \leftmark % aktueller linker/gerader Kolumnentitel
+    \rightmark % aktueller rechter/ungerader Kolumnentitel
+    \headmark % aktueller Kolumnentitel dieser Seite
+  \end{lstlisting}
+  Zugriff auf aktuelle Seitenzahl und Kolumnentitel
+\end{Frame}
+
+\begin{Frame}[fragile]{Beispiele für konfigurierte Seitenstile}
+  \begin{lstlisting}[gobble=4]
+    \clearscrheadfoot
+    \automark[section]{chapter}
+    % Kapitel links oben, Abschnitt rechts oben
+    \ohead{\headmark}
+    \ofoot[\pagemark]{\pagemark} % Seitenzahl unten außen
+  \end{lstlisting}
+  \only<article>{Obige Konfigurationen erzeugen den Standard von KOMA-Script.}
+
+  \xxx\pause
+
+  \begin{lstlisting}[gobble=4]
+    \clearscrheadfoot
+    \automark[section]{chapter}
+    \chead{\headmark} % Kolumnentitel in der Mitte
+    \ohead[\pagemark]{\pagemark} % Seitenzahl oben
+    \cfoot{\jobname .pdf} % Dateiname unten mittig
+  \end{lstlisting}
+
+  \xxx\pause
+
+  \begin{lstlisting}[gobble=4]
+    \clearscrheadfoot
+    \automark[section]{chapter}
+    % Kapitel und Abschnitt auf beiden Seiten
+    \ihead{\leftmark{} | \rightmark}
+    \cfoot[\pagemark]{Seite \pagemark}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Kopf- und Fußzeile formatieren}
+  \begin{lstlisting}[gobble=4]
+    \setkomafont{pagehead}{%
+      \normalfont\sffamily\bfseries}
+  \end{lstlisting}
+  Kopfzeile serifenlos und fett setzen.
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \setkomafont{pagefoot}{%
+      \color{blue}}
+  \end{lstlisting}
+  Fußzeile \alert{zusätlich} in blau setzen.
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \setkomafont{pagenumber}{%
+      \LARGE}
+  \end{lstlisting}
+  Seitenzahl \alert{zusätzlich} größer setzen.
+\end{Frame}
+
+\begin{Frame}[fragile]{Linien}
+  \begin{lstlisting}[gobble=4]
+    \KOMAoptions{%
+      headtopline,%       Linie über der Kopfzeile
+      plainheadtopline,%  auch auf scrplain
+      headsepline,plainheadsepline,% unter der Kopfzeile
+      footsepline,plainfootsepline,% über der Fußzeile
+      footbotline,plainfootbotline}% unter der Fußzeile
+  \end{lstlisting}
+  Linien aktivieren.
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \setheadtopline{2pt}  % Linie über der Kopfzeile
+    \setkomafont{headtopline}{\color{orange}}
+    \setheadsepline{.5pt} % Linie unter der Kopfzeile
+    \setkomafont{headsepline}{\color{megenta}}
+    \setfootsepline{.5pt} % Linie über der Fußzeile
+    \setkomafont{footsepline}{\color{megenta}}
+    \setfootbotline{2pt}  % Linie unter der Fußzeile
+    \setkomafont{footbotline}{\color{orange}}
+  \end{lstlisting}
+  Dicke und Farbe der Linien setzen.
+\end{Frame}
+
+\begin{Frame}[fragile]{Größere Kopf- und Fußzeilen}
+  \begin{itemize}
+    \item KOMA-Script nimmt 1,25 Linien Kopf- und Fußzeile an.
+    \item Die Zeilenzahl kann über die Optionen \lstinline-headlines-
+      bzw. \lstinline-footlines- angepasst werden.
+    \item Raum für Linien einkalkulieren!
+  \end{itemize}
+  
+  \xxx
+
+  \begin{Beispiel}[Mehrzeilige Kopfzeile]
+    \begin{lstlisting}[gobble=6,style=block]
+      \automark[subsection]{section}
+      \clearscrheadfoot
+      \ihead{\leftmark\ \\\rightmark}
+      \cfoot[\pagemark]{\pagemark}
+      \KOMAoptions{headlines=2,DIV=calc}
+    \end{lstlisting}
+  \end{Beispiel}
+\end{Frame}
+
+\begin{Frame}[fragile]{Die ultimative Beispielkopfzeile}
+  \begin{lstlisting}[gobble=4]
+    \renewcommand{\sectionmark}[1]%
+      {\markboth{\thesection\ #1}{}}
+    \renewcommand{\subsectionmark}[1]%
+      {\markright{\thesubsection\ #1}{}}
+    \clearscrheadfoot
+    \ihead{\textbf{Jahresbericht 2013}\\%
+      \leftmark\ \\\rightmark}
     \ohead{\pagemark}
-    \rehead{Jahresbericht 2001}
-    \lohead{\headmark} -- hat man damit nur section marks, aber keine chapter marks???
-    \cfoot[\pagemark]{Firma WasWeißIch}
-    \cofoot{Abteilung Entwicklung}
-    
-    Formatierung
-     \setkomafont{pagehead}{%
-       \normalfont\sffamily\bfseries}
-     \setkomafont{pagefoot}{%
-       \normalfont\sffamily}
-     \setkomafont{pagenumber}{%
-       \normalfont\rmfamily\slshape}
-    
-     \setheadwidth[Verschiebung]{Breite}
-     \setfootwidth[Verschiebung]{Breite}
-       Werte für Breite
-         paper
-         page
-         text
-         textwithmarginpar
-         head
-         foot
-    
-    Linien
-      Optionen
-        headtopline
-        plainheadtopline
-        headsepline
-        plainheadsepline
-        footsepline
-        plainfootsepline
-        footbotline
-        plainfootbotline
-      Länge und Dicke
-        \setheadtopline[Laenge]{Dicke}
-        \setheadsepline[Laenge]{Dicke}
-        \setfootsepline[Laenge]{Dicke}
-        \setfootbotline[Laenge]{Dicke}
-      Farbe \setkomafont
-        headtopline
-        headsepline
-        footsepline
-        footbotline
-      Ausrichtung mit den Optionen
-        ilines
-        clines
-        olines
-  \end{verbatim}
+    \setheadsepline{2pt}
+    \setkomafont{headsepline}{\color{orange!70!black}}
+    \setkomafont{pagehead}{%
+      \normalfont\color{orange!70!black}\sffamily}
+    \setkomafont{pagenumber}{\Huge}
+    \KOMAoptions{headlines=3.5,headinclude,DIV=calc}
+  \end{lstlisting}
+
+  \includegraphics[width=10cm,page=2]{demo/kopfzeile}
 \end{Frame}
 
 \section*{Zusammenfassung}
 
-\begin{frame}{Zusammenfassung}
+\begin{frame}[fragile]{Zusammenfassung}
   \begin{enumerate}
-    \item \LaTeX\ ist toll.
+    \item Die Definition \alert{eigener Befehle und Umgebungen}
+      erzeugt \alert{mehr Struktur} im \LaTeX-Dokoument, sodass die
+      \alert{Form zentral konfiguriert} wird.
+    \item \alert{\BibTeX} generiert aus einer \alert{Datenbank} in einem eigenen Format
+      ein \alert{Literaturverzeichnis}. Die \alert{Zitierweise} kann dabei mit
+      \lstinline-\bibliographystyle- eingestellt werden.
+    \item Mit \alert{KOMA-Script} können sehr leicht \alert{Briefe
+          nach DIN~5008} gesetzt, \alert{Papierformate} eingestellt, \alert{Satzspiegel}
+      berechnet, \alert{Kopf- und Fußzeilen} angepasst werden und vieles
+      mehr konfiguriert werden.
+    \item \alert{Lies die Anleitung! Sie ist sehr gut!}
   \end{enumerate}
 \end{frame}
 
 \begin{Frame}[fragile]{Zum Weiterlesen}
+  \begin{mybib}
+    \bibitem{Kohm2}
+      Markus Kohm, Jens-Uwe-Morawski.
+      \newblock \emph{KOMA-Script},
+      \newblock \alt<presentation>{\href{http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide.pdf}{\texttt{scrguide.pdf}}}{\url{http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide.pdf}}, Juli 2012.
+    \bibitem{Kern}
+      Uwe Kern.
+      \newblock \emph{Farbspielereien in \LaTeX mit dem xcolor-Paket},
+      \newblock Die \TeX nische Komödie 2/2004, S. 35--53,
+      \newblock \alt<presentation>{\href{http://jochen-lipps.de/latex/dtk200402.pdf}{\texttt{dtk200402.pdf}}}{\url{http://jochen-lipps.de/latex/dtk200402.pdf}}.
+    \bibitem{Kopka}
+      Helmut Kopka.
+      \newblock \emph{\LaTeX, Band 1: Einführung},
+      \newblock Addison-Wesley, März 2002.
+    \bibitem{Kopka}
+      Helmut Kopka.
+      \newblock \emph{\LaTeX, Band 2: Ergänzungen},
+      \newblock Addison-Wesley, Mai 2002.
+  \end{mybib}
+\end{Frame}
+
+\begin{Frame}[fragile]{Zum Weiterlesen für maximal Interessierte}
   \begin{mybib}
     \bibitem{Knuth}
       Donald E. Knuth.
@@ -1203,10 +1334,13 @@
       Victor Eijkhout.
       \newblock \emph{\TeX\ by Topic: A \TeX nician's Reference},
       \newblock Addison-Wesley, Februar 1992.
-    \bibitem{Kern}
-      Uwe Kern.
-      \newblock \emph{Farbspielereien in \LaTeX mit dem \texttt{xcolor}-Paket},
-      \newblock Die \TeX nische Komödie 2/2004, S. 35--53,
-      \newblock \alt<presentation>{\href{http://jochen-lipps.de/latex/dtk200402.pdf}{\texttt{dtk200402.pdf}}}{\url{http://jochen-lipps.de/latex/dtk200402.pdf}}.
+    \bibitem{Forssmann04}
+      Friedrich Forssman, Ralf de Jong.
+      \newblock \emph{Detailtypografie: Nachschlagewerk für alle Fragen zu Schrift und Satz}
+      \newblock Schmidt (Hermann), Mainz, 4. Auflage, Juni 2004
+    \bibitem{Forssmann05}
+      Friedrich Forssman, Hans Peter Willberg.
+      \newblock \emph{Lesetypografie}
+      \newblock Verlag Hermann Schmidt, Mainz, Oktober 2005
   \end{mybib}
 \end{Frame}
