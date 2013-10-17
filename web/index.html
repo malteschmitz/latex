@@ -2,264 +2,374 @@
 <html>
   <head>
   	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LaTeX-Vorträge</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="latex.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+      <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
   </head>
-  <body class="doc">
+  <body>
     <p>
       <a href="https://github.com/malteschmitz/latex"><img class="fork" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     </p>
-    <h1>LaTeX-Vorträge</h1>
-    <p class="authors">
-      <a href="http://twitter.com/HerrStachel">Johannes Thorn</a>
-      <a href="http://malte.schmitz-sh.de">Malte Schmitz</a>
-    </p>
 
-    Auf dieser Seite sammeln wir Informationen zu unseren LaTeX-Vorträgen auf der <a href="http://www.metameute.de/nook2013">Night of Open Knowledge 2013</a>.
+    <div class="bs-header">
+      <div class="container">
+        <h1>LaTeX-Vorträge <small>8. November 2013</small></h1>
+        <p class="authors">
+          <a href="http://twitter.com/HerrStachel">Johannes Thorn</a>
+          <a href="http://malte.schmitz-sh.de">Malte Schmitz</a>
+        </p>
+      </div>
+    </div>
 
-    <p><strong style="color:red">Work in Progress!</strong></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="bs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-sidenav">
+              <li><a href="#nook">MetaNook</a></li>
+              <li><a href="#folien">Folien und Skript</a></li>
+              <li><a href="#grundlagen">Grundlagen</a>
+                <ul class="nav">
+                  <li><a href="#grundlagen-beispiele">Beispieldokumente</a></li>
+                  <li><a href="#distributionen">Distributionen</a></li>
+                  <li><a href="#editoren">Editoren</a></li>
+                  <li><a href="#ides">Integrierte Umgebungen (IDEs)</a></li>
+                  <li><a href="#grundlagen-literatur">Zum Weiterlesen</a></li>
+                </ul>
+              </li>
+              <li><a href="#fortgeschritten">Fortgeschrittene Verwendung</a>
+                <ul class="nav">
+                  <li><a href="#fortgeschritten-beispiele">Beispieldokumente</a></li>
+                  <li><a href="#fortgeschritten-literatur">Zum Weiterlesen</a></li>
+                  <li><a href="#fortgeschritten-interessierte">Zum Weiterlesen für maximal Interessierte</a></li>
+                </ul>
+              </li>
+              <li><a href="#beamer">Beamer</a>
+                <ul class="nav">
+                  <li><a href="#beamer-beispiele">Beispieldokumente</a></li>
+                  <li><a href="#beamer-literatur">Zum Weiterlesen</a></li>
+                </ul>
+              </li>
+              <li><a href="#tikz">Ti<em>k</em>z</a>
+                <ul class="nav">
+                  <li><a href="#tikz-beispiele">Beispieldokumente</a></li>
+                  <li><a href="#tikz-literatur">Zum Weiterlesen</a></li>
+                </ul>
+              </li>
+              <li><a href="#tikz">Lizenz</a></li>
+            </ul>
+          </div> <!-- end of bs-sidebar -->
+        </div> <!-- end of cold-md-3 -->
+        <div class="col-md-9" role="main">
 
-    <h2>Download</h2>
-    <ul>
-      <li><a href="latex.pdf">Folien</a></li>
-      <li><a href="latex-script.pdf">Skriptfassung</a></li>
-    </ul>
-    
-    <h2>Grundlagen</h2>
+          <div class="page-header">
+            <h1 id="nook">MetaNook</h1>
+          </div>
 
-    <p><strong>Einführung in die Installation und Verwendung von LaTeX</strong></p>
+          <p class="lead">MetaMeute engages the awesome Night of Open Knowledge.</p>
 
-    <p>LaTeX ist ein Softwarepaket, das es ermöglicht Texte auf einfache Art und Weise proffesionell zu setzen. Wir beginnen ganz am Anfang und stellen LaTeX und dessen Installation kurz vor. Im weiteren Vortrag geht es um die einfache Verwendung von LaTeX.</p>
+          <p>Auf dieser Seite sammeln wir Informationen zu unseren LaTeX-Vorträgen auf der <a href="http://www.metameute.de/nook2013">Night of Open Knowledge 2013</a>. Der <a href="http://frab.metameute.de/de/nook2013/public/schedule/0">genaue Zeitplan ist im Programm</a> hinterlegt.</p>
+          
+          <p><strong style="color:red">Work in Progress!</strong></p>
+          
 
-    <p>Wir beginnen mit dem grundlegenden Aufbau eines Dokuments und den dafür verwendeten Vorlagen. Danach gehen wir genauer darauf ein, wie Text ausgezeichnet, also formatiert werden kann. Wir besprechen eine der großen Stärken von LaTeX, den einfachen Satz von komplexen mathematischen Formeln. Darüberhinaus erläutern wir den Satz von Listen, Tabellen und das Einbinden von externen Grafiken. Schließlich beleuchten wir Nummerierungen und Verweise und das automatische Generieren von Inhaltsverzeichnissen und anderen Verzeichnissen.</p>
+          <div class="page-header">
+            <h1 id="folien">Folien und Skript</h1>
+          </div>
+          <p class="lead">Die Folien und die Skriptfassung der Vorträge im PDF-Format.</p>
+          <p>Die Folien und die Skriptfassung der Vorträge können hier im PDF-Format heruntergeladen werden. Der Quelltext der Vorträge selber befindet sich bei <a href="https://github.com/malteschmitz/latex">Github</a>.</p>
+          <div class="btn-group">
+            <a href="latex.pdf" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-download"></span> Folien</a>
+            <a href="latex-script.pdf" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-download"></span> Skriptfassung</a>
+          </div>
 
-    <p><strong>Voraussetungen:</strong> Es werden grundlegende Kenntnisse im Umgang mit Computern erwartet ;)</p>
+          
+          <div class="page-header">
+            <h1 id="grundlagen">Grundlagen</h1>
+          </div>
 
-    <ul>
-      <li>Was ist LaTeX?
-        <ul>
-          <li>Einordnung</li>
-          <li>Beispiele</li>
-          <li>Installation</li>
+          <p class="lead">Einführung in die Installation und Verwendung von LaTeX.</p>
+
+          <p>LaTeX ist ein Softwarepaket, das es ermöglicht Texte auf einfache Art und Weise proffesionell zu setzen. Wir beginnen ganz am Anfang und stellen LaTeX und dessen Installation kurz vor. Im weiteren Vortrag geht es um die einfache Verwendung von LaTeX.</p>
+
+          <p>Wir beginnen mit dem grundlegenden Aufbau eines Dokuments und den dafür verwendeten Vorlagen. Danach gehen wir genauer darauf ein, wie Text ausgezeichnet, also formatiert werden kann. Wir besprechen eine der großen Stärken von LaTeX, den einfachen Satz von komplexen mathematischen Formeln. Darüberhinaus erläutern wir den Satz von Listen, Tabellen und das Einbinden von externen Grafiken. Schließlich beleuchten wir Nummerierungen und Verweise und das automatische Generieren von Inhaltsverzeichnissen und anderen Verzeichnissen.</p>
+
+          <p><strong>Voraussetungen:</strong> Es werden grundlegende Kenntnisse im Umgang mit Computern erwartet ;)</p>
+
+          <ul>
+            <li>Was ist LaTeX?
+              <ul>
+                <li>Einordnung</li>
+                <li>Beispiele</li>
+                <li>Installation</li>
+              </ul>
+            </li>
+            <li>LaTeX verwenden
+              <ul>
+                <li>Aufbau und Präambel</li>
+                <li>Auszeichnungen</li>
+                <li>Formelsatz</li>
+                <li>Listen, Tabellen, Grafiken</li>
+              </ul>
+            </li>
+            <li>Verzeichnisse und Verweise
+              <ul>
+                <li>Struktur des Dokuments</li>
+                <li>Abbildungen</li>
+                <li>Verweise</li>
+              </ul>
+            </li>
+          </ul>
+
+          <h2 id="grundlagen-beispiele">Beispieldokumente</h2>
+
+          <p>TODO: Beispieldokumente</p>
+
+          <h2 id="distributionen">Disributionen</h2>
+
+          <ul>
+            <li><a href="http://miktex.org/">MikTeX</a></li>
+            <li><a href="http://www.tug.org/texlive/">TeX Live</a>
+              <ul>
+                <li><a href="http://wiki.ubuntuusers.de/Tex_Live">Mit Paketmanager unter Ubuntu</a></li>
+                <li><a href="https://geofs.uni-muenster.de/geoinf/doku.php?id=tex-ecke:installation">Ohne Paketmanager unter Ubuntu</a></li>
+              </ul>
+            </li>
+            <li><a href="http://tug.org/mactex/">MacTeX</a></li>
+          </ul>
+
+          <h2 id="editoren">Editoren</h2>
+
+          <ul>
+            <li><a href="http://notepad-plus-plus.org/">Notepad++ (Windows)</a></li>
+            <li><a href="http://de.wikipedia.org/wiki/Gedit">GEdit (Linux)</a></li>
+            <li><a href="http://www.sublimetext.com/">Sublime Text (Windows, Linux, Mac)</a></li>
+          </ul>
+
+          <h2 id="ides">Integrierte Umgebungen (IDEs)</h2>
+          <ul>
+            <li><a href="http://de.wikipedia.org/wiki/TeXworks">TeXworks (Windows, Linux, Mac)</a>
+              <ul>
+                <li>in MiKTeX, TeX Live und MacTeX enthalten</li>
+              </ul>
+            </li>
+            <li><a href="http://de.wikipedia.org/wiki/TeXShop">TeXshop (Mac)</a>
+              <ul>
+                <li>Apple Design Award 2002</li>
+                <li>in MacTeX enthalten</li>
+              </ul>
+            </li>
+            <li><a href="http://de.wikipedia.org/wiki/Kile_(Software)">Kile (Linux)</a></li>
+            <li><a href="http://www.xm1math.net/texmaker/">Texmaker (Windows, Linux, Mac)</a></li>
+            <li><a href="http://texstudio.sourceforge.net/">TeXstudio (Windows, Linux, Mac)</a></li>
+            <li><a href="http://www.texniccenter.org/">TeXnicCenter (Windows)</a></li>
+          </ul>
+
+          <h2 id="grundlagen-literatur">Zum Weiterlesen</h2>
+
+          <p>Helmut Kopka.<br>
+          <em>LATEX, Band 1: Einführung,</em><br>
+          Addison-Wesley, März 2002.</p>
+
+          <p>Klaus Braune, Joachim und Marion Lammarsch.<br>
+          <em>LATEX: Basissystem, Layout, Formelsatz</em>,<br>
+          Addison-Wesley, Mai 2006.</p>
+
+          <p>Werner Struckmann.<br>
+          <em>Einige typographische Grundregeln und ihre Umsetzung in LATEX</em>,<br>
+          <a href="http://www2.informatik.hu-berlin.de/sv/lehre/typographie.pdf"><tt>typographie.pdf</tt></a>, September 2007.</p>
+
+          <p>Markus Kohm, Jens-Uwe-Morawski.<br>
+          <em>KOMA-Script</em>,<br>
+          <a href="http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide.pdf"><tt>scrguide.pdf</tt></a>, Juli 2012.</p>
+
+          <p>Sebastian Rahtz, Heiko Oberdiek.<br>
+          <em>Hypertext marks in LaTeX: a manual for <tt>hyperref</tt></em>,<br>
+          <a href="http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/manual.pdf"><tt>manual.pdf</tt></a>, November 2012.</p>
+
+          <p>Scott Pakin.<br>
+          <em>The Comprehensive LaTeX Symbol List</em>,<br>
+          <a href="http://mirrors.ctan.org/info/symbols/comprehensive/symbols-a4.pdf"><tt>symbols-a4.pdf</tt></a>, November 2009</p>
+
+          <p>Philipp Kühl, Daniel Kirsch.<br>
+          <em>Detexify<sup>2</sup> &ndash; LaTeX symbol classifier</em>,<br>
+          <a href="http://detexify.kirelabs.org"><tt>detexify.kirelabs.org</tt></a></p>
+        
+
+          <div class="page-header">
+            <h1 id="fortgeschritten">Fortgeschrittene Verwendung</h1>
+          </div>
+
+          <p class="lead">Was man noch alles aus LaTeX herausholen kann.</p>
+
+          <p> Dieser Vortrag macht da weiter, wo der Grundlagenvortrag endet. Wir führen ein in die Verwendung von Farbe und das Farbsystem von LaTeX, den Satz von Quelltext und Pseudocode. Darüberhinaus erklären wir die Definition von eigenen Befehlen und Umgebungen um wiederkehrende Aufgaben zu vereinfachen und semantischere LaTeX-Dokumente zu erhalten. Ebenfalls zur fortgeschrittenen Verwendung zählt für uns der Satz von Literaturverzeichnissen und die Verwaltung einer Literaturdatenbank mit BibTeX. </p>
+
+          <p>Schließlich besprechen wir ausführlich, wie das Layout von mit LaTeX gesetzten Dokumenten angepasst werden kann. Wir werden die verschiedene Einstellungen des Pakets KOMA-Script vorstellen, dass sich insbesondere im deutschen Sprachraum einer großen Beliebtheit erfreut. Dabei geht es um den Satz von Briefen, die Wahl des richtigen Papierformats, die Einstellungen von Seitenrändern bzw. des Satzspiegels, die Wahl von Schriftarten und die Anpassung von Kopf- und Fußzeilen, Seitenzahlen und Kolumnentiteln.</p>
+
+          <p><strong>Voraussetungen:</strong> Es werden grundlegende Kenntnisse von LaTeX vorausgesetzt, wie sie zum Beispiel im Grundlagen-Vortrag vermittelt wurden.</p>
+
+          <ul>
+            <li>LaTeX verwenden
+              <ul>
+                <li>Farben mit xcolor</li>
+                <li>Eigene Befehle und Umgebungen</li>
+                <li>Quelltext und Pseudocode mit listings</li>
+              </ul>
+            </li>
+            <li>Literaturverzeichnisse
+              <ul>
+                <li>Verwendung von BibTeX</li>
+                <li>Format von BibTeX-Einträgen</li>
+                <li>BibTeX-Stile</li>
+              </ul>
+            </li>
+            <li>Eigene Layouts
+              <ul>
+                <li>Briefe mit KOMA-Script</li>
+                <li>Schriftarten</li>
+                <li>Papierformate, automatische Satzspiegelberechnung mit KOMA-Script</li>
+                <li>Kopf- und Fußzeilen mit KOMA-Script</li>
+              </ul>
+            </li>
+          </ul>
+
+          <h2 id="fortgeschritten-beispiele">Beispieldokumente</h2>
+
+          <p>TODO: Beispieldokumente</p>
+
+          <h2 id="fortgeschritten-literatur">Zum Weiterlesen</h2>
+
+          <p>Helmut Kopka.<br>
+          <em>LATEX, Band 1: Einführung,</em><br>
+          Addison-Wesley, März 2002.</p>
+
+          <p>Helmut Kopka.<br>
+          <em>LATEX, Band 2: Ergänzungen,</em><br>
+          Addison-Wesley, Mai 2002.</p>
+
+          <p>Uwe Kern.<br>
+          <em>Farbspielereien in LaTeX mit dem <tt>xcolor</tt>-Paket</em>,<br>
+          Die TeXnische Komödie 2/2004, S. 35&ndash;53,<br>
+          <a href="http://jochen-lipps.de/latex/dtk200402.pdf"><tt>dtk200402.pdf</tt></a>.</p>
+
+          <p>Carsten Heinz, Brooks Moses, Jobst Hoffmann.<br>
+          <em>The Listings Package</em>,<br>
+          <a href="http://mirrors.ctan.org/macros/latex/contrib/listings/listings.pdf"><tt>listings.pdf</tt></a>, August 2013.</p>
+
+          <p>Palle Jørgensen.<br>
+          <em>The LaTeX Font Catalogue</em>,<br>
+          <a href="http://www.tug.dk/FontCatalogue/"><tt>tug.dk/FontCatalogue</tt></a>, 2012.</p>
+
+          <h2 id="fortgeschritten-interessierte">Zum Weiterlesen für maximal Interessierte</h2>
+
+          <p>Donald E. Knuth.<br>
+          <em>The TeXbook</em>,<br>
+          Addison-Wesley Professional, Januar 1984.</p>
+
+          <p>Victor Eijkhout.<br>
+          <em>TeX by Topic: A TeXnician’s Reference</em>,<br>
+          Addison-Wesley, Februar 1992.</p>
+
+          <p>Friedrich Forssman, Ralf de Jong.<br>
+          <em>Detailtypografie: Nachschlagewerk für alle Fragen zu Schrift und Satz</em>,<br>
+          Schmidt (Hermann), Mainz, 4. Auflage, Juni 2004.</p>
+
+          <p>Friedrich Forssman, Hans Peter Willberg.<br>
+          <em>Lesetypografie</em>,<br>
+          Verlag Hermann Schmidt, Mainz, Oktober 2005.</p>
+
+
+          <div class="page-header">
+            <h1 id="beamer">Beamer</h1>
+          </div>
+
+          <p class="lead">Präsentieren mit LaTeX statt mit PowerPoint.</p>
+
+          <p>Die Beamer-Klasse ermöglicht es, mit LaTeX schnell und einfach Folien für Präsentationen zu erstellen. In diesem Vortrag wollen wir in die Verwendung dieses Pakets einführen.</p>
+
+          <p>Wir besprechen den Aufbau von LaTeX-Dokumenten, die zu Präsentation kompiliert werden können, und die verschiedenen Layouts, die die Beamer-Klasse zur Verfügung stellt. Weiter erläutern wir wie Gliederungen eingeblendet werden können, mit welchen Befehlen Elemente auf den Folien strukturiert werden können und schließlich wie die Elemente schrittweise ein- und ausgeblendet werden können.</p>
+
+          <p>Ein großer Vorteil bei der Verwendung der Beamer-Klasse liegt darin, dass aus dem gleichen LaTeX-Dokument die Folien und ein begleitender Artikel für einen Vortrag generiert werden kann. Wir werden an einem kurzen Beispiel das Zusammenspiel der einzelnen Komponenten dafür vorführen.</p>
+
+          <p><strong>Voraussetungen:</strong> Es werden grundlegende Kenntnisse von LaTeX vorausgesetzt, wie sie zum Beispiel im Grundlagen-Vortrag vermittelt wurden.</p>
+
+          <h2 id="beamer-beispiele">Beispieldokumente</h2>
+
+          <p>TODO: Beispieldokumente</p>
+
+          
+          <div class="page-header">
+            <h1 id="tikz">Ti<em>k</em>Z</h1>
+          </div>
+
+          <p class="lead">Zeichnen geht auch ohne Zeichenprogramm.</p>
+
+          <p>Das TeX-Paket Ti<em>k</em>Z ermöglicht es, in LaTeX Zeichnungen zu setzen. Wir wollen in diesem Vortrag aufzeigen, wie simple Zeichnungen, aber auch Graphen, Bäume und Mind-Maps durch wenige einfache Befehle direkt aus einem LaTeX-Dokument heraus gezeichnet werden können. </p>
+
+          <p> Warum will man das? Weil schnell professionelle Zeichnungen entstehen. Weil die Zeichnungen perfekt zum restlichen LaTeX-Dokument passen, da sie das Schriftbild des umgebenden Dokuments übernehmen. Und weil es Spaß macht.</p>
+
+          <p> <strong>Voraussetungen:</strong> Für diesen Vortrag sind nur sehr grundlegende Erfahrungen mit LaTeX nötig, da TikZ eine relativ eigenständige Syntax hat.</p>
+
+          <h2 id="tikz-beispiele">Beispieldokumente</h2>
+
+          <p>TODO: Beispieldokumente</p>
+
+          <div class="page-header">
+            <h1 id="tikz-lizenz">Lizenz</h1>
+          </div>
+
+          <p class="lead">Free as in speech not just free as in beer.</p>
+          
+          <p>Der Quelltext der Vorträge und dieser
+            <a href="http://www.mlte.de/latex">Website</a>
+            sind auf <a href="http://github.com/malteschmitz/latex">GitHub</a>
+            unter <a href="http://www.opensource.org/licenses/MIT">MIT-Lizenz</a>
+            veröffentlicht.</p>
+
+          <p>The MIT License</p>
+
+          <p>Copyright (c) 2013 Johannes Thorn, Malte Schmitz</p>
+
+          <p>Permission is hereby granted, free of charge, to any person obtaining a copy
+          of this software and associated documentation files (the "Software"), to deal
+          in the Software without restriction, including without limitation the rights
+          to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+          copies of the Software, and to permit persons to whom the Software is
+          furnished to do so, subject to the following conditions:</p>
+
+          <p>The above copyright notice and this permission notice shall be included in
+          all copies or substantial portions of the Software.</p>
+
+          <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+          IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+          FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+          AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+          LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+          OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+          THE SOFTWARE.</p>
+
+        </div> <!-- end of col-md-9 -->
+      </div> <!-- end of row -->
+    <div> <!-- end of container -->
+
+      <footer class="bs-footer" role="contentinfo">
+      <div class="container">
+        <ul class="footer-links">
+          <li>Seite erstellt mit <a href="http://getbootstrap.com/">Bootstrap 3</a></li>
+          <li class="muted">&middot;</li>
+          <li><a href="http://www.schmitz-sh.de/impressum.gif">Impressum</a></li>
         </ul>
-      </li>
-      <li>LaTeX verwenden
-        <ul>
-          <li>Aufbau und Präambel</li>
-          <li>Auszeichnungen</li>
-          <li>Formelsatz</li>
-          <li>Listen, Tabellen, Grafiken</li>
-        </ul>
-      </li>
-      <li>Verzeichnisse und Verweise
-        <ul>
-          <li>Struktur des Dokuments</li>
-          <li>Abbildungen</li>
-          <li>Verweise</li>
-        </ul>
-      </li>
-    </ul>
+      </div>
+    </footer>
 
-    <h2>Beispieldokumente</h2>
-
-    <p>TODO: Beispieldokumente</p>
-
-    <h3>Disributionen</h3>
-
-    <ul>
-      <li><a href="http://miktex.org/">MikTeX</a></li>
-      <li><a href="http://www.tug.org/texlive/">TeX Live</a>
-        <ul>
-          <li><a href="http://wiki.ubuntuusers.de/Tex_Live">Mit Paketmanager unter Ubuntu</a></li>
-          <li><a href="https://geofs.uni-muenster.de/geoinf/doku.php?id=tex-ecke:installation">Ohne Paketmanager unter Ubuntu</a></li>
-        </ul>
-      </li>
-      <li><a href="http://tug.org/mactex/">MacTeX</a></li>
-    </ul>
-
-    <h3>Editoren</h3>
-
-    <ul>
-      <li><a href="http://notepad-plus-plus.org/">Notepad++ (Windows)</a></li>
-      <li><a href="http://de.wikipedia.org/wiki/Gedit">GEdit (Linux)</a></li>
-      <li><a href="http://www.sublimetext.com/">Sublime Text (Windows, Linux, Mac)</a></li>
-    </ul>
-
-    <h3>Integrierte Umgebungen (IDEs)</h3>
-    <ul>
-      <li><a href="http://de.wikipedia.org/wiki/TeXworks">TeXworks (Windows, Linux, Mac)</a>
-        <ul>
-          <li>in MiKTeX, TeX Live und MacTeX enthalten</li>
-        </ul>
-      </li>
-      <li><a href="http://de.wikipedia.org/wiki/TeXShop">TeXshop (Mac)</a>
-        <ul>
-          <li>Apple Design Award 2002</li>
-          <li>in MacTeX enthalten</li>
-        </ul>
-      </li>
-      <li><a href="http://de.wikipedia.org/wiki/Kile_(Software)">Kile (Linux)</a></li>
-      <li><a href="http://www.xm1math.net/texmaker/">Texmaker (Windows, Linux, Mac)</a></li>
-      <li><a href="http://texstudio.sourceforge.net/">TeXstudio (Windows, Linux, Mac)</a></li>
-      <li><a href="http://www.texniccenter.org/">TeXnicCenter (Windows)</a></li>
-    </ul>
-
-    <h3>Zum Weiterlesen</h3>
-
-    <p>Helmut Kopka.<br>
-    <em>LATEX, Band 1: Einführung,</em><br>
-    Addison-Wesley, März 2002.</p>
-
-    <p>Klaus Braune, Joachim und Marion Lammarsch.<br>
-    <em>LATEX: Basissystem, Layout, Formelsatz</em>,<br>
-    Addison-Wesley, Mai 2006.</p>
-
-    <p>Werner Struckmann.<br>
-    <em>Einige typographische Grundregeln und ihre Umsetzung in LATEX</em>,<br>
-    <a href="http://www2.informatik.hu-berlin.de/sv/lehre/typographie.pdf"><tt>typographie.pdf</tt></a>, September 2007.</p>
-
-    <p>Markus Kohm, Jens-Uwe-Morawski.<br>
-    <em>KOMA-Script</em>,<br>
-    <a href="http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide.pdf"><tt>scrguide.pdf</tt></a>, Juli 2012.</p>
-
-    <p>Sebastian Rahtz, Heiko Oberdiek.<br>
-    <em>Hypertext marks in LaTeX: a manual for <tt>hyperref</tt></em>,<br>
-    <a href="http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/manual.pdf"><tt>manual.pdf</tt></a>, November 2012.</p>
-
-    <p>Scott Pakin.<br>
-    <em>The Comprehensive LaTeX Symbol List</em>,<br>
-    <a href="http://mirrors.ctan.org/info/symbols/comprehensive/symbols-a4.pdf"><tt>symbols-a4.pdf</tt></a>, November 2009</p>
-
-    <p>Philipp Kühl, Daniel Kirsch.<br>
-    <em>Detexify<sup>2</sup> &ndash; LaTeX symbol classifier</em>,<br>
-    <a href="http://detexify.kirelabs.org"><tt>detexify.kirelabs.org</tt></a></p>
-  
-
-    <h2>fortgeschrittene Verwendung</h2>
-
-    <p><strong>Was man noch alles aus LaTeX herausholen kann</strong></p>
-
-    <p> Dieser Vortrag macht da weiter, wo der Grundlagenvortrag endet. Wir führen ein in die Verwendung von Farbe und das Farbsystem von LaTeX, den Satz von Quelltext und Pseudocode. Darüberhinaus erklären wir die Definition von eigenen Befehlen und Umgebungen um wiederkehrende Aufgaben zu vereinfachen und semantischere LaTeX-Dokumente zu erhalten. Ebenfalls zur fortgeschrittenen Verwendung zählt für uns der Satz von Literaturverzeichnissen und die Verwaltung einer Literaturdatenbank mit BibTeX. </p>
-
-    <p>Schließlich besprechen wir ausführlich, wie das Layout von mit LaTeX gesetzten Dokumenten angepasst werden kann. Wir werden die verschiedene Einstellungen des Pakets KOMA-Script vorstellen, dass sich insbesondere im deutschen Sprachraum einer großen Beliebtheit erfreut. Dabei geht es um den Satz von Briefen, die Wahl des richtigen Papierformats, die Einstellungen von Seitenrändern bzw. des Satzspiegels, die Wahl von Schriftarten und die Anpassung von Kopf- und Fußzeilen, Seitenzahlen und Kolumnentiteln.</p>
-
-    <p><strong>Voraussetungen:</strong> Es werden grundlegende Kenntnisse von LaTeX vorausgesetzt, wie sie zum Beispiel im Grundlagen-Vortrag vermittelt wurden.</p>
-
-    <ul>
-      <li>LaTeX verwenden
-        <ul>
-          <li>Farben mit xcolor</li>
-          <li>Eigene Befehle und Umgebungen</li>
-          <li>Quelltext und Pseudocode mit listings</li>
-        </ul>
-      </li>
-      <li>Literaturverzeichnisse
-        <ul>
-          <li>Verwendung von BibTeX</li>
-          <li>Format von BibTeX-Einträgen</li>
-          <li>BibTeX-Stile</li>
-        </ul>
-      </li>
-      <li>Eigene Layouts
-        <ul>
-          <li>Briefe mit KOMA-Script</li>
-          <li>Schriftarten</li>
-          <li>Papierformate, automatische Satzspiegelberechnung mit KOMA-Script</li>
-          <li>Kopf- und Fußzeilen mit KOMA-Script</li>
-        </ul>
-      </li>
-    </ul>
-
-    <h2>Beispieldokumente</h2>
-
-    <p>TODO: Beispieldokumente</p>
-
-    <h3>Zum Weiterlesen</h3>
-
-    <p>Helmut Kopka.<br>
-    <em>LATEX, Band 1: Einführung,</em><br>
-    Addison-Wesley, März 2002.</p>
-
-    <p>Helmut Kopka.<br>
-    <em>LATEX, Band 2: Ergänzungen,</em><br>
-    Addison-Wesley, Mai 2002.</p>
-
-    <p>Uwe Kern.<br>
-    <em>Farbspielereien in LaTeX mit dem <tt>xcolor</tt>-Paket</em>,<br>
-    Die TeXnische Komödie 2/2004, S. 35&ndash;53,<br>
-    <a href="http://jochen-lipps.de/latex/dtk200402.pdf"><tt>dtk200402.pdf</tt></a>.</p>
-
-    <p>Carsten Heinz, Brooks Moses, Jobst Hoffmann.<br>
-    <em>The Listings Package</em>,<br>
-    <a href="http://mirrors.ctan.org/macros/latex/contrib/listings/listings.pdf"><tt>listings.pdf</tt></a>, August 2013.</p>
-
-    <p>Palle Jørgensen.<br>
-    <em>The LaTeX Font Catalogue</em>,<br>
-    <a href="http://www.tug.dk/FontCatalogue/"><tt>tug.dk/FontCatalogue</tt></a>, 2012.</p>
-
-    <h3>Zum Weiterlesen für maximal Interessierte</h3>
-
-    <p>Donald E. Knuth.<br>
-    <em>The TeXbook</em>,<br>
-    Addison-Wesley Professional, Januar 1984.</p>
-
-    <p>Victor Eijkhout.<br>
-    <em>TeX by Topic: A TeXnician’s Reference</em>,<br>
-    Addison-Wesley, Februar 1992.</p>
-
-    <p>Friedrich Forssman, Ralf de Jong.<br>
-    <em>Detailtypografie: Nachschlagewerk für alle Fragen zu Schrift und Satz</em>,<br>
-    Schmidt (Hermann), Mainz, 4. Auflage, Juni 2004.</p>
-
-    <p>Friedrich Forssman, Hans Peter Willberg.<br>
-    <em>Lesetypografie</em>,<br>
-    Verlag Hermann Schmidt, Mainz, Oktober 2005.</p>
-
-    <h2>Beamer</h2>
-
-    <p><strong>Präsentieren mit LaTeX statt mit PowerPoint</strong></p>
-
-    <p>Die Beamer-Klasse ermöglicht es, mit LaTeX schnell und einfach Folien für Präsentationen zu erstellen. In diesem Vortrag wollen wir in die Verwendung dieses Pakets einführen.</p>
-
-    <p>Wir besprechen den Aufbau von LaTeX-Dokumenten, die zu Präsentation kompiliert werden können, und die verschiedenen Layouts, die die Beamer-Klasse zur Verfügung stellt. Weiter erläutern wir wie Gliederungen eingeblendet werden können, mit welchen Befehlen Elemente auf den Folien strukturiert werden können und schließlich wie die Elemente schrittweise ein- und ausgeblendet werden können.</p>
-
-    <p>Ein großer Vorteil bei der Verwendung der Beamer-Klasse liegt darin, dass aus dem gleichen LaTeX-Dokument die Folien und ein begleitender Artikel für einen Vortrag generiert werden kann. Wir werden an einem kurzen Beispiel das Zusammenspiel der einzelnen Komponenten dafür vorführen.</p>
-
-    <p><strong>Voraussetungen:</strong> Es werden grundlegende Kenntnisse von LaTeX vorausgesetzt, wie sie zum Beispiel im Grundlagen-Vortrag vermittelt wurden.</p>
-
-    <h3>Beispieldokumente</h3>
-
-    <p>TODO: Beispieldokumente</p>
-
-    
-    <h2>Ti<em>k</em>Z</h2>
-
-    <p><strong>Zeichnen geht auch ohne Zeichenprogramm</strong></p>
-
-    <p>Das TeX-Paket Ti<em>k</em>Z ermöglicht es, in LaTeX Zeichnungen zu setzen. Wir wollen in diesem Vortrag aufzeigen, wie simple Zeichnungen, aber auch Graphen, Bäume und Mind-Maps durch wenige einfache Befehle direkt aus einem LaTeX-Dokument heraus gezeichnet werden können. </p>
-
-    <p> Warum will man das? Weil schnell professionelle Zeichnungen entstehen. Weil die Zeichnungen perfekt zum restlichen LaTeX-Dokument passen, da sie das Schriftbild des umgebenden Dokuments übernehmen. Und weil es Spaß macht.</p>
-
-    <p> <strong>Voraussetungen:</strong> Für diesen Vortrag sind nur sehr grundlegende Erfahrungen mit LaTeX nötig, da TikZ eine relativ eigenständige Syntax hat.</p>
-
-    <h2>Beispieldokumente</h3>
-
-    <p>TODO: Beispieldokumente</p>
-
-    
-    <h2>Lizenz</h2>
-    
-    <p>Der Quelltext der Vorträge und dieser
-      <a href="http://www.mlte.de/latex">Website</a><sup>1</sup>
-      sind auf <a href="http://github.com/malteschmitz/latex">GitHub</a><sup>2</sup>
-      unter <a href="http://www.opensource.org/licenses/MIT">MIT-Lizenz</a><sup>3</sup>
-      veröffentlicht.</p>
-    
-    <hr>
-    <p>
-      <sup>1</sup> <tt>http://www.mlte.de/latex</tt><br>
-      <sup>2</sup> <tt>http://github.com/malteschmitz/latex</tt><br>
-      <sup>3</sup> <tt>http://www.opensource.org/licenses/MIT</tt>
-    </p>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/application.js"></script>
   </body>
 </html>
