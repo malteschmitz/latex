@@ -3,7 +3,7 @@ $(function() {
   var bd = $(document.body);
 
   bd.scrollspy({
-    target: '.bs-sidebar',
+    target: '.latex-sidebar',
   });
 
   win.on('load', function () {
@@ -11,13 +11,16 @@ $(function() {
   });
 
   window.setTimeout(function () {
-    var sidebar = $('.bs-sidebar');
+    var sidebar = $('.latex-sidebar');
     sidebar.affix({
       offset: {
         top: function () {
           var offsetTop = sidebar.offset().top;
           var sideBarMargin = parseInt(sidebar.children(0).css('margin-top'), 10);
           return (this.top = offsetTop - sideBarMargin);
+        },
+        bottom: function () {
+          return (this.bottom = $('.latex-footer').outerHeight(true));
         }
       }
     });

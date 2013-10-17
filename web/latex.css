@@ -11,6 +11,10 @@
   }
 }
 
+body {
+  padding-top: 1px; /* Prevents affix from flickering---whyever. */
+}
+
 /*
  * Side navigation
  *
@@ -19,47 +23,47 @@
  */
 
 /* By default it's not affixed in mobile views, so undo that */
-.bs-sidebar.affix {
+.latex-sidebar.affix {
   position: static;
 }
 
 /* First level of nav */
-.bs-sidenav {
+.latex-sidenav {
   margin-top: 30px;
   margin-bottom: 30px;
   padding-top:    10px;
   padding-bottom: 10px;
   text-shadow: 0 1px 0 #fff;
-  background-color: #f7f5fa;
+  background-color: #f6ede3;
   border-radius: 5px;
 }
 
 /* All levels of nav */
-.bs-sidebar .nav > li > a {
+.latex-sidebar .nav > li > a {
   display: block;
-  color: #716b7a;
+  color: #676058;
   padding: 5px 20px;
 }
-.bs-sidebar .nav > li > a:hover,
-.bs-sidebar .nav > li > a:focus {
+.latex-sidebar .nav > li > a:hover,
+.latex-sidebar .nav > li > a:focus {
   text-decoration: none;
-  background-color: #e5e3e9;
-  border-right: 1px solid #dbd8e0;
+  background-color: #ecdfcf;
+  border-right: 2px solid #e6ad6b;
 }
-.bs-sidebar .nav > .active > a,
-.bs-sidebar .nav > .active:hover > a,
-.bs-sidebar .nav > .active:focus > a {
+.latex-sidebar .nav > .active > a,
+.latex-sidebar .nav > .active:hover > a,
+.latex-sidebar .nav > .active:focus > a {
   font-weight: bold;
-  color: #563d7c;
+  color: #e0660b;
   background-color: transparent;
-  border-right: 1px solid #563d7c;
+  border-right: 2px solid #e0660b;
 }
 
 /* Nav: second level (shown on .active) */
-.bs-sidebar .nav .nav {
+.latex-sidebar .nav .nav {
   margin-bottom: 8px;
 }
-.bs-sidebar .nav .nav > li > a {
+.latex-sidebar .nav .nav > li > a {
   padding-top:    3px;
   padding-bottom: 3px;
   padding-left: 30px;
@@ -69,27 +73,27 @@
 /* Show and affix the side nav when space allows it */
 @media screen and (min-width: 992px) {
   /* Widen the fixed sidebar */
-  .bs-sidebar.affix,
-  .bs-sidebar.affix-bottom {
+  .latex-sidebar.affix,
+  .latex-sidebar.affix-bottom {
     width: 213px;
   }
-  .bs-sidebar.affix {
+  .latex-sidebar.affix {
     position: fixed; /* Undo the static from mobile first approach */
     top: 30px;
   }
-  .bs-sidebar.affix-bottom {
+  .latex-sidebar.affix-bottom {
     position: absolute; /* Undo the static from mobile first approach */
   }
-  .bs-sidebar.affix-bottom .bs-sidenav,
-  .bs-sidebar.affix .bs-sidenav {
+  .latex-sidebar.affix-bottom .latex-sidenav,
+  .latex-sidebar.affix .latex-sidenav {
     margin-top: 0;
     margin-bottom: 0;
   }
 }
 @media screen and (min-width: 1200px) {
   /* Widen the fixed sidebar again */
-  .bs-sidebar.affix-bottom,
-  .bs-sidebar.affix {
+  .latex-sidebar.affix-bottom,
+  .latex-sidebar.affix {
     width: 263px;
   }
 }
@@ -112,26 +116,26 @@ p.authors a {
 }
 
 /* Page headers */
-.bs-header {
+.latex-header {
   padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
   font-size: 16px;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0,0,0,.15);
 }
-.bs-header p {
+.latex-header p {
   font-weight: 300;
   line-height: 1.5;
 }
-.bs-header .container {
+.latex-header .container {
   position: relative;
 }
 
 @media screen and (min-width: 768px) {
-  .bs-header {
+  .latex-header {
     font-size: 21px;
     text-align: left;
   }
-  .bs-header h1 {
+  .latex-header h1 {
     font-size: 60px;
     line-height: 1;
   }
@@ -143,7 +147,7 @@ p.authors a {
  * Separated section of content at the bottom of all pages, save the homepage.
  */
 
-.bs-footer {
+.latex-footer {
   padding-top: 40px;
   padding-bottom: 30px;
   margin-top: 100px;
@@ -165,10 +169,10 @@ p.authors a {
 }
 
 @media (min-width: 768px) {
-  .bs-footer {
+  .latex-footer {
     text-align: left;
   }
-  .bs-footer p {
+  .latex-footer p {
     margin-bottom: 0;
   }
 }
