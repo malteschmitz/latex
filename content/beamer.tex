@@ -1,25 +1,123 @@
 \chapter{Beamer}
 
 \targets{
-  \item Erstes Ziel
-  \item Zweites Ziel
-  \item Drittes Ziel
-  \item Viertes Ziel
+  \item Beamer verwenden können
+  \item Vor- und Nachteile von Beamer kennen und einschätzen können, wann und wofür Beamer gut geeignet ist.
+  \item Fortgeschrittene Anwendungsmöglichkeiten von Beamer kennen lernen.
 }
 
 \website
 
-\section{erster Abschnitt}
+\section{Was ist Beamer?}
 
-\begin{Frame}{Hier passierts}
-  \ldots
+\subsection{Einleitung}
+
+\begin{Frame}{Was ist Beamer?}
+  \begin{itemize}
+    \item \alert{Dokumentenklasse für \LaTeX} für die Erzeugung von Präsentationen.\\
+      (Diese Präsentation und das Skript wurden mit Beamer erzeugt.)
+    \item Keine eigene und \alert{keine graphische Anwendung}.
+    \item Beamer ist in MiK\TeX\ und \TeX\ Live enthalten.\\
+      (\alert{Es kann direkt losgehen}.)
+  \end{itemize}
+
+  \xxx
+
+  \begin{mybib}
+    \bibitem{Tantau}
+      Till Tantau.
+      \newblock \emph{Beamer: Strahlende Vorträge mit LATEX},
+      \newblock Präsentieren und Dokumentieren -- Tools.
+      \newblock Vorlesung vom 31. Oktober 2012 von Till Tantau.
+  \end{mybib}
 \end{Frame}
 
-\subsection{erster Unterabschnitt}
-
-\begin{Frame}
-  Es fehlt noch an Inhalt!
+\begin{Frame}{Historie}
+  \begin{description}
+    \item[1998] Till Tantau erzeugt sich erste Makros für Präsentationen.
+    \item[2003] Er verwendet die erste Version für seine Promotionsverteidigung.
+    \item[2003] Veröffentlichung und Implementierung von vielen Benutzerwünschen.
+    \item[2007] Beamer wird nicht weiter gepflegt.
+    \item[2010] Beamer wird an Joseph Wright and Vedran Mileti\'c übergeben.
+    \item[2013] Aktuelle Version 3.30 wird kontinuierlich weiter entwickelt.
+  \end{description}
 \end{Frame}
+
+\begin{Frame}{Workflow}
+  \lstset{language={}}
+  \begin{enumerate}
+    \item Normales \LaTeX-Dokument erzeugen.\\
+      Dabei einige spezielle Beamer-Kommandos verwenden.
+    \item \LaTeX-Dokument mit \lstinline-pdflatex- oder \lstinline-latexmk -pdf- kompilieren.
+    \item Ergebnis überprüfen und \LaTeX-Dokument anpassen.
+  \end{enumerate}
+\end{Frame}
+
+\subsection{Eigenschaften}
+
+\begin{Frame}{Funktionen von Beamer}
+  \begin{itemize}
+    \item Kompilieren wie jedes andere \LaTeX-Dokument auch.
+    \item Normale \LaTeX-Kommandos funktionieren.
+    \item Sinnvolles funktionales Aussehen von Vorträgen.
+    \item Einfaches Ein- und Ausblenden von Seitenteilen.
+    \item Automatische Gliederungen und Navigationsleisten.
+    \item Präsentationen im PDF-Format können auf jedem Computer dargestellt werden.
+    \item Erzeugung von Präsentation und Skriptfassung aus dem gleichen \LaTeX-Dokument.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}{Beamer vs. PowerPoint}
+  \begin{zebratabular}{rcc}
+    \headerrow & Beamer & PowerPoint \\
+    Erlenen ohne \LaTeX-Kenntnisse & \badmark\badmark & \goodmark \\
+    Objekte frei positionieren & \badmark & \goodmark\goodmark \\
+    Graphiken direkt erstellen & \badmark & \goodmark \\
+    Einbinden von Multimedia & -- & \goodmark \\
+    Arbeitsgeschwindigkeit Anfänger & -- & -- \\
+    Arbeitsgeschwindigkeit Profi & \goodmark & \goodmark \\
+    Erlernen mit \LaTeX-Kenntnissen & \goodmark & \goodmark \\
+    Dokumentation & \goodmark & \goodmark \\
+    Vorlagenqualität & \goodmark & -- \\
+    Tyographie & \goodmark & \badmark\badmark \\
+    Konsistenz des Aussehens & \goodmark\goodmark & \badmark \\
+    Visualisierung des Vortragsaufbau & \goodmark\goodmark & \badmark \\
+    Mathematische Formeln & \goodmark\goodmark & \badmark\badmark \\
+    Quelltextanzeige & \goodmark\goodmark & \badmark\badmark
+  \end{zebratabular}
+\end{Frame}
+
+\section{Verwendung von Beamer}
+
+\frame{Dokumentenklasse}
+
+\subsection{Folien}
+
+\frame{Folien}
+
+\frame{Titlefolie und Verzeichnisse}
+
+\subsection{Strukturelemente}
+
+\frame{Listen, Tabellen, Definitionslisten, Grafiken wie immer}
+
+\frame{Boxen, Beispiele, Definition, ...}
+
+\frame{Spalten}
+
+\subsection{Form}
+
+\frame{Kopf- und Fußzeile}
+
+\frame{Layouts}
+
+\frame{eigenes Logo}
+
+\section{Fortgeschrittene Verwendung}
+
+\subsection{Overlays}
+
+\subsection{Skriptfassung}
 
 \section*{Zusammenfassung}
 
