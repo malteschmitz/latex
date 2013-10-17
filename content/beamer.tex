@@ -89,7 +89,43 @@
 
 \section{Verwendung von Beamer}
 
-\frame{Dokumentenklasse}
+\begin{Frame}[fragile]{Beispiel}
+  \begin{lstlisting}[gobble=4]
+    \documentclass{beamer}
+
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{lmodern}
+    \usepackage[ngerman]{babel}
+
+    \begin{document}
+      \begin{frame}{Funktionen von Beamer}
+        Kompilieren wie jedes andere
+        \LaTeX-Dokument auch.
+      \end{frame}
+    \end{document}
+  \end{lstlisting}
+\end{Frame}
+
+\plain{\includegraphics{demo/beamer.pdf}}
+
+\begin{Frame}[fragile]{Beispiel}
+  \begin{lstlisting}[gobble=4]
+    \documentclass{beamer}
+
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{lmodern}
+    \usepackage[ngerman]{babel}
+
+    \begin{document}
+      \begin{frame}{Funktionen von Beamer}
+        Kompilieren wie jedes andere
+        \LaTeX-Dokument auch.
+      \end{frame}
+    \end{document}
+  \end{lstlisting}
+\end{Frame}
 
 \subsection{Folien}
 
