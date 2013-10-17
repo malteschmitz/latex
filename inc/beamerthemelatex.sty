@@ -3,13 +3,16 @@
 
 \ProcessOptionsBeamer
 
-\newcommand{\plain}[1]{\frame[plain,t]{%
-  \hspace*{-\beamer@leftmargin}%
-  \vspace*{-5em}%
-  \minipage[c][\textheight][t]{\paperwidth}%
-    #1
-  \endminipage%
-}}
+\newcommand{\plain}[1]{%
+  {%
+    \setbeamertemplate{background}{%
+      \minipage[c][\paperheight][t]{\paperwidth}%
+        #1
+      \endminipage%
+    }%
+    \frame[plain]{}%
+  }%
+}
 
 \useinnertheme{default} % circles, rounded, rectangles
 
