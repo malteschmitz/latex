@@ -70,7 +70,7 @@
 \begin{Frame}{Beamer vs. PowerPoint}
   \begin{zebratabular}{rcc}
     \headerrow & Beamer & PowerPoint \\
-    Erlenen ohne \LaTeX-Kenntnisse & \badmark\badmark & \goodmark \\
+    Erlernen ohne \LaTeX-Kenntnisse & \badmark\badmark & \goodmark \\
     Objekte frei positionieren & \badmark & \goodmark\goodmark \\
     Graphiken direkt erstellen & \badmark & \goodmark \\
     Einbinden von Multimedia & -- & \goodmark \\
@@ -79,7 +79,7 @@
     Erlernen mit \LaTeX-Kenntnissen & \goodmark & \goodmark \\
     Dokumentation & \goodmark & \goodmark \\
     Vorlagenqualität & \goodmark & -- \\
-    Tyographie & \goodmark & \badmark\badmark \\
+    Typographie & \goodmark & \badmark\badmark \\
     Konsistenz des Aussehens & \goodmark\goodmark & \badmark \\
     Visualisierung des Vortragsaufbau & \goodmark\goodmark & \badmark \\
     Mathematische Formeln & \goodmark\goodmark & \badmark\badmark \\
@@ -178,9 +178,35 @@
 
 \subsection{Strukturelemente}
 
-\frame{Listen, Tabellen, Definitionslisten, Grafiken wie immer}
+\begin{Frame}[fragile]{Listen, Tabellen und Grafiken}
+  \begin{itemize}
+    \item Listen mit \lstinline-itemize- und \lstinline-enumerate-,
+    \item Tabellen mit \lstinline-tabular- und
+    \item Grafiken mit \lstinline-\includegraphics- funktionieren wie immer in \LaTeX.
+  \end{itemize}
 
-\frame{figure, table eher sinnlos}
+  \xxx
+
+  \begin{itemize}
+    \item Eine Folie ist 128~mm $\times$ 96~mm groß.
+    \item Zeilenumbruch \lstinline-\\- zum Ausrichten von Text sinnvoll.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Formelsatz}
+  \begin{itemize}
+    \item Formelsatz wie immer in \LaTeX
+    \item zum Beispiel \lstinline-$1+1=2$-\\
+      oder \lstinline-\[1+1=2\]-
+  \end{itemize}
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    % Formeln mit Serifen setzen
+    \usefonttheme[onlymath]{serif}
+  \end{lstlisting}
+\end{Frame}
 
 \frame{Boxen, Beispiele, Definition, ...}
 

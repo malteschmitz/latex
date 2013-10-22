@@ -66,7 +66,7 @@
 
   \xxx
 
-  \begin{lstlisting}[gobble=4]
+  \begin{lstlisting}[gobble=4,moretexcs={h}]
     \foreach \h in {0, ..., 240} {% pgffor package
       \xdefinecolor{current}{HSB}{\h, 240, 240}%
       \textcolor{current}{\rule{1pt}{3ex}}%
@@ -351,7 +351,7 @@
 \end{Frame}
 
 \begin{Frame}{Die Literaturdatenbank \texttt{datenbank.bib}}
-  \lstinputlisting[language=BibTeX]{demo/datenbank.bib}
+  \lstinputlisting[language=BibTeX,moretexcs={TeX}]{demo/datenbank.bib}
 \end{Frame}
 
 \begin{Frame}[fragile]{Kompilieren}
@@ -589,7 +589,7 @@
 
   \xxx
 
-  \begin{lstlisting}[language=BibTeX,gobble=4]
+  \begin{lstlisting}[language=BibTeX,gobble=4,moretexcs={url}]
     @misc{codecommit,
       author = {Daniel Spiewak},
       title = {The Magic Behind Parser
@@ -633,9 +633,9 @@
 \begin{Frame}[fragile]{KOMA-Script-Optionen}
   \begin{tabular}{r@{ }l}
     \lstinline-nottotoc- & kein Eintrag im Inhaltsverzeichnis\\
-    \lstinline-totoc- & kein Eintrag im Inhaltsverzeichnis\\
+    \lstinline-totoc- & Eintrag im Inhaltsverzeichnis\\
     \lstinline-totocnumbered- & nummerierter Eintrag im Inhaltsverzeichnis\\
-    \lstinline-openstyle- & openstyle\\
+    \lstinline-openstyle- & moderne, weitläufige Formatierung\\
     \lstinline-oldstyle- & klassische, kompakte Formatierung
   \end{tabular}
 
@@ -813,7 +813,10 @@
   \end{itemize}
 \end{Frame}
 
-\begin{Frame}[t,fragile]{Randnotizen}
+\mode
+<article>
+
+\begin{Block}{Randnotizen}
   \begin{lstlisting}[gobble=4]
     Als Marginalien\marginpar{\textsl{Marginalie}}
     werden kurze Notizen in der Randspalte %...
@@ -822,7 +825,10 @@
   \begin{center}
     \includegraphics[width=10cm]{demo/margin.pdf}
   \end{center}
-\end{Frame}
+\end{Block}
+
+\mode
+<all>
 
 \begin{Frame}{Satzspiegel}{doppelseitiger Druck}
   \begin{center}
@@ -834,7 +840,7 @@
       \fill[maincolor!30]
         (-3,1.5) -- (-.5,1.5) -- (-.5,5.25) -- (-3,5.25) -- cycle
         (3,1.5) -- (.5,1.5) -- (.5,5.25) -- (3,5.25) -- cycle;
-      \node[rotate=90,fill=white] at (0,3) {innere Rand};
+      \node[rotate=90,fill=white] at (0,3) {innerer Rand};
       \node[text width=3cm,anchor=north west,font=\LARGE] at (-3,5.25) {Satz-\newline spiegel\vskip1ex\par linke\newline Seite};
       \node[text width=3cm,anchor=north west,font=\LARGE] at (.5,5.25) {Satz-\newline spiegel\vskip1ex\par rechte\newline Seite};
       \node at (-2,5.625) {oberer Rand};
@@ -943,7 +949,12 @@
   \end{zebratabular}
 \end{Frame}
 
-\begin{Frame}[fragile]{Was ist Teil des Satzspiegels?}
+\frame{TODO: Bindekorrektur mit BCOR}
+
+\mode
+<article>
+
+\begin{Block}{Was ist Teil des Satzspiegels?}
   \begin{itemize}
     \item \lstinline-\KOMAoptions{mpinclude=true}-\newline 
       Randspalte erhält eine Breiteneinheit vom Satzspiegel\newline
@@ -955,33 +966,32 @@
       Fußzeile wird zum Teil des Satzspiegels\newline
       \alert{Nicht bei einsamer Seitenzahl verwenden.}
   \end{itemize}
-\end{Frame}
+\end{Block}
 
-\begin{Frame}[fragile]{Manueller Satzspiegel}
-  \begin{Block}{In der Präambel für eigenen Satzspiegel}
-    \begin{lstlisting}[gobble=6,style=block]
-      \areaset{15cm}{15cm}
-    \end{lstlisting}
-    Es gilt weiterhin
-    \begin{align*}
-      \text{oberer\ Rand} : \text{unterer\ Rand} &= 1 : 2, \\
-      \text{innerer\ Rand} &= \text{äußerer\ Rand} \text{ und} \\
-      \text{linker\ Rand} &= \text{rechter\ Rand}.
-    \end{align*}
-  \end{Block}
+\begin{Block}{In der Präambel für manuellen Satzspiegel}
+  \begin{lstlisting}[gobble=6,style=block]
+    \areaset{15cm}{15cm}
+  \end{lstlisting}
+  Es gilt weiterhin
+  \begin{align*}
+    \text{oberer\ Rand} : \text{unterer\ Rand} &= 1 : 2, \\
+    \text{innerer\ Rand} &= \text{äußerer\ Rand} \text{ und} \\
+    \text{linker\ Rand} &= \text{rechter\ Rand}.
+  \end{align*}
+\end{Block}
 
-  \xxx
+\begin{Block}{In der Präambel für eigeneren Satzspiegel}
+  \begin{lstlisting}[gobble=6,style=block]
+    \usepackage[a5paper,top=2cm,bottom=4cm,%
+      left=2cm,right=4cm]{geometry}
+    % oder auch
+    \usepackage[papersize={20cm,30cm},top=2cm,%
+      bottom=4cm,inner=2cm,outer=4cm]{geometry}
+  \end{lstlisting}
+\end{Block}
 
-  \begin{Block}{In der Präambel für eigeneren Satzspiegel}
-    \begin{lstlisting}[gobble=6,style=block]
-      \usepackage[a5paper,top=2cm,bottom=4cm,%
-        left=2cm,right=4cm]{geometry}
-      % oder auch
-      \usepackage[papersize={20cm,30cm},top=2cm,%
-        bottom=4cm,inner=2cm,outer=4cm]{geometry}
-    \end{lstlisting}
-  \end{Block}
-\end{Frame}
+\mode
+<all>
 
 \subsection{Kopf- und Fußzeilen}
 
@@ -1033,8 +1043,7 @@
   
   
   Mögliche Werte sind dabei: \lstinline-part-, \lstinline-chapter-,
-  \lstinline-section-, \lstinline-subsection-, \lstinline-subsubsection-,
-  \lstinline-paragraph- und \lstinline-subparagraph-.
+  \lstinline-section-, \lstinline-subsection-.
 \end{Frame}
 
 \begin{Frame}[fragile]{Manuelle Kolumnentitle}
@@ -1224,6 +1233,8 @@
   \end{lstlisting}
 \end{Frame}
 
+\frame{TODO: Ergebnisse zeigen}
+
 \begin{Frame}[fragile]{Kopf- und Fußzeile formatieren}
   \begin{lstlisting}[gobble=4]
     \setkomafont{pagehead}{%
@@ -1237,7 +1248,7 @@
     \setkomafont{pagefoot}{%
       \color{blue}}
   \end{lstlisting}
-  Fußzeile \alert{zusätlich} in blau setzen.
+  Fußzeile \alert{zusätzlich} in blau setzen.
 
   \xxx
 

@@ -272,56 +272,7 @@
 
 \section{\LaTeX\ verwenden}
 
-\subsection{Aufbau und Präambel}
-
-\begin{Frame}[fragile]{Befehle}
-  \begin{Definition}[Befehl]
-    \begin{lstlisting}[gobble=6,style=block,morekeywords={commandname}]
-      \commandname*[opt]{arg1}{arg2}
-    \end{lstlisting}
-
-    \begin{tabular}{rl}
-      \lstinline[morekeywords={commandname}]-commandname- & Name des Befehls \\
-      \lstinline-*- & optionaler Schalter \\
-      \lstinline-[opt]- & optionaler Parameter \\
-      \lstinline-{arg1}- & Parameter
-    \end{tabular}
-  \end{Definition}
-
-  \xxx
-
-  \begin{Beispiel}[Befehl]
-    \begin{lstlisting}[gobble=6,style=block]
-      \section[Kurzform]{Überschrift}
-      \section*{noch eine Überschrift}
-    \end{lstlisting}
-  \end{Beispiel}
-\end{Frame}
-
-\begin{Frame}[fragile]{Umgebungen}
-  \begin{Definition}[Umgebung]
-    \begin{lstlisting}[gobble=6,style=block,morekeywords={[2]envname}]
-      \begin{envname}[opt]{arg1}{arg2}
-        Inhalt
-      \end{envname}
-    \end{lstlisting}
-
-    \begin{tabular}{rl}
-      \lstinline-envname- & Name der Umgebunng \\
-      \lstinline-Inhalt- & Inhalt der Umgebung
-    \end{tabular}
-  \end{Definition}
-
-  \xxx
-
-  \begin{Beispiel}[Umgebung]
-    \begin{lstlisting}[gobble=6,style=block]
-      \begin{center}
-        Ich bin zentriert.
-      \end{center}
-    \end{lstlisting}
-  \end{Beispiel}
-\end{Frame}
+\subsection{Präambel}
 
 \begin{Frame}[fragile]{Aufbau eines Dokuments}
   \begin{tikzpicture}[%
@@ -341,14 +292,14 @@
         \usepackage[utf8]{inputenc}
         \usepackage[T1]{fontenc}
 
-        \title{Hallo Welt}
-        \author{Malte Schmitz}
+        \KOMAoptions{%
+          parskip=full,%
+          fontsize=12pt}
 
         \begin{document}
-          \maketitle
-
-          \section{Ein Abschnitt}
-          Hier beginnt's \ldots
+          Franz jagt im komplett
+          verwahrlosten Taxi quer
+          durch Bayern.
         \end{document}
       \end{lstlisting}
     };
@@ -358,16 +309,16 @@
       (1,7.6) edge node {Dokumentenklasse} (1,7.2);
     \pause
     \draw
-      (3,6.6) edge node {Präambel} (3,3.9)
+      (3,6.6) edge node {Präambel} (3,3.5)
       (1,6.6) edge node {\shortstack{Pakete\\laden}} (1,5.3)
-      (0,4.7) edge node {Einstellungen} (0,3.9);
+      (0,4.7) edge node {Einstellungen} (0,3.5);
     \pause
     \draw
-      (1,3) edge node {Dokumentenkörper} (1,.9);
+      (1,2.6) edge node {Dokumentenkörper} (1,.9);
   \end{tikzpicture}
 \end{Frame}
 
-\begin{Frame}[fragile]{Präambel: Dokumentenklasse}
+\begin{Frame}[fragile]{Dokumentenklasse}
   \lstinline-\documentclass{scrartcl}-\\
   kurzer Artikel
 
@@ -391,7 +342,7 @@
 
 \begin{Frame}[fragile]{Präambel: KOMA-Script-Optionen}
   \begin{lstlisting}[gobble=4]
-    \documentclass[
+    \KOMAoptions{
       parskip=full,
       % full - Absätze haben großen Abstand
       % half - Absätze haben kleinen Abstand
@@ -406,7 +357,7 @@
       % Papierformat (a4 default)
       pagesize=auto
       % Papierformat auch für PDF verwenden
-    ]{scrartcl}
+    }
   \end{lstlisting}
 \end{Frame}
 
@@ -432,11 +383,22 @@
   \end{lstlisting}
   schönere Schriftarten
   \begin{lstlisting}
-    \usepackage[breaklinks=true, pdfborder={0 0 0},
-                pdfhighlight={/N}]{hyperref}
+    \usepackage[breaklinks=true]{hyperref}
   \end{lstlisting}
   bessere Unterstützung der PDF-Ausgabe
 \end{Frame}
+
+\mode
+<article>
+
+\begin{lstlisting}
+  \usepackage[breaklinks=true, pdfborder={0 0 0},
+              pdfhighlight={/N}]{hyperref}
+\end{lstlisting}
+noch bessere Unterstützung der PDF-Ausgabe
+
+\mode
+<all>
 
 \subsection{Auszeichnungen}
 
@@ -527,6 +489,55 @@
   \end{itemize}
 \end{Frame}
 
+\begin{Frame}[fragile]{Befehle}
+  \begin{Definition}[Befehl]
+    \begin{lstlisting}[gobble=6,style=block,morekeywords={commandname,commandname*}]
+      \commandname*[opt]{arg1}{arg2}
+    \end{lstlisting}
+
+    \begin{tabular}{rl}
+      \lstinline[morekeywords={commandname}]-commandname- & Name des Befehls \\
+      \lstinline-*- & optionaler Schalter \\
+      \lstinline-[opt]- & optionaler Parameter \\
+      \lstinline-{arg1}- & Parameter
+    \end{tabular}
+  \end{Definition}
+
+  \xxx
+
+  \begin{Beispiel}[Befehl]
+    \begin{lstlisting}[gobble=6,style=block]
+      \section[Kurzform]{Überschrift}
+      \section*{noch eine Überschrift}
+    \end{lstlisting}
+  \end{Beispiel}
+\end{Frame}
+
+\begin{Frame}[fragile]{Umgebungen}
+  \begin{Definition}[Umgebung]
+    \begin{lstlisting}[gobble=6,style=block,morekeywords={[2]envname}]
+      \begin{envname}[opt]{arg1}{arg2}
+        Inhalt
+      \end{envname}
+    \end{lstlisting}
+
+    \begin{tabular}{rl}
+      \lstinline-envname- & Name der Umgebunng \\
+      \lstinline-Inhalt- & Inhalt der Umgebung
+    \end{tabular}
+  \end{Definition}
+
+  \xxx
+
+  \begin{Beispiel}[Umgebung]
+    \begin{lstlisting}[gobble=6,style=block]
+      \begin{center}
+        Ich bin zentriert.
+      \end{center}
+    \end{lstlisting}
+  \end{Beispiel}
+\end{Frame}
+
 \begin{Frame}[fragile]{Abkürzungen}
   \begin{Block}{Mehrgliedrige Abkürzungen}
     \begin{tabular}{rll}
@@ -567,28 +578,66 @@
   Hans sagt: \enquote{Er habe \enquote{Franz' Auto!} gerufen.}
 \end{Frame}
 
+\begin{Frame}[fragile]{Besondere Zeichen}
+  \begin{zebratabular}{llll}
+    \headerrow Name & Symbol & \LaTeX-Code\\
+    Apostroph & ' & \lstinline-'-\\
+    Ellipse & \dots & \lstinline-\dots-\\
+    Backslash & \textbackslash & \lstinline-\textbackslash-\\
+    geschweifte Klammern & \{, \} & \lstinline-\{-, \lstinline-\}-\\
+    Doppelkreuz & \# & \lstinline-\#-\\
+    Dollarzeichen & \$ & \lstinline-\$-\\
+    Unterstrich & \_ & \lstinline-\_-\\
+    Zirkumflex & \textasciicircum & \lstinline-\textasciicircum-\\
+    Kaufmanns-Und & \& & \lstinline-\&-\\
+    Prozentzeichen & \% & \lstinline-\%-\\
+    Tilde & \textasciitilde & \lstinline-\textasciitilde-
+  \end{zebratabular}
+\end{Frame}
+
+\mode
+<article>
+
+Spitze Klammern < und > haben in bestimmten Kontexten eine spezielle Bedeutung. Deswegen können sie auch als \lstinline-\textless- und \lstinline-\textgreater- eingegeben werden. Durch die Verwendung des Pakets \lstinline-inputenc- können sie aber auch direkt eingegeben werden. Genauso kann das Paragraphenzeichen § auch als \lstinline-\S- eingegeben werden.
+
+Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zeichen werden in diesem Modus anders behandelt. Insbesondere die Kommandos, die mit \lstinline-\text- beginnen, sollten in diesem Modus mit Vorsicht verwendet werden. Statt \lstinline-\textbackslash- steht hier der Befehl \lstinline-\backslash- zur Verfügung, tatt \lstinline-\textasciitilde- sollte man \lstinline-\sim- verwenden und für \lstinline-\textasciicircum- existiert hier kein guter Ersatz.
+
+\mode
+<all>
+
 \begin{Frame}[fragile]{Binde- und sonstige Striche}
   \begin{itemize}
-    \item Bindestrich\newline
-      \lstinline|SOS-Ruf|\newline
+    \item Bindestrich
+      \begin{lstlisting}[gobble=8]
+        SOS-Ruf
+      \end{lstlisting}
       SOS-Ruf
-    \item deutscher Gedankenstrich mit Leerzeichen\newline
-      \lstinline|Er kam -- und ging gleich wieder.|\newline
+    \item deutscher Gedankenstrich mit Leerzeichen
+      \begin{lstlisting}[gobble=8]
+        Er kam -- und ging gleich wieder.
+      \end{lstlisting}
       Er kam -- und ging gleich wieder.
-    \item britischer Gedankenstrich ohne Leerzeichen\newline
-      \lstinline|He came---and went.|\newline
+    \item britischer Gedankenstrich ohne Leerzeichen
+      \begin{lstlisting}[gobble=8]
+        He came---and went.
+      \end{lstlisting}
       He came---and went.
-    \item Gedankenstrich für Bereiche ohne Leerzeichen\newline
-      \lstinline|Das Buch darf 10--12 Euro kosten.|\newline
+    \item Gedankenstrich für Bereiche ohne Leerzeichen
+      \begin{lstlisting}[gobble=8]
+        Das Buch darf 10--12 Euro kosten.
+      \end{lstlisting}
       Das Buch darf 10--12 Euro kosten.
-    \item Minuszeichen als binärer und unärer Operator\newline
-      \lstinline|$2-4=-2$ (nicht -2)|\newline
-      $2-4=-2$ (nicht -2)
-      \only<article>{
-        \newline Als binärer Operator wird das Minuszeichen mit einem kleinen Abstand gesetzt.
-        Als unärer Operator wird das Minuszeichen als Vorzeichen ohne Abstand gesetzt.
-        \LaTeX\ übernimmt dies automatisch.
-      }
+    %\item Minuszeichen als binärer und unärer Operator
+    %  \begin{lstlisting}[gobble=8]
+    %    $2-4=-2$ (nicht -2)
+    %  \end{lstlisting}
+    %  $2-4=-2$ (nicht -2)
+    %  \only<article>{
+    %    \newline Als binärer Operator wird das Minuszeichen mit einem kleinen Abstand gesetzt.
+    %    Als unärer Operator wird das Minuszeichen als Vorzeichen ohne Abstand gesetzt.
+    %    \LaTeX\ übernimmt dies automatisch.
+    %  }
+    % Das ist hier zu früh -- Formelsatz kommt erst später.
   \end{itemize}
 \end{Frame}
 
@@ -832,14 +881,17 @@
 \begin{Frame}[fragile]{Inhaltsverzeichnis}
   \begin{Block}{Strukturbefehle}
     \begin{itemize}
-      \item \lstinline-\part{name}- für Teile (nur in Büchern)
-      \item \lstinline-\chapter{name}- für Kapitel (nicht in Artikeln)
-      \item \lstinline-\section{name}- für Abschnitte
-      \item \lstinline-\subsection{name}- für Unterabschnitte
-      \item \lstinline-\subsubsection{name}- für Unterunterabschnitte
-      \item \lstinline-\paragraph{name}- für Absätze
+      \item \lstinline-\part[kurz]{name}- für Teile (nur in Büchern)
+      \item \lstinline-\chapter[kurz]{name}- für Kapitel (nicht in Artikeln)
+      \item \lstinline-\section[kurz]{name}- für Abschnitte
+      \item \lstinline-\subsection[kurz]{name}- für Unterabschnitte
+      %\item \lstinline-\subsubsection[kurz]{name}- für Unterunterabschnitte
+      %\item \lstinline-\paragraph[kurz]{name}- für Absätze
     \end{itemize}
   \end{Block}
+  Optionaler Parameter setzt Kurztitel für Inhaltsverzeichnis.
+
+  \xxx
 
   \begin{lstlisting}[gobble=4]
     \tableofcontents
@@ -864,6 +916,8 @@
   \end{Block}
 \end{Frame}
 
+\frame{TODO: Ergebnis zeigen}
+
 \begin{Frame}[fragile]{Titelseite}{manuell}
   \begin{lstlisting}[gobble=4]
     \begin{titlepage}
@@ -875,6 +929,8 @@
     \end{titlepage}
   \end{lstlisting}
 \end{Frame}
+
+\frame{TODO: Ergibnis zeigen}
 
 \subsection{Abbildungen}
 
