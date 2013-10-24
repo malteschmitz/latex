@@ -68,7 +68,9 @@
     tableofcontents,url,clearscrheadfoot,pagemark,headmark,%
     setheadtopline,setkomafont,setheadsepline,setfootsepline,%
     setfootbotline,chaptermark,thesection,thechapter,%
-    thesubsection,subtitle,inst,section*,subsection*,institute},%
+    thesubsection,subtitle,inst,section*,subsection*,institute,
+    qedhere,usetheme,useinnertheme,useoutertheme,
+    pause,uncover,only,alert,onslide,mode,mode*},%
   % LaTeX environments
   morekeywords={[2]lstlisting,document,letter,center,flushleft,%
     flushright,align,itemize,enumerate,description,tabular,
@@ -80,7 +82,7 @@
     fontenc,lmodern,mathptmx,%
     helvet,geometry,scrpage2,scrreprt,scrbook,%
     article,report,book,hyperref,%
-    csquotes,amsmath,amssymb,la},
+    csquotes,amsmath,amssymb,la,beamer,beamerarticle},
   alsoletter={0123456789*}
   }%
 
@@ -95,14 +97,20 @@
    morekeywords={[2]author,title,year,publisher,editor,booktitle,journal,series,volume,number,pages,institution,note,howpublished},
   }
 
+\colorlet{texcs}{violet}
+\colorlet{keyword}{violet}
+\colorlet{keywordnd}{green!70!black}
+\colorlet{keywordrd}{orange!70!black}
+\colorlet{comment}{gray}
+
 \lstset{%
   basicstyle=\ttfamily,%
   language=[MyLaTeX]TeX,%
-  texcsstyle=*\color{violet}\bfseries,%
-  keywordstyle=\color{violet}\bfseries,%
-  keywordstyle={[2]\color{green!70!black}\bfseries},%
-  keywordstyle={[3]\color{maincolor!70!black}\bfseries},%
-  commentstyle=\color{gray}\itshape,%
+  texcsstyle=*\color{texcs}\bfseries,%
+  keywordstyle=\color{keyword}\bfseries,%
+  keywordstyle={[2]\color{keywordnd}\bfseries},%
+  keywordstyle={[3]\color{keywordrd}\bfseries},%
+  commentstyle=\color{comment}\itshape,%
   stringstyle=\itshape,%
   numbers=none,%
   frame=lines,%
@@ -141,6 +149,8 @@
            {\}}{{\textbf{\color{red}\}}}}1
            {[}{{\textbf{\color{red}[}}}1
            {]}{{\textbf{\color{red}]}}}1
+           {<}{{\textbf{\color{red}<}}}1
+           {>}{{\textbf{\color{red}>}}}1
 }
 
 \usepackage{tabularx}

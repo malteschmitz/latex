@@ -1,0 +1,55 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+
+% hide navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+  \begin{frame}{Blöcke}
+    \begin{block}{Überschrift}
+      Dieser Text steht im normalen Block.
+    \end{block}
+
+    \begin{alertblock}{Überschrift}
+      Dieser Text steht im hervorgehobenen Block.
+    \end{alertblock}
+
+    \begin{exampleblock}{Überschrift}
+      Dieser Text steht im Beispielblock.
+    \end{exampleblock}
+  \end{frame}
+
+  \begin{frame}{Theorem-Umgebungen}
+    \begin{Satz}[Sandhaufensatz]
+      Es gibt keine Sandhaufen.
+    \end{Satz}
+
+    \begin{Beweis}
+      \begin{enumerate}
+        \item Ein Sandkorn ist kein Sandhaufen.
+        \item Sandkörner werden durch Hinzufügen
+          eines Sandkorns nicht zum Sandhaufen.
+        \item Induktiv folgt die Aussage. \qedhere
+      \end{enumerate}
+    \end{Beweis}
+
+    \begin{Beispiel}
+      Vergleiche unsere Baustellen.
+    \end{Beispiel}
+  \end{frame}
+
+  \begin{frame}{Spalten}
+    \begin{columns}
+      \begin{column}{5cm}
+        Linke Spalte.
+      \end{column}
+      \begin{column}{5cm}
+        Rechte Spalte.
+      \end{column}
+    \end{columns}
+  \end{frame}
+\end{document}

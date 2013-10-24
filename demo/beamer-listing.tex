@@ -1,0 +1,20 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% hide navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{listings}
+\lstset{%
+  basicstyle=\ttfamily,%
+  showstringspaces=false,%
+  upquote=true}
+\usepackage{textcomp} % für upquote
+\usepackage{courier} % für schönere Schriftart
+
+\begin{document}
+  \input{beamer-listing-content.tex}
+\end{document}

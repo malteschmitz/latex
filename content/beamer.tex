@@ -20,16 +20,6 @@
     \item Beamer ist in MiK\TeX\ und \TeX\ Live enthalten.\\
       (\alert{Es kann direkt losgehen}.)
   \end{itemize}
-
-  \xxx
-
-  \begin{mybib}
-    \bibitem{Tantau}
-      Till Tantau.
-      \newblock \emph{Beamer: Strahlende Vorträge mit LATEX},
-      \newblock Präsentieren und Dokumentieren -- Tools.
-      \newblock Vorlesung vom 31. Oktober 2012 von Till Tantau.
-  \end{mybib}
 \end{Frame}
 
 \begin{Frame}{Historie}
@@ -125,7 +115,7 @@
 \begin{Frame}[fragile]{Titelfolie}
   \begin{Block}{In der Präambel}
     \begin{lstlisting}[gobble=6,style=block]
-      \title[Kurztitle]{%
+      \title[Kurztitel]{%
         Lange Version des langen Titels}
       \subtitle{Ein langer Untertitel beschreibt
         alles noch etwas genauer.}
@@ -208,30 +198,412 @@
   \end{lstlisting}
 \end{Frame}
 
-\frame{Boxen, Beispiele, Definition, ...}
+\begin{Frame}[fragile]{Blöcke}
+  \begin{lstlisting}[gobble=4]
+    \begin{block}{Überschrift}
+      Dieser Text steht im normalen Block.
+    \end{block}
 
-\frame{Spalten}
+    \begin{alertblock}{Überschrift}
+      Dieser Text steht im hervorgehobenen Block.
+    \end{alertblock}
 
-\frame{Quelltext}
+    \begin{exampleblock}{Überschrift}
+      Dieser Text steht im Beispielblock.
+    \end{exampleblock}
+  \end{lstlisting}
+\end{Frame}
+
+\plain{\includegraphics{demo/beamer-struktur.pdf}}
+
+\begin{Frame}[fragile]{Theorem-Umgebungen}
+  \begin{lstlisting}[gobble=4]
+    \begin{Satz}[Sandhaufensatz]
+      Es gibt keine Sandhaufen.
+    \end{Satz}
+
+    \begin{Beweis}
+      \begin{enumerate}
+        \item Ein Sandkorn ist kein Sandhaufen.
+        \item Sandkörner werden durch Hinzufügen
+          eines Sandkorns nicht zum Sandhaufen.
+        \item Induktiv folgt die Aussage. \qedhere
+      \end{enumerate}
+    \end{Beweis}
+
+    \begin{Beispiel}
+      Vergleiche unsere Baustellen.
+    \end{Beispiel}
+  \end{lstlisting}
+\end{Frame}
+
+\plain{\includegraphics[page=2]{demo/beamer-struktur.pdf}}
+
+\begin{Frame}[fragile]{Spalten}
+  \begin{lstlisting}[gobble=4]
+    \begin{frame}{Spalten}
+      \begin{columns}
+        \begin{column}{5cm}
+          Linke Spalte.
+        \end{column}
+        \begin{column}{5cm}
+          Rechte Spalte.
+        \end{column}
+      \end{columns}
+    \end{frame}
+  \end{lstlisting}
+\end{Frame}
+
+\plain{\includegraphics[page=3]{demo/beamer-struktur.pdf}}
+
+\begin{Frame}[fragile]{Quelltext ist fragil.}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[style=block,gobble=6]
+      \usepackage{listings}
+      \lstset{%
+        basicstyle=\ttfamily,%
+        showstringspaces=false,%
+        upquote=true}
+      \usepackage{textcomp} % für upquote
+      \usepackage{courier} % für schönere Schriftart
+    \end{lstlisting}
+  \end{Block}
+
+  \xxx
+
+  \lstinputlisting{demo/beamer-listing-content.tex}
+\end{Frame}
+
+\plain{\includegraphics{demo/beamer-listing.pdf}}
 
 \subsection{Form}
 
-\frame{Kopf- und Fußzeile}
+\begin{Frame}[fragile]{Themes}
+  \begin{Block}{Theme}
+    Wird geladen mit
+    \begin{lstlisting}[gobble=6,style=block]
+      \usetheme{name}
+    \end{lstlisting}
+    und bestimmt die \alert{gesamte Form}.
+  \end{Block}
 
-\frame{Layouts}
+  \begin{Block}{Inner Theme}
+    Wird geladen mit
+    \begin{lstlisting}[gobble=6,style=block]
+      \useinnertheme{name}
+    \end{lstlisting}
+    und bestimmt die \alert{Form des Folieninhalts}.
+  \end{Block}
 
-\frame{eigenes Logo}
+  \begin{Block}{Outer Theme}
+    Wird geladen mit
+    \begin{lstlisting}[gobble=6,style=block]
+      \useoutertheme{name}
+    \end{lstlisting}
+    und bestimmt die \alert{Form der Layoutelemente}.
+  \end{Block}
+\end{Frame}
+
+\plain{\includegraphics[page=23]{demo/beamer-Boadilla.pdf}}
+\plain{\includegraphics[page=23]{demo/beamer-Madrid.pdf}}
+\plain{\includegraphics[page=23]{demo/beamer-Rochester.pdf}}
+\plain{\includegraphics[page=23]{demo/beamer-Montpellier.pdf}}
+\plain{\includegraphics[page=23]{demo/beamer-Goettingen.pdf}}
+\plain{\includegraphics[page=23]{demo/beamer-Frankfurt.pdf}}
+\plain{\includegraphics[page=23]{demo/beamer-Luebeck.pdf}}
+
+\mode
+<article>
+
+\begin{Block}{Navigationssymbole ausblenden}
+  \begin{lstlisting}[gobble=4]
+    % hide navigation symbols
+    \setbeamertemplate{navigation symbols}{}
+  \end{lstlisting}
+\end{Block}
+
+\mode
+<all>
 
 \section{Fortgeschrittene Verwendung}
 
 \subsection{Overlays}
 
-\subsection{Skriptfassung}
+\begin{Frame}[fragile]{Einfache Overlays}
+  Kommando \lstinline-\pause- blendet Elemente schrittweise ein.
+
+  \begin{lstlisting}[gobble=4]
+    \begin{enumerate}
+      \item Ein Sandkorn ist kein Sandhaufen.
+        \pause
+      \item Sandkörner werden durch Hinzufügen
+        eines Sandkorns nicht zum Sandhaufen.
+        \pause
+      \item Induktiv folgt die Aussage. \qedhere
+    \end{enumerate}
+  \end{lstlisting}
+
+  \xxx
+  
+  \begin{enumerate}
+    \item Ein Sandkorn ist kein Sandhaufen.
+      \pause
+    \item Sandkörner werden durch Hinzufügen
+      eines Sandkorns nicht zum Sandhaufen.
+      \pause
+    \item Induktiv folgt die Aussage. \qedhere
+  \end{enumerate}
+\end{Frame}
+
+\begin{Frame}[fragile]{Overlay-Spezifikationen}
+  \begin{lstlisting}[gobble=4]
+    \begin{Satz}[Sandhaufensatz]
+      Es gibt keine Sandhaufen.
+    \end{Satz}
+
+    \begin{Beweis}<2->
+      \begin{enumerate}
+        \item<3-> Ein Sandkorn ist kein Sandhaufen.
+        \item<4-> Sandkörner werden durch Hinzufügen
+          eines Sandkorns nicht zum Sandhaufen.
+        \item Induktiv folgt die Aussage. \qedhere
+      \end{enumerate}
+    \end{Beweis}
+
+    \onslide<5->
+
+    Der \alert<6>{Induktionsbeweis} ist
+    \alert<7>{falsch}!
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}{Overlay-Spezifikationen}
+  \begin{Satz}[Sandhaufensatz]
+    Es gibt keine Sandhaufen.
+  \end{Satz}
+
+  \begin{Beweis}<2->
+    \begin{enumerate}
+      \item<3-> Ein Sandkorn ist kein Sandhaufen.
+      \item<4-> Sandkörner werden durch Hinzufügen
+        eines Sandkorns nicht zum Sandhaufen.
+      \item Induktiv folgt die Aussage. \qedhere
+    \end{enumerate}
+  \end{Beweis}
+
+  \onslide<5->
+
+  Der \alert<6>{Induktionsbeweis} ist
+  \alert<7>{falsch}!
+\end{Frame}
+
+\begin{Frame}[fragile]{Ein- und Ausblenden}
+  \begin{itemize}
+    \item \lstinline|\uncover<3->{Inhalt}|\\ blendet Inhalt erst ab Folie 3 ein.
+    \item \lstinline|\only<3->{Inhalt}|\\ lässt Inhalt erst ab Folie 3 erscheinen.
+  \end{itemize}
+
+  \xxx
+  \pause
+
+  \begin{lstlisting}[gobble=4]
+    In diesem \uncover<2->{Satz} werden
+    \only<3->{Worte }eingeblendet.
+  \end{lstlisting}
+  In diesem \uncover<3->{Satz} werden \only<4->{Worte }eingeblendet.
+\end{Frame}
+
+\subsection{Artikelfassung}
+
+\begin{Frame}[fragile]{Artikelfassung}
+  \begin{Block}{Ziel}
+    Generierung von Artikel und Folien\\
+    aus dem gleichen \LaTeX-Dokument.
+  \end{Block}
+
+  \xxx
+  \pause
+
+  \begin{Block}{Problem}
+    \begin{tabular}{r@{ }l}
+      \textbf{Folien} & Dokumentenklasse von Beamer.\\
+      \textbf{Artikel} & Dokumentenklasse von KOMA-Script.
+    \end{tabular}
+  \end{Block}
+
+  \xxx
+  \pause
+
+  \begin{Block}{Lösung}
+    \begin{itemize}
+      \item Zwei \LaTeX-Dokumente für Dokumentenklassen.
+      \item Drittes \LaTeX-Dokument für Inhalt.
+      \item Einbinden des Inhalts mit \lstinline-\input-.
+    \end{itemize}
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}[fragile]{Einbinden des Inhalts}
+  \begin{center}
+    \begin{tikzpicture}[
+        on grid,
+        auto,
+        node distance=18mm and 30mm,
+        engine/.style={
+          font=\rmfamily\Large\bfseries,
+          inner sep=2pt
+        }
+      ]
+      
+      \node[texicon] (content tex) {\shortstack{\icon{TEX}\\\texttt{content.tex}}};
+
+      \uncover<2->{
+        \node[texicon, below left=of content tex] (beamer tex)
+          {\shortstack{\icon{TEX}\\\texttt{beamer.tex}}};
+        \node[texicon, below right=of content tex] (article tex)
+          {\shortstack{\icon{TEX}\\\texttt{article.tex}}};
+      }
+
+      \uncover<3->{
+        \node[below=of beamer tex, engine]
+          (make beamer) {\LaTeX.mk};
+
+        \node[below=of article tex, engine]
+          (make article) {\LaTeX.mk};
+
+        \node[pdficon, below=of make beamer] (beamer pdf)
+          {\shortstack{\icon{PDF}\\\texttt{beamer.pdf}}};
+        \node[pdficon, below=of make article] (article pdf)
+          {\shortstack{\icon{PDF}\\\texttt{article.pdf}}};
+      }
+
+      \only<2->{
+        \draw[very thick]
+        (content tex.west) edge[->] node[swap, near start]
+          {\texttt{\color{texcs}\bfseries\textbackslash input}} (beamer tex.north);
+
+        \draw[very thick]
+          (content tex.east) edge[->] node[near start]
+            {\texttt{\color{texcs}\bfseries\textbackslash input}} (article tex.north);
+      }
+
+      \only<3->{
+        \draw[very thick]
+          (beamer tex) edge[->] (make beamer)
+          (article tex) edge[->] (make article);          
+
+        \draw[very thick]
+          (make beamer) edge[->] (beamer pdf)
+          (make article) edge[->] (article pdf);
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}[fragile]{Inhalt \texttt{content.tex}}
+  \begin{lstlisting}[gobble=4]
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{lmodern}
+    \usepackage[ngerman]{babel}
+
+    \title{Mein Vortrag}
+    \author{Mein Name}
+
+    \begin{document}
+      \begin{frame}
+        \maketitle
+      \end{frame}
+
+      \begin{frame}{Folientitel}
+        Hier passierts \dots
+      \end{frame}
+    \end{document}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Dokumentenklassen}
+  \textbf{\color{maincolor}Für die Folien \texttt{beamer.tex}}
+  \begin{lstlisting}[gobble=4]
+    % Beamer als Dokumentenklasse verwenden
+    \documentclass{beamer}
+    % gemeinsamen Inhalt einbinden
+    \input{content.tex}
+  \end{lstlisting}
+
+  \xxx
+
+  \textbf{\color{maincolor}Für den Artikel \texttt{article.tex}}
+  \begin{lstlisting}[gobble=4]
+    % KOMA-Script als Dokumentenklasse verwenden
+    \documentclass{scrartcl}
+    % Einstellungen für KOMA-Script
+    \KOMAoptions{parskip=full}
+    % Beamer als Paket laden
+    \usepackage{beamerarticle}
+    % gemeinsamen Inhalt einbinden
+    \input{content.tex}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Modes}
+  \begin{tabular}{r@{ }l}
+    \texttt{presentation} & nur für Folien\\
+    \texttt{article} & nur für Artikel\\
+    \texttt{all} & für Folien und Artikel (Standard)
+  \end{tabular}
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \mode
+    <name>
+  \end{lstlisting}
+  Wechselt den aktuellen Mode.
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \mode*
+  \end{lstlisting}
+  Automatische Modeumschaltung:
+  \begin{itemize}
+    \item Innerhalb von \lstinline-frame- Mode {all}.
+    \item Außerhalb von \lstinline-frame- Mode {article}.
+  \end{itemize}
+\end{Frame}
 
 \section*{Zusammenfassung}
 
-\begin{frame}{Zusammenfassung}
+\begin{frame}[fragile]{Zusammenfassung}
   \begin{enumerate}
-    \item Zusammenfassung.
+    \item Mit der Dokumentenklasse \lstinline-beamer- können \alert{sehr
+          leicht Präsentationen erstellt} werden, wenn man mit \LaTeX\ etwas geübt ist.
+    \item Folien werden mit der Umgebung \lstinline-frame- erzeugt.
+      Fast alle \alert{\LaTeX-Kommandos funktionieren wie immer}.
+    \item Mit \alert{Listen, Blöcken, Theoremen und Spalten} wird
+      der Inhalt auf den Folien \alert{strukturiert}.
+    \item \alert{Overlay- und Mode-Spezifikationen} werden in spitzen
+      Klammern \lstinline-<- und \lstinline->- angegeben. Diese beeinflussen, in welchem
+      \alert{Schritt der Animation} und in welchem \alert{Mode}
+      das Kommando ausgeführt wird.
+    \item Mit dem Paket \lstinline-beamerarticle- kann ein \LaTeX-Dokument,
+      das Folien enthält, auch \alert{als Artikel kompiliert} werden.
+    \item \alert{Lies die Anleitung. Sie ist wirklich \emph{sehr} gut.}
   \end{enumerate}
 \end{frame}
+
+\begin{Frame}{Zum Weiterlesen}
+  \begin{mybib}
+    \bibitem{Tantau}
+      Till Tantau, Joseph Wright and Vedran Mileti\'c.
+      \newblock The \textsc{beamer} \textit{class}, User Guide.
+      \newblock \alt<presentation>{\href{http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{\texttt{beameruserguide.pdf}}}{\url{http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}}, Oktober 2013.
+
+    \bibitem{Tantau}
+      Till Tantau.
+      \newblock \emph{Beamer: Strahlende Vorträge mit LATEX},
+      \newblock Präsentieren und Dokumentieren -- Tools.
+      \newblock Vorlesung vom 31. Oktober 2012.
+  \end{mybib}
+\end{Frame}

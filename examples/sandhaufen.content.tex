@@ -1,0 +1,60 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage[ngerman]{babel}
+
+\title[Kurztitel]{%
+  Lange Version des langen Titels}
+
+\subtitle{Ein langer Untertitel beschreibt
+  alles noch etwas genauer.}
+
+\author[Thorn, Schmitz]{%
+  Johannes Thorn \and Malte Schmitz}
+
+\date[KPT 2013]{Konferenz über
+  Präsentationstechniken, 2013}
+
+\begin{document}
+  \mode*
+
+  \begin{frame}
+    \maketitle
+  \end{frame}
+
+  Dieser ganze Absatz steht nur im Artikel,
+  weil er sich zwischen zwei Frames befindet.
+
+  \begin{frame}{Satz vom Sandhaufen}
+    \begin{Satz}[Sandhaufensatz]
+      Es gibt keine Sandhaufen.
+    \end{Satz}
+
+    \begin{Beweis}
+      \begin{enumerate}
+        \item Ein Sandkorn ist kein Sandhaufen.
+        \item Sandkörner werden durch Hinzufügen
+          eines Sandkorns nicht zum Sandhaufen.
+        \item Induktiv folgt die Aussage. \qedhere
+      \end{enumerate}
+    \end{Beweis}
+
+    \begin{Beispiel}
+      Vergleiche unsere Baustellen.
+
+      \only<article>{Dort befinden sich
+        auch viele Sandhaufen.}
+    \end{Beispiel}
+  \end{frame}
+
+  \mode
+  <article>
+
+  Dieser ganze Absatz steht nur im Artikel,
+  weil er sich im Mode article befindet.
+  Damit ist der automatische Mode deaktiviert.
+
+  \mode
+  <all>
+\end{document}
