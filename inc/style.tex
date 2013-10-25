@@ -27,7 +27,8 @@
   backgrounds,%
   arrows,%
   automata,%
-  trees%
+  trees,%
+  intersections
 }
 
 \usepackage{pifont}
@@ -68,13 +69,14 @@
     tableofcontents,url,clearscrheadfoot,pagemark,headmark,%
     setheadtopline,setkomafont,setheadsepline,setfootsepline,%
     setfootbotline,chaptermark,thesection,thechapter,%
-    thesubsection,subtitle,inst,section*,subsection*,institute,
-    qedhere,usetheme,useinnertheme,useoutertheme,
-    pause,uncover,only,alert,onslide,mode,mode*},%
+    thesubsection,subtitle,inst,section*,subsection*,institute,%
+    qedhere,usetheme,useinnertheme,useoutertheme,%
+    pause,uncover,only,alert,onslide,mode,mode*,usetikzlibrary,%
+    draw},%
   % LaTeX environments
   morekeywords={[2]lstlisting,document,letter,center,flushleft,%
-    flushright,align,itemize,enumerate,description,tabular,
-    titlepage,figure,table,frame%
+    flushright,align,itemize,enumerate,description,tabular,%
+    titlepage,figure,table,frame,tikzpicture%
     },%
   % other things (like packages) to highlight
   morekeywords={[3]listings,textcomp,courier,xcolor,scrartcl,%
@@ -82,7 +84,8 @@
     fontenc,lmodern,mathptmx,%
     helvet,geometry,scrpage2,scrreprt,scrbook,%
     article,report,book,hyperref,%
-    csquotes,amsmath,amssymb,la,beamer,beamerarticle},
+    csquotes,amsmath,amssymb,la,beamer,beamerarticle,%
+    tikz},
   alsoletter={0123456789*}
   }%
 
@@ -201,6 +204,9 @@
 
 % load logo collection from "Die TeXnische Komödie"
 \usepackage{dtklogos}
+% dtklogos tries to provide \tikz which does nothing
+% as the tikz package already defined that command.
+\newcommand\TikZ{Ti\textit{k}Z}
 
 % load common user macros
 \input{macros.tex}
