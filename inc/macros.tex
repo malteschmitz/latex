@@ -34,3 +34,12 @@
 \colorlet{auxicon}{-examplecolor}
 \colorlet{logicon}{black}
 \colorlet{bblicon}{-maincolor}
+
+\colorlet{tikzexample}{examplecolor!10}
+\newcommand*{\examplebox}[1]{%
+  \begingroup%
+  \fboxsep=2ex%
+  \centerline{\colorbox{tikzexample}{#1}}%
+  \endgroup}
+\newcommand*{\tikzexample}[1]{\examplebox{%
+  \begin{tikzpicture}#1\end{tikzpicture}}}

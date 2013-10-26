@@ -1,10 +1,10 @@
-\chapter{TikZ}
+\chapter{\TikZ}
 
 \targets{
-  \item Erstes Ziel
-  \item Zweites Ziel
-  \item Drittes Ziel
-  \item Viertes Ziel
+  \item \TikZ\ kennne und lieben lernen.
+  \item Pfade mit \TikZ\ zeichnen können.
+  \item Das Konzept von Knoten und deren Positionierung verstehen.
+  \item Kombinationsmöglichkeiten von \TikZ\ und Beamer kennen lernen.
 }
 
 \website
@@ -13,43 +13,63 @@
 
 \begin{Frame}{Was ist \TikZ?}
   \begin{itemize}
-    \item \TikZ\ ist kein Zeichenprogramm.
-    \item \dots
+    \item \TikZ\ ist kein Zeichenprogramm,\\
+      dient aber zum Zeichnen von Grafiken mit \LaTeX.
+    \item \TIkZ\ wird entwickelt und gepflegt von Till Tantau.
+    \item \TikZ\ ist ein Makropaket für \TeX\ bzw. \LaTeX.
+    \item \TikZ\ hat die beste Anleitung aller Zeiten.
   \end{itemize}
 \end{Frame}
 
 \begin{Frame}{Ein erstes Beispiel}
-  \begin{center}
-    \begin{tikzpicture}[scale=3,line cap=round]
-      \draw[help lines,step=0.5cm] (0,0) grid (1.4,1.4);
-      \draw (1,0) arc (0:90:1cm);
-
-      \draw[->] (0,0) -- (1.5,0) node[right] {$x$} coordinate(x axis);
-      \draw[->] (0,0) -- (0,1.5) node[above] {$y$} coordinate(y axis);
-      \draw[xshift=1cm] (0pt,1pt) -- (0pt,-1pt) node[below,fill=white] {$1$};
-      \draw[yshift=0.5cm] (1pt,0pt) -- (-1pt,0pt) node[left,fill=white] {$\frac{1}{2}$};
-      \draw[yshift=1cm] (1pt,0pt) -- (-1pt,0pt) node[left,fill=white] {$1$};
-      
-      \filldraw[fill=green!20,draw=green!50!black] (0,0) -- (3mm,0pt) arc(0:30:3mm);
-      \draw (15:2mm) node[green!50!black] {$\alpha$};
-      \draw[very thick,red]
-        (30:1cm) -- node[left=1pt,fill=white] {$\sin \alpha$} (30:1cm |- x axis);
-      \draw[very thick,blue]
-        (30:1cm |- x axis) -- node[below=2pt,fill=white] {$\cos \alpha$} (0,0);
-      \path [name path=upward line] (1,0) -- (1,1);
-      \path [name path=sloped line] (0,0) -- (30:1.5cm);
-      \draw [name intersections={of=upward line and sloped line, by=t}]
-        [very thick,orange] (1,0) -- node [right=1pt,fill=white]
-        {$\displaystyle \tan \alpha \color{black}=
-          \frac{{\color{red}\sin \alpha}}{\color{blue}\cos \alpha}$} (t);
-      \draw (0,0) -- (t);
-    \end{tikzpicture}
-  \end{center}
+  \tikzexample{[scale=3.5]
+    % Gitter im Hintergrund
+    \draw[step=.5cm,gray,very thin] (0,0)
+      grid (1.4,1.4);
+    % Kreisbogen
+    \draw (1,0) arc (0:90:1cm);
+    % Koordinatenachsen
+    \draw[->] (0,0) -- (1.5,0) node[right] {$x$};
+    \draw[->] (0,0) -- (0,1.5) node[above] {$y$};
+    % Winkel
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm);
+    \draw (15:2mm) node[green!50!black] {$\alpha$};
+    % Sinus und Kosinus
+    \draw[very thick,red]
+      (30:1cm) -- node[left]
+        {$\sin \alpha$} (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- node[below]
+        {$\cos \alpha$} (0,0);
+    % Schnittpunktberechnung und Tangens
+    \path [name path=upward line]
+      (1,0) -- (1,1);
+    \path [name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \draw [name intersections=
+      {of=upward line and sloped line, by=t}]
+      [very thick,orange] (1,0) -- node [right]
+      {$\displaystyle \tan \alpha \color{black}=
+        \frac{{\color{red}\sin \alpha}}
+          {\color{blue}\cos \alpha}$} (t);
+    \draw (0,0) -- (t);
+  }
 \end{Frame}
 
 \subsection{Verwendung}
 
 \begin{Frame}[fragile]{\TikZ\ verwenden}
+  \examplebox{%
+    Wir arbeiten an
+    \begin{tikzpicture}
+      \draw (0,0) -- (1.5,0);
+      \draw (0,0) -- (0,1.5);
+    \end{tikzpicture}.
+  }
+
+  \xxx
+
   \begin{lstlisting}[gobble=4]
     \documentclass{scrartcl}
     \usepackage{tikz}
@@ -62,14 +82,6 @@
       \end{tikzpicture}.
     \end{document}
   \end{lstlisting}
-
-  \xxx
-
-  Wir arbeiten an
-  \begin{tikzpicture}
-    \draw (0,0) -- (1.5,0);
-    \draw (0,0) -- (0,1.5);
-  \end{tikzpicture}.
 \end{Frame}
 
 \subsection{Pfade}
@@ -88,24 +100,497 @@
 
   \xxx
 
-  \begin{lstlisting}[gobble=4]
+  \tikzexample{
     \draw[thick]
       (0,0) -- ++(1,0) ++(0,1) -- ++(-1,0)
       (2,0) rectangle (3,1);
-  \end{lstlisting}
+  }
 
-  \begin{center}
-    \begin{beamercolorbox}{examplecolor!10}
-      \begin{tikzpicture}
-        \draw[thick]
-          (0,0) -- ++(1,0) ++(0,1) -- ++(-1,0)
-          (2,0) rectangle (3,1);
-      \end{tikzpicture}
-    \end{beamercolorbox}
-  \end{center}
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \begin{tikzpicture}
+      \draw[thick]
+        (0,0) -- ++(1,0) ++(0,1) -- ++(-1,0)
+        (2,0) rectangle (3,1);
+    \end{tikzpicture}
+  \end{lstlisting}
 \end{Frame}
 
-% weitere Striche
+\begin{Frame}[t,fragile]{Gitterpfade}
+  \tikzexample{
+    \draw[step=0.5cm]
+      (0,0) grid (1.4,1.4);
+    \draw (0,0) -- (1.5,0);
+    \draw (0,0) -- (0,1.5);
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \begin{tikzpicture}
+      \draw[step=0.5cm]
+        (0,0) grid (1.4,1.4);
+    
+      \draw (0,0) -- (1.5,0);
+      \draw (0,0) -- (0,1.5);
+    \end{tikzpicture}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Skalierung}
+  \tikzexample{[scale=2]
+    \draw[step=0.5cm]
+      (0,0) grid (1.4,1.4);
+    \draw (0,0) -- (1.5,0);
+    \draw (0,0) -- (0,1.5);
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \begin{tikzpicture}[scale=2]
+      \draw[step=0.5cm]
+        (0,0) grid (1.4,1.4);
+    
+      \draw (0,0) -- (1.5,0);
+      \draw (0,0) -- (0,1.5);
+    \end{tikzpicture}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Stile}
+  \tikzexample{[scale=2]
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw (0,0) -- (1.5,0);
+    \draw (0,0) -- (0,1.5);
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \begin{tikzpicture}[scale=2]
+      \draw[step=0.5cm,gray,very thin]
+        (0,0) grid (1.4,1.4);
+    
+      \draw (0,0) -- (1.5,0);
+      \draw (0,0) -- (0,1.5);
+    \end{tikzpicture}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Pfeilspitzen}
+  \tikzexample{[scale=2]
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Bogenpfade}
+  \tikzexample{[scale=2]
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
+    %
+    \draw % 0 bis 90 Grad, Radius 1 cm
+      (1,0) arc (0:90:1cm)
+      % 0 bis 30 Grad, Radius 3 mm
+      (3mm,0pt) arc (0:30:3mm);
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \draw % 0 bis 90 Grad, Radius 1 cm
+      (1,0) arc (0:90:1cm)
+      % 0 bis 30 Grad, Radius 3 mm
+      (3mm,0pt) arc (0:30:3mm);
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Farbig Zeichnen}
+  \tikzexample{[scale=4]
+    \clip (-.02,-.02) rectangle (1.1,0.75);
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
+    %
+    \draw (1,0) arc (0:90:1cm);
+    %
+    \draw[green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \draw[green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Farbig Füllen}
+  \tikzexample{[scale=4]
+    \clip (-.02,-.02) rectangle (1.1,0.75);
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
+    %
+    \draw (1,0) arc (0:90:1cm);
+    %
+    \fill[green!20]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \fill[green!20]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Farbig Zeichnen und Füllen}
+  \tikzexample{[scale=4]
+    \clip (-.02,-.02) rectangle (1.1,0.75);
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
+    %
+    \draw (1,0) arc (0:90:1cm);
+    %
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Polarkoordinaten und Schnittpunkte}
+  \tikzexample{[scale=4]
+    \clip (-.02,-.02) rectangle (1.1,0.75);
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
+    %
+    \draw (1,0) arc (0:90:1cm);
+    %
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+    \draw[very thick,red]
+      (30:1cm) -- (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- (0,0);
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \draw[very thick,red]
+      (30:1cm) -- (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- (0,0);
+  \end{lstlisting}
+\end{Frame}
+
+\mode
+<article>
+
+\lstinline-(30:1cm)- ist dabei die Polarkoordinate, die
+den Punkt bezeichnet, der sich im Abstand von einem Zentimeter
+vom Ursprung in einem Winkel von 30 Grad befindet. Das ist der
+obere Punkt der roten Linie. Der untere Punkt der roten Linie
+ist gleichzeitig der rechte Punkt der blauen Linie und
+ergibt sich aus dem Schnittpunkt der X-Koordinate
+von \lstinline-(30:1cm)- und der Y-Koordinate von
+\lstinline-(0,0)-.
+
+\mode
+<all>
+
+\begin{Frame}[t,fragile]{Schnittpunkte von Pfaden definieren}
+  \tikzexample{[scale=4]
+    \clip (-.02,-.02) rectangle (1.1,0.75);
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
+    %
+    \draw (1,0) arc (0:90:1cm);
+    %
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+    \draw[very thick,red]
+      (30:1cm) -- (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- (0,0);
+    %
+    \draw[name path=upward line]
+      (1,0) -- (1,1);
+    \draw[name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \draw[name intersections=
+      {of=upward line and sloped line, by=t}];
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \draw[name path=upward line]
+      (1,0) -- (1,1);
+    \draw[name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \draw[name intersections=
+      {of=upward line and sloped line, by=t}];
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Unsichtbare Pfade}
+  \tikzexample{[scale=4]
+    \clip (-.02,-.02) rectangle (1.1,0.75);
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
+    %
+    \draw (1,0) arc (0:90:1cm);
+    %
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+    \draw[very thick,red]
+      (30:1cm) -- (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- (0,0);
+    %
+    \path[name path=upward line]
+      (1,0) -- (1,1);
+    \path[name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \path[name intersections=
+      {of=upward line and sloped line, by=t}];
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \path[name path=upward line]
+      (1,0) -- (1,1);
+    \path[name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \path[name intersections=
+      {of=upward line and sloped line, by=t}];
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Schnittpunkte von Pfaden verwenden}
+  \tikzexample{[scale=4]
+    \clip (-.02,-.02) rectangle (1.1,0.75);
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
+    %
+    \draw (1,0) arc (0:90:1cm);
+    %
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+    \draw[very thick,red]
+      (30:1cm) -- (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- (0,0);
+    %
+    \path[name path=upward line]
+      (1,0) -- (1,1);
+    \path[name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \path[name intersections=
+      {of=upward line and sloped line, by=t}];
+    \draw[very thick,orange]
+      (1,0) -- (t);
+    \draw
+      (0,0) -- (t);
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \draw[very thick,orange]
+      (1,0) -- (t);
+    \draw
+      (0,0) -- (t);
+  \end{lstlisting}
+\end{Frame}
+
+\subsection{Knoten}
+
+\begin{Frame}[t,fragile]{Beschriftungen}
+  \tikzexample{[scale=4]
+    \clip (-.02,-.1) rectangle (1.1,0.75);
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
+    %
+    \draw (1,0) arc (0:90:1cm);
+    %
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+    \draw[very thick,red]
+      (30:1cm) -- node[left] {$\sin \alpha$} (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- node[below] {$\cos \alpha$} (0,0);
+    %
+    \path[name path=upward line]
+      (1,0) -- (1,1);
+    \path[name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \path[name intersections=
+      {of=upward line and sloped line, by=t}];
+    \draw[very thick,orange]
+      (1,0) -- (t);
+    \draw
+      (0,0) -- (t);
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \draw[very thick,red]
+      (30:1cm) -- node[left]
+        {$\sin \alpha$} (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- node[below]
+        {$\cos \alpha$} (0,0);
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Beschriftungen der Achsen}
+  \tikzexample{[scale=2]
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw[->] (0,0) -- (1.5,0) node[right] {$x$};
+    \draw[->] (0,0) -- (0,1.5) node[above] {$y$};
+    %
+    \draw (1,0) arc (0:90:1cm);
+    %
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
+    \draw[very thick,red]
+      (30:1cm) -- node[left] {$\sin \alpha$} (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- node[below] {$\cos \alpha$} (0,0);
+    %
+    \path[name path=upward line]
+      (1,0) -- (1,1);
+    \path[name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \path[name intersections=
+      {of=upward line and sloped line, by=t}];
+    \draw [name intersections={of=upward line and sloped line, by=t}]
+      [very thick,orange] (1,0) -- (t);
+    \draw
+      (0,0) -- (t);
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \draw[->] (0,0) -- (1.5,0) node[right] {$x$};
+    \draw[->] (0,0) -- (0,1.5) node[above] {$y$};
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Vollständiges Beispiel}
+  \tikzexample{[scale=3.5]
+    % Gitter im Hintergrund
+    \draw[step=.5cm,gray,very thin] (0,0)
+      grid (1.4,1.4);
+    % Kreisbogen
+    \draw (1,0) arc (0:90:1cm);
+    % Koordinatenachsen
+    \draw[->] (0,0) -- (1.5,0) node[right] {$x$};
+    \draw[->] (0,0) -- (0,1.5) node[above] {$y$};
+    % Winkel
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm);
+    \draw (15:2mm) node[green!50!black] {$\alpha$};
+    % Sinus und Kosinus
+    \draw[very thick,red]
+      (30:1cm) -- node[left]
+        {$\sin \alpha$} (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- node[below]
+        {$\cos \alpha$} (0,0);
+    % Schnittpunktberechnung und Tangens
+    \path [name path=upward line]
+      (1,0) -- (1,1);
+    \path [name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \draw [name intersections=
+      {of=upward line and sloped line, by=t}]
+      [very thick,orange] (1,0) -- node [right]
+      {$\displaystyle \tan \alpha \color{black}=
+        \frac{{\color{red}\sin \alpha}}
+          {\color{blue}\cos \alpha}$} (t);
+    \draw (0,0) -- (t);
+  }
+\end{Frame}
+
+\begin{Frame}[fragile,allowframebreaks]{Quelltext des vollständiges Beispiel}
+  \begin{lstlisting}[gobble=4]
+    % Gitter im Hintergrund
+    \draw[step=.5cm,gray,very thin] (0,0)
+      grid (1.4,1.4);
+    % Kreisbogen
+    \draw (1,0) arc (0:90:1cm);
+    % Koordinatenachsen
+    \draw[->] (0,0) -- (1.5,0) node[right] {$x$};
+    \draw[->] (0,0) -- (0,1.5) node[above] {$y$};
+    % Winkel
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm);
+    \draw (15:2mm) node[green!50!black] {$\alpha$};
+    % Sinus und Kosinus
+    \draw[very thick,red]
+      (30:1cm) -- node[left]
+        {$\sin \alpha$} (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- node[below]
+        {$\cos \alpha$} (0,0);
+    % Schnittpunktberechnung und Tangens
+    \path [name path=upward line]
+      (1,0) -- (1,1);
+    \path [name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \draw [name intersections=
+      {of=upward line and sloped line, by=t}]
+      [very thick,orange] (1,0) -- node [right]
+      {$\displaystyle \tan \alpha \color{black}=
+        \frac{{\color{red}\sin \alpha}}
+          {\color{blue}\cos \alpha}$} (t);
+    \draw (0,0) -- (t);
+  \end{lstlisting}
+\end{Frame}
 
 \section{Graphen}
 
@@ -126,3 +611,9 @@
     \item Zusammenfassung.
   \end{enumerate}
 \end{frame}
+
+\begin{Frame}{Zum Weiterlesen}
+  \alert{Lies die Anleitung! Sie ist großartig!}
+
+  TODO: Verweis
+\end{Frame}
