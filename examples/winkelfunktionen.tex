@@ -1,0 +1,50 @@
+\documentclass{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\KOMAoptions{paper=a5,pagesize=automedia,DIV=calc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{tikz}
+\usetikzlibrary{intersections}
+
+\pagestyle{empty}
+
+\begin{document}
+  \begin{tikzpicture}[scale=3]
+    % Gitter im Hintergrund
+    \draw[step=.5cm,gray,very thin] (0,0)
+      grid (1.4,1.4);
+    % Kreisbogen
+    \draw (1,0) arc (0:90:1cm);
+    % Koordinatenachsen
+    \draw[->] (0,0) -- (1.5,0) node[right] {$x$};
+    \draw[->] (0,0) -- (0,1.5) node[above] {$y$};
+    % Winkel
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm);
+    \draw (15:2mm) node[green!50!black] {$\alpha$};
+    % Sinus und Kosinus
+    \draw[very thick,red]
+      (30:1cm) -- node[left]
+        {$\sin \alpha$} (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (30:1cm |- 0,0) -- node[below]
+        {$\cos \alpha$} (0,0);
+    % Schnittpunktberechnung und Tangens
+    \path [name path=upward line]
+      (1,0) -- (1,1);
+    \path [name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \draw [name intersections=
+      {of=upward line and sloped line, by=t}]
+      [very thick,orange] (1,0) -- node [right]
+      {$\displaystyle \tan \alpha \color{black}=
+        \frac{{\color{red}\sin \alpha}}
+          {\color{blue}\cos \alpha}$} (t);
+    \draw (0,0) -- (t);
+  \end{tikzpicture}
+\end{document}

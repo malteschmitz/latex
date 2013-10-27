@@ -1,4 +1,4 @@
-\chapter{\TikZ}
+\chapter{TikZ}
 
 \targets{
   \item \TikZ\ kennne und lieben lernen.
@@ -15,7 +15,7 @@
   \begin{itemize}
     \item \TikZ\ ist kein Zeichenprogramm,\\
       dient aber zum Zeichnen von Grafiken mit \LaTeX.
-    \item \TIkZ\ wird entwickelt und gepflegt von Till Tantau.
+    \item \TikZ\ wird entwickelt und gepflegt von Till Tantau.
     \item \TikZ\ ist ein Makropaket für \TeX\ bzw. \LaTeX.
     \item \TikZ\ hat die beste Anleitung aller Zeiten.
   \end{itemize}
@@ -101,7 +101,7 @@
   \xxx
 
   \tikzexample{
-    \draw[thick]
+    \draw
       (0,0) -- ++(1,0) ++(0,1) -- ++(-1,0)
       (2,0) rectangle (3,1);
   }
@@ -110,7 +110,7 @@
 
   \begin{lstlisting}[gobble=4]
     \begin{tikzpicture}
-      \draw[thick]
+      \draw
         (0,0) -- ++(1,0) ++(0,1) -- ++(-1,0)
         (2,0) rectangle (3,1);
     \end{tikzpicture}
@@ -596,24 +596,181 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
 
 \subsection{Knoten}
 
+\begin{Frame}{Wofür Knoten?}
+  \begin{itemize}
+    \item \alert{Wir können jetzt alles zeichnen.}
+    \item Viele Zeichnungen basieren auf Graphen,\\
+      bestehen also aus Knoten und Kanten.
+      \begin{itemize}
+        \item Turing-Maschinen, Automaten, Petri-Netze, \dots
+        \item UML-Diagramme, Programmablaufpläne, Entity-Relationship-Diagramme, \dots
+        \item Stoffwechselwege, Geschäftsprozessdiagramme, Organigramme, \dots
+        \item formlose Diagramme für Beziehungen oder Abläufe,
+        \item \dots
+      \end{itemize}
+    \item Solche Diagramme mit Kreisen und Linien zu zeichnen erzeugt
+      \alert{unübersichtlichen und schlecht wartbaren} \LaTeX-Code.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}{Ein zweites Beispiel}
+  \tikzexample{
+    [io/.style={trapezium, trapezium left angle=70, trapezium right angle=110, fill=magenta!10, draw=magenta},
+    operation/.style={rectangle, fill=orange!10, draw=orange},
+    decision/.style={diamond, aspect=2, inner sep=2pt, fill=red!10, draw=red},
+    node distance=5mm, thick]
+    \node[io] (input) {Eingabe $a,b$};
+    \node[operation, below=of input] (div) {$r=a \mod b$};
+    \node[operation, below=of div] (set) {$a=b,\ b=r$};
+    \node[decision, below=of set] (decision) {$b=0?$};
+    \node[io, below=of decision] (output) {Ausgabe $a$};
+    %
+    \draw
+      (input) edge[->] (div)
+      (div) edge[->] (set)
+      (set) edge[->] (decision)
+      (decision) edge[->] node[right] {Ja} (output);
+    \draw[->] (decision) -- node[below] {Nein} ++(1.5,0) |- (div);
+  }
+\end{Frame}
+
+\begin{Frame}[fragile]{Todo}
+  \begin{verbatim}
+    \path (0,0) node {Foo};
+    at-Syntax
+    Stile und inner sep
+    Knoten benennen
+    Relative Positionierung
+    Kanten
+    Kanten beschriften
+  \end{verbatim}
+\end{Frame}
+
 \subsection{Automaten}
+
+\begin{Frame}[fragile]{Automaten}
+  \tikzexample{[auto, thick]
+    \node[initial,state] (q0) {$q_0$};
+    \visible<2->{\node[state, right=of q0] (q1) {$q_1$};}
+    \visible<3->{\node[state, accepting, right=of q1] (q2) {$q_2$};}
+    \visible<2->{\draw
+      (q0) edge[->] node {0} (q1)
+      (q1) edge[->, loop above] node {0} ();}
+    \visible<3->{\draw
+      (q1) edge[->, bend left] node {1} (q2)
+      (q2) edge[->, bend left] node {0} (q1);}
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4,escapechar=\%]
+    \tikz[auto, thick]{
+      %\pause[1]%\node[initial, state] (q0) {$q_0$};            %\onslide%
+      %\pause[2]%\node[state, right=of q0] (q1) {$q_1$};        %\onslide%
+      %\pause[3]%\node[state, accepting, right=of q1]           %\onslide%
+      %\pause[3]%  (q2) {$q_2$};                                %\onslide%
+      %\pause[2]%\draw (q0) edge[->] node {0} (q1)              %\onslide%
+      %\pause[2]%      (q1) edge[->, loop above] node {0} ()    %\onslide%
+      %\pause[3]%           edge[->, bend left] node {1} (q2)   %\onslide%
+      %\pause[3]%      (q2) edge[->, bend left] node {0} (q1)%\pause[2]%;%\onslide%}
+  \end{lstlisting}
+\end{Frame}
+
+\subsection{Bäume}
+
+\begin{Frame}[fragile]{Bäume}
+  \begin{columns}
+    \column{42mm}
+      \tikzexample{[
+        every node/.style={draw,circle,inner sep=0pt,minimum width=15pt},%
+        edge from parent/.style={},%
+        level/.style={sibling distance=20mm/#1},%
+        level distance=10mm, thick]
+        \node[coordinate] (root) {}
+          child { child child }
+          child { child child };
+        %  
+        \node at (root) (a) {a};
+        \visible<2->{\node at (root-1) (b) {b};}
+        \visible<4->{\node at (root-2) (e) {e};}
+        \visible<3->{\node at (root-1-1) (c) {c};}
+        \visible<3->{\node at (root-1-2) (d) {d};}
+        \visible<5->{\node at (root-2-1) (f) {f};}
+        \visible<5->{\node at (root-2-2) (g) {g};}
+        \visible<2->{\path (a) edge (b);}
+        \visible<4->{\path (a) edge (e);}
+        \visible<3->{\path (b) edge (c)
+                       edge (d);}
+        \visible<5->{\path (e) edge (f)
+                       edge (g);}
+      }
+    
+    \column{52mm}
+    
+    \begin{lstlisting}[gobble=6,escapechar=\%]
+      %\pause[1]%\node {a}                %\onslide%
+      %\pause[2]%  child { node {b}       %\onslide%
+      %\pause[3]%    child { node {c} }   %\onslide%
+      %\pause[3]%    child { node {d} }   %\onslide%
+      %\pause[2]%  }                      %\onslide%
+      %\pause[4]%  child { node {e}       %\onslide%
+      %\pause[5]%    child { node {f} }   %\onslide%
+      %\pause[5]%    child { node {g} }   %\onslide%
+      %\pause[4]%  }%\onslide%;
+    \end{lstlisting}
+  \end{columns}
+\end{Frame}
+
+\begin{Frame}[fragile]{Ganzer \LaTeX-Code des Baums}
+  \begin{lstlisting}[gobble=4]
+    \begin{tikzpicture}[
+      every node/.style={draw,circle,inner sep=0pt,
+        minimum width=15pt},
+      level/.style={sibling distance=20mm/#1},
+      level distance=10mm, thick]
+      \node {a}
+        child { node {b}
+          child { node {c} }
+          child { node {d} } }
+        child { node {e}
+          child { node {f} }
+          child { node {g} }
+        };
+    \end{tikzpicture}
+  \end{lstlisting}
+\end{Frame}
 
 \section{Fortgeschrittene Verwendung}
 
 \subsection{Funktionen plotten}
 
+\begin{Frame}{Todo}
+  Funktion plotten
+\end{Frame}
+
 \subsection{Animationen mit Beamer}
+
+\begin{Frame}{Todo}
+  Animation zur Division mit Rest
+\end{Frame}
+
+\subsection{Showcase}
+
+\begin{Frame}{Todo}
+  Coole Grafiken aus Texamples kopieren
+\end{Frame}
 
 \section*{Zusammenfassung}
 
 \begin{frame}{Zusammenfassung}
   \begin{enumerate}
     \item Zusammenfassung.
+    \item \alert{Lies die Anleitung! Sie ist großartig!}
   \end{enumerate}
 \end{frame}
 
 \begin{Frame}{Zum Weiterlesen}
-  \alert{Lies die Anleitung! Sie ist großartig!}
+  TODO: Verweis auf pgfmanual
 
-  TODO: Verweis
+  TODO: Verweis auf Texamples TikZ-Sparte
 \end{Frame}
