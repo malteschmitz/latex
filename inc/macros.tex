@@ -16,7 +16,7 @@
   \end{Frame}
 }
 
-\newcommand{\icon}[1]{%
+\newcommand*{\icon}[1]{%
   \tikz\draw[very thick, line join=round]
     (-.5,.5) -- ++(.7,0) -- ++(.3,-.3) --
     ++(-.3,0) -- ++(0,.3) -- ++(.3,-.3) -- ++(0,-.8) -- ++(-1,0) -- cycle
@@ -36,10 +36,14 @@
 \colorlet{bblicon}{-maincolor}
 
 \colorlet{tikzexample}{examplecolor!10}
-\newcommand*{\examplebox}[1]{%
+\newcommand*{\examplebox}[2][center]{%
   \begingroup%
   \fboxsep=2ex%
-  \centerline{\colorbox{tikzexample}{#1}}%
+  \ifthenelse{\equal{#1}{center}}{%
+    \centerline{\colorbox{tikzexample}{#2}}%
+  }{%
+    \colorbox{tikzexample}{#2}
+  }%
   \endgroup}
-\newcommand*{\tikzexample}[1]{\examplebox{%
-  \begin{tikzpicture}#1\end{tikzpicture}}}
+\newcommand*{\tikzexample}[2][center]{\examplebox[#1]{%
+  \begin{tikzpicture}#2\end{tikzpicture}}}

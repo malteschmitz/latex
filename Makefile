@@ -128,14 +128,4 @@ demo-clear:
 		beamer*.vrb
 
 
-.PHONY: clean
-
-.PHONY: clear
-
-.PHONY: demo
-
-.PHONY: force-demo
-
-.PHONY: demo-clean
-
-.PHONY: demo-clear
+.PHONY: clean clear demo force-demo demo-clean demo-clear
