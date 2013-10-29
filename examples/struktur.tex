@@ -1,0 +1,81 @@
+\documentclass{scrartcl}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
+
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Satzspiegel berechnen lassen
+  DIV=calc%
+}
+
+% Unterstützung für Grafiken
+\usepackage{graphicx}
+
+\begin{document}
+  \section{Listen}
+
+  \begin{itemize}
+    \item Apfel
+      \begin{itemize}
+        \item Elstar
+        \item Braeburn
+      \end{itemize}
+    \item Birne
+  \end{itemize}
+
+  \section{Aufzählungen}
+
+  \begin{enumerate}
+    \item Begrüßung
+    \item Eröffnung
+    \item Anträge
+      \begin{itemize}
+        \item Antrag auf Entlastung des Vorstands
+        \item Antrag auf Beendung der Versammlung
+      \end{itemize}
+  \end{enumerate}
+
+  \section{Definitionslisten}
+
+  \begin{description}
+    \item[Das Schlagwort] steht am Anfang
+      einer Zeile und wird hervorgehoben,
+      während der zugehörige
+    \item[Text] dahinter in normaler
+      Schrift erscheint.
+  \end{description}
+
+  \section{Tabellen}
+
+  \begin{tabular}{l|lr}
+    \textbf{Jahr} & \textbf{Prozessor} &
+        \textbf{MHz} \\
+    \hline
+    1975 & 6502 (C64) & 1 \\
+    1985 & 80386 & 16 \\
+    2005 & Pentium 4 & 2\,800 \\
+    2030 & Phoenix 3 & 7\,320\,000
+  \end{tabular}
+
+  \section{Grafiken}
+
+  \includegraphics[width=3.5cm]{miktex}
+
+  \includegraphics[width=3.5cm,angle=20]{miktex}
+
+  \includegraphics[width=3.5cm,trim=3cm 5mm 4cm 12mm,clip=true]{miktex}
+
+  Im letzten Bild sind links 3\,cm, unten 5\,mm, rechts 4\,cm und oben 12\,mm abgeschnitten.
+\end{document}

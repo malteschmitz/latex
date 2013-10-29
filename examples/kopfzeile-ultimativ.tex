@@ -1,0 +1,62 @@
+\documentclass{scrartcl}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
+
+% Paket für die Verwaltung der Kopf- und Fußzeilen laden
+\usepackage{scrpage2}
+
+% Unterstützung für Farbe laden
+\usepackage{xcolor}
+
+% Apassbaren Seitenstil aktivieren
+\pagestyle{scrheadings}
+
+% Automatische Kolumnentitel deaktivieren
+\manualmark
+% Kolumnentitel manuell erzeugen mit jeder neuen Überschrift
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\ #1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}{}}
+% Alles löschen
+\clearscrheadfoot
+% Kopfzeile links oben
+\ihead{\textbf{Jahresbericht 2013}\\\leftmark\ \\\rightmark}
+% Seitenzahl rechts oben
+\ohead{\pagemark}
+% Trennlinie
+\setheadsepline{2pt}
+% Trennlinie in bunt
+\setkomafont{headsepline}{\color{orange!70!black}}
+% Kopfzeile formatieren
+\setkomafont{pagehead}{\normalfont\color{orange!70!black}\sffamily}
+% Seitenzahl zusätzlich in riesig
+\setkomafont{pagenumber}{\Huge}
+
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Mehr Platz für die große Kopfzeile reservieren
+  headlines=3.5,%
+  % Kopfzeile als Teil des Satzspiegels ansehen
+  headinclude,%
+  % Satzspiegel berechnen lassen
+  DIV=calc%
+}
+
+% Paket zum Erzeugen von Blindtext laden
+% (Wird für die Kopf- und Fußzeilen nicht benötigt.)
+\usepackage{blindtext}
+
+\begin{document}
+  \Blinddocument
+\end{document}

@@ -1,16 +1,24 @@
 \documentclass{scrartcl}
 
+% Kodierung dieser Datei angeben
 \usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 
+% Deutsche Silbentrennung verwenden
 \usepackage[ngerman]{babel}
 
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{textcomp}
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
 
-\KOMAoptions{parskip=full,fontsize=14pt,DIV=calc}
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Satzspiegel berechnen lassen
+  DIV=calc%
+}
 
 \begin{document}
   Apostroph: ' \\
@@ -19,21 +27,13 @@
   linke geschweifte Klammer: \{ $\{$\\
   rechte geschweifte Klammer: \} $\}$\\
   Doppelkreuz: \# $\#$\\
-
+  Dollarzeichen: \$ $\$$\\
   Unterstrich: \_ $\_$\\
   Zirkumflex: \textasciicircum\ $\textasciicircum$
-  Dollar: \$ $\$$\\
-
-  spitze linke Klammer: \textless\ $<$\\
-  spitze rechte Klammer: \textgreater\ $>$\\
-  
-  
-  Und: \& $\&$\\
-  
-  
+  Kaufmanns-Und: \& $\&$\\
   Prozentzeichen: \% $\%$\\
   Tilde: a\textasciitilde a $a\textasciitilde a$\\
   Paragraph: § $§$\\
-
-  \textbf<>
+  spitze linke Klammer: <\ $<$\\
+  spitze rechte Klammer: >\ $>$
 \end{document}

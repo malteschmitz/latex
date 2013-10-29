@@ -1,0 +1,46 @@
+\documentclass{scrbook}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
+
+% Paket für die Verwaltung der Kopf- und Fußzeilen laden
+\usepackage{scrpage2}
+
+% Apassbaren Seitenstil aktivieren
+\pagestyle{scrheadings}
+
+% Alles löschen
+\clearscrheadfoot
+% Kapitel als linker Kolumnentitel
+% Abschnitt als rechter Kolumnentitel
+\automark[section]{chapter}
+% Kapitel mittig oben auf linken Seiten
+% Abschnitt mittig oben auf rechten Seiten
+\chead{\headmark}
+% Seitenzahl oben außen auch auf scrplain
+\ohead[\pagemark]{\pagemark}
+
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Satzspiegel berechnen lassen
+  DIV=calc%
+}
+
+% Paket zum Erzeugen von Blindtext laden
+% (Wird für die Kopf- und Fußzeilen nicht benötigt.)
+\usepackage{blindtext}
+
+\begin{document}
+  \Blinddocument
+\end{document}

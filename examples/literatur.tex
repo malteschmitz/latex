@@ -1,0 +1,33 @@
+\documentclass{scrartcl}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
+
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Satzspiegel berechnen lassen
+  DIV=calc,%
+  % Modernen, offenen Stil für Literaturverzeichnisse aktivieren
+  bibliography=openstyle,%
+}
+
+\begin{document}
+  In \cite{Knuth} wird das Satzsystem \TeX{}
+  vom Autor des Systems
+  vorgestellt. Jedes Zeichen hat dabei einen Category Code
+  (vergleiche dazu \cite[S.~28~ff.]{Eijkhout}).
+
+  \bibliographystyle{alphadin}
+  \bibliography{literatur}
+\end{document}

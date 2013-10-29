@@ -1,0 +1,58 @@
+\documentclass{scrartcl}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
+
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Satzspiegel berechnen lassen
+  DIV=calc%
+}
+
+% Mathematikumgebungen von der AMS laden
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+  Im normalen Text kann $x^y$ einfach eingefügt werden.
+
+  Längere Formeln müssen abgesetzt werden.
+  \[ \int_{-1}^{2} x\,\mathrm{d}x = \left[
+    \frac{1}{2}x^{2} \right]_{1}^{2}. \]
+
+  Mehrzeilige Formeln können ausgerichtet werden.
+  \begin{align}
+    f(x) &= x^3 \label{formel:kubisch} \\
+             &= x \cdot x \cdot x.
+  \end{align}
+
+  In den meisten Fällen braucht man keine nummerierten Formeln. Diese sind nur sinnvoll,
+  wenn man sich im Text auf \autoref{formel:kubisch} bezieht.
+  \begin{align*}
+    f(x) &= x^3 \\
+             &= x \cdot x \cdot x.
+  \end{align*}
+
+  Griechiesche Buchstaben und viele Indizes.
+  \[ \alpha^{22} + \beta_{12} = \gamma^2_a. \]
+
+  Summe.
+  \[ \sum_{i=1}^n i = \frac{n(n+1)}{2}. \]
+
+  Wurzel.
+  \[ \sqrt{x^4} = x^2. \]
+
+  Grenzwerte.
+  \[ \lim_{n\to\infty} \frac{1}{n^2} = 0. \]
+\end{document}
