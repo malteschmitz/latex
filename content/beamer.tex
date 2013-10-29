@@ -8,16 +8,16 @@
 
 \website
 
-\section{Was ist Beamer?}
+\beamersection{Was ist Beamer?}
 
 \subsection{Einleitung}
 
 \begin{Frame}{Was ist Beamer?}
   \begin{itemize}
-    \item \alert{Dokumentenklasse für \LaTeX} für die Erzeugung von Präsentationen.\\
+    \item \alert{Dokumentenklasse für \LaTeX} für die Erzeugung von Präsentationen.\newline
       (Diese Präsentation und das Skript wurden mit Beamer erzeugt.)
     \item Keine eigene und \alert{keine graphische Anwendung}.
-    \item Beamer ist in MiK\TeX\ und \TeX\ Live enthalten.\\
+    \item Beamer ist in MiK\TeX\ und \TeX\ Live enthalten.\newline
       (\alert{Es kann direkt losgehen}.)
   \end{itemize}
 \end{Frame}
@@ -77,7 +77,7 @@
   \end{zebratabular}
 \end{Frame}
 
-\section{Verwendung von Beamer}
+\beamersection{Verwendung von Beamer}
 
 \begin{Frame}[fragile]{Beispiel}
   \begin{lstlisting}[gobble=4]
@@ -97,7 +97,7 @@
   \end{lstlisting}
 \end{Frame}
 
-\plain{\includegraphics{demo/beamer.pdf}}
+\beamerexample{demo/beamer.pdf}
 
 \subsection{Folien}
 
@@ -148,7 +148,7 @@
   \end{lstlisting}
 \end{Frame}
 
-\plain{\includegraphics{demo/beamer-titlepage.pdf}}
+\beamerexample{demo/beamer-titlepage.pdf}
 
 \begin{Frame}[fragile]{Inhaltsverzeichnis}
   \begin{itemize}
@@ -214,7 +214,7 @@
   \end{lstlisting}
 \end{Frame}
 
-\plain{\includegraphics{demo/beamer-struktur.pdf}}
+\beamerexample{demo/beamer-struktur.pdf}
 
 \begin{Frame}[fragile]{Theorem-Umgebungen}
   \begin{lstlisting}[gobble=4]
@@ -237,7 +237,7 @@
   \end{lstlisting}
 \end{Frame}
 
-\plain{\includegraphics[page=2]{demo/beamer-struktur.pdf}}
+\beamerexample[2]{demo/beamer-struktur.pdf}
 
 \begin{Frame}[fragile]{Spalten}
   \begin{lstlisting}[gobble=4]
@@ -254,7 +254,7 @@
   \end{lstlisting}
 \end{Frame}
 
-\plain{\includegraphics[page=3]{demo/beamer-struktur.pdf}}
+\beamerexample[3]{demo/beamer-struktur.pdf}
 
 \begin{Frame}[fragile]{Quelltext ist fragil.}
   \begin{Block}{In der Präambel}
@@ -274,7 +274,7 @@
   \lstinputlisting{demo/beamer-listing-content.tex}
 \end{Frame}
 
-\plain{\includegraphics{demo/beamer-listing.pdf}}
+\beamerexample{demo/beamer-listing.pdf}
 
 \subsection{Form}
 
@@ -304,13 +304,19 @@
   \end{Block}
 \end{Frame}
 
-\plain{\includegraphics[page=23]{demo/beamer-Boadilla.pdf}}
-\plain{\includegraphics[page=23]{demo/beamer-Madrid.pdf}}
-\plain{\includegraphics[page=23]{demo/beamer-Rochester.pdf}}
-\plain{\includegraphics[page=23]{demo/beamer-Montpellier.pdf}}
-\plain{\includegraphics[page=23]{demo/beamer-Goettingen.pdf}}
-\plain{\includegraphics[page=23]{demo/beamer-Frankfurt.pdf}}
-\plain{\includegraphics[page=23]{demo/beamer-Luebeck.pdf}}
+\beamerexample[23]{demo/beamer-Boadilla.pdf}
+
+\beamerexample[23]{demo/beamer-Madrid.pdf}
+
+\beamerexample[23]{demo/beamer-Rochester.pdf}
+
+\beamerexample[23]{demo/beamer-Montpellier.pdf}
+
+\beamerexample[23]{demo/beamer-Goettingen.pdf}
+
+\beamerexample[23]{demo/beamer-Frankfurt.pdf}
+
+\beamerexample[23]{demo/beamer-Luebeck.pdf}
 
 \mode
 <article>
@@ -325,7 +331,7 @@
 \mode
 <all>
 
-\section{Fortgeschrittene Verwendung}
+\beamersection{Fortgeschrittene Verwendung}
 
 \subsection{Overlays}
 
@@ -345,14 +351,16 @@
 
   \xxx
   
-  \begin{enumerate}
-    \item Ein Sandkorn ist kein Sandhaufen.
-      \pause
-    \item Sandkörner werden durch Hinzufügen
-      eines Sandkorns nicht zum Sandhaufen.
-      \pause
-    \item Induktiv folgt die Aussage. \qedhere
-  \end{enumerate}
+  \begin{onlyenv}<presentation>
+    \begin{enumerate}
+      \item Ein Sandkorn ist kein Sandhaufen.
+        \pause
+      \item Sandkörner werden durch Hinzufügen
+        eines Sandkorns nicht zum Sandhaufen.
+        \pause
+      \item Induktiv folgt die Aussage. \qedhere
+    \end{enumerate}
+  \end{onlyenv}
 \end{Frame}
 
 \begin{Frame}[fragile]{Overlay-Spezifikationen}
@@ -377,6 +385,9 @@
   \end{lstlisting}
 \end{Frame}
 
+\mode
+<presentation>
+
 \begin{Frame}{Overlay-Spezifikationen}
   \begin{Satz}[Sandhaufensatz]
     Es gibt keine Sandhaufen.
@@ -397,6 +408,14 @@
   \alert<7>{falsch}!
 \end{Frame}
 
+\mode
+<article>
+
+\frame{}
+
+\mode
+<all>
+
 \begin{Frame}[fragile]{Ein- und Ausblenden}
   \begin{itemize}
     \item \lstinline|\uncover<3->{Inhalt}|\\ blendet Inhalt erst ab Folie 3 ein.
@@ -410,7 +429,8 @@
     In diesem \uncover<2->{Satz} werden
     \only<3->{Worte }eingeblendet.
   \end{lstlisting}
-  In diesem \uncover<3->{Satz} werden \only<4->{Worte }eingeblendet.
+  \only<presentation>{In diesem \uncover<3->{Satz} werden
+    \only<4->{Worte }eingeblendet.}
 \end{Frame}
 
 \subsection{Artikelfassung}
@@ -455,13 +475,13 @@
         }
       ]
       
-      \node[texicon] (content tex) {\shortstack{\icon{TEX}\\\texttt{content.tex}}};
+      \node (content tex) {\shortstack{\textcolor{texicon}{\icon{TEX}}\\\texttt{content.tex}}};
 
       \uncover<2->{
-        \node[texicon, below left=of content tex] (beamer tex)
-          {\shortstack{\icon{TEX}\\\texttt{beamer.tex}}};
-        \node[texicon, below right=of content tex] (article tex)
-          {\shortstack{\icon{TEX}\\\texttt{article.tex}}};
+        \node[below left=of content tex] (beamer tex)
+          {\shortstack{\textcolor{texicon}{\icon{TEX}}\\\texttt{beamer.tex}}};
+        \node[below right=of content tex] (article tex)
+          {\shortstack{\textcolor{texicon}{\icon{TEX}}\\\texttt{article.tex}}};
       }
 
       \uncover<3->{
@@ -471,10 +491,10 @@
         \node[below=of article tex, engine]
           (make article) {\LaTeX.mk};
 
-        \node[pdficon, below=of make beamer] (beamer pdf)
-          {\shortstack{\icon{PDF}\\\texttt{beamer.pdf}}};
-        \node[pdficon, below=of make article] (article pdf)
-          {\shortstack{\icon{PDF}\\\texttt{article.pdf}}};
+        \node[below=of make beamer] (beamer pdf)
+          {\shortstack{\textcolor{pdficon}{\icon{PDF}}\\\texttt{beamer.pdf}}};
+        \node[below=of make article] (article pdf)
+          {\shortstack{\textcolor{pdficon}{\icon{PDF}}\\\texttt{article.pdf}}};
       }
 
       \only<2->{
@@ -523,7 +543,7 @@
 \end{Frame}
 
 \begin{Frame}[fragile]{Dokumentenklassen}
-  \textbf{\color{maincolor}Für die Folien \texttt{beamer.tex}}
+  \inhead{Für die Folien \texttt{beamer.tex}}
   \begin{lstlisting}[gobble=4]
     % Beamer als Dokumentenklasse verwenden
     \documentclass{beamer}
@@ -533,7 +553,7 @@
 
   \xxx
 
-  \textbf{\color{maincolor}Für den Artikel \texttt{article.tex}}
+  \inhead{Für den Artikel \texttt{article.tex}}
   \begin{lstlisting}[gobble=4]
     % KOMA-Script als Dokumentenklasse verwenden
     \documentclass{scrartcl}
@@ -553,7 +573,7 @@
     \texttt{all} & für Folien und Artikel (Standard)
   \end{tabular}
 
-  \xxx
+  \vskip3ex
 
   \begin{lstlisting}[gobble=4]
     \mode

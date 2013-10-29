@@ -36,6 +36,21 @@
 \colorlet{bblicon}{-maincolor}
 
 \colorlet{tikzexample}{examplecolor!10}
+
+\mode
+<article>
+
+\newcommand*{\examplebox}[2][center]{%
+  \begingroup%
+  \fboxsep=2ex%
+  \begin{center}
+    \colorbox{tikzexample}{#2}
+  \end{center}
+  \endgroup}
+
+\mode
+<presentation>
+
 \newcommand*{\examplebox}[2][center]{%
   \begingroup%
   \fboxsep=2ex%
@@ -45,5 +60,17 @@
     \colorbox{tikzexample}{#2}
   }%
   \endgroup}
+
+\mode
+<all>
+
 \newcommand*{\tikzexample}[2][center]{\examplebox[#1]{%
   \begin{tikzpicture}#2\end{tikzpicture}}}
+
+\newcommand*{\beamerexample}[2][1]{%
+  \alt<presentation>{%
+    \plain{\includegraphics[page=#1]{#2}}
+  }{
+    \plain{\frame{\includegraphics[width=10cm,page=#1]{#2}}}
+  }
+}

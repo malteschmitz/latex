@@ -9,7 +9,7 @@
 
 \website
 
-\section{Was ist \LaTeX?}
+\beamersection{Was ist \LaTeX?}
 
 \subsection{Einordnung}
 
@@ -276,7 +276,7 @@
   \end{Block}
 \end{Frame}
 
-\section{\LaTeX\ verwenden}
+\beamersection{\LaTeX\ verwenden}
 
 \subsection{Präambel}
 
@@ -641,7 +641,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 <all>
 
 \begin{Frame}[fragile]{Binde- und sonstige Striche}
-  \begin{itemize}
+  \begin{looseitemize}
     \item Bindestrich
       \begin{lstlisting}[gobble=8]
         SOS-Ruf
@@ -673,7 +673,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
     %    \LaTeX\ übernimmt dies automatisch.
     %  }
     % Das ist hier zu früh -- Formelsatz kommt erst später.
-  \end{itemize}
+  \end{looseitemize}
 \end{Frame}
 
 \subsection{Formelsatz}
@@ -686,7 +686,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
     \end{lstlisting}
   \end{Block}
   
-  \begin{itemize}
+  \begin{looseitemize}
     \item in normalen Text: \lstinline-$x^y$- erzeugt $x^y$
     \item abgesetzt: \lstinline-\[ x^3 \]- erzeugt
       \[ x^3 \]
@@ -701,11 +701,17 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
         f(x) &= x^3 \\
              &= x \cdot x \cdot x
       \end{align}
-  \end{itemize}
+  \end{looseitemize}
 \end{Frame}
 
 \begin{Frame}[fragile]{Beispiele zum Formelsatz}
   \only<presentation>{\lstset{aboveskip=3pt,belowskip=3pt}}
+
+  \newcommand{\mathexample}[1]{\alt<presentation>{%
+    $\displaystyle\displaystyle#1$%
+  }{%
+    \[ #1 \]
+  }}
 
   \begin{columns}
     \column{5cm}
@@ -713,8 +719,9 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
         \alpha^{22} + \beta_{12}
           = \gamma^2_a
       \end{lstlisting}
+
     \column{4cm}
-      $\displaystyle\displaystyle\alpha^{22} + \beta_{12} = \gamma^2_a$
+      \mathexample{\alpha^{22} + \beta_{12} = \gamma^2_a}
   \end{columns}
 
   \pause
@@ -725,8 +732,9 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
         \sum_{i=1}^{n} i =
           \frac{n(n+1)}{2}
       \end{lstlisting}
+
     \column{4cm}
-      $\displaystyle\sum_{i=1}^n i = \frac{n(n+1)}{2}$
+      \mathexample{\sum_{i=1}^n i = \frac{n(n+1)}{2}}
   \end{columns}
 
   \pause
@@ -736,8 +744,9 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
       \begin{lstlisting}[gobble=8]
         \sqrt{x^{4}} = x^{2}
       \end{lstlisting}
+
     \column{4cm}
-      $\displaystyle\sqrt{x^4} = x^2$
+      \mathexample{\sqrt{x^4} = x^2}
   \end{columns}
 
   \pause
@@ -748,8 +757,9 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
         \lim_{n\to\infty}
           \frac{1}{n^{2}} = 0
       \end{lstlisting}
+
     \column{4cm}
-      $\displaystyle\lim_{n\to\infty} \frac{1}{n^2} = 0$
+      \mathexample{\lim_{n\to\infty} \frac{1}{n^2} = 0}
   \end{columns}
   
   \pause
@@ -762,8 +772,9 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
             \frac{1}{2}x^{2}
           \right]_{1}^{2}
       \end{lstlisting}
+
     \column{4cm}
-      $\displaystyle\int_{-1}^{2} x\,\mathrm{d}x=\left[ \frac{1}{2}x^2 \right]_1^2$
+      \mathexample{\int_{-1}^{2} x\,\mathrm{d}x=\left[ \frac{1}{2}x^2 \right]_1^2}
   \end{columns}
 \end{Frame}
 
@@ -906,10 +917,11 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
     \column{4cm}
       \includegraphics[width=3.5cm,trim=3cm 5mm 4cm 12mm,clip=true]{images/miktex}
   \end{columns}
+
   schneidet links 3\,cm, unten 5\,mm,\\ rechts 4\,cm und oben 12\,mm ab
 \end{Frame}
 
-\section{Verzeichnisse und Verweise}
+\beamersection{Verzeichnisse und Verweise}
 
 \subsection{Struktur des Dokuments}
 
@@ -1005,6 +1017,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
   \xxx
 
   Element platzieren
+  
   \begin{tabular}{lr@{ }l}
     & \lstinline-h- & an Position im Quelltext \\
     & \lstinline-b- & am Ende einer Seite \\
@@ -1043,7 +1056,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 \subsection{Verweise}
 
 \begin{Frame}[fragile]{Verweise}
-  \begin{itemize}
+  \begin{looseitemize}
     \item \alert{Nach} dem Strukturbefehl Label angeben
       \begin{lstlisting}[gobble=8]
         \section{Verzeichnisse und Verweise}
@@ -1061,7 +1074,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
          in \autoref{sec-verweise} \ldots
        \end{lstlisting}
        \ldots MiK\TeX-Logo auf Abbildung 5 in Abschnitt 3.2 \ldots
-  \end{itemize}
+  \end{looseitemize}
 \end{Frame}
 
 \begin{Frame}{Mehrfach kompilieren hilft}{Rerun to get cross-references right.}

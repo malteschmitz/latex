@@ -41,8 +41,8 @@
 }
 
 \usepackage{pifont}
-\newcommand{\goodmark}{\textcolor<presentation>{green!50!black}{\Pisymbol{pzd}{52}}}
-\newcommand{\badmark}{\textcolor<presentation>{red}{\Pisymbol{pzd}{56}}}
+\newcommand{\goodmark}{\textcolor{green!50!black}{\Pisymbol{pzd}{52}}}
+\newcommand{\badmark}{\textcolor{red}{\Pisymbol{pzd}{56}}}
 
 % define colors used by presentation theme AND article
 \xdefinecolor{bordeaux}{RGB}{128,0,50}
@@ -81,7 +81,7 @@
     thesubsection,subtitle,inst,section*,subsection*,institute,%
     qedhere,usetheme,useinnertheme,useoutertheme,%
     pause,uncover,only,alert,onslide,mode,mode*,usetikzlibrary,%
-    draw,filldraw,path,node},%
+    draw,filldraw,path,node,usefonttheme,setbeamertemplate},%
   % LaTeX environments
   morekeywords={[2]lstlisting,document,letter,center,flushleft,%
     flushright,align,itemize,enumerate,description,tabular,%
@@ -219,6 +219,18 @@
 % as the tikz package already defined that command.
 \newcommand\TikZ{Ti\textit{k}Z}
 
+% Define command to start a section with its sectionframe.
+% We cannot use AtBeginSection to achieve this, because there is
+% no easy way to make this work in article mode, too.
+\newcommand{\beamersection}[1]{
+  \section{#1}
+  \alt<presentation>{
+    \input{sectionframe}
+  }{
+    \stepcounter{slidenumber}
+  }
+}
+
 % load common user macros
 \input{macros.tex}
 
@@ -243,6 +255,7 @@
   numbers=noendperiod,%
   twoside=false,%
   headinclude=true,%
+  bibliography=openstyle,%
   DIV=calc%
 }
 
@@ -293,7 +306,6 @@
   }
   % emulate two frames
   \addtocounter{slidenumber}{2}
-  \addtocounter{framenumber}{2}
 }
 \makeatother
 
@@ -329,8 +341,8 @@
 \fi
 \makeatother
 
-% slidenumbers starts over with every new chapter with 2 on chapterframe
-\AtBeginChapter{\setcounter{slidenumber}{2}}
+% slidenumbers starts over with every new chapter with 1 on chapterframe
+\AtBeginChapter{\setcounter{slidenumber}{1}}
 
 % hide block title in article mode
 \setbeamertemplate{block begin}{}
@@ -389,17 +401,19 @@
 
 % emulate amsthms as blocks
 \renewenvironment{Beispiel}[1][]{%
-  \Block{Beispiel (#1)}
+  \Block{Beispiel\ifthenelse{\equal{#1}{}}{}{ (#1)}}
 }{%
   \endBlock
 }
 \renewenvironment{Definition}[1][]{%
-  \Block{Definition (#1)}
+  \Block{Definition\ifthenelse{\equal{#1}{}}{}{ (#1)}}
 }{%
   \endBlock
 }
 
 \newcommand{\inhead}[1]{\textbf{\sffamily #1}}
+
+\usepackage{rotating}
 
 
 
@@ -453,10 +467,6 @@
   \setcounter{framenumber}{0}
 }
 
-\AtBeginSection[]{
-  \input{sectionframe}
-}
-
 \newcommand{\chapter}[1]{
   \part{#1}
   \title{\LaTeX\\#1}
@@ -474,6 +484,15 @@
 
 % display math in serif font on the slides
 \usefonttheme[onlymath]{serif}
+
+% use looseitemize as alias for itemize
+\newenvironment{looseitemize}{}{}
+\let\looseitemize\itemize
+\let\endlooseitemize\enditemize
+% use looseenumerate as alias for enumerate
+\newenvironment{looseenumerate}{}{}
+\let\looseenumerate\enumerate
+\let\endlooseenumerate\endenumerate
 
 % create new environment Block behaving exactly like block
 \newenvironment{Block}{%

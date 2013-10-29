@@ -9,7 +9,7 @@
 
 \website
 
-\section{\LaTeX\ verwenden}
+\beamersection{\LaTeX\ verwenden}
 
 \subsection{Farbe}
 
@@ -205,10 +205,10 @@
 
 \begin{Frame}[fragile,t]{Eigene Umgebungen}
   \newenvironment{achtung}[1][Achtung]{%
-    \rule{\textwidth}{1pt}\\%
+    \rule{\textwidth}{1pt}\newline%
     \textbf{#1}: %
   }{%
-    \rule[1ex]{\textwidth}{1pt}%
+    \newline\rule[1ex]{\textwidth}{1pt}%
   }
 
   \begin{onlyenv}<1>
@@ -217,7 +217,7 @@
         \rule{\textwidth}{1pt}\\%
         \textbf{#1}: %
       }{%
-        \rule[1ex]{\textwidth}{1pt}%
+        \\\rule[1ex]{\textwidth}{1pt}%
       }
 
       \begin{achtung}%
@@ -237,7 +237,7 @@
         \rule{\textwidth}{1pt}\\%
         \textbf{#1}: %
       }{%
-        \rule[1ex]{\textwidth}{1pt}%
+        \\\rule[1ex]{\textwidth}{1pt}%
       }
 
       \begin{achtung}[Hinweis]%
@@ -272,7 +272,8 @@
 
   \xxx
 
-  \lstset{style=block,keywordstyle=\bfseries,literate={}}
+  \lstset{backgroundcolor={},frame=no,aboveskip=0pt,%
+    belowskip=0pt,keywordstyle=\bfseries,literate={}}
   \input{listing.tex}
 \end{Frame}
 
@@ -314,7 +315,7 @@
   \input{pseudocode}
 \end{Frame}
 
-\section{Literatur}
+\beamersection{Literatur}
 
 \subsection{Verwendung von \BibTeX}
 
@@ -650,7 +651,7 @@
   \end{Beispiel}
 \end{Frame}
 
-\section{Eigene Layouts}
+\beamersection{Eigene Layouts}
 
 \subsection{Briefe}
 
@@ -658,7 +659,7 @@
   \begin{itemize}
     \item KOMA-Script hat eine eigene Dokumentenklasse für Briefe.
     \item Ohne Option entstehen Geschäftsbriefe nach DIN 5008.
-    \item Sehr viele Einstellungsmöglichkeiten. \\
+    \item Sehr viele Einstellungsmöglichkeiten. \newline
       \alert{Lies die Anleitung! Sie ist sehr gut!}
   \end{itemize}
 
@@ -699,8 +700,14 @@
 \end{Frame}
 
 \begin{frame}[t]{Schreiben an den Vorstand}
-  \vskip-4ex
-  \includegraphics[width=10cm]{demo/brief}
+  \alt<presentation>{
+    \vskip-4ex
+    \includegraphics[width=10cm]{demo/brief}
+  }{
+    \begin{center}
+      \frame{\includegraphics[width=.9\textwidth]{demo/brief}}
+    \end{center}
+  }
 \end{frame}
 
 \subsection{Schriftarten}
@@ -708,14 +715,14 @@
 \begin{Frame}[fragile]{Schriftarten}
   Ein Dokument besitzt
   \begin{itemize}
-    \item eine serifenlose Schriftfamilie\\
-      (zum Beispiel für Überschriften)\\
+    \item eine serifenlose Schriftfamilie\newline
+      (zum Beispiel für Überschriften)\newline
       Verwendung durch \lstinline-\textrm- oder \lstinline-\rmfamily-
-    \item eine Schriftfamilie mit Serifen\\
-      (zum Beispiel für den Fließtext)\\
+    \item eine Schriftfamilie mit Serifen\newline
+      (zum Beispiel für den Fließtext)\newline
       Verwendung durch \lstinline-\textsf- oder \lstinline-\sffamily-
-    \item eine nichtproportionale Schriftfamilie\\
-      (zum Beispiel für Quelltext)\\
+    \item eine nichtproportionale Schriftfamilie\newline
+      (zum Beispiel für Quelltext)\newline
       Verwendung durch \lstinline-\texttt- oder \lstinline-\ttfamily-
   \end{itemize}
 
@@ -942,7 +949,9 @@
 
   \xxx
 
-  Richtwerte\\[1ex]
+  \inhead{Richtwerte}
+
+  \only<presentation>{\vskip1ex}
   \begin{zebratabular}{llll}
     Schriftgröße & 10pt & 11pt & 12pt \\
     DIV & 8 & 10 & 12
@@ -983,7 +992,7 @@
 \end{Block}
 
 \begin{Block}{In der Präambel für manuellen Satzspiegel}
-  \begin{lstlisting}[gobble=6,style=block]
+  \begin{lstlisting}[gobble=4,style=block]
     \areaset{15cm}{15cm}
   \end{lstlisting}
   Es gilt weiterhin
@@ -995,7 +1004,7 @@
 \end{Block}
 
 \begin{Block}{In der Präambel für eigeneren Satzspiegel}
-  \begin{lstlisting}[gobble=6,style=block]
+  \begin{lstlisting}[gobble=4,style=block]
     \usepackage[a5paper,top=2cm,bottom=4cm,%
       left=2cm,right=4cm]{geometry}
     % oder auch

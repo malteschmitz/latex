@@ -9,7 +9,7 @@
 
 \website
 
-\section{Einführung}
+\beamersection{Einführung}
 
 \begin{Frame}{Was ist \TikZ?}
   \begin{itemize}
@@ -592,7 +592,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{lstlisting}
 \end{Frame}
 
-\section{Graphen}
+\beamersection{Graphen}
 
 \subsection{Knoten}
 
@@ -1007,7 +1007,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{lstlisting}
 \end{Frame}
 
-\section{Fortgeschrittene Verwendung}
+\beamersection{Fortgeschrittene Verwendung}
 
 \subsection{Funktionen plotten}
 
@@ -1329,7 +1329,8 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
 \end{Frame}
 
 \begin{Frame}[fragile,shrink]{BER measurement on fibre optical system}{Author: Jose Luis Diaz}
-  \vspace*{2.5cm}
+  \only<presentation>{\vspace*{2.5cm}}
+  \only<article>{\sideways}
   \begin{tikzpicture}
     % Define a macro to draw the filter symbol
     \def\filterSS{\node{};  % This empty node draws the box. 
@@ -1435,7 +1436,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     & % m-4-7
       Rx    
     & % m-4-8
-      |[txt]| {Error\\Detector} 
+      |[txt]| {Error\newline Detector} 
     \\
     };  % End of matrix
 
@@ -1477,7 +1478,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     % Finally, put some text above some symbols
     \draw (m-2-3.left side) node[above, inner sep=5mm] {Isolator};
     \draw (m-2-5.north) node[above, inner sep=3mm] {Filter};
-    \draw (m-3-7) node[above, inner sep=6mm, text centered, text width=2cm] {Polarisation\\controller};
+    \draw (m-3-7) node[above, inner sep=6mm, text centered, text width=2cm] {Polarisation\newline controller};
 
     % The big arrow over the MOD symbol is a bit laborious
     \node[yshift=2mm] (MOD arrow) at (m-2-2.north) [anchor=east,single arrow, draw,line width=1pt, 
@@ -1502,7 +1503,8 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \node at (first dotted box.north) [above, inner sep=3mm] {\textbf{Transmitter}};
     \node at (second dotted box.south) [below, inner sep=3mm] {\textbf{Receiver}};
   \end{tikzpicture}
-  \vspace*{2.5cm}
+  \only<presentation>{\vspace*{2.5cm}}
+  \only<article>{\endsideways}
 \end{Frame}
 
 \begin{Frame}[fragile]{Map of a HiSPARC detector}{Autor: David Fokkema}
