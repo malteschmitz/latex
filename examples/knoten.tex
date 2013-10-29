@@ -1,0 +1,57 @@
+\documentclass{scrartcl}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
+
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Satzspiegel berechnen lassen
+  DIV=calc%
+}
+
+% Mathematikumgebungen von der AMS laden
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% TikZ laden
+\usepackage{tikz}
+
+% Verwendete TikZ-Bibliotheken laden
+\usetikzlibrary{positioning,shapes.geometric}
+
+\begin{document}
+  \begin{tikzpicture}[
+      % Stil für Ein- und Ausgabe
+      io/.style={trapezium, trapezium left angle=70, trapezium right angle=110, fill=magenta!10, draw=magenta},
+      % Stil für Operationen
+      op/.style={rectangle, fill=orange!10, draw=orange},
+      % Stil für Entscheidungen
+      cn/.style={diamond, aspect=2, inner sep=2pt, fill=red!10, draw=red},
+      % Distanz zwischen den Knoten
+      node distance=5mm]
+    % Knoten
+    \node[io] (in) {Eingabe $a,b$};
+    \node[op, below=of in] (div) {$r=a \mod b$};
+    \node[op, below=of div] (set) {$a=b,\ b=r$};
+    \node[cn, below=of set] (cond) {$b=0?$};
+    \node[io, below=of cond] (out) {Ausgabe $a$};
+    % Kanten
+    \path[->]
+      (in) edge (div)
+      (div) edge (set)
+      (set) edge (cond)
+      (cond) edge node[right] {Ja} (out);
+    \draw[->] (cond) -- node[below] {Nein} ++(1.5,0) |- (div);
+  \end{tikzpicture}
+\end{document}

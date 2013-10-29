@@ -1,0 +1,48 @@
+\documentclass{scrartcl}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
+
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Satzspiegel berechnen lassen
+  DIV=calc%
+}
+
+% TikZ laden
+\usepackage{tikz}
+
+% Verwendete TikZ-Bibliotheken laden
+\usetikzlibrary{trees}
+
+\begin{document}
+  \begin{tikzpicture}[
+      % Knoten des Baumes als Kreis zeichnen
+      every node/.style={draw,circle,inner sep=0pt,
+        minimum width=15pt},
+      % Distanz zwischen den Knoten einer Ebene
+      level/.style={sibling distance=20mm/#1},
+      % Distanz zwischen den Ebenen
+      level distance=10mm]
+    \node {a}
+      child { node {b}
+        child { node {c} }
+        child { node {d} }
+      }
+      child { node {e}
+        child { node {f} }
+        child { node {g} }
+      };
+  \end{tikzpicture}
+\end{document}

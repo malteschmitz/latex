@@ -1,17 +1,30 @@
 \documentclass{scrartcl}
 
+% Kodierung dieser Datei angeben
 \usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 
-\KOMAoptions{paper=a5,pagesize=automedia,DIV=calc}
-
+% Deutsche Silbentrennung verwenden
 \usepackage[ngerman]{babel}
 
-\usepackage{tikz}
-\usetikzlibrary{intersections}
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
 
-\pagestyle{empty}
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Satzspiegel berechnen lassen
+  DIV=calc%
+}
+
+% TikZ laden
+\usepackage{tikz}
+
+% Verwendete TikZ-Bibliotheken laden
+\usetikzlibrary{intersections}
 
 \begin{document}
   \begin{tikzpicture}[scale=3]

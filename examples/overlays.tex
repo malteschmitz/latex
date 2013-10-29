@@ -1,0 +1,55 @@
+% Beamer als Dokumentenklasse verwenden
+\documentclass{beamer}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Navigationssynbole ausblenden
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+  \begin{frame}{Pause}
+    Das Kommando \textbackslash pause blendet Elemente schrittweise ein.
+
+    \begin{enumerate}
+      \item Ein Sandkorn ist kein Sandhaufen.
+        \pause
+      \item Sandkörner werden durch Hinzufügen
+        eines Sandkorns nicht zum Sandhaufen.
+        \pause
+      \item Induktiv folgt die Aussage. \qedhere
+    \end{enumerate}
+  \end{frame}
+
+  \begin{frame}{Overlay-Spezifikationen}
+	  \begin{Satz}[Sandhaufensatz]
+	    Es gibt keine Sandhaufen.
+	  \end{Satz}
+
+	  \begin{Beweis}<2->
+	    \begin{enumerate}
+	      \item<3-> Ein Sandkorn ist kein Sandhaufen.
+	      \item<4-> Sandkörner werden durch Hinzufügen
+	        eines Sandkorns nicht zum Sandhaufen.
+	      \item Induktiv folgt die Aussage. \qedhere
+	    \end{enumerate}
+	  \end{Beweis}
+
+	  \onslide<5->
+
+	  Der \alert<6>{Induktionsbeweis} ist
+	  \alert<7>{falsch}!
+	\end{frame}
+
+	\begin{frame}{Ein- und Ausblenden}
+	  In diesem \uncover<2->{Satz} werden
+	  \only<3->{Worte }eingeblendet.
+	\end{frame}
+\end{document}

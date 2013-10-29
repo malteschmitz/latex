@@ -1,0 +1,196 @@
+% Beamer als Dokumentenklasse verwenden
+\documentclass{beamer}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Schönere Schriftart für nicht proportionale Schrift laden
+\usepackage{courier}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Paket für Darstellung von Quelltext laden
+\usepackage{listings}
+
+% Farbunterstützung muss in Beamer nicht explizit geladen werden
+
+% Paket für weitere Symbole laden.
+% (Wird von listings benötigt.)
+\usepackage{textcomp}
+
+% Optionen für das Aussehen des Quelltext setzen
+\lstset{%
+  basicstyle=\ttfamily,%
+  showstringspaces=false,%
+  upquote=true}
+
+% Deutsche Umlaute in UTF8 aktivieren
+\lstset{
+  literate={ö}{{\"o}}1
+           {Ö}{{\"O}}1
+           {ä}{{\"a}}1
+           {Ä}{{\"A}}1
+           {ü}{{\"u}}1
+           {Ü}{{\"U}}1
+           {ß}{{\ss}}1
+}
+
+% Stil für das Setzen von Pseudocode definieren
+\lstdefinestyle{pseudo}{language={},%
+  basicstyle=\normalfont,%
+  morecomment=[l]{//},%
+  morekeywords={for,to,while,do,if,then,else},%
+  mathescape=true,%
+  columns=fullflexible}
+
+% Formeln mit Serifen setzen
+\usefonttheme[onlymath]{serif}
+
+% Navigationssynbole ausblenden
+\setbeamertemplate{navigation symbols}{}
+
+% Kurztitel und Title der Präsentation
+\title[Kurztitel]{%
+  Lange Version des langen Titels}
+
+% Untertitel der Präsentation
+\subtitle{Ein langer Untertitel beschreibt
+  alles noch etwas genauer.}
+
+% Kurz- und Langversion der Autoren
+\author[Thorn, Schmitz]{%
+  Johannes Thorn \and Malte Schmitz}
+
+% Kurz- und Langversion der Konferenz bzw. der Veranstaltung
+\date[KPT 2013]{Konferenz über
+  Präsentationstechniken, 2013}
+
+% Theme setzen
+% \usetheme{Boadilla} % Viel Information auf kleinem Platz.
+% \usetheme{Madrid} % Wie Boadilla, aber mit kräftigeren Farben.
+% \usetheme{Rochester} % Sehr dominante, aber ohne Layoutelemente.
+% \usetheme{Montpellier} % Zurückhaltend mit Baumnavigation.
+\usetheme{Goettingen} % Zurückhaltend mit Navigation in Seitenleiste rechts.
+% \usetheme{Frankfurt} % Navigationsleiste für die einzelnen Folien am oberen Rand.
+% \usetheme{Luebeck} % Abschnitt und Unterabschnitt in der Kopfzeile.
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\section*{Ziele und Inhalt}
+
+\begin{frame}{Gliederung}
+  \tableofcontents
+\end{frame}
+
+\begin{frame}{Ziele}
+  \begin{itemize}
+    \item Verstehen, wie das hier alles funktioniert.
+    \item Einsehen, dass es toll ist.
+    \item Viele Dinge davon selber verwenden können.
+  \end{itemize}
+\end{frame}
+
+\section{Grundlagen}
+
+\subsection{Einleitung}
+
+\begin{frame}{Eine Formel}
+  Formelsatz funktioniert wie immer.
+  \[ \int_{-1}^{2} x\,\mathrm{d}x = \left[
+  \frac{1}{2}x^{2} \right]_{1}^{2}. \]
+\end{frame}
+
+\subsection{Wichtiger Hinweis}
+
+\begin{frame}{Blöcke}
+  \begin{block}{Überschrift}
+    Dieser Text steht im normalen Block.
+  \end{block}
+
+  \begin{alertblock}{Überschrift}
+    Dieser Text steht im hervorgehobenen Block.
+  \end{alertblock}
+
+  \begin{exampleblock}{Überschrift}
+    Dieser Text steht im Beispielblock.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Alert}
+  Wenn etwas \alert{wichtig} ist, muss man es \alert{hervorheben}.
+\end{frame}
+
+\subsection{Kernsatz}
+
+\begin{frame}{Satz vom Sandhaufen}
+  \begin{Satz}[Sandhaufensatz]
+    Es gibt keine Sandhaufen.
+  \end{Satz}
+
+  \begin{Beweis}
+    \begin{enumerate}
+      \item Ein Sandkorn ist kein Sandhaufen.
+      \item Sandkörner werden durch Hinzufügen\\
+        eines Sandkorns nicht zum Sandhaufen.
+      \item Induktiv folgt die Aussage. \qedhere
+    \end{enumerate}
+  \end{Beweis}
+
+  \begin{Beispiel}
+    Vergleiche unsere Baustellen.
+  \end{Beispiel}
+\end{frame}
+
+\section{Verwendung}
+
+\begin{frame}{Spalten}
+  \begin{columns}
+    \begin{column}{5cm}
+      Linke Spalte.
+    \end{column}
+    \begin{column}{5cm}
+      Rechte Spalte.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Weitere Möglichkeiten}
+
+\begin{frame}[fragile]{Quelltext ist fragil.}
+  \begin{lstlisting}[gobble=4,language=Java]
+    public class Main {
+      public static void main(String[] args) {
+        System.out.println("Hallo Welt");
+      }
+    }
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Pseudocode ist fragil}
+  \begin{lstlisting}[style=pseudo,gobble=4]
+    // Schleife von 1 bis 5
+    for $i \gets 1$ to $5$ do
+      while $S[i] \neq S[S[i]]$ do
+        $S[i] \gets S[S[i]]$
+  \end{lstlisting}
+\end{frame}
+
+\section*{Zusammenfassung}
+
+\begin{frame}{Zusammenfassung}
+  \begin{itemize}
+    \item Erster Satz der \alert{Zusammenfassung}.
+    \item Weiter wichtiger Punkt, der in diesem Vortrag behandelt wurde.
+  \end{itemize}
+\end{frame}
+
+\end{document}

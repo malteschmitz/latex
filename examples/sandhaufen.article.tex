@@ -1,0 +1,28 @@
+% KOMA-Script als Dokumentenklasse verwenden
+\documentclass{scrartcl}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Beamer als Paket laden
+\usepackage{beamerarticle}
+
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Satzspiegel berechnen lassen
+  DIV=calc%
+}
+
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
+
+% gemeinsamen Inhalt einbinden
+\input{sandhaufen.content.tex}

@@ -1,0 +1,40 @@
+\documentclass{scrartcl}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
+
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Satzspiegel berechnen lassen
+  DIV=calc%
+}
+
+% TikZ laden
+\usepackage{tikz}
+
+% Verwendete TikZ-Bibliotheken laden
+\usetikzlibrary{positioning,automata}
+
+\begin{document}
+  \begin{tikzpicture}[auto]
+    \node[initial, state] (q0) {$q_0$};            
+    \node[state, right=of q0] (q1) {$q_1$};        
+    \node[state, accepting, right=of q1]           
+      (q2) {$q_2$};                                
+    \draw (q0) edge[->] node {0} (q1)              
+          (q1) edge[->, loop above] node {0} ()    
+               edge[->, bend left] node {1} (q2)   
+          (q2) edge[->, bend left] node {0} (q1);
+  \end{tikzpicture}
+\end{document}
