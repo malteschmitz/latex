@@ -159,9 +159,11 @@
       \column{5cm}
       \vskip2pt\par
       \includegraphics[width=3.5cm]{images/miktex}\\
+
       \column{5cm}
       installiert Pakete bei\\ erster Verwendung automatisch
     \end{columns}
+
     \url{www.miktex.org}
   \end{Block}
 
@@ -172,10 +174,12 @@
       \vskip4pt\par
       \xdefinecolor{texlive}{RGB}{12,99,170}
       \textcolor{texlive}{\Huge\bfseries\TeX\ Live}
+
       \column{5cm}
       mit Installer als\\ DVD-Image verfügbar
     \end{columns}
-    \vskip4pt\par
+
+    \only<presentation>{\vskip4pt}
     \url{www.tug.org/texlive}
   \end{Block}
 
@@ -184,35 +188,37 @@
       \column{1mm}
       \column{4.5cm}
       \includegraphics[width=3.5cm]{images/mactex}
+
       \column{5cm}
       \TeX\ Live und Tools\\ für Mac OS
     \end{columns}
+
     \url{www.tug.org/mactex}
   \end{Block}
 \end{Frame}
 
 \begin{Frame}{Pakete nachinstallieren und aktualisieren}{Windows}
-  \begin{figure}
-    \centering
+  \begin{minipage}{\textwidth}\begin{center}
     \includegraphics[width=8cm]{images/miktex-update}
-    \caption{MiK\TeX\ Updater}
-  \end{figure}
+
+    MiK\TeX\ Updater
+  \end{center}\end{minipage}
 \end{Frame}
 
 \begin{Frame}{Pakete nachinstallieren und aktualisieren}{Linux}
-  \begin{figure}
-    \centering
+  \begin{minipage}{\textwidth}\begin{center}
     \includegraphics[width=7cm]{images/texlive-update}
-    \caption{\TeX\ Live Manager}
-  \end{figure}
+
+    \TeX\ Live Manager
+  \end{center}\end{minipage}
 \end{Frame}
 
 \begin{Frame}{Pakete nachinstallieren und aktualisieren}{Mac}
-  \begin{figure}
-    \centering
+  \begin{minipage}{\textwidth}\begin{center}
     \includegraphics[width=8cm]{images/mactex-update}
-    \caption{\TeX\ Live Utiliy}
-  \end{figure}
+
+    \TeX\ Live Utiliy
+  \end{center}\end{minipage}
 \end{Frame}
 
 
@@ -274,6 +280,36 @@
 
 \subsection{Präambel}
 
+\mode
+<article>
+
+\begin{Frame}[fragile]{Aufbau eines Dokuments}
+  \begin{lstlisting}[gobble=4]
+    % Dokumentenklasse
+    \documentclass{scrartcl}
+
+    % Präambel: Pakete laden
+    \usepackage[ngerman]{babel}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+
+    % Präambel: Einstellungen
+    \KOMAoptions{%
+      parskip=full,%
+      fontsize=12pt}
+
+    % Dokumentenkörper
+    \begin{document}
+      Franz jagt im komplett
+      verwahrlosten Taxi quer
+      durch Bayern.
+    \end{document}
+  \end{lstlisting}
+\end{Frame}
+
+\mode
+<presentation>
+
 \begin{Frame}[fragile]{Aufbau eines Dokuments}
   \begin{tikzpicture}[%
       auto,
@@ -318,18 +354,21 @@
   \end{tikzpicture}
 \end{Frame}
 
+\mode
+<all>
+
 \begin{Frame}[fragile]{Dokumentenklasse}
-  \lstinline-\documentclass{scrartcl}-\\
+  \lstinline-\documentclass{scrartcl}-\newline
   kurzer Artikel
 
   \xxx
 
-  \lstinline-\documentclass{scrreprt}-\\
+  \lstinline-\documentclass{scrreprt}-\newline
   Bericht mit Titelseite und Kapiteln
 
   \xxx
 
-  \lstinline-\documentclass{scrbook}-\\
+  \lstinline-\documentclass{scrbook}-\newline
   doppelseitiges Buch mit Teilen, Kapiteln und Kopfzeile
 
   \xxx
@@ -386,19 +425,14 @@
     \usepackage[breaklinks=true]{hyperref}
   \end{lstlisting}
   bessere Unterstützung der PDF-Ausgabe
+  \begin{onlyenv}<article>
+    \begin{lstlisting}[gobble=6]
+      \usepackage[breaklinks=true, pdfborder={0 0 0},
+                  pdfhighlight={/N}]{hyperref}
+    \end{lstlisting}
+    noch bessere Unterstützung der PDF-Ausgabe
+  \end{onlyenv}
 \end{Frame}
-
-\mode
-<article>
-
-\begin{lstlisting}
-  \usepackage[breaklinks=true, pdfborder={0 0 0},
-              pdfhighlight={/N}]{hyperref}
-\end{lstlisting}
-noch bessere Unterstützung der PDF-Ausgabe
-
-\mode
-<all>
 
 \subsection{Auszeichnungen}
 
@@ -514,8 +548,9 @@ noch bessere Unterstützung der PDF-Ausgabe
 \end{Frame}
 
 \begin{Frame}[fragile]{Umgebungen}
+  \lstset{morekeywords={[2]envname}}
   \begin{Definition}[Umgebung]
-    \begin{lstlisting}[gobble=6,style=block,morekeywords={[2]envname}]
+    \begin{lstlisting}[gobble=6,style=block]
       \begin{envname}[opt]{arg1}{arg2}
         Inhalt
       \end{envname}

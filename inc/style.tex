@@ -141,11 +141,15 @@
   mathescape=true,%
   columns=fullflexible}
 
-\lstdefinestyle{block}{%
-  backgroundcolor={},%
-  frame=no,%
-  aboveskip=0pt,%
-  belowskip=0pt
+\alt<presentation>{
+  \lstdefinestyle{block}{%
+    backgroundcolor={},%
+    frame=no,%
+    aboveskip=0pt,%
+    belowskip=0pt
+  }
+}{
+  \lstdefinestyle{block}{}
 }
 
 % german umlauts and red braces
@@ -201,8 +205,6 @@
 
 \newcommand{\xxx}{\only<presentation>{\vskip1em}}
 
-\newcommand{\inhead}[1]{\textbf{\color{maincolor}#1}}
-
 \newenvironment{mybib}{%
   % temporary disable \section command to get rid of bibliography heading
   \renewcommand{\chapter}[2]{}
@@ -233,13 +235,16 @@
 \newcommand{\itemref}[1]{#1}
 \newcommand{\term}[1]{#1}
 
-\KOMAoption{fontsize}{12pt}
-\KOMAoption{parskip}{half}
-\KOMAoption{open}{any}
-\KOMAoption{headings}{big}
-\KOMAoption{numbers}{noendperiod}
-\KOMAoption{twoside}{false}
-\KOMAoption{mpinclude}{true}
+\KOMAoptions{%
+  fontsize=12pt,%
+  parskip=half,%
+  open=any,%
+  headings=big,%
+  numbers=noendperiod,%
+  twoside=false,%
+  headinclude=true,%
+  DIV=calc%
+}
 
 \usepackage{paralist}
 % use compactitem as default itemize environment
@@ -258,9 +263,6 @@
 % create head and foot line
 \usepackage{scrpage2}
 \pagestyle{scrheadings}
-
-% stretch headline above margin (scrguide -- page 244)
-\setheadwidth[0pt]{textwithmarginpar}
 
 % create targets block
 \usepackage{minitoc}
@@ -301,8 +303,8 @@
 \automark[chapter]{section} % \automark[\rightmark]{\leftmark}
 
 \ihead{\shorttitlestring\ \rightmark\ \textcolor{maincolor}{\bfseries |} \leftmark \hfill \pagemark}
-\setkomafont{pageheadfoot}{\normalfont\sffamily}
-\setkomafont{pagenumber}{\usekomafont{pageheadfoot}\color{maincolor}}
+\setkomafont{pagehead}{\normalfont\sffamily}
+\setkomafont{pagenumber}{\color{maincolor}\bfseries}
 \setheadsepline{0.5pt}[\color{maincolor}]
 
 
@@ -368,10 +370,6 @@
 % map plain command to frame
 \newcommand{\plain}[1]{\frame{#1}}
 
-% display frame number
-%\setbeamertemplate{frame end}{%
-%  \marginpar{\hfill\scriptsize\sffamily\color{maincolor}$\to\,$\insertframenumber}}
-
 % display framenumber as chapter number and slide number
 \renewcommand{\insertframenumber}{\thechapter-\theslidenumber}
 
@@ -380,10 +378,7 @@
 % display slide number
 \setbeamertemplate{frame end}{%
   \marginpar%
-    [\scriptsize\sffamily\color{maincolor}\insertframenumber$\,\leftarrow$\hfill]%
-    {\hfill\scriptsize\sffamily\color{maincolor}$\rightarrow\,$\insertframenumber}}
-      
-\newcommand{\script}{\addtomargin{Script}\mode<article>}
+    {\scriptsize\sffamily\color{maincolor}$\to\,$\insertframenumber}}
       
 \usepackage{hyperref}
 \hypersetup{breaklinks=true,
@@ -392,6 +387,19 @@
 
 \usepackage{verbatim} % for the comment environment
 
+% emulate amsthms as blocks
+\renewenvironment{Beispiel}[1][]{%
+  \Block{Beispiel (#1)}
+}{%
+  \endBlock
+}
+\renewenvironment{Definition}[1][]{%
+  \Block{Definition (#1)}
+}{%
+  \endBlock
+}
+
+\newcommand{\inhead}[1]{\textbf{\sffamily #1}}
 
 
 
@@ -482,6 +490,8 @@
 % create new environment beamerenumerate behaving exactly like enumerate
 \newenvironment{beamerenumerate}{%
   \begin{enumerate}}{\end{enumerate}}
+
+\newcommand{\inhead}[1]{\textbf{\color{maincolor}#1}}
 
 
 \mode
