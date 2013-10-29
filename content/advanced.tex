@@ -949,7 +949,21 @@
   \end{zebratabular}
 \end{Frame}
 
-\frame{TODO: Bindekorrektur mit BCOR}
+\begin{Frame}[fragile]{Bindekorrektur}
+  \begin{itemize}
+    \item Beim Binden \alert{verschwindet ein Teil der Seite} in der Bindung.
+    \item Das \alert{verringert die Breite} des betroffenen Randes.
+    \item Die \alert{Bindekorrektur} ergänzt \alert{zusätzlichen Rand links bzw. außen}, der bei der Satzspiegelberechnung ausgenommen wird.
+  \end{itemize}
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \KOMAoptions{%
+      BCOR=1cm,%
+      DIV=calc}
+  \end{lstlisting}
+\end{Frame}
 
 \mode
 <article>
@@ -1185,7 +1199,7 @@
   Zugriff auf aktuelle Seitenzahl und Kolumnentitel
 \end{Frame}
 
-\begin{Frame}[fragile,allowframebreaks]{Beispiele für konfigurierte Seitenstile}
+\begin{Frame}[t,fragile]{Beispiele für konfigurierte Seitenstile}{Standardkonfiguration von KOMA-Script}
   \begin{lstlisting}[gobble=4]
     % Alles löschen
     \clearscrheadfoot
@@ -1198,10 +1212,14 @@
      % Seitenzahl unten außen
     \ofoot[\pagemark]{\pagemark}
   \end{lstlisting}
-  Standardkonfiguration von KOMA-Script
 
-  \framebreak
+  \centerline{%
+    \includegraphics[page=18,width=48mm]{demo/kopfzeile-standard}%
+    \includegraphics[page=19,width=48mm]{demo/kopfzeile-standard}%
+  }
+\end{Frame}
 
+\begin{Frame}[t,fragile]{Beispiele für konfigurierte Seitenstile}{Kapitel und Abschnitt mittig}
   \begin{lstlisting}[gobble=4]
     % Alles löschen
     \clearscrheadfoot
@@ -1213,12 +1231,15 @@
     \chead{\headmark}
     % Seitenzahl oben außen auch auf scrplain
     \ohead[\pagemark]{\pagemark}
-    % Dateiname unten mittig
-    \cfoot{\jobname .pdf}
   \end{lstlisting}
 
-  \framebreak
+  \centerline{%
+    \includegraphics[page=18,width=48mm]{demo/kopfzeile-mittig}%
+    \includegraphics[page=19,width=48mm]{demo/kopfzeile-mittig}%
+  }
+\end{Frame}
 
+\begin{Frame}[t,fragile]{Beispiele für konfigurierte Seitenstile}{Kapitel und Abschnitt immer links}
   \begin{lstlisting}[gobble=4]
     % Alles löschen
     \clearscrheadfoot
@@ -1231,9 +1252,12 @@
     % Seitenzahl unten mittig
     \cfoot[\pagemark]{Seite \pagemark}
   \end{lstlisting}
-\end{Frame}
 
-\frame{TODO: Ergebnisse zeigen}
+  \centerline{%
+    \includegraphics[page=18,width=48mm]{demo/kopfzeile-links}%
+    \includegraphics[page=19,width=48mm]{demo/kopfzeile-links}%
+  }
+\end{Frame}
 
 \begin{Frame}[fragile]{Kopf- und Fußzeile formatieren}
   \begin{lstlisting}[gobble=4]
@@ -1328,7 +1352,7 @@
 \end{Frame}
 
 \begin{Frame}{Die ultimative Beispielkopfzeile}
-  \includegraphics[width=10cm,page=42]{demo/kopfzeile}
+  \includegraphics[width=10cm,page=42]{demo/kopfzeile-ultimativ}
 \end{Frame}
 
 \section*{Zusammenfassung}
