@@ -74,3 +74,14 @@
     \plain{\frame{\includegraphics[width=10cm,page=#1]{#2}}}
   }
 }
+
+\newcommand{\currentauthor}{Malte}
+\newcommand{\updateauthorcolors}{\ifthenelse{\equal{\currentauthor}{Malte}}{
+  \colorlet{authormalte}{maincolor}\colorlet{authorjonny}{black}
+}{
+  \colorlet{authormalte}{black}\colorlet{authorjonny}{maincolor}
+}}
+\newcommand{\insertcurrentauthor}{\currentauthor}
+\updateauthorcolors
+\newcommand{\malte}{\renewcommand{\currentauthor}{Malte}\updateauthorcolors}
+\newcommand{\jonny}{\renewcommand{\currentauthor}{Johannes}\updateauthorcolors}
