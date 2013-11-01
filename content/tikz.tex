@@ -11,6 +11,8 @@
 
 \website
 
+\malte
+
 \beamersection{Einführung}
 
 \begin{Frame}{Was ist \TikZ?}
@@ -94,7 +96,7 @@
       \begin{itemize}
         \item Links unten ist \lstinline-(0,0)-,
         \item die erste Koordinate geht nach rechts und
-        \item die zweite Koordinate geht nach links.
+        \item die zweite Koordinate geht nach oben.
       \end{itemize}
     \item Eine Linie wird mit \lstinline|--| gezeichnet.
     \item Relative Koordinaten beginnen mit \lstinline-++-.
@@ -594,6 +596,8 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{lstlisting}
 \end{Frame}
 
+\jonny
+
 \beamersection{Graphen}
 
 \subsection{Knoten}
@@ -922,10 +926,10 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \node[initial,state] (q0) {$q_0$};
     \visible<2->{\node[state, right=of q0] (q1) {$q_1$};}
     \visible<3->{\node[state, accepting, right=of q1] (q2) {$q_2$};}
-    \visible<2->{\draw
+    \visible<2->{\path
       (q0) edge[->] node {0} (q1)
       (q1) edge[->, loop above] node {0} ();}
-    \visible<3->{\draw
+    \visible<3->{\path
       (q1) edge[->, bend left] node {1} (q2)
       (q2) edge[->, bend left] node {0} (q1);}
   }
@@ -938,7 +942,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
       %\pause[2]%\node[state, right=of q0] (q1) {$q_1$};        %\onslide%
       %\pause[3]%\node[state, accepting, right=of q1]           %\onslide%
       %\pause[3]%  (q2) {$q_2$};                                %\onslide%
-      %\pause[2]%\draw (q0) edge[->] node {0} (q1)              %\onslide%
+      %\pause[2]%\path (q0) edge[->] node {0} (q1)              %\onslide%
       %\pause[2]%      (q1) edge[->, loop above] node {0} ()    %\onslide%
       %\pause[3]%           edge[->, bend left] node {1} (q2)   %\onslide%
       %\pause[3]%      (q2) edge[->, bend left] node {0} (q1)%\pause[2]%;%\onslide%}
@@ -1008,6 +1012,8 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \end{tikzpicture}
   \end{lstlisting}
 \end{Frame}
+
+\malte
 
 \beamersection{Fortgeschrittene Verwendung}
 
