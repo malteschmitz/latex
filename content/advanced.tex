@@ -1,12 +1,12 @@
 \malte
 
-\chapter{fortgeschrittene Verwendung}
+\chapter{Fortgeschrittene Verwendung}
 
 \targets{
-  \item Literaturverzeichnisse und Zitationen setzen können.
-  \item Mit eigenen Befehlen semantischere \LaTeX-Dokumente erzeugen.
+  \item Literaturverzeichnisse und Zitatverweise setzen können.
+  \item Mit eigenen Befehlen semantische \LaTeX-Dokumente erzeugen.
   \item DIN-Briefe mit \LaTeX\ setzen können.
-  \item Kennen lernen, wie man eigene Layouts erzeugen kann.
+  \item Eigene Layouts mit \LaTeX\ erzeugen können.
 }
 
 \website
@@ -131,9 +131,13 @@
 
 \subsection{Eigene Befehle und Umgebungen}
 
-\begin{Frame}[fragile]{Eigene Befehle}
+\begin{Frame}[t,fragile]{Eigene Befehle}
+
+  \xxx
+
   \begin{lstlisting}[gobble=4,moretexcs={mycommand}]
     \newcommand{\mycommand}[2]{#1 liest #2.}
+
     \mycommand{Malte}{ein Buch}
   \end{lstlisting}
   \newcommand{\mycommand}[2]{#1 liest #2.}
@@ -147,8 +151,12 @@
         \newcommand{\colorsample}[1]{%
           \textcolor{#1}{\rule[-.5ex]{2em}{2ex}}
           \texttt{#1}}
+
         \colorsample{red}
       \end{lstlisting}
+
+      \xxx
+
       \colorsample{red}
     \end{Beispiel}
   \end{onlyenv}
@@ -158,11 +166,16 @@
       \begin{lstlisting}[gobble=8,style=block,moretexcs={user,gui}]
         \newcommand{\gui}[1]{\textsl{\textsf{#1}}}
         \newcommand{\user}[1]{\texttt{#1}}
+
         Geben Sie in das Feld \gui{Prüfziffer}
         den Wert \user{fgdhsjk} ein.
       \end{lstlisting}
+
       \newcommand{\gui}[1]{\textsl{\textsf{#1}}}
       \newcommand{\user}[1]{\texttt{#1}}
+
+      \xxx
+
       \textrm{Geben Sie in das Feld \gui{Prüfziffer}
       den Wert \user{fgdhsjk} ein.}
     \end{Beispiel}
@@ -246,7 +259,7 @@
         Bitte nicht knicken.
       \end{achtung}
     \end{lstlisting}
-    
+
     \begin{achtung}[Hinweis]%
       Bitte nicht knicken.
     \end{achtung}
@@ -513,29 +526,28 @@
 \begin{Frame}[fragile,allowframebreaks]{Wichtige Angaben in \BibTeX-Einträgen}
   \lstset{language=BibTeX}
   \begin{Block}{\lstinline-author-}
-    Autoren der Arbeit\newline
-    getrennt durch \lstinline-and-
+    Autoren der Arbeit getrennt durch \lstinline-and-
   \end{Block}
 
   \begin{Block}{\lstinline-editor-}
-    Herausgeber der Zeitschrift oder Organisator der Tagung\\
+    Herausgeber der Zeitschrift oder Organisator der Tagung
     getrennt durch \lstinline-and-
   \end{Block}
 
   \begin{Block}{\lstinline-title-}
-    Titel der zitierten Quelle\\
-    (nicht des Bandes, der Zeitschrift, \ldots)
+    Titel der zitierten Quelle
+    (nicht des Bandes, der Zeitschrift,~\ldots)
   \end{Block}
 
   \framebreak
 
   \begin{Block}{\lstinline-booktitle-}
-    Titel des Tagungsbandes\\
+    Titel des Tagungsbandes
     bei \lstinline-@inproceedings-
   \end{Block}
 
   \begin{Block}{\lstinline-journal-}
-    Name der Zeitschrift\\
+    Name der Zeitschrift
     bei \lstinline-@article-
   \end{Block}
 
@@ -546,25 +558,25 @@
   \framebreak
 
   \begin{Block}{\lstinline-series-}
-    Name der Serie (Verlage fassen Bücher\\
+    Name der Serie (Verlage fassen Bücher
     oder Tagungsbände zu Serien zusammen)
   \end{Block}
 
   \begin{Block}{\lstinline-volume-}
-    Nummer des Buches oder Tagungsbandes in der Serie\\
+    Nummer des Buches oder Tagungsbandes in der Serie
     bei Verwendung von \lstinline-series-
   \end{Block}
 
   \begin{Block}{\lstinline-number-}
-    Unternummer des Bandes bei Zeitschriften\\
+    Unternummer des Bandes bei Zeitschriften
     (Verlage fassen Zeitschriften zu Bänden zusammen)
   \end{Block}
 
   \framebreak
 
   \begin{Block}{\lstinline-pages-}
-    Seitenzahlen eines Artikels innerhalb\\
-    eines Buches oder einer Zeitschrift\\
+    Seitenzahlen eines Artikels innerhalb
+    eines Buches oder einer Zeitschrift
     \alert{nicht für \lstinline-@book-!}
   \end{Block}
 
@@ -573,12 +585,12 @@
   \end{Block}
 
   \begin{Block}{\lstinline-institution-}
-    Institution, an der die Arbeit angefertigt wurde\\
+    Institution, an der die Arbeit angefertigt wurde
     bei \lstinline-@phdthesis- oder \lstinline-@mastersthesis-
   \end{Block}
 
   \begin{Block}{\lstinline-note-}
-    Beliebiger Text; Bemerkungen aller Art,\\
+    Beliebiger Text; Bemerkungen aller Art,
     die mit angezeigt werden sollen
   \end{Block}
 \end{Frame}
@@ -587,7 +599,7 @@
   \begin{alertblock}{Wichtig}
     \begin{itemize}
       \item \BibTeX\ hat \alert{keine eigene Quellenart} für Websites
-      \item \alert{Artikel von Autoren} auf einer Website nur zitieren,\\
+      \item \alert{Artikel von Autoren} auf einer Website nur zitieren,
         wenn die Website und die \alert{Autoren seriös} sind.
     \end{itemize}
   \end{alertblock}
@@ -610,14 +622,14 @@
 
 \subsection{Stile}
 
-\begin{Frame}{Typische Stile}
+\begin{Frame}{Typische \BibTeX-Stile}
   \begin{zebratabular}{llll}
     \headerrow Stil & Referenzierung & Verzeichnis \\
     \lstinline-plain- & [1] &  \\
     \lstinline-abbrv- & [1] & nur Initialen \\
     \lstinline-unsrt- & [1] & Reihenfolge \\
     \lstinline-alpha- & [HMU01] & \\
-    \lstinline-apalike- & [Hopcroft et al., 2001] & 
+    \lstinline-apalike- & [Hopcroft et al., 2001] &
   \end{zebratabular}
 
   \xxx
@@ -675,7 +687,7 @@
     \begin{lstlisting}[style=block,gobble=6]
       \documentclass{scrlttr2}
       \KOMAoptions{fromalign=right}
- 
+
       \usepackage[utf8]{inputenc}
       \usepackage[ngerman]{babel}
       \usepackage[T1]{fontenc}
@@ -783,7 +795,7 @@
       \usepackage{la}
     \end{lstlisting}
     {\Fontauri Setzt keine Familie, sondern liefert
-    Schriftumschalter \textbackslash Fontauri.}
+    Schriftumschalter \lstinline-\Fontauri-.}
   \end{Beispiel}
 
   \xxx
@@ -968,7 +980,7 @@
   \begin{itemize}
     \item Beim Binden \alert{verschwindet ein Teil der Seite} in der Bindung.
     \item Das \alert{verringert die Breite} des betroffenen Randes.
-    \item Die \alert{Bindekorrektur} ergänzt \alert{zusätzlichen Rand links bzw. außen}, der bei der Satzspiegelberechnung ausgenommen wird.
+    \item Die \alert{Bindekorrektur} ergänzt \alert{zusätzlichen Rand links bzw. innen}, der bei der Satzspiegelberechnung ausgenommen wird.
   \end{itemize}
 
   \xxx
@@ -985,13 +997,13 @@
 
 \begin{Block}{Was ist Teil des Satzspiegels?}
   \begin{itemize}
-    \item \lstinline-\KOMAoptions{mpinclude=true}-\newline 
+    \item \lstinline-\KOMAoptions{mpinclude=true}-\newline
       Randspalte erhält eine Breiteneinheit vom Satzspiegel\newline
       \alert{Nur bei sehr vielen Randnotizen verwenden!}
-    \item \lstinline-\KOMAoptions{headinclude=true}-\newline 
+    \item \lstinline-\KOMAoptions{headinclude=true}-\newline
       Kopfzeile wird zum Teil des Satzspiegels\newline
       \alert{Bei gut gefüllter Kopfzeile oder Trennlinie verwenden.}
-    \item \lstinline-\KOMAoptions{footinclude=true}-\newline 
+    \item \lstinline-\KOMAoptions{footinclude=true}-\newline
       Fußzeile wird zum Teil des Satzspiegels\newline
       \alert{Nicht bei einsamer Seitenzahl verwenden.}
   \end{itemize}
@@ -1024,7 +1036,7 @@
 
 \subsection{Kopf- und Fußzeilen}
 
-\begin{Frame}[fragile]{Seitenstil}{Wieviel Kopf- und Fußzeile darf es sein?}
+\begin{Frame}[fragile]{Seitenstile}{Wieviel Kopf- und Fußzeile darf es sein?}
   \begin{Block}{In der Präambel}
     \begin{lstlisting}[gobble=6,style=block]
       \usepackage{scrpage2}
@@ -1048,7 +1060,7 @@
   \begin{Block}{Seitenstil manuell wechseln}
     \begin{lstlisting}[gobble=6,style=block]
       \pagestyle{empty} % ab jetzt
-      \thispagestyle{empty} % nur für diese Seite  
+      \thispagestyle{empty} % nur für diese Seite
     \end{lstlisting}
   \end{Block}
 \end{Frame}
@@ -1069,8 +1081,8 @@
     \item Kapitel auf linken/geraden Seiten
     \item Abschnitt auf rechten/ungeraden Seiten
   \end{itemize}
-  
-  
+
+
   Mögliche Werte sind dabei: \lstinline-part-, \lstinline-chapter-,
   \lstinline-section-, \lstinline-subsection-.
 \end{Frame}
@@ -1105,14 +1117,14 @@
     \draw[maincolor,very thick,dashed]
       (1,0) -- (5,0) -- (5,6) -- (1,6) -- cycle
       (-1,0) -- (-5,0) -- (-5,6) -- (-1,6) -- cycle;
-    
+
     \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
       at (-4.25,5.5) (lehead) {};
     \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
       at (-3,5.5) (cehead) {};
     \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
       at (-1.75,5.5) (rehead) {};
-    
+
     \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
       at (-4.25,.5) (lefoot) {};
     \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
@@ -1126,7 +1138,7 @@
       at (3,5.5) (cohead) {};
     \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
       at (1.75,5.5) (lohead) {};
-    
+
     \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
       at (4.25,.5) (rofoot) {};
     \node[inner sep=0pt,minimum width=1cm,minimum height=5mm,fill=maincolor]
@@ -1332,7 +1344,7 @@
       bzw. \lstinline-footlines- angepasst werden.
     \item Raum für Linien einkalkulieren!
   \end{itemize}
-  
+
   \xxx
 
   \begin{Beispiel}[Mehrzeilige Kopfzeile]
@@ -1377,8 +1389,8 @@
 \begin{frame}[fragile]{Zusammenfassung}
   \begin{enumerate}
     \item Die Definition \alert{eigener Befehle und Umgebungen}
-      erzeugt \alert{mehr Struktur} im \LaTeX-Dokoument, sodass die
-      \alert{Form zentral konfiguriert} wird.
+      erzeugt \alert{mehr Struktur} und \alert{Semantik} im \LaTeX-Dokument,
+      sodass die \alert{Form zentral konfigurierbar} wird.
     \item \alert{\BibTeX} generiert aus einer \alert{Datenbank} in einem eigenen Format
       ein \alert{Literaturverzeichnis}. Die \alert{Zitierweise} kann dabei mit
       \lstinline-\bibliographystyle- eingestellt werden.
