@@ -38,7 +38,7 @@
 
   \begin{Beispiele}[Formen]
     \begin{itemize}
-      \item 16~pt, Arial, Fett, 2~em Abstand
+      \item 16~pt, Arial, fett, 2~em Abstand
       \item 2~cm Einzug, Bullet-Zeichen \textbullet\ am Zeilenanfang
       \item 3~cm breiter umrandeter Kasten
     \end{itemize}
@@ -201,7 +201,7 @@
   \end{Block}
 \end{Frame}
 
-\begin{Frame}{Pakete nachinstallieren und aktualisieren}{Windows}
+\begin{Frame}{Pakete installieren und aktualisieren}{Windows}
   \begin{minipage}{\textwidth}\begin{center}
     \includegraphics[width=8cm]{images/miktex-update}
 
@@ -209,7 +209,7 @@
   \end{center}\end{minipage}
 \end{Frame}
 
-\begin{Frame}{Pakete nachinstallieren und aktualisieren}{Linux}
+\begin{Frame}{Pakete installieren und aktualisieren}{Linux}
   \begin{minipage}{\textwidth}\begin{center}
     \includegraphics[width=7cm]{images/texlive-update}
 
@@ -217,7 +217,7 @@
   \end{center}\end{minipage}
 \end{Frame}
 
-\begin{Frame}{Pakete nachinstallieren und aktualisieren}{Mac}
+\begin{Frame}{Pakete installieren und aktualisieren}{Mac}
   \begin{minipage}{\textwidth}\begin{center}
     \includegraphics[width=8cm]{images/mactex-update}
 
@@ -269,7 +269,6 @@
         \end{itemize}
       \item \TeX Shop
         \begin{itemize}
-          \item Apple Design Award 2002
           \item in Mac\TeX\ enthalten
         \end{itemize}
       \item Kile (Linux)
@@ -351,9 +350,13 @@
       (1,7.6) edge node {Dokumentenklasse} (1,7.2);
     \pause
     \draw
-      (3,6.6) edge node {Präambel} (3,3.5)
-      (1,6.6) edge node {\shortstack{Pakete\\laden}} (1,5.3)
+      (1,6.6) edge node {\shortstack{Pakete\\laden}} (1,5.3);
+    \pause
+    \draw
       (0,4.7) edge node {Einstellungen} (0,3.5);
+    \pause
+    \draw
+      (3,6.6) edge node {Präambel} (3,3.5);
     \pause
     \draw
       (1,2.6) edge node {Dokumentenkörper} (1,.9);
@@ -363,7 +366,7 @@
 \mode
 <all>
 
-\begin{Frame}[fragile]{Dokumentenklasse}
+\begin{Frame}[fragile]{Dokumentenklassen}
   \lstinline-\documentclass{scrartcl}-\newline
   kurzer Artikel
 
@@ -391,13 +394,13 @@
       parskip=full,
       % full - Absätze haben großen Abstand
       % half - Absätze haben kleinen Abstand
-      % off - Absätze haben Einzug (default)
+      % off  - Absätze haben Einzug (default)
       fontsize=12pt,
       % Grunschriftgröße (10pt default)
       headings=small,
-      % small - kleine Überschriften
+      % small  - kleine Überschriften
       % normal - normale Überschriften (default)
-      % big - große Überschriften
+      % big    - große Überschriften
       paper=a5,
       % Papierformat (a4 default)
       pagesize=auto
@@ -417,7 +420,7 @@
   \begin{lstlisting}
     \usepackage[babel]{ngerman}
   \end{lstlisting}
-  Deutsche Silbentrennung und deutsche Übersetzung
+  deutsche Silbentrennung und deutsche Übersetzung
   \begin{lstlisting}
     \usepackage[utf8]{inputenc}
   \end{lstlisting}
@@ -464,7 +467,7 @@
   \newcommand{\lorem}{\textcolor{black!40}{Auch in der zweiten Zeile. Lorem ipsum dolor sit amet, consectetur, adipisci velit, \ldots}}
 
   \begin{minipage}{\textwidth}
-    Ohne Umgebung wird Text immer im Blocksatz gesetzt.
+    Ohne Umgebung wird Text immer im \alert{Blocksatz} gesetzt.
     \lorem
   \end{minipage}
 
@@ -684,7 +687,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 
 \subsection{Formelsatz}
 
-\begin{Frame}[fragile]{Formelsatz in der Matheumgebung}
+\begin{Frame}[fragile]{Formelsatz in Matheumgebungen}
   \begin{Block}{In der Präambel}
     \begin{lstlisting}[gobble=6,style=block]
       \usepackage{amsmath}
@@ -736,11 +739,11 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
     \column{5cm}
       \begin{lstlisting}[gobble=8]
         \sum_{i=1}^{n} i =
-          \frac{n(n+1)}{2}
+          \frac{n (n+1)}{2}
       \end{lstlisting}
 
     \column{4cm}
-      \mathexample{\sum_{i=1}^n i = \frac{n(n+1)}{2}}
+      \mathexample{\sum_{i=1}^n i = \frac{n (n+1)}{2}}
   \end{columns}
 
   \pause
@@ -789,6 +792,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
     \begin{lstlisting}[gobble=6,style=block]
       \[ 23,456.78 - 23\,456.78 + 23456.78 \]
     \end{lstlisting}
+
     \[ 23,456.78 - 23\,456.78 + 23456.78 \]
   \end{Block}
 
@@ -798,6 +802,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
     \begin{lstlisting}[gobble=6,style=block]
       \[ 23.456{,}78 - 23\,456{,}78 + 23456{,}78 \]
     \end{lstlisting}
+
     \[ 23.456{,}78 - 23\,456{,}78 + 23456{,}78 \]
   \end{Block}
 \end{Frame}
@@ -833,15 +838,15 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
       \begin{lstlisting}[gobble=8]
         \begin{enumerate}
           \item Begrüßung
-          \item Eröffnung
           \item Anträge
+          \item Verabschiedung
         \end{enumerate}
       \end{lstlisting}
     \column{4cm}
       \begin{enumerate}
         \item Begrüßung
-        \item Eröffnung
         \item Anträge
+        \item Verabschiedung
       \end{enumerate}
   \end{columns}
 \end{Frame}
@@ -956,12 +961,13 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 
 \begin{Frame}[t,fragile]{Titelseite}{Automatisch}
   \begin{Block}{In der Präambel}
-    \begin{lstlisting}[gobble=6,style=block]
-      \title{Meine Arbeit}
-      \author{Malte Schmitz}
-      \date{September 2013}
-      % aktuelles Datum bei Auslassung
-    \end{lstlisting}
+    \lstinputlisting[firstline=13, lastline=16, style=block]{demo/maketitle.tex}
+    % \begin{lstlisting}[gobble=6,style=block]
+    %   \title{Meine Arbeit}
+    %   \author{Johannes Thorn}
+    %   \date{Iden des März}
+    %   % aktuelles Datum bei Auslassung
+    % \end{lstlisting}
   \end{Block}
 
   \begin{Block}{Am Anfang des Dokuments}
@@ -974,12 +980,14 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 \end{Frame}
 
 \begin{Frame}[fragile]{Titelseite}{Manuell}
+  % \lstinputlisting[gobble=2, firstline=15, lastline=22]{demo/titlepage.tex}
   \begin{lstlisting}[gobble=4]
     \begin{titlepage}
       \begin{center}
-        \textsf{\textbf{\Huge Meine Arbeit}}
-
-        \textsf{\Large Malte Schmitz}
+        \textsf{\textbf{\Huge
+          Die Ermordung Iulius Caesars}}
+    
+        \Large Marcus Iunius Brutus
       \end{center}
     \end{titlepage}
   \end{lstlisting}
