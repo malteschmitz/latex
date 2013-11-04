@@ -231,6 +231,8 @@
   }
 }
 
+\usepackage{xspace}
+
 % load common user macros
 \input{macros.tex}
 
@@ -335,7 +337,7 @@
 \let\oldchapter\chapter
 \long\def\chapter{\@beginchapterhook
   \oldchapter}
-  
+
 \ifx\@beginchapterhook\@undefined
   \let\@beginchapterhook\@empty
 \fi
@@ -373,7 +375,7 @@
 \newenvironment{beameritemize}{%
   \let\item\relax\ignorespaces}{%
   \ignorespacesafterend}
-  
+
 % map beamerenumerate to inparaenum
 \newenvironment{beamerenumerate}{%
   \begin{inparaenum}\ignorespaces}{%
@@ -391,7 +393,7 @@
 \setbeamertemplate{frame end}{%
   \marginpar%
     {\scriptsize\sffamily\color{maincolor}$\to\,$\insertframenumber}}
-      
+
 \usepackage{hyperref}
 \hypersetup{breaklinks=true,
             pdfborder={0 0 0},
@@ -476,7 +478,7 @@
 \newcommand{\itemref}[1]{\textbf{\color{maincolor}#1}}
 
 \newcommand{\term}[1]{{\color{blue}#1}}
-  
+
 \newcommand{\targets}[1]{\section*{\targetscontentname}
   \frame[plain]{\frametitle{\targetsname}%
   \begin{enumerate}#1\end{enumerate}}

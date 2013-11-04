@@ -1,27 +1,27 @@
 \malte
 
-\chapter{Beamer}
+\chapter{Präsentieren mit {\normalsize BEAMER}}
 
 \targets{
-  \item Beamer verwenden können.
-  \item Vor- und Nachteile von Beamer kennen und einschätzen können, wann und wofür Beamer gut geeignet ist.
-  \item Fortgeschrittene Anwendungsmöglichkeiten von Beamer kennen lernen.
+  \item \beamer verwenden können.
+  \item Vor- und Nachteile von \beamer kennen und einschätzen können, wann und wofür \beamer gut geeignet ist.
+  \item Fortgeschrittene Anwendungsmöglichkeiten von \beamer kennen lernen.
 }
 
 \website
 
 \jonny
 
-\beamersection{Was ist Beamer?}
+\beamersection{Was ist \beamerSec?}
 
 \subsection{Einleitung}
 
-\begin{Frame}{Was ist Beamer?}
+\begin{Frame}{Was ist \beamerFrame?}
   \begin{itemize}
     \item \alert{Dokumentenklasse für \LaTeX} für die Erzeugung von Präsentationen.\newline
-      (Diese Präsentation und das Skript wurden mit Beamer erzeugt.)
+      (Diese Präsentation und das Skript wurden mit \beamer erzeugt.)
     \item Keine eigene und \alert{keine graphische Anwendung}.
-    \item Beamer ist in MiK\TeX\ und \TeX\ Live enthalten.\newline
+    \item \beamer ist in MiK\TeX\ und \TeX\ Live enthalten.\newline
       (\alert{Es kann direkt losgehen}.)
   \end{itemize}
 \end{Frame}
@@ -31,8 +31,8 @@
     \item[1998] Till Tantau erzeugt sich erste Makros für Präsentationen.
     \item[2003] Er verwendet die erste Version für seine Promotionsverteidigung.
     \item[2003] Veröffentlichung und Implementierung von vielen Benutzerwünschen.
-    \item[2007] Beamer wird nicht weiter gepflegt.
-    \item[2010] Beamer wird an Joseph Wright and Vedran Mileti\'c übergeben.
+    \item[2007] \beamer wird nicht weiter gepflegt.
+    \item[2010] \beamer wird an Joseph Wright and Vedran Mileti\'c übergeben.
     \item[2013] Aktuelle Version 3.30 wird kontinuierlich weiter entwickelt.
   \end{description}
 \end{Frame}
@@ -41,7 +41,7 @@
   \lstset{language={}}
   \begin{enumerate}
     \item Normales \LaTeX-Dokument erzeugen.\\
-      Dabei einige spezielle Beamer-Kommandos verwenden.
+      Dabei einige spezielle \beamer-Kommandos verwenden.
     \item \LaTeX-Dokument mit \lstinline-pdflatex- oder \lstinline-latexmk -pdf- kompilieren.
     \item Ergebnis überprüfen und \LaTeX-Dokument anpassen.
   \end{enumerate}
@@ -49,7 +49,7 @@
 
 \subsection{Eigenschaften}
 
-\begin{Frame}{Funktionen von Beamer}
+\begin{Frame}{Funktionen von \beamerFrame}
   \begin{itemize}
     \item Kompilieren wie jedes andere \LaTeX-Dokument auch.
     \item Normale \LaTeX-Kommandos funktionieren.
@@ -61,9 +61,9 @@
   \end{itemize}
 \end{Frame}
 
-\begin{Frame}{Beamer vs. PowerPoint}
+\begin{Frame}{\beamerFrame vs. PowerPoint}
   \begin{zebratabular}{rcc}
-    \headerrow & Beamer & PowerPoint \\
+    \headerrow & \beamer & PowerPoint \\
     Erlernen ohne \LaTeX-Kenntnisse & \badmark\badmark & \goodmark \\
     Objekte frei positionieren & \badmark & \goodmark\goodmark \\
     Graphiken direkt erstellen & \badmark & \goodmark \\
@@ -81,7 +81,7 @@
   \end{zebratabular}
 \end{Frame}
 
-\beamersection{Verwendung von Beamer}
+\beamersection{Verwendung von \beamerSec}
 
 \begin{Frame}[fragile]{Beispiel}
   \begin{lstlisting}[gobble=4]
@@ -93,7 +93,7 @@
     \usepackage[ngerman]{babel}
 
     \begin{document}
-      \begin{frame}{Funktionen von Beamer}
+      \begin{frame}{Funktionen von BEAMER}
         Kompilieren wie jedes andere
         \LaTeX-Dokument auch.
       \end{frame}
@@ -107,7 +107,7 @@
 
 \begin{Frame}[fragile]{Folien}
   \begin{itemize}
-    \item Ein Beamer-Dokument besteht aus Folien.
+    \item Ein \beamer-Dokument besteht aus Folien.
     \item Die Umgebung \lstinline-frame- verarbeitet
       zwischen 0 und 2 Parametern in gescheiften Klammern \lstinline-{}-
     \item Der erste Parameter ist der Folientitel.
@@ -356,7 +356,7 @@
   \end{lstlisting}
 
   \xxx
-  
+
   \begin{onlyenv}<presentation>
     \begin{enumerate}
       \item Ein Sandkorn ist kein Sandhaufen.
@@ -452,7 +452,7 @@
 
   \begin{Block}{Problem}
     \begin{tabular}{r@{ }l}
-      \textbf{Folien} & Dokumentenklasse von Beamer.\\
+      \textbf{Folien} & Dokumentenklasse von \beamer.\\
       \textbf{Artikel} & Dokumentenklasse von KOMA-Script.
     \end{tabular}
   \end{Block}
@@ -480,7 +480,7 @@
           inner sep=2pt
         }
       ]
-      
+
       \node (content tex) {\shortstack{\textcolor{texicon}{\icon{TEX}}\\\texttt{content.tex}}};
 
       \uncover<2->{
@@ -516,7 +516,7 @@
       \only<3->{
         \draw[very thick]
           (beamer tex) edge[->] (make beamer)
-          (article tex) edge[->] (make article);          
+          (article tex) edge[->] (make article);
 
         \draw[very thick]
           (make beamer) edge[->] (beamer pdf)
@@ -630,7 +630,7 @@
 
     \bibitem{Tantau}
       Till Tantau.
-      \newblock \emph{Beamer: Strahlende Vorträge mit \LaTeX},
+      \newblock \emph{\beamer: Strahlende Vorträge mit \LaTeX},
       \newblock Präsentieren und Dokumentieren -- Tools.
       \newblock Vorlesung vom 31. Oktober 2012.
   \end{mybib}
