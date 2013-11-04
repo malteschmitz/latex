@@ -42,14 +42,14 @@
   \begin{enumerate}
     \item Normales \LaTeX-Dokument erzeugen.\\
       Dabei einige spezielle \beamer-Kommandos verwenden.
-    \item \LaTeX-Dokument mit \lstinline-pdflatex- oder \lstinline-latexmk -pdf- kompilieren.
+    \item \LaTeX-Dokument mit \lstinline-pdflatex- oder \lstinline|latexmk -pdf| kompilieren.
     \item Ergebnis überprüfen und \LaTeX-Dokument anpassen.
   \end{enumerate}
 \end{Frame}
 
 \subsection{Eigenschaften}
 
-\begin{Frame}{Funktionen von \beamerFrame}
+\begin{Frame}{Funktionsweise von \beamerFrame}
   \begin{itemize}
     \item Kompilieren wie jedes andere \LaTeX-Dokument auch.
     \item Normale \LaTeX-Kommandos funktionieren.
@@ -63,10 +63,10 @@
 
 \begin{Frame}{\beamerFrame vs. PowerPoint}
   \begin{zebratabular}{rcc}
-    \headerrow & \beamer & PowerPoint \\
+    \headerrow Aspekte & \beamer & PowerPoint \\
     Erlernen ohne \LaTeX-Kenntnisse & \badmark\badmark & \goodmark \\
     Objekte frei positionieren & \badmark & \goodmark\goodmark \\
-    Graphiken direkt erstellen & \badmark & \goodmark \\
+    Grafiken direkt erstellen & \badmark & \goodmark \\
     Einbinden von Multimedia & -- & \goodmark \\
     Arbeitsgeschwindigkeit Anfänger & -- & -- \\
     Arbeitsgeschwindigkeit Profi & \goodmark & \goodmark \\
@@ -75,9 +75,9 @@
     Vorlagenqualität & \goodmark & -- \\
     Typographie & \goodmark & \badmark\badmark \\
     Konsistenz des Aussehens & \goodmark\goodmark & \badmark \\
-    Visualisierung des Vortragsaufbau & \goodmark\goodmark & \badmark \\
+    Visualisierung des Vortragsaufbaus & \goodmark\goodmark & \badmark \\
     Mathematische Formeln & \goodmark\goodmark & \badmark\badmark \\
-    Quelltextanzeige & \goodmark\goodmark & \badmark\badmark
+    Quelltextdarstellung & \goodmark\goodmark & \badmark\badmark
   \end{zebratabular}
 \end{Frame}
 
@@ -109,10 +109,11 @@
   \begin{itemize}
     \item Ein \beamer-Dokument besteht aus Folien.
     \item Die Umgebung \lstinline-frame- verarbeitet
-      zwischen 0 und 2 Parametern in gescheiften Klammern \lstinline-{}-
+      bis zu zwei Parameter in gescheiften Klammern \lstinline-{}-
     \item Der erste Parameter ist der Folientitel.
     \item Der zweite Parameter ist der Untertitel.
-    \item Auf der Folie wird normale \LaTeX-Code verwendet.
+    \item Innerhalb der Umgebung \lstinline|frame| wird normaler \LaTeX-Code
+      verwendet.
   \end{itemize}
 \end{Frame}
 
@@ -208,11 +209,11 @@
       Dieser Text steht im normalen Block.
     \end{block}
 
-    \begin{alertblock}{Überschrift}
+    \begin{alertblock}{Achtung}
       Dieser Text steht im hervorgehobenen Block.
     \end{alertblock}
 
-    \begin{exampleblock}{Überschrift}
+    \begin{exampleblock}{Beispiel}
       Dieser Text steht im Beispielblock.
     \end{exampleblock}
   \end{lstlisting}
@@ -284,27 +285,18 @@
 
 \begin{Frame}[fragile]{Themes}
   \begin{Block}{Theme}
-    Wird geladen mit
-    \begin{lstlisting}[gobble=6,style=block]
-      \usetheme{name}
-    \end{lstlisting}
-    und bestimmt die \alert{gesamte Form}.
+    Wird geladen mit \lstinline-\usetheme{name}- und bestimmt die
+    \alert{allgemeine Form} der Präsentation.
   \end{Block}
 
   \begin{Block}{Inner Theme}
-    Wird geladen mit
-    \begin{lstlisting}[gobble=6,style=block]
-      \useinnertheme{name}
-    \end{lstlisting}
-    und bestimmt die \alert{Form des Folieninhalts}.
+    Wird geladen mit \lstinline-\useinnertheme{name}- und bestimmt
+    die \alert{Form des Folieninhalts}.
   \end{Block}
 
   \begin{Block}{Outer Theme}
-    Wird geladen mit
-    \begin{lstlisting}[gobble=6,style=block]
-      \useoutertheme{name}
-    \end{lstlisting}
-    und bestimmt die \alert{Form der Layoutelemente}.
+    Wird geladen mit \lstinline-\useoutertheme{name}- und bestimmt
+    die \alert{Form der Layoutelemente}.
   \end{Block}
 \end{Frame}
 
@@ -424,8 +416,10 @@
 
 \begin{Frame}[fragile]{Ein- und Ausblenden}
   \begin{itemize}
-    \item \lstinline|\uncover<3->{Inhalt}|\\ blendet Inhalt erst ab Folie 3 ein.
-    \item \lstinline|\only<3->{Inhalt}|\\ lässt Inhalt erst ab Folie 3 erscheinen.
+    \item \lstinline|\uncover<3->{Inhalt}| blendet Inhalt erst ab
+      Folie~3 ein. Der Platz wird jedoch vorher schon belegt.
+    \item \lstinline|\only<3->{Inhalt}| setzt Inhalt erst ab Folie~3.
+      Zuvor wird kein Platz belegt.
   \end{itemize}
 
   \xxx
@@ -443,27 +437,27 @@
 
 \begin{Frame}[fragile]{Artikelfassung}
   \begin{Block}{Ziel}
-    Generierung von Artikel und Folien\\
-    aus dem gleichen \LaTeX-Dokument.
+    Generierung von Artikelfassung und Präsentation
+    aus demselben Quellen-Dokument.
   \end{Block}
 
   \xxx
   \pause
 
-  \begin{Block}{Problem}
+  \begin{alertblock}{Problem}
     \begin{tabular}{r@{ }l}
       \textbf{Folien} & Dokumentenklasse von \beamer.\\
       \textbf{Artikel} & Dokumentenklasse von KOMA-Script.
     \end{tabular}
-  \end{Block}
+  \end{alertblock}
 
   \xxx
   \pause
 
   \begin{Block}{Lösung}
     \begin{itemize}
-      \item Zwei \LaTeX-Dokumente für Dokumentenklassen.
-      \item Drittes \LaTeX-Dokument für Inhalt.
+      \item Zwei \LaTeX-Dokumente für beide Dokumentenklassen.
+      \item Drittes \LaTeX-Dokument für den Inhalt.
       \item Einbinden des Inhalts mit \lstinline-\input-.
     \end{itemize}
   \end{Block}
@@ -617,7 +611,7 @@
       das Kommando ausgeführt wird.
     \item Mit dem Paket \lstinline-beamerarticle- kann ein \LaTeX-Dokument,
       das Folien enthält, auch \alert{als Artikel kompiliert} werden.
-    \item \alert{Lies die Anleitung. Sie ist wirklich \emph{sehr} gut.}
+    \item \alert{Lies die Anleitung.} Sie ist wirklich \emph{sehr} gut.
   \end{enumerate}
 \end{frame}
 
