@@ -1,9 +1,9 @@
 \malte
 
-\chapter{TikZ}
+\chapter{Zeichnen mit TikZ}
 
 \targets{
-  \item \TikZ\ kennne und lieben lernen.
+  \item \TikZ\ kennen und lieben lernen.
   \item Pfade mit \TikZ\ zeichnen können.
   \item Das Konzept von Knoten und deren Positionierung verstehen.
   \item Kombinationsmöglichkeiten von \TikZ\ und Beamer kennen lernen.
@@ -21,7 +21,7 @@
       dient aber zum Zeichnen von Grafiken mit \LaTeX.
     \item \TikZ\ wird entwickelt und gepflegt von Till Tantau.
     \item \TikZ\ ist ein Makropaket für \TeX\ bzw. \LaTeX.
-    \item \TikZ\ hat die beste Anleitung aller Zeiten.
+    \item \TikZ\ verfügt über die beste Anleitung aller Zeiten.
   \end{itemize}
 \end{Frame}
 
@@ -65,11 +65,11 @@
 
 \begin{Frame}[fragile]{\TikZ\ verwenden}
   \examplebox{%
-    Wir arbeiten an
+    Wir beginnen mit
     \begin{tikzpicture}
       \draw (0,0) -- (1.5,0);
       \draw (0,0) -- (0,1.5);
-    \end{tikzpicture}.
+    \end{tikzpicture}
   }
 
   \xxx
@@ -79,7 +79,7 @@
     \usepackage{tikz}
     \usetikzlibrary{intersections}
     \begin{document}
-      Wir arbeiten an
+      Wir beginnen mit
       \begin{tikzpicture}
         \draw (0,0) -- (1.5,0);
         \draw (0,0) -- (0,1.5);
@@ -94,7 +94,7 @@
   \begin{itemize}
     \item Ein Pfad ist eine Folge von Koordinaten.
       \begin{itemize}
-        \item Links unten ist \lstinline-(0,0)-,
+        \item Links unten ist der Ursprung \lstinline-(0,0)-,
         \item die erste Koordinate geht nach rechts und
         \item die zweite Koordinate geht nach oben.
       \end{itemize}
@@ -135,7 +135,7 @@
     \begin{tikzpicture}
       \draw[step=0.5cm]
         (0,0) grid (1.4,1.4);
-    
+
       \draw (0,0) -- (1.5,0);
       \draw (0,0) -- (0,1.5);
     \end{tikzpicture}
@@ -156,19 +156,19 @@
     \begin{tikzpicture}[scale=2]
       \draw[step=0.5cm]
         (0,0) grid (1.4,1.4);
-    
+
       \draw (0,0) -- (1.5,0);
       \draw (0,0) -- (0,1.5);
     \end{tikzpicture}
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[t,fragile]{Stile}
+\begin{Frame}[t,fragile]{Stile und Pfeilspitzen}
   \tikzexample{[scale=2]
     \draw[step=0.5cm,gray,very thin]
       (0,0) grid (1.4,1.4);
-    \draw (0,0) -- (1.5,0);
-    \draw (0,0) -- (0,1.5);
+    \draw[->] (0,0) -- (1.5,0);
+    \draw[->] (0,0) -- (0,1.5);
   }
 
   \xxx
@@ -177,28 +177,28 @@
     \begin{tikzpicture}[scale=2]
       \draw[step=0.5cm,gray,very thin]
         (0,0) grid (1.4,1.4);
-    
-      \draw (0,0) -- (1.5,0);
-      \draw (0,0) -- (0,1.5);
+
+      \draw[->] (0,0) -- (1.5,0);
+      \draw[->] (0,0) -- (0,1.5);
     \end{tikzpicture}
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[t,fragile]{Pfeilspitzen}
-  \tikzexample{[scale=2]
-    \draw[step=0.5cm,gray,very thin]
-      (0,0) grid (1.4,1.4);
-    \draw[->] (0,0) -- (1.5,0);
-    \draw[->] (0,0) -- (0,1.5);
-  }
+% \begin{Frame}[t,fragile]{Pfeilspitzen}
+%   \tikzexample{[scale=2]
+%     \draw[step=0.5cm,gray,very thin]
+%       (0,0) grid (1.4,1.4);
+%     \draw[->] (0,0) -- (1.5,0);
+%     \draw[->] (0,0) -- (0,1.5);
+%   }
 
-  \xxx
+%   \xxx
 
-  \begin{lstlisting}[gobble=4]
-    \draw[->] (0,0) -- (1.5,0);
-    \draw[->] (0,0) -- (0,1.5);
-  \end{lstlisting}
-\end{Frame}
+%   \begin{lstlisting}[gobble=4]
+%     \draw[->] (0,0) -- (1.5,0);
+%     \draw[->] (0,0) -- (0,1.5);
+%   \end{lstlisting}
+% \end{Frame}
 
 \begin{Frame}[t,fragile]{Bogenpfade}
   \tikzexample{[scale=2]
@@ -304,7 +304,7 @@
     \draw[very thick,red]
       (30:1cm) -- (30:1cm |- 0,0);
     \draw[very thick,blue]
-      (30:1cm |- 0,0) -- (0,0);
+      (0,0) -- (30:1cm |- 0,0);
   }
 
   \xxx
@@ -313,7 +313,7 @@
     \draw[very thick,red]
       (30:1cm) -- (30:1cm |- 0,0);
     \draw[very thick,blue]
-      (30:1cm |- 0,0) -- (0,0);
+      (0,0) -- (30:1cm |- 0,0);
   \end{lstlisting}
 \end{Frame}
 
@@ -354,7 +354,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \draw[name path=sloped line]
       (0,0) -- (30:1.5cm);
     \draw[name intersections=
-      {of=upward line and sloped line, by=t}];
+      {of=upward line and sloped line, by=tan}];
   }
 
   \xxx
@@ -365,7 +365,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \draw[name path=sloped line]
       (0,0) -- (30:1.5cm);
     \draw[name intersections=
-      {of=upward line and sloped line, by=t}];
+      {of=upward line and sloped line, by=tan}];
   \end{lstlisting}
 \end{Frame}
 
@@ -391,7 +391,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \path[name path=sloped line]
       (0,0) -- (30:1.5cm);
     \path[name intersections=
-      {of=upward line and sloped line, by=t}];
+      {of=upward line and sloped line, by=tan}];
   }
 
   \xxx
@@ -402,7 +402,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \path[name path=sloped line]
       (0,0) -- (30:1.5cm);
     \path[name intersections=
-      {of=upward line and sloped line, by=t}];
+      {of=upward line and sloped line, by=tan}];
   \end{lstlisting}
 \end{Frame}
 
@@ -428,20 +428,20 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \path[name path=sloped line]
       (0,0) -- (30:1.5cm);
     \path[name intersections=
-      {of=upward line and sloped line, by=t}];
+      {of=upward line and sloped line, by=tan}];
     \draw[very thick,orange]
-      (1,0) -- (t);
+      (1,0) -- (tan);
     \draw
-      (0,0) -- (t);
+      (0,0) -- (tan);
   }
 
   \xxx
 
   \begin{lstlisting}[gobble=4]
     \draw[very thick,orange]
-      (1,0) -- (t);
+      (1,0) -- (tan);
     \draw
-      (0,0) -- (t);
+      (0,0) -- (tan);
   \end{lstlisting}
 \end{Frame}
 
@@ -462,7 +462,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \draw[very thick,red]
       (30:1cm) -- node[left] {$\sin \alpha$} (30:1cm |- 0,0);
     \draw[very thick,blue]
-      (30:1cm |- 0,0) -- node[below] {$\cos \alpha$} (0,0);
+      (0,0) -- node[below] {$\cos \alpha$} (30:1cm |- 0,0);
     %
     \path[name path=upward line]
       (1,0) -- (1,1);
@@ -483,8 +483,8 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
       (30:1cm) -- node[left]
         {$\sin \alpha$} (30:1cm |- 0,0);
     \draw[very thick,blue]
-      (30:1cm |- 0,0) -- node[below]
-        {$\cos \alpha$} (0,0);
+      (0,0) -- node[below]
+        {$\cos \alpha$} (30:1cm |- 0,0);
   \end{lstlisting}
 \end{Frame}
 
@@ -543,20 +543,20 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
       (30:1cm) -- node[left]
         {$\sin \alpha$} (30:1cm |- 0,0);
     \draw[very thick,blue]
-      (30:1cm |- 0,0) -- node[below]
-        {$\cos \alpha$} (0,0);
+      (0,0) -- node[below]
+        {$\cos \alpha$} (30:1cm |- 0,0);
     % Schnittpunktberechnung und Tangens
     \path [name path=upward line]
       (1,0) -- (1,1);
     \path [name path=sloped line]
       (0,0) -- (30:1.5cm);
     \draw [name intersections=
-      {of=upward line and sloped line, by=t}]
+      {of=upward line and sloped line, by=tan}]
       [very thick,orange] (1,0) -- node [right]
       {$\displaystyle \tan \alpha \color{black}=
         \frac{{\color{red}\sin \alpha}}
-          {\color{blue}\cos \alpha}$} (t);
-    \draw (0,0) -- (t);
+          {\color{blue}\cos \alpha}$} (tan);
+    \draw (0,0) -- (tan);
   }
 \end{Frame}
 
@@ -605,13 +605,13 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
 \begin{Frame}{Wofür Knoten?}
   \begin{itemize}
     \item \alert{Wir können jetzt alles zeichnen.}
-    \item Viele Zeichnungen basieren auf Graphen,\\
+    \item Viele Zeichnungen basieren auf Graphen,
       bestehen also aus Knoten und Kanten.
       \begin{itemize}
         \item Turing-Maschinen, Automaten, Petri-Netze, \dots
         \item UML-Diagramme, Programmablaufpläne, Entity-Relationship-Diagramme, \dots
         \item Stoffwechselwege, Geschäftsprozessdiagramme, Organigramme, \dots
-        \item formlose Diagramme für Beziehungen oder Abläufe,
+        \item formlose Diagramme für Beziehungen oder Abläufe, \dots
         \item \dots
       \end{itemize}
     \item Solche Diagramme mit Kreisen und Linien zu zeichnen erzeugt
@@ -640,7 +640,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   }
 \end{Frame}
 
-\begin{Frame}[fragile]{Knoten sind Pfadelemente.}
+\begin{Frame}[fragile]{Knoten sind Pfadelemente}
   \begin{columns}
     \column{30mm}
       \tikzexample[left]{
@@ -663,7 +663,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{columns}
 \end{Frame}
 
-\begin{Frame}[fragile]{Knoten haben einen eigenen Befehl.}
+\begin{Frame}[fragile]{Knoten haben einen eigenen Befehl}
   \begin{columns}
     \column{30mm}
       \tikzexample[left]{
@@ -684,7 +684,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{columns}
 \end{Frame}
 
-\begin{Frame}[fragile]{Knoten haben Stile.}{Ein- und Ausgabe}
+\begin{Frame}[fragile]{Knoten haben Stile}{Ein- und Ausgabe}
   \tikzexample{[io/.style={trapezium,
       trapezium left angle=70,
       trapezium right angle=110,
@@ -704,7 +704,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[fragile]{Knoten haben Stile.}{Operationen}
+\begin{Frame}[fragile]{Knoten haben Stile}{Operationen}
   \tikzexample{[op/.style={rectangle, fill=orange!10, draw=orange}, thick]
     \node[op] {$r=a \mod b$};
   }
@@ -719,7 +719,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[fragile]{Knoten haben Stile.}{Entscheidungen}
+\begin{Frame}[fragile]{Knoten haben Stile}{Entscheidungen}
   \tikzexample{[cn/.style={diamond, aspect=2, inner sep=2pt, fill=red!10, draw=red}, thick]
     \node[cn] {$b=0?$};
   }
@@ -735,7 +735,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[t,fragile]{Knoten haben Namen.}
+\begin{Frame}[t,fragile]{Knoten haben Namen}
   \xxx\xxx
   \begin{columns}[T]
     \column{30mm}
@@ -901,13 +901,13 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
         cn/.style={diamond, aspect=2,
           inner sep=2pt, fill=red!10, draw=red},
         node distance=5mm, thick]
-    
+
       \node[io] (in) {Eingabe $a,b$};
       \node[op, below=of in] (div) {$r=a \mod b$};
       \node[op, below=of div] (set) {$a=b,\ b=r$};
       \node[cn, below=of set] (cond) {$b=0?$};
       \node[io, below=of cond] (out) {Ausgabe $a$};
-      
+
       \path[->]
         (in) edge (div)
         (div) edge (set)
@@ -962,7 +962,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
         \node[coordinate] (root) {}
           child { child child }
           child { child child };
-        %  
+        %
         \node at (root) (a) {a};
         \visible<2->{\node at (root-1) (b) {b};}
         \visible<4->{\node at (root-2) (e) {e};}
@@ -977,9 +977,9 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
         \visible<5->{\path (e) edge (f)
                        edge (g);}
       }
-    
+
     \column{52mm}
-    
+
     \begin{lstlisting}[gobble=6,escapechar=\%]
       %\pause[1]%\node {a}                %\onslide%
       %\pause[2]%  child { node {b}       %\onslide%
@@ -1265,7 +1265,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
         child { node[concept] {data structures} }
         child { node[concept] {pro\-gramming languages} }
         child { node[concept] {software engineer\-ing} }
-      }  
+      }
       child[concept color=blue] {
         node[concept] {applied}
         [clockwise from=-30]
@@ -1341,39 +1341,39 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \only<article>{\sideways}
   \begin{tikzpicture}
     % Define a macro to draw the filter symbol
-    \def\filterSS{\node{};  % This empty node draws the box. 
+    \def\filterSS{\node{};  % This empty node draws the box.
        % Then we draw the inner curves
-       \draw[line width=1pt] (-2mm,-4mm) to[in=200,out=20] (-2mm, 4mm) 
-                             (0mm,-4mm) to[in=200,out=20] (0mm, 4mm) 
-                             (2mm,-4mm) to[in=200,out=20] (2mm, 4mm); 
+       \draw[line width=1pt] (-2mm,-4mm) to[in=200,out=20] (-2mm, 4mm)
+                             (0mm,-4mm) to[in=200,out=20] (0mm, 4mm)
+                             (2mm,-4mm) to[in=200,out=20] (2mm, 4mm);
        }
 
     % Define a macro to draw the MOD symbol
     \def\MOD#1{\node{#1}; % The box with the text inside. Then draw the polygon around the text
       \draw[line width=1pt,sharp corners](-0.75cm,0cm)--(-0.35cm,0.25cm)--
-           (0.35cm, 0.25cm)--(0.75cm, 0cm)--(0.35cm, -0.25cm)--(-0.35cm, -0.25cm) -- cycle; 
+           (0.35cm, 0.25cm)--(0.75cm, 0cm)--(0.35cm, -0.25cm)--(-0.35cm, -0.25cm) -- cycle;
       }
 
     % Define a macro to draw the Polariser symbol
-    \def\Polaris{\node[coordinate]{}; % Node of type coordinate is a simple point 
+    \def\Polaris{\node[coordinate]{}; % Node of type coordinate is a simple point
          % Now draw the three circles
-         \draw[line width=1pt] (0mm, -2mm)  circle (2mm) 
+         \draw[line width=1pt] (0mm, -2mm)  circle (2mm)
                                (-2mm,2mm)  circle (2mm)
                                (2mm, 2mm)  circle (2mm);}
 
     % Place all element in a matrix of nodes, called m
     % By default all nodes are rectangles with round corners
     % but some special sytles are defined also
-    \matrix (m) [matrix of nodes, 
+    \matrix (m) [matrix of nodes,
       column sep=5mm,
       row sep=1cm,
       nodes={draw, % General options for all nodes
         line width=1pt,
-        anchor=center, 
+        anchor=center,
         text centered,
         rounded corners,
         minimum width=1.5cm, minimum height=8mm
-      }, 
+      },
       % Define styles for some special nodes
       right iso/.style={isosceles triangle,scale=0.5,sharp corners, anchor=center, xshift=-4mm},
       left iso/.style={right iso, rotate=180, xshift=-8mm},
@@ -1390,61 +1390,61 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     & % m-1-5 empty
     & % m-1-6 empty
     & % m-1-7
-      |[txt]| {Power Meter} 
+      |[txt]| {Power Meter}
     \\
 
     % Second row of symbols
     % m-2-1
-      Laser 
+      Laser
     & % m-2-2
-      \MOD{MOD} 
+      \MOD{MOD}
     & % m-2-3
-      |[right iso]|  
+      |[right iso]|
     & % m-2-4
       SOA
     & % m-2-5
-      \filterSS 
+      \filterSS
     & % m-2-6
-      VOA    
+      VOA
     & % m-2-7
       |[ellip]|
     & % m-2-8
-      |[coordinate, xshift=-1cm]|  
+      |[coordinate, xshift=-1cm]|
     \\
     % Third row of symbols
       % m-3-1 empty
     & % m-3-2
-      VOA  
+      VOA
     & % m-3-3
-      \filterSS  
+      \filterSS
     & % m-3-4
-      |[left iso]| 
+      |[left iso]|
     & % m-3-5
-      |[draw=orange!80!white, ultra thick]| \textbf{QDSOA} 
+      |[draw=orange!80!white, ultra thick]| \textbf{QDSOA}
     & % m-3-6
-      |[left iso]| 
+      |[left iso]|
     & % m-3-7
-      \Polaris 
+      \Polaris
     & % m-3-8 (no symbol here, only a point to draw the path)
-      |[coordinate, xshift=-1cm]| 
+      |[coordinate, xshift=-1cm]|
     \\
     % Fourth row of symbols
       % m-4-1
-      |[txt]| {Power Meter} 
+      |[txt]| {Power Meter}
     & % m-4-2
-      |[ellip]| 
+      |[ellip]|
     & % m-4-3
-      |[right iso]| 
+      |[right iso]|
     & % m-4-4
-      SOA 
+      SOA
     & % m-4-5
-      |[right iso]| 
+      |[right iso]|
     & % m-4-6
-      \filterSS 
+      \filterSS
     & % m-4-7
-      Rx    
+      Rx
     & % m-4-8
-      |[txt]| {Error\newline Detector} 
+      |[txt]| {Error\newline Detector}
     \\
     };  % End of matrix
 
@@ -1489,8 +1489,8 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \draw (m-3-7) node[above, inner sep=6mm, text centered, text width=2cm] {Polarisation\newline controller};
 
     % The big arrow over the MOD symbol is a bit laborious
-    \node[yshift=2mm] (MOD arrow) at (m-2-2.north) [anchor=east,single arrow, draw,line width=1pt, 
-                  rotate=-90, minimum height=7mm, minimum width=1.3cm, 
+    \node[yshift=2mm] (MOD arrow) at (m-2-2.north) [anchor=east,single arrow, draw,line width=1pt,
+                  rotate=-90, minimum height=7mm, minimum width=1.3cm,
                   single arrow head extend=1.2mm, single arrow tip angle=120] {};
     % The text above the arrow (the starting of the arrow is at west in the arrow shape, even if the
     % arrow was rotated and it lies now at top)
@@ -1502,12 +1502,12 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
                                   inner sep=4mm, rectangle, rounded corners}};
 
     % Finally the blue dotted boxes are drawn as nodes fitted to other nodes
-    \node (first dotted box) [blue dotted, 
+    \node (first dotted box) [blue dotted,
                               fit = (MOD text) (m-2-1) (m-2-4)] {};
     \node (second dotted box) [blue dotted,
                               fit = (m-4-4) (m-4-8)] {};
 
-    % Since these boxes are nodes, it is easy to put text above or below them                          
+    % Since these boxes are nodes, it is easy to put text above or below them
     \node at (first dotted box.north) [above, inner sep=3mm] {\textbf{Transmitter}};
     \node at (second dotted box.south) [below, inner sep=3mm] {\textbf{Receiver}};
   \end{tikzpicture}
@@ -1724,7 +1724,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
         \pgfmathsetmacro{\dy}{rand*0.1}% A random variance in the y coordinate,
                                        % gives a hight fill to the lipid
         \pgfmathsetmacro{\rot}{rand*0.1}% A random variance in the
-                                        % molecule orientation      
+                                        % molecule orientation
         \shade[ball color=red] ({\i+\dx+\rot},{0.5*\j+\dy+0.4*sin(\i*\nuPi*10)}) circle(0.45);
         \shade[ball color=gray] (\i+\dx,{0.5*\j+\dy+0.4*sin(\i*\nuPi*10)-0.9}) circle(0.45);
         \shade[ball color=gray] (\i+\dx-\rot,{0.5*\j+\dy+0.4*sin(\i*\nuPi*10)-1.8}) circle(0.45);
@@ -1833,7 +1833,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \item Fast alle scheamtischen Zeichnungen sind ein \alert{Graph}, bestehen also aus \alert{Knoten} und \alert{Kanten} und
       werden auch als solche in \TikZ\ gezeichnet.
     \item \TikZ\ ist sehr umfangreich und enthält \alert{sehr viele Bibliotheken}.
-    \item \alert{Lies die Anleitung! Sie ist großartig!}
+    \item \alert{Lies die Anleitung!} Sie ist großartig!
   \end{enumerate}
 \end{frame}
 
