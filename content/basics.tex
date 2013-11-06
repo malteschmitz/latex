@@ -962,12 +962,6 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 \begin{Frame}[t,fragile]{Titelseite}{Automatisch}
   \begin{Block}{In der Präambel}
     \lstinputlisting[firstline=13, lastline=16, style=block]{demo/maketitle.tex}
-    % \begin{lstlisting}[gobble=6,style=block]
-    %   \title{Meine Arbeit}
-    %   \author{Johannes Thorn}
-    %   \date{Iden des März}
-    %   % aktuelles Datum bei Auslassung
-    % \end{lstlisting}
   \end{Block}
 
   \begin{Block}{Am Anfang des Dokuments}
@@ -980,17 +974,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 \end{Frame}
 
 \begin{Frame}[fragile]{Titelseite}{Manuell}
-  % \lstinputlisting[gobble=2, firstline=15, lastline=22]{demo/titlepage.tex}
-  \begin{lstlisting}[gobble=4]
-    \begin{titlepage}
-      \begin{center}
-        \textsf{\textbf{\Huge
-          Die Ermordung Iulius Caesars}}
-    
-        \Large Marcus Iunius Brutus
-      \end{center}
-    \end{titlepage}
-  \end{lstlisting}
+  \lstinputlisting[firstline=15, lastline=22]{demo/titlepage.tex}
 
   \centerline{\includegraphics[width=8cm]{demo/titlepage}}
 \end{Frame}

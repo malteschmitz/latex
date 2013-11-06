@@ -44,20 +44,20 @@
       (30:1cm) -- node[left]
         {$\sin \alpha$} (30:1cm |- 0,0);
     \draw[very thick,blue]
-      (30:1cm |- 0,0) -- node[below]
-        {$\cos \alpha$} (0,0);
+      (0,0) -- node[below]
+        {$\cos \alpha$} (30:1cm |- 0,0);
     % Schnittpunktberechnung und Tangens
     \path [name path=upward line]
       (1,0) -- (1,1);
     \path [name path=sloped line]
       (0,0) -- (30:1.5cm);
     \draw [name intersections=
-      {of=upward line and sloped line, by=t}]
+      {of=upward line and sloped line, by=tan}]
       [very thick,orange] (1,0) -- node [right]
       {$\displaystyle \tan \alpha \color{black}=
         \frac{{\color{red}\sin \alpha}}
-          {\color{blue}\cos \alpha}$} (t);
-    \draw (0,0) -- (t);
+          {\color{blue}\cos \alpha}$} (tan);
+    \draw (0,0) -- (tan);
   }
 \end{Frame}
 
@@ -70,6 +70,7 @@
       \draw (0,0) -- (1.5,0);
       \draw (0,0) -- (0,1.5);
     \end{tikzpicture}
+    einem Winkel.
   }
 
   \xxx
@@ -83,7 +84,8 @@
       \begin{tikzpicture}
         \draw (0,0) -- (1.5,0);
         \draw (0,0) -- (0,1.5);
-      \end{tikzpicture}.
+      \end{tikzpicture}
+      einem Winkel.
     \end{document}
   \end{lstlisting}
 \end{Frame}
@@ -183,22 +185,6 @@
     \end{tikzpicture}
   \end{lstlisting}
 \end{Frame}
-
-% \begin{Frame}[t,fragile]{Pfeilspitzen}
-%   \tikzexample{[scale=2]
-%     \draw[step=0.5cm,gray,very thin]
-%       (0,0) grid (1.4,1.4);
-%     \draw[->] (0,0) -- (1.5,0);
-%     \draw[->] (0,0) -- (0,1.5);
-%   }
-
-%   \xxx
-
-%   \begin{lstlisting}[gobble=4]
-%     \draw[->] (0,0) -- (1.5,0);
-%     \draw[->] (0,0) -- (0,1.5);
-%   \end{lstlisting}
-% \end{Frame}
 
 \begin{Frame}[t,fragile]{Bogenpfade}
   \tikzexample{[scale=2]
@@ -347,7 +333,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \draw[very thick,red]
       (30:1cm) -- (30:1cm |- 0,0);
     \draw[very thick,blue]
-      (30:1cm |- 0,0) -- (0,0);
+      (0,0) -- (30:1cm |- 0,0);
     %
     \draw[name path=upward line]
       (1,0) -- (1,1);
@@ -384,7 +370,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \draw[very thick,red]
       (30:1cm) -- (30:1cm |- 0,0);
     \draw[very thick,blue]
-      (30:1cm |- 0,0) -- (0,0);
+      (0,0) -- (30:1cm |- 0,0);
     %
     \path[name path=upward line]
       (1,0) -- (1,1);
@@ -421,7 +407,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \draw[very thick,red]
       (30:1cm) -- (30:1cm |- 0,0);
     \draw[very thick,blue]
-      (30:1cm |- 0,0) -- (0,0);
+      (0,0) -- (30:1cm |- 0,0);
     %
     \path[name path=upward line]
       (1,0) -- (1,1);
@@ -469,11 +455,11 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \path[name path=sloped line]
       (0,0) -- (30:1.5cm);
     \path[name intersections=
-      {of=upward line and sloped line, by=t}];
+      {of=upward line and sloped line, by=tan}];
     \draw[very thick,orange]
-      (1,0) -- (t);
+      (1,0) -- (tan);
     \draw
-      (0,0) -- (t);
+      (0,0) -- (tan);
   }
 
   \xxx
@@ -502,18 +488,18 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \draw[very thick,red]
       (30:1cm) -- node[left] {$\sin \alpha$} (30:1cm |- 0,0);
     \draw[very thick,blue]
-      (30:1cm |- 0,0) -- node[below] {$\cos \alpha$} (0,0);
+      (0,0) -- node[below] {$\cos \alpha$} (30:1cm |- 0,0);
     %
     \path[name path=upward line]
       (1,0) -- (1,1);
     \path[name path=sloped line]
       (0,0) -- (30:1.5cm);
     \path[name intersections=
-      {of=upward line and sloped line, by=t}];
-    \draw [name intersections={of=upward line and sloped line, by=t}]
-      [very thick,orange] (1,0) -- (t);
+      {of=upward line and sloped line, by=tan}];
+    \draw [name intersections={of=upward line and sloped line, by=tan}]
+      [very thick,orange] (1,0) -- (tan);
     \draw
-      (0,0) -- (t);
+      (0,0) -- (tan);
   }
 
   \xxx
@@ -579,20 +565,20 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
       (30:1cm) -- node[left]
         {$\sin \alpha$} (30:1cm |- 0,0);
     \draw[very thick,blue]
-      (30:1cm |- 0,0) -- node[below]
-        {$\cos \alpha$} (0,0);
+      (0,0) -- node[below]
+        {$\cos \alpha$} (30:1cm |- 0,0);
     % Schnittpunktberechnung und Tangens
     \path [name path=upward line]
       (1,0) -- (1,1);
     \path [name path=sloped line]
       (0,0) -- (30:1.5cm);
     \draw [name intersections=
-      {of=upward line and sloped line, by=t}]
+      {of=upward line and sloped line, by=tan}]
       [very thick,orange] (1,0) -- node [right]
       {$\displaystyle \tan \alpha \color{black}=
         \frac{{\color{red}\sin \alpha}}
-          {\color{blue}\cos \alpha}$} (t);
-    \draw (0,0) -- (t);
+          {\color{blue}\cos \alpha}$} (tan);
+    \draw (0,0) -- (tan);
   \end{lstlisting}
 \end{Frame}
 
@@ -640,7 +626,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   }
 \end{Frame}
 
-\begin{Frame}[fragile]{Knoten sind Pfadelemente}
+\begin{Frame}[fragile]{Knoten sind Pfadelemente.}
   \begin{columns}
     \column{30mm}
       \tikzexample[left]{
@@ -663,7 +649,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{columns}
 \end{Frame}
 
-\begin{Frame}[fragile]{Knoten haben einen eigenen Befehl}
+\begin{Frame}[fragile]{Knoten haben einen eigenen Befehl.}
   \begin{columns}
     \column{30mm}
       \tikzexample[left]{
@@ -684,7 +670,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{columns}
 \end{Frame}
 
-\begin{Frame}[fragile]{Knoten haben Stile}{Ein- und Ausgabe}
+\begin{Frame}[fragile]{Knoten haben Stile.}{Ein- und Ausgabe}
   \tikzexample{[io/.style={trapezium,
       trapezium left angle=70,
       trapezium right angle=110,
@@ -704,7 +690,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[fragile]{Knoten haben Stile}{Operationen}
+\begin{Frame}[fragile]{Knoten haben Stile.}{Operationen}
   \tikzexample{[op/.style={rectangle, fill=orange!10, draw=orange}, thick]
     \node[op] {$r=a \mod b$};
   }
@@ -719,7 +705,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[fragile]{Knoten haben Stile}{Entscheidungen}
+\begin{Frame}[fragile]{Knoten haben Stile.}{Entscheidungen}
   \tikzexample{[cn/.style={diamond, aspect=2, inner sep=2pt, fill=red!10, draw=red}, thick]
     \node[cn] {$b=0?$};
   }
@@ -735,7 +721,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[t,fragile]{Knoten haben Namen}
+\begin{Frame}[t,fragile]{Knoten haben Namen.}
   \xxx\xxx
   \begin{columns}[T]
     \column{30mm}
@@ -1833,7 +1819,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \item Fast alle scheamtischen Zeichnungen sind ein \alert{Graph}, bestehen also aus \alert{Knoten} und \alert{Kanten} und
       werden auch als solche in \TikZ\ gezeichnet.
     \item \TikZ\ ist sehr umfangreich und enthält \alert{sehr viele Bibliotheken}.
-    \item \alert{Lies die Anleitung!} Sie ist großartig!
+    \item \alert{Lies die Anleitung!} Sie ist \emph{großartig}!
   \end{enumerate}
 \end{frame}
 
