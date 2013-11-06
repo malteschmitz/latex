@@ -582,25 +582,6 @@
   \end{Beispiel}
 \end{Frame}
 
-\begin{Frame}[fragile]{Abkürzungen}
-  \begin{Block}{Mehrgliedrige Abkürzungen}
-    \begin{tabular}{rll}
-      nicht: & \lstinline-z.B.- & z.B. \\
-      auch nicht: & \lstinline-z.~B.- & z.~B. \\
-      sondern: & \lstinline-z.\,B.- & z.\,B. \\
-    \end{tabular}
-  \end{Block}
-  
-  \begin{Block}{Trennung von Abkürzungen}
-    \begin{itemize}
-      \item Abkürzungen nicht trennen
-      \item Maß- und Währungszeichen nicht von der Zahl trennen
-      \item geschütztes Leerzeichen \lstinline-~- verwenden\\
-        Beispiele: \lstinline-Seite~5, 4~km, S.~5~ff.-
-    \end{itemize}
-  \end{Block}
-\end{Frame}
-
 \begin{Frame}[fragile]{Anführungszeichen}
   \begin{alertblock}{Verwendung}
     Anführungszeichen sind nur für \alert{wörtliche Zitate}.
@@ -671,18 +652,46 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
         Das Buch darf 10--12 Euro kosten.
       \end{lstlisting}
       Das Buch darf 10--12 Euro kosten.
-    %\item Minuszeichen als binärer und unärer Operator
-    %  \begin{lstlisting}[gobble=8]
-    %    $2-4=-2$ (nicht -2)
-    %  \end{lstlisting}
-    %  $2-4=-2$ (nicht -2)
-    %  \only<article>{
-    %    \newline Als binärer Operator wird das Minuszeichen mit einem kleinen Abstand gesetzt.
-    %    Als unärer Operator wird das Minuszeichen als Vorzeichen ohne Abstand gesetzt.
-    %    \LaTeX\ übernimmt dies automatisch.
-    %  }
-    % Das ist hier zu früh -- Formelsatz kommt erst später.
   \end{looseitemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Leerzeichen}
+  \begin{looseitemize}
+    \item normales Leerzeichen
+      \begin{lstlisting}[gobble=8]
+        Leerzeichen stehen zwischen Worten.
+      \end{lstlisting}
+      Leerzeichen stehen zwischen Worten.
+    \item Abstand in der Breite eines Ms (1~quad)
+      \begin{lstlisting}[gobble=8]
+        Ein Satz.\quad Noch ein Satz.\qquad Ende.
+      \end{lstlisting}
+      Ein Satz.\quad Noch ein Satz. \qquad Ende.
+    \item Zwischenräume (3/18 bis 6/18 quad)
+      \begin{lstlisting}[gobble=8]
+        z.\,B. / z.\:B. / z.\;B. / z.\ B.
+      \end{lstlisting}
+      z.\,B. / z.\:B. / z.\;B. / z.\ B.
+  \end{looseitemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Abkürzungen}
+  \begin{Block}{Mehrgliedrige Abkürzungen}
+    \begin{tabular}{rll}
+      nicht: & \lstinline-z.B.- & z.B. \\
+      auch nicht: & \lstinline-z.~B.- & z.~B. \\
+      sondern: & \lstinline-z.\,B.- & z.\,B. \\
+    \end{tabular}
+  \end{Block}
+  
+  \begin{Block}{Trennung von Abkürzungen}
+    \begin{itemize}
+      \item Abkürzungen nicht trennen
+      \item Maß- und Währungszeichen nicht von der Zahl trennen
+      \item geschütztes Leerzeichen \lstinline-~- verwenden\\
+        Beispiele: \lstinline-Seite~5, 4~km, S.~5~ff.-
+    \end{itemize}
+  \end{Block}
 \end{Frame}
 
 \subsection{Formelsatz}
@@ -806,6 +815,24 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
     \[ 23.456{,}78 - 23\,456{,}78 + 23456{,}78 \]
   \end{Block}
 \end{Frame}
+
+\mode
+<article>
+
+\begin{Block}{Minuszeichen als binärer und unärer Operator}
+  \begin{lstlisting}[gobble=8]
+    $2-4=-2$ (nicht -2)
+  \end{lstlisting}
+  $2-4=-2$ (nicht -2)
+  \only<article>{
+    \newline Als binärer Operator wird das Minuszeichen mit einem kleinen Abstand gesetzt.
+    Als unärer Operator wird das Minuszeichen als Vorzeichen ohne Abstand gesetzt.
+    \LaTeX\ übernimmt dies automatisch.
+  }
+\end{Block}
+
+\mode
+<all>
 
 \subsection{Listen, Tabellen, Grafiken}
 
@@ -931,6 +958,21 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 
   schneidet links 3\,cm, unten 5\,mm,\\ rechts 4\,cm und oben 12\,mm ab
 \end{Frame}
+
+\mode
+<article>
+
+\begin{Block}{Dateitypen}
+  Bei der Verwendung von pdf\TeX\ können Grafikdateien in den Formaten PDF, JPG und PNG verwendet werden.
+  Soll das Dokument mit \TeX\ kompiliert werden, muss die Grafik als EPS-Datei vorliegen. Aus diesem Grund
+  wird die Grafikdatei häufig ohne Dateierweiterung angegeben, sodass die für den jeweiligen Fall am besten
+  geeignete Datei automatisch verwendet wird.
+
+  Leider gibt es keine Möglichkeit, SVG-Dateien direkt zu verwenden. Diese müssen vorher in PDF bwz. EPS konvertiert werden. Da beide Formate Vektorgrafiken unterstützen gehen bei dieser Konvertierung keine Informationen velohren.
+\end{Block}
+
+\mode
+<all>
 
 \jonny
 
