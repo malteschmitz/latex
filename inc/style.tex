@@ -313,13 +313,18 @@
 
 % keep the name of the current chapter and the current section
 
-\clearscrheadfoot % clear all default settings
-\automark[chapter]{section} % \automark[\rightmark]{\leftmark}
+\manualmark
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 
-\ihead{\shorttitlestring\ \rightmark\ \textcolor{maincolor}{\bfseries |} \leftmark \hfill \pagemark}
+\clearscrheadfoot % clear all default settings
+\ihead{\shorttitlestring\ \textcolor{maincolor}{\bfseries |}
+  \leftmark\ \textcolor{maincolor}{\bfseries |}
+  \rightmark \hfill \pagemark}
+
 \setkomafont{pagehead}{\normalfont\sffamily}
 \setkomafont{pagenumber}{\color{maincolor}\bfseries}
-\setheadsepline{0.5pt}[\color{maincolor}]
+\setheadsepline{1pt}[\color{maincolor}]
 
 
 % Create own counter as replacement for framenumber. framenumber is
