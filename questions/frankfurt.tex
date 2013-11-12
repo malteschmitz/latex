@@ -1,0 +1,123 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+
+
+%% Variante 0: Frankfurt erzeugt Mini Frame Navigation mit Punkten, die wir nicht haben wollen.
+% \usetheme{Frankfurt}
+
+%% Variante 1: Anderes Theme verwenden
+%% Madrid sieht in etwa aus wie Frankfurt, erzeugt aber keine Mini Frame Navigation, sondern eine Fußzeile.
+% \usetheme{Madrid}
+
+%% Variante 2: Wir verwenden Frankfurt, aber ohne das Outer Theme für die Mini Frame Navigation.
+%% Leider kann man ein einmal geladenes Outer Theme nicht einfach wieder deaktivieren,
+%% deswegen kopieren wir aus dem Theme Frankfurt alle Anweisungen außer dem Setzen
+%% des Outer Themes smoothbars, das eine weichere Version der Mini Frame Navigation lädt.
+%% Kopiert aus texmf-dist/tex/latex/beamer/themes/theme/beamerthemeFrankfurt.sty
+%\useinnertheme[shadow=true]{rounded}
+%\usecolortheme{orchid}
+%\usecolortheme{whale}
+%\setbeamerfont{block title}{size={}}
+
+%% Variante 3: Wir verwenden Frankfurt und die Mini Frame Navigation, überschreiben aber das Template,
+%% das die Punkte setzt. Es bleibt der Platz leer, in dem sonst die Punkte stehen würden.
+%\usetheme{Frankfurt}
+%\setbeamertemplate{mini frames}{}
+
+% Variante 4: Wir verwenden Frankfurt und die Mini Frame Navigation, überschreiben aber das Template,
+% das die Punkte setzt. Weiter passen wir das Mini Frames Template manuell an, sodass es weniger
+% vertikalen Raum einnimmt. Für die Anpassung kopieren wir die entsprechende Definition aus dem Mini
+% Frames Template und löschen nicht verwendete Teile weg. Schließlich passen wir \vskip2pt zu
+% \vskip-2pt an. Die schwarze Leiste oben wird dadurch flacher.
+\usetheme{Frankfurt}
+\setbeamertemplate{mini frames}{}
+% Kopiert aus texmf-dist/tex/latex/beamer/themes/outer/beamerouterthememiniframes.sty
+\defbeamertemplate*{headline}{miniframes theme}
+{%
+  \begin{beamercolorbox}{section in head/foot}
+    \vskip2pt\insertnavigation{\paperwidth}\vskip-2pt
+  \end{beamercolorbox}%
+}
+
+
+% Navigationsleiste ausblenden
+% (Die Links unten rechts auf der Folie, siehe "8.2.4 The Navigation Symbols" in beameruserguide.pdf)
+\setbeamertemplate{navigation symbols}{}
+
+% Titel und Autor
+\title{\LaTeX\ Beamer}
+\subtitle{Einführung in den Satz von Vortragsfolien}
+\author{Malte \& Johannes}
+\institute{Uni Lübeck}
+\date{MetaNook 2013}
+
+% Inhalt
+\begin{document}
+  \begin{frame}[plain]
+    \maketitle
+  \end{frame}
+
+  \begin{frame}{Gliederung}
+    \tableofcontents
+  \end{frame}
+
+  \section{Was ist Beamer?}
+
+  \section{Verwendung von Beamer}
+
+  \subsection{Folien}
+
+  \begin{frame}{Folie}
+    Ich bin eine Folie in einem anderen Unterabschnitt im Abschnitt des Sandhaufens.
+  \end{frame}
+
+  \begin{frame}{Noch eine Folie}
+    Ich auch.
+  \end{frame}
+
+  \subsection{Form}
+
+  \begin{frame}{Folie}
+    Ich bin eine andere Folie im Unterabschnitt des Sandhaufens.
+  \end{frame}
+
+  \begin{frame}{Sandhaufen}{Ein sinnloser Induktionsbeweis}
+    \begin{Satz}[Sandhaufensatz]
+      Es gibt keine Sandhaufen.
+    \end{Satz}
+
+    \begin{Beweis}
+      \begin{enumerate}
+        \item Ein Sandkorn ist kein Sandhaufen.
+        \item Sandkörner werden durch Hinzufügen
+          eines Sandkorns nicht zum Sandhaufen.
+        \item Induktiv folgt die Aussage. \qedhere
+      \end{enumerate}
+    \end{Beweis}
+
+    \begin{Beispiel}
+      Vergleiche unsere Baustellen.
+    \end{Beispiel}
+  \end{frame}
+
+  \begin{frame}{Schon wieder eine Folie}
+    Auch ich bin eine andere Folie im Unterabschnitt des Sandhaufens.
+  \end{frame}
+
+  \section{Fortgeschrittene Verwendung}
+
+  \subsection{Folien}
+
+  \begin{frame}{Vorletzte Folie}
+    Hier geht es zu Ende.
+  \end{frame}
+
+  \begin{frame}{Letzte Folie}
+    Hier ist das Ende.
+  \end{frame}
+
+\end{document}
