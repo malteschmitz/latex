@@ -371,8 +371,9 @@
     \item<2> Optionale Paramter stehen in eckigen Klammern.
   \end{itemize}
 
+  \xxx
+
   \begin{onlyenv}<1>
-    \xxx
     \begin{Beispiel}[Befehl]
       \begin{lstlisting}[gobble=8,style=block]
         Dieser Text ist \textbf{fett}.
@@ -382,8 +383,7 @@
   \end{onlyenv}
 
   \begin{onlyenv}<2>
-    \xxx
-    \begin{Beispiel}[Befehl mit optionalen Parametern]
+    \begin{Beispiel}[Befehl mit optionalem Parameter]
       \begin{lstlisting}[gobble=8,style=block]
         \includegraphics[width=3.5cm]{miktex}
       \end{lstlisting}
@@ -394,8 +394,8 @@
 
 \begin{Frame}[fragile]{Umgebungen}
   \begin{itemize}
-    \item Eine Umgebung beginnt mit \lstinline-\begin-
-    \item und endet mit \lstinline-\end-.
+    \item Umgebungen beginnen mit \lstinline-\begin-
+    \item und enden mit \lstinline-\end-.
     \item Parameter ist jeweils der Name der Umgebung.
   \end{itemize}
 
@@ -407,6 +407,9 @@
         Ich bin zentriert.
       \end{center}
     \end{lstlisting}
+    \begin{center}
+      Ich bin zentriert.
+    \end{center}
   \end{Beispiel}
 \end{Frame}
 
@@ -979,25 +982,54 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 
 \subsection{Struktur des Dokuments}
 
-\begin{Frame}[fragile]{Inhaltsverzeichnis}
-  \begin{Block}{Strukturbefehle}
-    \begin{itemize}
-      \item \lstinline-\part[kurz]{name}- für Teile (nur in Büchern)
-      \item \lstinline-\chapter[kurz]{name}- für Kapitel (nicht in Artikeln)
-      \item \lstinline-\section[kurz]{name}- für Abschnitte
-      \item \lstinline-\subsection[kurz]{name}- für Unterabschnitte
-      %\item \lstinline-\subsubsection[kurz]{name}- für Unterunterabschnitte
-      %\item \lstinline-\paragraph[kurz]{name}- für Absätze
-    \end{itemize}
-  \end{Block}
-  Optionaler Parameter setzt Kurztitel für Inhaltsverzeichnis.
+\begin{Frame}[fragile,t]{Inhaltsverzeichnis}
+  \xxx
+
+  \begin{onlyenv}<1>
+    \begin{Block}{Strukturbefehle}
+      \begin{itemize}
+        \item \lstinline-\part{name}- für Teile (nur in Büchern)
+        \item \lstinline-\chapter{name}- für Kapitel (nicht in Artikeln)
+        \item \lstinline-\section{name}- für Abschnitte
+        \item \lstinline-\subsection{name}- für Unterabschnitte
+      \end{itemize}
+    \end{Block}
+  \end{onlyenv}
+
+  \begin{onlyenv}<2-3>
+    \begin{Block}{Strukturbefehle}
+      \begin{itemize}
+        \item \lstinline-\part[kurz]{name}- für Teile (nur in Büchern)
+        \item \lstinline-\chapter[kurz]{name}- für Kapitel (nicht in Artikeln)
+        \item \lstinline-\section[kurz]{name}- für Abschnitte
+        \item \lstinline-\subsection[kurz]{name}- für Unterabschnitte
+      \end{itemize}
+    \end{Block}
+
+    Optionaler Parameter setzt Kurztitel für Inhaltsverzeichnis.
+  \end{onlyenv}
+
+  \begin{onlyenv}<4>
+    \begin{Block}{Strukturbefehle}
+      \begin{itemize}
+        \item \lstinline-\part*{name}- für Teile (nur in Büchern)
+        \item \lstinline-\chapter*{name}- für Kapitel (nicht in Artikeln)
+        \item \lstinline-\section*{name}- für Abschnitte
+        \item \lstinline-\subsection*{name}- für Unterabschnitte
+      \end{itemize}
+    \end{Block}
+
+    Variante mit \texttt{*} erscheint nicht im Inhaltsverzeichnis
+  \end{onlyenv}
 
   \xxx
 
-  \begin{lstlisting}[gobble=4]
-    \tableofcontents
-  \end{lstlisting}
-  setzt das zugehörige Inhaltsverzeichnis.
+  \begin{onlyenv}<3->
+    \begin{lstlisting}[gobble=6]
+      \tableofcontents
+    \end{lstlisting}
+    setzt das zugehörige Inhaltsverzeichnis.
+  \end{onlyenv}
 \end{Frame}
 
 \begin{Frame}[t,fragile]{Titelseite}{Automatisch}

@@ -62,7 +62,7 @@
     % Red, Green, Blue von 0 bis 255
     \xdefinecolor{uni-luebeck}{RGB}{0, 120, 140}
     % Hue, Saturation, Brightness von 0 bis 240
-    \xdefinecolor{skyblue}{HSV}{217, 47, 87}
+    \xdefinecolor{skyblue}{HSB}{217, 47, 87}
     % neuer Name für mehr Struktur
     \colorlet{maincolor}{uni-luebeck}
   \end{lstlisting}
@@ -110,19 +110,19 @@
   \end{Block}
 
   \begin{lstlisting}[gobble=4]
-    \rowcolors{1}{maincolor!25}{maincolor!5}
+    \rowcolors{1}{orange!25}{orange!5}
     \begin{tabular}{lr}
-      \rowcolor{maincolor!50} Posten & Betrag \\
+      \rowcolor{orange!50} Posten & Betrag \\
       Messe & 333,20 \\
       Kombüse & 47,60 \\
       Summe & 380,80
     \end{tabular}
   \end{lstlisting}
 
-  \rowcolors{1}{maincolor!25}{maincolor!5}
+  \rowcolors{1}{orange!25}{orange!5}
   \begin{center}
     \begin{tabular}{lr}
-      \rowcolor{maincolor!50} Posten & Betrag \\
+      \rowcolor{orange!50} Posten & Betrag \\
       Messe & 333,20 \\
       Kombüse & 47,60 \\
       Summe & 380,80
@@ -132,7 +132,9 @@
 
 \subsection{Eigene Befehle und Umgebungen}
 
-\begin{Frame}[fragile]{Befehle}
+\begin{Frame}[fragile, t]{Befehle}
+  \xxx
+
   \begin{Definition}[Befehl]
     \begin{lstlisting}[gobble=6,style=block,morekeywords={commandname,commandname*}]
       \commandname*[opt]{arg1}{arg2}
@@ -148,12 +150,23 @@
 
   \xxx
 
-  \begin{Beispiel}[Befehl]
-    \begin{lstlisting}[gobble=6,style=block]
-      \section[Kurzform]{Überschrift}
-      \section*{noch eine Überschrift}
-    \end{lstlisting}
-  \end{Beispiel}
+  \begin{onlyenv}<1>
+    \begin{Beispiel}[Befehl]
+      \begin{lstlisting}[gobble=8,style=block]
+        Dieser Text ist \textbf{fett}.
+      \end{lstlisting}
+      Dieser Text ist \textbf{fett}.
+    \end{Beispiel}
+  \end{onlyenv}
+
+  \begin{onlyenv}<2>
+    \begin{Beispiel}[Befehl mit optionalem Parameter]
+      \begin{lstlisting}[gobble=8,style=block]
+        \includegraphics[width=3.5cm]{miktex}
+      \end{lstlisting}
+      \includegraphics[width=3.5cm]{images/miktex}
+    \end{Beispiel}
+  \end{onlyenv}
 \end{Frame}
 
 \begin{Frame}[t,fragile]{Eigene Befehle}
@@ -218,6 +231,7 @@
   \begin{lstlisting}[gobble=4,moretexcs={wichtig}]
     \newcommand{\wichtig}[2]%
       [red]{\textcolor{#1}{\emph{#2}}}
+
     \wichtig{Hier} sind \wichtig[orange]{Worte}
     unterschiedlich \wichtig[blue]{hervorgehoben}.
   \end{lstlisting}
@@ -236,7 +250,7 @@
   \xxx
 
   \begin{lstlisting}[gobble=4]
-    \renewcommand{\emph}[1]{\textsl{#1}}
+    \renewcommand{\emph}[1]{\textsc{#1}}
     Ich bin \emph{hervorgehoben}.
   \end{lstlisting}
   \renewcommand{\emph}[1]{\textsc{#1}}
@@ -266,6 +280,9 @@
         Ich bin zentriert.
       \end{center}
     \end{lstlisting}
+    \begin{center}
+      Ich bin zentriert.
+    \end{center}
   \end{Beispiel}
 \end{Frame}
 
