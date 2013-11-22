@@ -9,9 +9,9 @@ der folgendeb LaTeX-Vorträge
 der [MetaNook 2013](http://metameute.de/nook)
 am 8. November 2013 ab 17:30 Uhr:
   * LaTeX: Grundlagen,
-  * LaTeX: fortgeschrittene Verwendung,
-  * LaTeX: Beamer und
-  * LaTeX: TikZ.
+  * LaTeX: Fortgeschrittene Verwendung,
+  * LaTeX: Präsentieren mit Beamer und
+  * LaTeX: Zeichnen mit TikZ.
 
 Das Skript, die Präsentationen und viele weitere Links zum Thema
 finden sich auf [mlte.de/latex](http://www.mlte.de/latex).
