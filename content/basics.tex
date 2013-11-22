@@ -284,8 +284,6 @@
 
 \beamersection{\LaTeX\ verwenden}
 
-\subsection{Präambel}
-
 \mode
 <article>
 
@@ -364,85 +362,56 @@
   \end{tikzpicture}
 \end{Frame}
 
-\mode
-<all>
+\begin{Frame}[fragile,t]{Befehle}
+  \xxx\xxx
 
-\begin{Frame}[fragile]{Dokumentenklassen}
-  \lstinline-\documentclass{scrartcl}-\newline
-  kurzer Artikel
+  \begin{itemize}
+    \item Befehle beginnen mit einem Backslash.
+    \item Parameter stehen in geschweiften Klammern.
+    \item<2> Optionale Paramter stehen in eckigen Klammern.
+  \end{itemize}
 
-  \xxx
+  \begin{onlyenv}<1>
+    \xxx
+    \begin{Beispiel}[Befehl]
+      \begin{lstlisting}[gobble=8,style=block]
+        Dieser Text ist \textbf{fett}.
+      \end{lstlisting}
+      Dieser Text ist \textbf{fett}.
+    \end{Beispiel}
+  \end{onlyenv}
 
-  \lstinline-\documentclass{scrreprt}-\newline
-  Bericht mit Titelseite und Kapiteln
-
-  \xxx
-
-  \lstinline-\documentclass{scrbook}-\newline
-  doppelseitiges Buch mit Teilen, Kapiteln und Kopfzeile
-
-  \xxx
-
-  \begin{alertblock}{amerikanische Dokumentenklassen}
-    Wir verwenden die deutschen Dokumentenklassen aus KOMA-Script statt der 
-    amerikanischen \lstinline-article-, \lstinline-report- und \lstinline-book-.
-  \end{alertblock}
-\end{Frame}
-
-\begin{Frame}[fragile]{Präambel: KOMA-Script-Optionen}
-  \begin{lstlisting}[gobble=4]
-    \KOMAoptions{
-      parskip=full,
-      % full - Absätze haben großen Abstand
-      % half - Absätze haben kleinen Abstand
-      % off  - Absätze haben Einzug (default)
-      fontsize=12pt,
-      % Grunschriftgröße (10pt default)
-      headings=small,
-      % small  - kleine Überschriften
-      % normal - normale Überschriften (default)
-      % big    - große Überschriften
-      paper=a5,
-      % Papierformat (a4 default)
-      pagesize=auto
-      % Papierformat auch für PDF verwenden
-    }
-  \end{lstlisting}
-\end{Frame}
-
-\begin{Frame}[fragile]{Präambel: Pakete}
-  \lstset{
-    backgroundcolor={},
-    frame=no,
-    gobble=4,
-    aboveskip=3ex,
-    belowskip=0pt
-  }
-  \begin{lstlisting}
-    \usepackage[babel]{ngerman}
-  \end{lstlisting}
-  deutsche Silbentrennung und deutsche Übersetzung
-  \begin{lstlisting}
-    \usepackage[utf8]{inputenc}
-  \end{lstlisting}
-  UTF-8 als Zeichenkodierung verwenden
-  \begin{lstlisting}
-    \usepackage[T1]{fontenc}
-    \usepackage{lmodern}
-  \end{lstlisting}
-  schönere Schriftarten
-  \begin{lstlisting}
-    \usepackage[breaklinks=true]{hyperref}
-  \end{lstlisting}
-  bessere Unterstützung der PDF-Ausgabe
-  \begin{onlyenv}<article>
-    \begin{lstlisting}[gobble=6]
-      \usepackage[breaklinks=true, pdfborder={0 0 0},
-                  pdfhighlight={/N}]{hyperref}
-    \end{lstlisting}
-    noch bessere Unterstützung der PDF-Ausgabe
+  \begin{onlyenv}<2>
+    \xxx
+    \begin{Beispiel}[Befehl mit optionalen Parametern]
+      \begin{lstlisting}[gobble=8,style=block]
+        \includegraphics[width=3.5cm]{miktex}
+      \end{lstlisting}
+      \includegraphics[width=3.5cm]{images/miktex}
+    \end{Beispiel}
   \end{onlyenv}
 \end{Frame}
+
+\begin{Frame}[fragile]{Umgebungen}
+  \begin{itemize}
+    \item Eine Umgebung beginnt mit \lstinline-\begin-
+    \item und endet mit \lstinline-\end-.
+    \item Parameter ist jeweils der Name der Umgebung.
+  \end{itemize}
+
+  \xxx
+
+  \begin{Beispiel}[Umgebung]
+    \begin{lstlisting}[gobble=6,style=block]
+      \begin{center}
+        Ich bin zentriert.
+      \end{center}
+    \end{lstlisting}
+  \end{Beispiel}
+\end{Frame}
+
+\mode
+<all>
 
 \subsection{Auszeichnungen}
 
@@ -531,56 +500,6 @@
     \item \lstinline-{\huge riesig}- setzt {\huge riesig}
     \item \lstinline-{\Huge riesiger}- setzt {\Huge riesiger}
   \end{itemize}
-\end{Frame}
-
-\begin{Frame}[fragile]{Befehle}
-  \begin{Definition}[Befehl]
-    \begin{lstlisting}[gobble=6,style=block,morekeywords={commandname,commandname*}]
-      \commandname*[opt]{arg1}{arg2}
-    \end{lstlisting}
-
-    \begin{tabular}{rl}
-      \lstinline[morekeywords={commandname}]-commandname- & Name des Befehls \\
-      \lstinline-*- & optionaler Schalter \\
-      \lstinline-[opt]- & optionaler Parameter \\
-      \lstinline-{arg1}- & Parameter
-    \end{tabular}
-  \end{Definition}
-
-  \xxx
-
-  \begin{Beispiel}[Befehl]
-    \begin{lstlisting}[gobble=6,style=block]
-      \section[Kurzform]{Überschrift}
-      \section*{noch eine Überschrift}
-    \end{lstlisting}
-  \end{Beispiel}
-\end{Frame}
-
-\begin{Frame}[fragile]{Umgebungen}
-  \lstset{morekeywords={[2]envname}}
-  \begin{Definition}[Umgebung]
-    \begin{lstlisting}[gobble=6,style=block]
-      \begin{envname}[opt]{arg1}{arg2}
-        Inhalt
-      \end{envname}
-    \end{lstlisting}
-
-    \begin{tabular}{rl}
-      \lstinline-envname- & Name der Umgebunng \\
-      \lstinline-Inhalt- & Inhalt der Umgebung
-    \end{tabular}
-  \end{Definition}
-
-  \xxx
-
-  \begin{Beispiel}[Umgebung]
-    \begin{lstlisting}[gobble=6,style=block]
-      \begin{center}
-        Ich bin zentriert.
-      \end{center}
-    \end{lstlisting}
-  \end{Beispiel}
 \end{Frame}
 
 \begin{Frame}[fragile]{Anführungszeichen}
@@ -974,6 +893,85 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 
 \mode
 <all>
+
+\subsection{Präambel}
+
+\begin{Frame}[fragile]{Dokumentenklassen}
+  \lstinline-\documentclass{scrartcl}-\newline
+  kurzer Artikel
+
+  \xxx
+
+  \lstinline-\documentclass{scrreprt}-\newline
+  Bericht mit Titelseite und Kapiteln
+
+  \xxx
+
+  \lstinline-\documentclass{scrbook}-\newline
+  doppelseitiges Buch mit Teilen, Kapiteln und Kopfzeile
+
+  \xxx
+
+  \begin{alertblock}{amerikanische Dokumentenklassen}
+    Wir verwenden die deutschen Dokumentenklassen aus KOMA-Script statt der 
+    amerikanischen \lstinline-article-, \lstinline-report- und \lstinline-book-.
+  \end{alertblock}
+\end{Frame}
+
+\begin{Frame}[fragile]{Präambel: KOMA-Script-Optionen}
+  \begin{lstlisting}[gobble=4]
+    \KOMAoptions{
+      parskip=full,
+      % full - Absätze haben großen Abstand
+      % half - Absätze haben kleinen Abstand
+      % off  - Absätze haben Einzug (default)
+      fontsize=12pt,
+      % Grunschriftgröße (10pt default)
+      headings=small,
+      % small  - kleine Überschriften
+      % normal - normale Überschriften (default)
+      % big    - große Überschriften
+      paper=a5,
+      % Papierformat (a4 default)
+      pagesize=auto
+      % Papierformat auch für PDF verwenden
+    }
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Präambel: Pakete}
+  \lstset{
+    backgroundcolor={},
+    frame=no,
+    gobble=4,
+    aboveskip=3ex,
+    belowskip=0pt
+  }
+  \begin{lstlisting}
+    \usepackage[ngerman]{babel}
+  \end{lstlisting}
+  deutsche Silbentrennung und deutsche Übersetzung
+  \begin{lstlisting}
+    \usepackage[utf8]{inputenc}
+  \end{lstlisting}
+  UTF-8 als Zeichenkodierung verwenden
+  \begin{lstlisting}
+    \usepackage[T1]{fontenc}
+    \usepackage{lmodern}
+  \end{lstlisting}
+  schönere Schriftarten
+  \begin{lstlisting}
+    \usepackage[breaklinks=true]{hyperref}
+  \end{lstlisting}
+  bessere Unterstützung der PDF-Ausgabe
+  \begin{onlyenv}<article>
+    \begin{lstlisting}[gobble=6]
+      \usepackage[breaklinks=true, pdfborder={0 0 0},
+                  pdfhighlight={/N}]{hyperref}
+    \end{lstlisting}
+    noch bessere Unterstützung der PDF-Ausgabe
+  \end{onlyenv}
+\end{Frame}
 
 \jonny
 

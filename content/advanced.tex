@@ -132,6 +132,30 @@
 
 \subsection{Eigene Befehle und Umgebungen}
 
+\begin{Frame}[fragile]{Befehle}
+  \begin{Definition}[Befehl]
+    \begin{lstlisting}[gobble=6,style=block,morekeywords={commandname,commandname*}]
+      \commandname*[opt]{arg1}{arg2}
+    \end{lstlisting}
+
+    \begin{tabular}{rl}
+      \lstinline[morekeywords={commandname}]-commandname- & Name des Befehls \\
+      \lstinline-*- & optionaler Schalter \\
+      \lstinline-[opt]- & optionaler Parameter \\
+      \lstinline-{arg1}- & Parameter
+    \end{tabular}
+  \end{Definition}
+
+  \xxx
+
+  \begin{Beispiel}[Befehl]
+    \begin{lstlisting}[gobble=6,style=block]
+      \section[Kurzform]{Überschrift}
+      \section*{noch eine Überschrift}
+    \end{lstlisting}
+  \end{Beispiel}
+\end{Frame}
+
 \begin{Frame}[t,fragile]{Eigene Befehle}
 
   \xxx
@@ -217,6 +241,32 @@
   \end{lstlisting}
   \renewcommand{\emph}[1]{\textsc{#1}}
   Ich bin \emph{hervorgehoben}.
+\end{Frame}
+
+\begin{Frame}[fragile]{Umgebungen}
+  \lstset{morekeywords={[2]envname}}
+  \begin{Definition}[Umgebung]
+    \begin{lstlisting}[gobble=6,style=block]
+      \begin{envname}[opt]{arg1}{arg2}
+        Inhalt
+      \end{envname}
+    \end{lstlisting}
+
+    \begin{tabular}{rl}
+      \lstinline-envname- & Name der Umgebunng \\
+      \lstinline-Inhalt- & Inhalt der Umgebung
+    \end{tabular}
+  \end{Definition}
+
+  \xxx
+
+  \begin{Beispiel}[Umgebung]
+    \begin{lstlisting}[gobble=6,style=block]
+      \begin{center}
+        Ich bin zentriert.
+      \end{center}
+    \end{lstlisting}
+  \end{Beispiel}
 \end{Frame}
 
 \begin{Frame}[fragile,t]{Eigene Umgebungen}
