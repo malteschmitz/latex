@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaTeX-Vorträge</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="jplayer/jplayer.blue.monday.css">
+    <link rel="stylesheet" type="text/css" href="latex.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+      <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <p>
+      <a href="https://github.com/malteschmitz/latex"><img class="fork" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    </p>
+
+    <div class="latex-header">
+      <div class="container">
+        <h1>LaTeX: Grundlagen</h1>
+        <p class="authors">
+          <a href="http://twitter.com/HerrStachel">Johannes Thorn</a>
+          <a href="http://uni.mlte.de">Malte Schmitz</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div id="player"></div>
+      <div id="jp_container_1" class="jp-audio">
+        <div class="jp-type-single">
+          <div class="jp-gui jp-interface">
+            <ul class="jp-controls">
+              <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+              <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+              <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+              <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+              <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+              <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+            </ul>
+            <div class="jp-progress">
+              <div class="jp-seek-bar">
+                <div class="jp-play-bar"></div>
+              </div>
+            </div>
+            <div class="jp-volume-bar">
+              <div class="jp-volume-bar-value"></div>
+            </div>
+            <div class="jp-current-time"></div>
+            <div class="jp-duration"></div>
+          </div>
+          <div class="jp-no-solution">
+            <span>Update Required</span>
+            To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+          </div>
+        </div>
+      </div>
+
+      <p>
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+        &nbsp; &nbsp;
+        <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+      </p>
+
+      <p><canvas id="the-canvas"></canvas></p>
+
+      <p><a href="index.html">Zurück zu den LaTeX-Vorträgen</a></p>
+
+    <div> <!-- end of container -->
+
+    <footer class="latex-footer" role="contentinfo">
+      <div class="container">
+        <ul class="footer-links">
+          <li>Seite erstellt mit <a href="http://getbootstrap.com/">Bootstrap 3</a></li>
+          <li class="muted">&middot;</li>
+          <li><a href="http://www.schmitz-sh.de/impressum.gif">Impressum</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.js"></script>
+    <script src="jplayer/jquery.jplayer.min.js"></script>
+    <script src="js/pdf.js"></script>
+    <script src="basic.js"></script>
+    <script src="js/pointer.js"></script>
+    <script src="js/slideshow.js"></script>
+  </body>
+</html>

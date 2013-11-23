@@ -176,3 +176,13 @@ p.authors a {
     margin-bottom: 0;
   }
 }
+
+/*
+ * Slideshow Player
+ *
+ * Styles for the canvas and the player for the slideshow
+ */
+
+ #the-canvas {
+   border: 1px solid black;
+ }
