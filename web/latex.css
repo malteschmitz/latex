@@ -183,6 +183,15 @@ p.authors a {
  * Styles for the canvas and the player for the slideshow
  */
 
- #the-canvas {
-   border: 1px solid black;
- }
+#the-canvas {
+  border: 1px solid black;
+}
+
+#jp_container_1, #slide_navigation {
+  float: left;
+}
+
+#back_to_talks {
+  clear: both;
+  padding-top: 1em;
+}
