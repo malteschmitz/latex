@@ -67,6 +67,14 @@ $(function () {
     }
   });
 
+  // display initial please wait on the canvas
+  $canvas[0].height = 544;
+  $canvas[0].width = 725;
+  context.font = "24pt \"Helvetica Neue\",Helvetica,Arial,sans-serif";
+  context.fillText("Bitte warten!", 10, 50);
+  context.font = "16pt \"Helvetica Neue\",Helvetica,Arial,sans-serif";
+  context.fillText("Präsentation wird geladen...", 10, 100);
+
   player.jPlayer({
     ready: function () {
       $(this).jPlayer("setMedia", {
