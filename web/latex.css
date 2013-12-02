@@ -191,6 +191,15 @@ p.authors a {
   float: left;
 }
 
+#slide_navigation {
+  margin: 0 0 0 50px;
+}
+
+#jp_container_1, #jp_container_1 ul.jp-controls {
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+}
+
 #back_to_talks {
   clear: both;
   padding-top: 50px;
