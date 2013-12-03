@@ -1,6 +1,10 @@
 # Ignores geneted pdfs
 *.pdf
 
+# Ignore audio recordings
+/records
+
+# Ignore LaTeX temporary files
 *.aux
 *.glo
 *.idx
