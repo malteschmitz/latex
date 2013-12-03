@@ -6,14 +6,14 @@ var slideshowPointer = function () {
 
   function init () {
   	if (!$canvas) {
-  		$canvas = $('#the-canvas');
+  		$canvas = $('#slideshow canvas');
       circle = $('<div></div>');
 			circle.css({
 			  backgroundColor: "#FF0000",
 			  position: "absolute"
 			});
 			circle.hide();
-			$("body").append(circle);
+			$("#slideshow").append(circle);
   	}
   	return circle;
   }

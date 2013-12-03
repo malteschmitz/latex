@@ -183,8 +183,19 @@ p.authors a {
  * Styles for the canvas and the player for the slideshow
  */
 
-#the-canvas {
+#slideshow canvas {
   border: 1px solid black;
+  cursor: pointer;
+}
+
+#slideshow.fullscreen canvas {
+  border: none;
+  margin: auto;
+  display: block;
+}
+
+#slideshow.no-cursor, #slideshow.no-cursor canvas {
+  cursor: none;
 }
 
 #jp_container_1, #slide_navigation {
@@ -198,6 +209,7 @@ p.authors a {
 #jp_container_1, #jp_container_1 ul.jp-controls {
   box-sizing: content-box;
   -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
 }
 
 #back_to_talks {

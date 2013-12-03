@@ -41,10 +41,12 @@ $(function () {
 
   var pdfDoc = null,
     currentPage = 1,
-    $canvas = $('#the-canvas'),
+    $canvas = $('#slideshow canvas'),
     context = $canvas[0].getContext('2d'),
     player = $('#player'),
-    isPlaying = false;
+    isPlaying = false,
+    isFullScreen = false,
+    zoom = 2;
 
   // audiofile, slides and points must be defined before loading this script
   // * audiofile contains the base part of filenames of the mp3 and oga encoded audio files
@@ -151,7 +153,15 @@ $(function () {
     }
     // Using promise to fetch the page
     pdfDoc.getPage(currentPage).then(function (page) {
-      var viewport = page.getViewport(2);
+      var viewport, z;
+      if (isFullScreen) {
+        viewport = page.getViewport(1);
+        z = Math.min(screen.width / viewport.width, screen.height / viewport.height);
+        viewport = page.getViewport(z);
+      } else {
+        viewport = page.getViewport(zoom);
+      }
+
       $canvas[0].height = viewport.height;
       $canvas[0].width = viewport.width;
 
@@ -189,18 +199,153 @@ $(function () {
   }
 
   // Go to previous page
-  $("#prev").click(function () {
+  function prevPage() {
     if (currentPage > 1) {
       gotoPage(currentPage - 1);
     }
     return false;
-  });
+  }
+  $("#prev").click(prevPage);
 
   // Go to next page
-  $("#next").click(function () {
+  function nextPage() {
     if (currentPage < pdfDoc.numPages) {
       gotoPage(currentPage + 1);
     }
     return false;
+  }
+  $("#next").click(nextPage);
+
+  function zoomIn() {
+    if (zoom < 10) {
+      zoom *= 1.2;
+      renderPage();
+    }
+    return false;
+  }
+
+  $("#zoom-in").click(zoomIn);
+
+  function zoomDefault() {
+    if (zoom != 2) {
+      zoom = 2;
+      renderPage();
+    }
+    return false;
+  }
+
+  $("#zoom-default").click(zoomDefault);
+
+  function zoomOut() {
+    if (zoom > 0.3) {
+      zoom /= 1.2;
+      renderPage();
+    }
+    return false;
+  }
+
+  $("#zoom-out").click(zoomOut);
+
+  function toggleFullScreen() {
+    if (isFullScreen) {
+      cancelFullScreen(document);
+    } else {
+      requestFullScreen(document.getElementById('slideshow'));
+    }
+    return false;
+  }
+
+  $("#fullscreen").click(toggleFullScreen);
+
+  function togglePlayPause() {
+    if (isPlaying) {
+      player.jPlayer("pause");
+    } else {
+      player.jPlayer("play");
+    }
+    return false;
+  }
+
+  $canvas.click(togglePlayPause);
+
+  $(document).keydown(function (event) {
+    switch (event.which) {
+      case 173: // -
+        zoomOut();
+        break;
+      case 48: // 0
+        zoomDefault();
+        break;
+      case 61: // +
+        zoomIn();
+        break;
+      case 37: // Left
+        prevPage();
+        break;
+      case 39: // Right
+        nextPage();
+        break;
+      case 13: // Enter
+        toggleFullScreen();
+        break;
+      case 32: // Space
+        togglePlayPause();
+        break;
+    }
+  })
+
+  function cancelFullScreen(element) {
+    var method = element.cancelFullScreen || element.webkitCancelFullScreen ||
+        element.mozCancelFullScreen || element.exitFullscreen;
+      if (method) {
+        method.call(element);
+      } else {
+        alert("Your browser does not support fullscreen.");
+      }
+  }
+
+  function fullScreen() {
+    return (document.fullScreenElement && document.fullScreenElement !== null) ||
+        !!document.mozFullScreen || !!document.webkitIsFullScreen;
+  }
+
+  function requestFullScreen(element) {
+    var method = element.requestFullScreen || element.webkitRequestFullScreen ||
+        element.mozRequestFullScreen || element.msRequestFullScreen;
+    if (method) {
+      method.call(element);
+    } else {
+      alert("Your browser does not support fullscreen.");
+    }
+  }
+
+  $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function() {
+    isFullScreen = fullScreen();
+    if (isFullScreen) {
+      $('#slideshow').addClass('fullscreen');
+      hideCursor();
+    } else {
+      $('#slideshow').removeClass('fullscreen');
+      showCursor();
+    }
+    renderPage();
   });
+
+  var hideCursorTimeout;
+  function showCursor() {
+    if (hideCursorTimeout) {
+      clearTimeout(hideCursorTimeout);
+    }
+    hideCursorTimeout = undefined;
+    $('#slideshow').removeClass('no-cursor');
+  }
+  function hideCursor() {
+    showCursor();
+    if (isFullScreen) {
+      hideCursorTimeout = setTimeout(function () {
+        $('#slideshow').addClass('no-cursor')
+      }, 2000);
+    }
+  }
+  $('#slideshow').mousemove(hideCursor);
 });
