@@ -331,7 +331,7 @@ $(function () {
     renderPage();
   });
 
-  var hideCursorTimeout;
+  var hideCursorTimeout, cursorJustHidden;
   function showCursor() {
     if (hideCursorTimeout) {
       clearTimeout(hideCursorTimeout);
@@ -340,10 +340,16 @@ $(function () {
     $('#slideshow').removeClass('no-cursor');
   }
   function hideCursor() {
+    if (cursorJustHidden) {
+      // prevent the hiding action to trigger mousemove
+      cursorJustHidden = undefined;
+      return;
+    }
     showCursor();
     if (isFullScreen) {
       hideCursorTimeout = setTimeout(function () {
-        $('#slideshow').addClass('no-cursor')
+        $('#slideshow').addClass('no-cursor');
+        cursorJustHidden = true;
       }, 2000);
     }
   }
