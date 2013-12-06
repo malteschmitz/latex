@@ -1,0 +1,59 @@
+\documentclass[aspectratio=54]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\colorlet{maincolor}{orange}
+
+\setbeamertemplate{navigation symbols}{} % hide navigation symbols
+
+\newcommand{\plain}[1]{%
+  {%
+    \setbeamertemplate{background}{%
+      \minipage[c][\paperheight][t]{\paperwidth}%
+        #1
+      \endminipage%
+    }%
+    \frame[plain]{}%
+  }%
+}
+
+\usepackage{tikz}
+
+\begin{document}
+
+\newcommand{\cover}[2]{
+  \plain{
+    \begin{center}
+      \vskip4ex
+      \textbf{\fontsize{72pt}{72pt}\selectfont\rmfamily\color{maincolor}\LaTeX}
+      \par\vskip2ex
+      \huge Johannes und Malte\\
+      auf der MetaNook 2013
+    \end{center}
+
+    \vskip4ex\hskip8em
+    \begin{minipage}{40em}\Huge
+      #1\\
+      \tikz[remember picture] \node[coordinate] (n1) {};
+      \ \textbf{\color{maincolor}#2}
+    \end{minipage}
+
+    \begin{tikzpicture}[remember picture,overlay]
+      \draw[line width=7pt,maincolor,->]
+        (n1) ++(-10em,1.5ex) -- ++(10em,0);
+    \end{tikzpicture}
+  }
+}
+
+\newcommand{\sep}{\\
+      \tikz[remember picture] \node[coordinate] (foo) {};
+      \ }
+
+\cover{Kapitel 1}{Grundlagen}
+\cover{Kapitel 2}{Fortgeschrittene\sep Verwendung}
+\cover{Kapitel 3}{Präsentieren\sep mit {\huge BEAMER}}
+\cover{Kapitel 4}{Zeichnen\sep mit Ti\emph{k}Z}
+
+\end{document}
