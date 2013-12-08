@@ -30,9 +30,7 @@
 
     <div class="container">
 
-      <div id="slideshow">
-        <canvas></canvas>
-      </div>
+      <div id="slideshow"></div>
 
       <div id="player"></div>
       <div id="jp_container_1" class="jp-audio">
@@ -96,8 +94,21 @@
     <script src="js/jquery-ui-1.10.3.custom.js"></script>
     <script src="jplayer/jquery.jplayer.min.js"></script>
     <script src="js/pdf.js"></script>
+    <script src="js/ui_utils.js"></script>
     <script src="advanced.js"></script>
-    <script src="js/pointer.js"></script>
     <script src="js/slideshow.js"></script>
+    <script src="js/slideshow-player.js"></script>
+    <script>
+      $(function() {
+        new SlideshowPlayer({
+          swfPath: "jplayer",
+          workerSrc: "js/pdf.worker.js",
+          presentationUrl: "//latex/latex.pdf",
+          audioBaseName: "latex-advanced",
+          timestampPages: timestampPages,
+          timestampPointers: timestampPointers
+        });
+      });
+    </script>
   </body>
 </html>
