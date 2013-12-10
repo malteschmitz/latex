@@ -1,0 +1,16 @@
+00:00:00.000 Kapitel 1 Grundlagen
+00:00:50.800 1 Ziele und Inhalt
+00:02:33.300 2 Was ist LaTeX?
+00:02:41.000 2.1 Einordnung
+00:05:42.500 2.2 Beispiele
+00:07:12.000 2.3 Installation
+00:09:45.700 3 LaTeX verwenden
+00:16:42.200 3.1 Auszeichnungen
+00:29:54.800 3.2 Formelsatz
+00:35:28.400 3.3 Listen, Tabellen, Grafiken
+00:39:10.300 3.4 Präambel
+00:44:23.500 4 Verzeichnisse und Verweise
+00:44:34.400 4.1 Struktur des Dokuments
+00:48:58.800 4.2 Abbildungen
+00:52:47.800 4.3 Verweise
+00:57:03.700 5 Zusammenfassung

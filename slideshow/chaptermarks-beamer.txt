@@ -1,0 +1,13 @@
+00:00:00.000 Kapitel 3 Präsentieren mit Beamer
+00:00:35.300 11 Ziele und Inhalt
+00:02:58.500 12 Was ist Beamer?
+00:03:02.700 12.1 Einleitung
+00:05:07.500 12.2 Eigenschaften
+00:07:47.700 13 Verwendung von Beamer
+00:09:06.600 13.1 Folien
+00:12:28.900 13.2 Strukturelemente
+00:17:50.100 13.3 Form
+00:21:27.600 14 Fortgeschrittene Verwendung
+00:21:42.100 14.1 Overlays
+00:28:16.000 14.2 Artikelfassung
+00:35:51.500 15 Zusammenfassung

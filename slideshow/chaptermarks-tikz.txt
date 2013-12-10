@@ -1,0 +1,15 @@
+00:00:00.000 Kapitel 4 Zeichnen mit Tikz
+00:00:16.400 16 Ziele und Inhalt
+00:01:50.500 17 Einführung
+00:03:40.600 17.1 Verwendung
+00:05:36.000 17.2 Pfade
+00:18:01.600 17.3 Knoten
+00:19:52.900 18 Graphen
+00:20:08.200 18.1 Knoten
+00:28:41.900 18.2 Automaten
+00:31:35.500 18.3 Bäume
+00:33:23.000 19 Fortgeschrittene Verwendung
+00:33:32.600 19.1 Funktionen plotten
+00:39:19.900 19.2 Overlays mit Beamer
+00:44:08.600 19.3 Showcase
+00:49:50.100 20 Zusammenfassung
