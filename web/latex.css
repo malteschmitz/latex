@@ -5,6 +5,11 @@
   border: 0;
 }
 
+.fixed {
+  position: fixed;
+  z-index: 10;
+}
+
 @media print {
   .fork {
     display: none;
