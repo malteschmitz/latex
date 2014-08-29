@@ -16,6 +16,11 @@
   }
 }
 
+.license {
+  float: left;
+  margin: 5px 10px 5px 0px;
+}
+
 body {
   padding-top: 1px; /* Prevents affix from flickering---whyever. */
 }
