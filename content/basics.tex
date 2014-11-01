@@ -19,15 +19,29 @@
 \subsection{Einordnung}
 
 \begin{Frame}{Dimensionen eines Dokumentes}
-  \begin{description}
-    \item[Inhalt] ist die \alert{Bedeutung} eines Textes
-    \item[Struktur] ist der \alert{Aufbau} eines Textes
-    \item[Form] ist das \alert{Aussehen} eines Textes
-  \end{description}
+  \begin{onlyenv}<1>
+    \begin{center}
+      Inhalt ist die Bedeutung eines Textes.
+    \end{center}
+  \end{onlyenv}
+  \begin{onlyenv}<2>
+    \begin{description}
+      \item[\textnormal{\color{black}Inhalt}] ist die \emph{Bedeutung} eines Textes.
+      \item[\textnormal{\color{black}Struktur}] ist der \emph{Aufbau} eines Textes.
+      \uncover<3>{\item Foo}
+    \end{description}
+  \end{onlyenv}
+  \begin{onlyenv}<3>
+    \begin{description}
+      \item[Inhalt] ist die \alert{Bedeutung} eines Textes.
+      \item[Struktur] ist der \alert{Aufbau} eines Textes.
+      \item[Form] ist das \alert{Aussehen} eines Textes.
+    \end{description}
+  \end{onlyenv}
 \end{Frame}
 
 \begin{Frame}{Struktur vs. Form}
-  \begin{Beispiele}[Strukturelemente]
+  \begin{Beispiele}[Struktur]
     \begin{itemize}
       \item Überschrift
       \item Listeneintrag
@@ -37,7 +51,7 @@
 
   \xxx
 
-  \begin{Beispiele}[Formen]
+  \begin{Beispiele}[Form]
     \begin{itemize}
       \item 16~pt, Arial, fett, 2~em Abstand
       \item 2~cm Einzug, Bullet-Zeichen \textbullet\ am Zeilenanfang
@@ -63,74 +77,44 @@
   \end{tikzpicture}
 \end{Frame}
 
-\begin{Frame}{\LaTeX}
-  \inhead{Historie}
-  \begin{itemize}
-    \item \LaTeX\ ist ein Makropaket für das Satzsystem \TeX
-      \begin{itemize}
-        \item \TeX\ wurde 1977 von Donald E. Knuth enwickelt
-        \item Aktuelle Version: 3.1415926 (März 2008)
-      \end{itemize}
-    \item \LaTeX\ wurde 1980 von Leslie Lamport entwickelt
-    \item Aktuelle Version: 2011/06/27
-  \end{itemize}
+\subsection{Verwendung}
 
-  \xxx
-  \pause
-
-  \inhead{Verwendung}
+\begin{Frame}[fragile]{\LaTeX}
   \begin{itemize}
     \item Ein \LaTeX-Dokument ist ein \alert{reines Textdokument}.
     \item Das \LaTeX-Dokument enthält \alert{Inhalt und Struktur}.
     \item \LaTeX\ setzt den Inhalt und kümmert sich um \alert{gute Form}.
   \end{itemize}
-\end{Frame}
-
-\subsection{Beispiele}
-
-\begin{Frame}{Ein \TeX-Dokument}{Quelltext \texttt{story.tex}}
-  \lstinputlisting[firstline=7]{demo/story.tex}
-\end{Frame}
-
-\begin{Frame}[fragile]{Ein \TeX-Dokument}{Kompilieren}
-  \begin{lstlisting}[language={},morekeywords={tex,dvips,pstopdf},gobble=4]
-    tex story
-    dvips story
-    pstopdf story.ps
-  \end{lstlisting}
 
   \xxx
-  \pause
-
-  \begin{onlyenv}<presentation>
-    \vskip -2.7cm
-    \begin{tikzpicture}
-      \draw[red,very thick] (0,0) -- (2.5cm, 2.5cm);
-    \end{tikzpicture}
-    \vskip .5cm
-  \end{onlyenv}
-
-  \begin{lstlisting}[language={},morekeywords={pdftex},gobble=4]
-    pdftex story
-  \end{lstlisting}
-\end{Frame}
-
-\begin{Frame}[fragile]{Ein \TeX-Dokument}
-  \inhead{\texttt{story.tex}}
-  \lstinputlisting[firstline=7]{demo/story.tex}
-
-  \xxx
-
-  \inhead{Kompilieren}
-  \begin{lstlisting}[language={},morekeywords={pdflatex},gobble=4]
-    pdftex story
-  \end{lstlisting}
-
-  \xxx
-
-  \inhead{\texttt{story.pdf}}
+  
   \begin{center}
-    \includegraphics[width=4in]{demo/story.pdf}
+    \begin{tikzpicture}[
+        shorten <=5pt,
+        shorten >=5pt
+      ]
+      \matrix[column sep=3em] {
+        \node[text width=6em] (source) {
+          \lstinputlisting[
+              basicstyle=\ttfamily\fontsize{4}{4}\selectfont,
+              linerange={1-1,12-27}
+            ]{demo/example.tex}
+        };
+        &
+        \node[inner sep=0pt] (latex)
+          {\rmfamily\Large\bfseries\LaTeX};
+        &
+        \node[draw=maincolor, thick] (pdf) {
+          \includegraphics[width=6em]{demo/example.pdf}
+        };\\
+        \node {\shortstack{Inhalt \&\\ Struktur}};
+        & & 
+        \node {\shortstack{formatiertes\\Dokument}};\\
+      };
+      \path[very thick, ->]
+        (source) edge (latex)
+        (latex) edge (pdf);
+    \end{tikzpicture}
   \end{center}
 \end{Frame}
 
@@ -226,6 +210,8 @@
   \end{center}\end{minipage}
 \end{Frame}
 
+\mode
+<article>
 
 \begin{Frame}[fragile]{\TeX-Live-Pakete unter Ubuntu/Debian}
   \begin{lstlisting}[gobble=4,language={},morekeywords={sudo,apt,get}]
@@ -250,6 +236,9 @@
     \end{itemize}
   \end{alertblock}
 \end{Frame}
+
+\mode
+<all>
 
 \begin{Frame}{Editoren und IDEs}
   \begin{Block}{Editoren}
@@ -283,6 +272,125 @@
 \malte
 
 \beamersection{\LaTeX\ verwenden}
+
+\subsection{Befehle und Umgebungen}
+
+\begin{Frame}[fragile]{Befehle}{Hervorheben von Text}
+  \begin{itemize}
+    \item \lstinline-\emph{hervor}- hebt Text \emph{hervor}
+    \item \lstinline-\textbf{fett}- macht Text \textbf{fett}
+  \end{itemize}
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    Vorm \textbf{Senatsgebäude} stieß Caesar
+    auf den \emph{Seher Spurinna}.
+  \end{lstlisting}
+
+  Vorm \textbf{Senatsgebäude} stieß Caesar
+    auf den \emph{Seher Spurinna}.
+
+  \xxx\pause
+
+  \inhead{Weitere Auszeichnungen}
+  \begin{itemize}
+    \item \lstinline-\texttt{nichtproportional}- setzt \texttt{nichtproportional}
+    \item \lstinline-\textsc{in Kapitälchen}- setzt \textsc{in Kapitälchen}
+    \item \ldots
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{komplexere Befehle}{Farbe und Fußnote}
+  \inhead{Mehrere Argumente}
+  \begin{lstlisting}[gobble=4]
+    \textcolor{red}{Rosen} sind rot,
+    \textcolor{blue}{Veilchen} sind blau.
+  \end{lstlisting}
+  \textcolor{red}{Rosen} sind rot,
+  \textcolor{blue}{Veilchen} sind blau.
+  
+  \xxx\pause
+
+  \inhead{Optionale Parameter}
+  \begin{onlyenv}<1-2>
+    \begin{lstlisting}[gobble=6]
+      Vorm Senatsgebäude stieß Caesar\footnote{
+        geb. 13. Juli 100 v. Chr. in Rom;
+        gest. 15. März 44 v. Chr. ebenda}
+      auf den Seher Spurinna.
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<3>
+    \begin{lstlisting}[gobble=6]
+      Vorm Senatsgebäude stieß Caesar\footnote[42]{
+        geb. 13. Juli 100 v. Chr. in Rom;
+        gest. 15. März 44 v. Chr. ebenda}
+      auf den Seher Spurinna.
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{minipage}{\textwidth}
+    \renewcommand{\thempfootnote}{\arabic{mpfootnote}}
+    Vorm Senatsgebäude stieß
+      Caesar\alt<1-2>{\footnote{
+        geb. 13. Juli 100 v. Chr. in Rom;
+        gest. 15. März 44 v. Chr. ebenda}}
+        {\footnote[42]{
+        geb. 13. Juli 100 v. Chr. in Rom;
+        gest. 15. März 44 v. Chr. ebenda}}
+      auf den Seher Spurinna.
+  \end{minipage}
+\end{Frame}
+
+\begin{Frame}[fragile,t]{Befehle}
+  \xxx\xxx
+
+  \begin{itemize}
+    \item Befehle beginnen mit einem Backslash.
+    \item Parameter stehen in geschweiften Klammern.
+    \item 
+    \item Optionale Paramter stehen in eckigen Klammern.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}{Umgebungen}
+  center
+
+  quote
+\end{Frame}
+
+\begin{Frame}[fragile]{Umgebungen}
+  \begin{itemize}
+    \item Umgebungen beginnen mit \lstinline-\begin-
+    \item und enden mit \lstinline-\end-.
+    \item Parameter ist jeweils der Name der Umgebung.
+  \end{itemize}
+
+  \xxx
+
+  \begin{Beispiel}[Umgebung]
+    \begin{lstlisting}[gobble=6,style=block]
+      \begin{center}
+        Ich bin zentriert.
+      \end{center}
+    \end{lstlisting}
+    \begin{center}
+      Ich bin zentriert.
+    \end{center}
+  \end{Beispiel}
+\end{Frame}
+
+
+
+
+
+
+
+
+
+
+
+
 
 \mode
 <article>
@@ -362,57 +470,6 @@
   \end{tikzpicture}
 \end{Frame}
 
-\begin{Frame}[fragile,t]{Befehle}
-  \xxx\xxx
-
-  \begin{itemize}
-    \item Befehle beginnen mit einem Backslash.
-    \item Parameter stehen in geschweiften Klammern.
-    \item<2> Optionale Paramter stehen in eckigen Klammern.
-  \end{itemize}
-
-  \xxx
-
-  \begin{onlyenv}<1>
-    \begin{Beispiel}[Befehl]
-      \begin{lstlisting}[gobble=8,style=block]
-        Dieser Text ist \textbf{fett}.
-      \end{lstlisting}
-      Dieser Text ist \textbf{fett}.
-    \end{Beispiel}
-  \end{onlyenv}
-
-  \begin{onlyenv}<2>
-    \begin{Beispiel}[Befehl mit optionalem Parameter]
-      \begin{lstlisting}[gobble=8,style=block]
-        \includegraphics[width=3.5cm]{miktex}
-      \end{lstlisting}
-      \includegraphics[width=3.5cm]{images/miktex}
-    \end{Beispiel}
-  \end{onlyenv}
-\end{Frame}
-
-\begin{Frame}[fragile]{Umgebungen}
-  \begin{itemize}
-    \item Umgebungen beginnen mit \lstinline-\begin-
-    \item und enden mit \lstinline-\end-.
-    \item Parameter ist jeweils der Name der Umgebung.
-  \end{itemize}
-
-  \xxx
-
-  \begin{Beispiel}[Umgebung]
-    \begin{lstlisting}[gobble=6,style=block]
-      \begin{center}
-        Ich bin zentriert.
-      \end{center}
-    \end{lstlisting}
-    \begin{center}
-      Ich bin zentriert.
-    \end{center}
-  \end{Beispiel}
-\end{Frame}
-
 \mode
 <all>
 
@@ -467,27 +524,6 @@
     \alert{rechtsbündiger Flattersatz} gesetzt.
     \lorem
   \end{flushright}
-\end{Frame}
-
-\begin{Frame}[fragile]{Auszeichnungen}
-  \begin{Block}{Text hervorheben}
-    \begin{itemize}
-      \item \lstinline-\emph{hervor}- hebt \emph{hervor}
-      \item \lstinline-\textit{kursiv}- setzt \textit{kursiv}
-      \item \lstinline-\textsl{schräg}- setzt \textsl{schräg}
-      \item \lstinline-\textsc{in Kapitälchen}- setzt \textsc{in Kapitälchen}
-      \item \lstinline-\textbf{fett}- setzt \textbf{fett}
-      \item \lstinline-\underline{unterstrichen}- setzt \underline{unterstrichen}
-    \end{itemize}
-  \end{Block}
-  
-  \begin{Block}{Schriftarten}
-    \begin{itemize}
-      \item \lstinline-\textsf{serifenlos}- setzt \textsf{serifenlos}
-      \item \lstinline-\textrm{mit Serifen}- setzt \textrm{mit Serifen}
-      \item \lstinline-\texttt{nichtproportional}- setzt \texttt{nichtproportional}
-    \end{itemize}
-  \end{Block}
 \end{Frame}
 
 \begin{Frame}[fragile]{Schriftgröße}

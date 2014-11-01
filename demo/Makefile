@@ -1,5 +1,4 @@
 all:
-	pdftex story
 	latexmk -pdf arbeit
 	latexmk -pdf beamer
 	latexmk -pdf beamer-titlepage
@@ -13,6 +12,7 @@ all:
 	latexmk -pdf beamer-Frankfurt
 	latexmk -pdf beamer-Luebeck
 	latexmk -pdf brief
+	latexmk -pdf example
 	latexmk -pdf hello
 	latexmk -pdf kopfzeile-standard
 	latexmk -pdf kopfzeile-links
@@ -23,7 +23,6 @@ all:
 	latexmk -pdf margin
 
 force:
-	pdftex story
 	latexmk -pdf -g -f arbeit
 	latexmk -pdf -g -f beamer
 	latexmk -pdf -g -f beamer-titlepage
@@ -37,6 +36,7 @@ force:
 	latexmk -pdf -g -f beamer-Frankfurt
 	latexmk -pdf -g -f beamer-Luebeck
 	latexmk -pdf -g -f brief
+	latexmk -pdf -g -f example
 	latexmk -pdf -g -f hello
 	latexmk -pdf -g -f kopfzeile-standard
 	latexmk -pdf -g -f kopfzeile-links
@@ -60,6 +60,7 @@ clean:
 	latexmk -pdf -c beamer-Frankfurt
 	latexmk -pdf -c beamer-Luebeck
 	latexmk -pdf -c brief
+	latexmk -pdf -c example
 	latexmk -pdf -c hello
 	latexmk -pdf -c kopfzeile-standard
 	latexmk -pdf -c kopfzeile-links
@@ -68,8 +69,7 @@ clean:
 	latexmk -pdf -c maketitle
 	latexmk -pdf -c titlepage
 	latexmk -pdf -c margin
-	rm -f story.log \
-		arbeit.bbl \
+	rm -f arbeit.bbl \
 		beamer*.nav \
 		beamer*.snm \
 		beamer*.vrb
@@ -88,6 +88,7 @@ clear:
 	latexmk -pdf -C beamer-Frankfurt
 	latexmk -pdf -C beamer-Luebeck
 	latexmk -pdf -C brief
+	latexmk -pdf -C example
 	latexmk -pdf -C hello
 	latexmk -pdf -C kopfzeile-standard
 	latexmk -pdf -C kopfzeile-links
@@ -96,9 +97,7 @@ clear:
 	latexmk -pdf -C maketitle
 	latexmk -pdf -C titlepage
 	latexmk -pdf -C margin
-	rm -f story.log \
-		story.pdf \
-		arbeit.bbl \
+	rm -f arbeit.bbl \
 		beamer*.nav \
 		beamer*.snm \
 		beamer*.vrb
