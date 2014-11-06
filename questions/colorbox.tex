@@ -1,0 +1,15 @@
+\documentclass{minimal}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{fancybox}
+
+\newcommand{\highlight}[2][red]{%
+  \textcolor{#1}{\Ovalbox{\textcolor{black}{$\displaystyle#2$}}}%
+}
+
+\begin{document}
+\begin{align*}
+  f(x) &= 1 + \highlight{\frac{1}{x}} \cdot 4 - 3 \\
+       &= \highlight[orange]{\frac{4}{x}} - 2
+\end{align*}
+\end{document}
