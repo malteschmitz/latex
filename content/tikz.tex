@@ -166,7 +166,28 @@
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[t,fragile]{Stile und Pfeilspitzen}
+\begin{Frame}[t,fragile]{Stile}
+  \tikzexample{[scale=2]
+    \draw[step=0.5cm,gray,very thin]
+      (0,0) grid (1.4,1.4);
+    \draw (0,0) -- (1.5,0);
+    \draw (0,0) -- (0,1.5);
+  }
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \begin{tikzpicture}[scale=2]
+      \draw[step=0.5cm,gray,very thin]
+        (0,0) grid (1.4,1.4);
+
+      \draw (0,0) -- (1.5,0);
+      \draw (0,0) -- (0,1.5);
+    \end{tikzpicture}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Pfeilspitzen}
   \tikzexample{[scale=2]
     \draw[step=0.5cm,gray,very thin]
       (0,0) grid (1.4,1.4);
@@ -595,11 +616,10 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \item Viele Zeichnungen basieren auf Graphen,
       bestehen also aus Knoten und Kanten.
       \begin{itemize}
-        \item Turing-Maschinen, Automaten, Petri-Netze, \dots
-        \item UML-Diagramme, Programmablaufpläne, Entity-Relationship-Diagramme, \dots
-        \item Stoffwechselwege, Geschäftsprozessdiagramme, Organigramme, \dots
-        \item formlose Diagramme für Beziehungen oder Abläufe, \dots
-        \item \dots
+        \item Automaten
+        \item UML-Diagramme
+        \item Stoffwechselwege
+        \item Ablaufdiagramme
       \end{itemize}
     \item Solche Diagramme mit Kreisen und Linien zu zeichnen erzeugt
       \alert{unübersichtlichen und schlecht wartbaren} \LaTeX-Code.
