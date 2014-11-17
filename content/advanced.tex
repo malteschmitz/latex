@@ -12,7 +12,7 @@
 
 \website
 
-\beamersection{\LaTeX\ verwenden}
+\beamersection{Elemente}
 
 \subsection{Farben definieren}
 
@@ -34,34 +34,62 @@
   \textcolor{orange}{Worte} hervorgehoben.
 \end{Frame}
 
-\begin{Frame}[fragile]{Farben definieren}
-  % Red, Green, Blue von 0 bis 1
-  % \xdefinecolor{uni-luebeck}{rgb}{0, 0.47, 0.55}
-  % Hue, Saturation, Brightness von 0 bis 1
-  % \xdefinecolor{skyblue}{rgb}{0.9, 0.2, 0.36}
+\begin{Frame}[fragile]{Farben definieren}{RGB-Modell}
   \begin{lstlisting}[gobble=4]
     % Red, Green, Blue von 0 bis 255
     \xdefinecolor{uni-luebeck}{RGB}{0, 120, 140}
-    % Hue, Saturation, Brightness von 0 bis 240
-    \xdefinecolor{skyblue}{HSB}{217, 47, 87}
-    % neuer Name für mehr Struktur
-    \colorlet{maincolor}{uni-luebeck}
   \end{lstlisting}
 
   \xxx
 
-  \begin{lstlisting}[gobble=4,moretexcs={h}]
-    \foreach \h in {0, ..., 240} {% pgffor package
-      \xdefinecolor{current}{HSB}{\h, 240, 240}%
-      \textcolor{current}{\rule{1pt}{3ex}}%
-    }%
-  \end{lstlisting}
-  \hfill
-  \foreach \h in {0, ..., 240} {%
-    \xdefinecolor{current}{HSB}{\h, 240, 240}%
-    \textcolor{current}{\rule{1pt}{3ex}}%
-  }\hfill
+  \begin{itemize}
+    \item Red / Rot
+      \foreach \r in {0, ..., 255} {%
+        \xdefinecolor{current}{RGB}{\r, 0, 0}%
+        \textcolor{current}{\rule{.94117647058pt}{3ex}}%
+      }
+    \item Green / Grün
+      \foreach \g in {0, ..., 255} {%
+        \xdefinecolor{current}{RGB}{0, \g, 0}%
+        \textcolor{current}{\rule{.94117647058pt}{3ex}}%
+      }
+    \item Blue / Blau
+      \foreach \b in {0, ..., 255} {%
+        \xdefinecolor{current}{RGB}{0, 0, \b}%
+        \textcolor{current}{\rule{.94117647058pt}{3ex}}%
+      }
+  \end{itemize}
 \end{Frame}
+
+\begin{Frame}[fragile]{Farben definieren}{HSB-Modell}
+  \begin{lstlisting}[gobble=4]
+    % Hue, Saturation, Brightness von 0 bis 240
+    \xdefinecolor{skyblue}{HSB}{217, 47, 87}
+  \end{lstlisting}
+
+  \xxx
+
+  \begin{itemize}
+    \item Hue / Farbton
+      \foreach \h in {0, ..., 240} {%
+        \xdefinecolor{current}{HSB}{\h, 240, 240}%
+        \textcolor{current}{\rule{1pt}{3ex}}%
+      }
+    \item Saturation / Sättigung
+      \foreach \s in {0, ..., 240} {%
+        \xdefinecolor{current}{HSB}{0, \s, 240}%
+        \textcolor{current}{\rule{1pt}{3ex}}%
+      }
+    \item Brightness / Helligkeit
+      \foreach \b in {0, ..., 240} {%
+        \xdefinecolor{current}{HSB}{0, 240, \b}%
+        \textcolor{current}{\rule{1pt}{3ex}}%
+      }
+  \end{itemize}
+\end{Frame}
+
+\mode
+<article>
 
 \subsection{Eigene Befehle und Umgebungen}
 
@@ -267,6 +295,9 @@
   \end{onlyenv}
 \end{Frame}
 
+\mode
+<all>
+
 \subsection{Quelltext und Pseudocode}
 
 \begin{Frame}[fragile]{Quelltext}
@@ -331,320 +362,17 @@
   \input{pseudocode}
 \end{Frame}
 
-\jonny
+\subsection{Theoreme}
 
-\beamersection{Literatur}
-
-\subsection{Verwendung von \BibTeX}
-
-\begin{Frame}[fragile]{Was ist \BibTeX?}
-  \begin{itemize}
-    \item \BibTeX\ ist ein \alert{eigenständiges Programm},\\
-    das \LaTeX\ ergänzt.
-    \item \BibTeX\ erzeugt aus einer \alert{Literaturdatenbank}\\
-      ein \alert{Literaturverzeichnis}.
-    \item Das Literaturverzeichnis enthält \alert{nur} die\\
-      mit \lstinline-\cite- \alert{zitierten Einträge} der Datenbank.
-  \end{itemize}
+\begin{Frame}{Theoreme}
+!!! TODO !!!
 \end{Frame}
 
-\begin{Frame}[t]{Ein Beispieldokument \texttt{arbeit.pdf}}
-  \includegraphics[width=9cm]{demo/arbeit.pdf}
-\end{Frame}
 
-\begin{Frame}[fragile]{Das \LaTeX-Dokument \texttt{arbeit.tex}}
-  \begin{lstlisting}[gobble=4]
-    \documentclass{scrartcl}
-    %...
 
-    \begin{document}
-      In \cite{Knuth} wird das Satzsystem \TeX{}
-      vom Autor des Systems vorgestellt. Jedes
-      Zeichen hat dabei einen Category Code
-      (vergleiche dazu \cite[S.~28~ff.]{Eijkhout}).
 
-      \bibliographystyle{alphadin}
-      \bibliography{datenbank}
-    \end{document}
-  \end{lstlisting}
-\end{Frame}
-
-\begin{Frame}{Die Literaturdatenbank \texttt{datenbank.bib}}
-  \lstinputlisting[language=BibTeX,moretexcs={TeX}]{demo/datenbank.bib}
-\end{Frame}
-
-\begin{Frame}[fragile]{Kompilieren}
-  \begin{lstlisting}[language={},morekeywords={pdflatex,bibtex},gobble=4]
-    pdflatex arbeit
-    bibtex arbeit
-    pdflatex arbeit
-    pdflatex arbeit
-  \end{lstlisting}
-
-  \xxx
-  \pause
-
-  \begin{onlyenv}<presentation>
-    \vskip -3.1cm
-    \begin{tikzpicture}
-      \draw[red,very thick] (0,0) -- (2.8cm, 2.7cm);
-    \end{tikzpicture}
-    \vskip .5cm
-  \end{onlyenv}
-
-  \begin{lstlisting}[language={},morekeywords={latexmk},gobble=4]
-    latexmk -pdf arbeit
-  \end{lstlisting}
-\end{Frame}
-
-\begin{Frame}{Wie funktioniert \BibTeX?}
-  \begin{tikzpicture}[
-      on grid,
-      node distance=9mm and 23mm,
-      engine/.style={
-        font=\rmfamily\Large\bfseries,
-        inner sep=2pt
-      }
-    ]
-
-    \uncover<2->{\node[engine] (pdftex1) {pdf\TeX};}
-    \uncover<1->{\node[left=40mm of pdftex1, texicon] (tex) {\icon{TEX}};}
-    \uncover<1->{\node[right=40mm of pdftex1, bibicon] (bib) {\icon{BIB}};}
-    \uncover<3->{\node[below left=18mm and 23mm of pdftex1, auxicon] (aux1) {\icon{AUX}};}
-    \uncover<3>{\node[below right=of pdftex1, pdficon] (pdf1) {\icon{PDF}};}
-    \uncover<4->{\node[below right=of pdftex1, pdficon!30] {\icon{PDF}};}
-    \uncover<4->{\node[below=18mm of pdftex1, engine] (bibtex) {\BibTeX};}
-    \uncover<5->{\node[below right=of bibtex, bblicon] (bbl) {\icon{BBL}};}
-    \uncover<6->{\node[below=18mm of bibtex, engine] (pdftex2) {pdf\TeX};}
-    \uncover<7->{\node[below left=of pdftex2, auxicon] (aux2) {\icon{AUX}};}
-    \uncover<7>{\node[below right=of pdftex2, pdficon] (pdf2) {\icon{PDF}};}
-    \uncover<8->{\node[below right=of pdftex2, pdficon!30] {\icon{PDF}};}
-    \uncover<8->{\node[below=18mm of pdftex2, engine] (pdftex3) {pdf\TeX};}
-    \uncover<9>{\node[below left=of pdftex3, auxicon] (aux3) {\icon{AUX}};}
-    \uncover<10->{\node[below left=of pdftex3, auxicon!30] {\icon{AUX}};}
-    \uncover<9->{\node[below right=of pdftex3, pdficon] (pdf3) {\icon{PDF}};}
-
-    \uncover<2->{\path[very thick, ->]
-      (tex) edge (pdftex1);}
-
-    \uncover<3->{\path[very thick, ->]
-      (pdftex1) edge (aux1)
-                edge (pdf1);}
-
-    \uncover<4->{\path[very thick, ->, black!30]
-      (pdftex1) edge (pdf1);}
-
-    \uncover<4->{\path[very thick, ->]
-      (aux1) edge (bibtex);}
-
-    \uncover<4->{\draw[very thick, ->]
-      (bib.south) ++ (.2,0) |- (bibtex);}
-
-    \uncover<5->{\path[very thick, ->]
-      (bibtex) edge (bbl);}
-
-    \uncover<6->{\draw[very thick, ->]
-      (tex.south) ++ (.2,0) |- (pdftex2)
-      (bbl.south) ++ (.2,0) |- (pdftex2);}
-
-    \uncover<6->{\path[very thick, ->]
-      (aux1) edge (pdftex2);}
-
-    \uncover<7->{\path[very thick, ->]
-      (pdftex2) edge (aux2)
-                edge (pdf2);}
-
-    \uncover<8->{\path[very thick, ->, black!30]
-      (pdftex2) edge (pdf2);}
-
-    \uncover<8->{\draw[very thick, ->]
-      (tex.south) ++ (.2,0) |- (pdftex3)
-      (bbl) -- (bib |- bbl) -- ++(.2,0) |- (pdftex3);}
-
-    \uncover<8->{\path[very thick, ->]
-      (aux2) edge (pdftex3);}
-
-    \uncover<9->{\path[very thick, ->]
-      (pdftex3) edge (aux3)
-                edge (pdf3);}
-
-    \uncover<10->{\path[very thick, ->, black!30]
-      (pdftex3) edge (aux3);}
-  \end{tikzpicture}
-\end{Frame}
-
-\subsection{\BibTeX-Einträge}
-
-\begin{Frame}[fragile]{Quellenarten}
-  \begin{lstlisting}[gobble=4,language=BibTeX]
-    @book{texbook,
-      author = {Donald E. Knuth},
-      title = {The {\TeX book}},
-      year = {1984},
-      publisher = {Addison-Wesley Professional},
-    }
-  \end{lstlisting}
-
-  \xxx
-
-  \lstset{language=BibTeX}
-  \begin{tabular}{r@{ }l}
-    \lstinline-@book- & Buch \\
-    \lstinline-@article- & Zeitschriftenartikel \\
-    \lstinline-@inproceedings- & Tagungsbeitrag im Tagungsband \\
-    \lstinline-@techreport- & Technischer Bericht \\
-    \lstinline-@phdthesis- & Dissertation \\
-    \lstinline-@mastersthesis- & Master- oder Diplomarbeit \\
-    \lstinline-@misc- & andere Quelle (zum Beispiel Website)
-  \end{tabular}
-\end{Frame}
-
-\begin{Frame}[fragile,allowframebreaks]{Wichtige Angaben in \BibTeX-Einträgen}
-  \lstset{language=BibTeX}
-  \begin{Block}{\lstinline-author-}
-    Autoren der Arbeit getrennt durch \lstinline-and-
-  \end{Block}
-
-  \begin{Block}{\lstinline-editor-}
-    Herausgeber der Zeitschrift oder Organisator der Tagung
-    getrennt durch \lstinline-and-
-  \end{Block}
-
-  \begin{Block}{\lstinline-title-}
-    Titel der zitierten Quelle
-    (nicht des Bandes, der Zeitschrift,~\ldots)
-  \end{Block}
-
-  \framebreak
-
-  \begin{Block}{\lstinline-booktitle-}
-    Titel des Tagungsbandes
-    bei \lstinline-@inproceedings-
-  \end{Block}
-
-  \begin{Block}{\lstinline-journal-}
-    Name der Zeitschrift
-    bei \lstinline-@article-
-  \end{Block}
-
-  \begin{Block}{\lstinline-publisher-}
-    Verlag des Buches, der Zeitschift oder des Tagungsbandes
-  \end{Block}
-
-  \framebreak
-
-  \begin{Block}{\lstinline-series-}
-    Name der Serie (Verlage fassen Bücher
-    oder Tagungsbände zu Serien zusammen)
-  \end{Block}
-
-  \begin{Block}{\lstinline-volume-}
-    Nummer des Buches oder Tagungsbandes in der Serie
-    bei Verwendung von \lstinline-series-
-  \end{Block}
-
-  \begin{Block}{\lstinline-number-}
-    Unternummer des Bandes bei Zeitschriften
-    (Verlage fassen Zeitschriften zu Bänden zusammen)
-  \end{Block}
-
-  \framebreak
-
-  \begin{Block}{\lstinline-pages-}
-    Seitenzahlen eines Artikels innerhalb
-    eines Buches oder einer Zeitschrift
-    \alert{nicht für \lstinline-@book-!}
-  \end{Block}
-
-  \begin{Block}{\lstinline-year-}
-    Jahr der Veröffentlichung
-  \end{Block}
-
-  \begin{Block}{\lstinline-institution-}
-    \raggedright
-    Institution, an der die Arbeit angefertigt wurde
-    bei \lstinline-@phdthesis- oder \lstinline-@mastersthesis-
-  \end{Block}
-
-  \begin{Block}{\lstinline-note-}
-    Beliebiger Text; Bemerkungen aller Art,
-    die mit angezeigt werden sollen
-  \end{Block}
-\end{Frame}
-
-\begin{Frame}[fragile]{Websites zitieren}
-  \begin{alertblock}{Wichtig}
-    \begin{itemize}
-      \item \BibTeX\ hat \alert{keine eigene Quellenart} für Websites
-      \item \alert{Artikel von Autoren} auf einer Website nur zitieren,
-        wenn die Website und die \alert{Autoren seriös} sind.
-    \end{itemize}
-  \end{alertblock}
-
-  \xxx
-
-  \begin{lstlisting}[language=BibTeX,gobble=4,moretexcs={url}]
-    @misc{codecommit,
-      author = {Daniel Spiewak},
-      title = {The Magic Behind Parser
-        Combinators},
-      year = {2011},
-      howpublished =
-        "\url{http://www.codecommit.com/blog/
-        scala/the-magic-behind-parser-combinators}",
-      note = "[Online; Zugriff am 30.11.2011]"
-    }
-  \end{lstlisting}
-\end{Frame}
-
-\subsection{Stile}
-
-\begin{Frame}{Typische \BibTeX-Stile}
-  \begin{zebratabular}{llll}
-    \headerrow Stil & Referenzierung & Verzeichnis \\
-    \lstinline-plain- & [1] &  \\
-    \lstinline-abbrv- & [1] & nur Initialen \\
-    \lstinline-unsrt- & [1] & Reihenfolge \\
-    \lstinline-alpha- & [HMU01] & \\
-    \lstinline-apalike- & [Hopcroft et al., 2001] &
-  \end{zebratabular}
-
-  \xxx
-
-  \begin{Block}{Deutsche Stile nach DIN 1502}
-    \lstinline-plaindin-, \lstinline-abbrvdin-, \lstinline-unsrtdin-
-    und \lstinline-alphadin-\\
-    analog zu obigen Stilen
-  \end{Block}
-
-  \xxx
-
-  \begin{Block}{Empfehlung}
-    \lstinline-alphadin- ist deutsch, kurz und semantisch
-  \end{Block}
-\end{Frame}
-
-\begin{Frame}[fragile]{KOMA-Script-Optionen}
-  \begin{tabular}{r@{ }l}
-    \lstinline-nottotoc- & kein Eintrag im Inhaltsverzeichnis\\
-    \lstinline-totoc- & Eintrag im Inhaltsverzeichnis\\
-    \lstinline-totocnumbered- & nummerierter Eintrag im Inhaltsverzeichnis\\
-    \lstinline-openstyle- & moderne, weitläufige Formatierung\\
-    \lstinline-oldstyle- & klassische, kompakte Formatierung
-  \end{tabular}
-
-  \xxx
-
-  \begin{Beispiel}
-    \begin{lstlisting}[gobble=6,style=block]
-      \KOMAoptions{%
-        bibliography=totocnumbered,%
-        bibliography=openstyle}
-    \end{lstlisting}
-  \end{Beispiel}
-\end{Frame}
-
-\malte
+\mode
+<article>
 
 \beamersection{Eigene Layouts}
 
@@ -785,6 +513,13 @@
     \end{itemize}
   \end{alertblock}
 \end{Frame}
+
+\mode
+<all>
+
+\beamersection{Strukturierung}
+
+\malte
 
 \subsection{Papierformate und Satzspiegel}
 
@@ -1010,6 +745,12 @@
 
 \mode
 <all>
+
+\subsection{Titelseite}
+
+\begin{Frame}
+  Schriftgrößen, Schriftvarianten, Positionierung
+\end{Frame}
 
 \subsection{Kopf- und Fußzeilen}
 
@@ -1357,6 +1098,333 @@
 
 \begin{Frame}{Die ultimative Beispielkopfzeile}
   \includegraphics[width=10cm,page=42]{demo/kopfzeile-ultimativ}
+\end{Frame}
+
+\subsection{Abschnitte}
+
+\begin{Frame}
+  frontmatter, mainmatter, backmatter, appendix
+\end{Frame}
+
+\subsection{Dateien einbinden}
+
+\begin{Frame}
+  große Dokumente organisieren
+
+  include
+\end{Frame}
+
+\jonny
+
+\beamersection{Literatur}
+
+\subsection{Verwendung von \BibTeX}
+
+\begin{Frame}[fragile]{Was ist \BibTeX?}
+  \begin{itemize}
+    \item \BibTeX\ ist ein \alert{eigenständiges Programm},\\
+    das \LaTeX\ ergänzt.
+    \item \BibTeX\ erzeugt aus einer \alert{Literaturdatenbank}\\
+      ein \alert{Literaturverzeichnis}.
+    \item Das Literaturverzeichnis enthält \alert{nur} die\\
+      mit \lstinline-\cite- \alert{zitierten Einträge} der Datenbank.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[t]{Ein Beispieldokument \texttt{arbeit.pdf}}
+  \includegraphics[width=9cm]{demo/arbeit.pdf}
+\end{Frame}
+
+\begin{Frame}[fragile]{Das \LaTeX-Dokument \texttt{arbeit.tex}}
+  \begin{lstlisting}[gobble=4]
+    \documentclass{scrartcl}
+    %...
+
+    \begin{document}
+      In \cite{Knuth} wird das Satzsystem \TeX{}
+      vom Autor des Systems vorgestellt. Jedes
+      Zeichen hat dabei einen Category Code
+      (vergleiche dazu \cite[S.~28~ff.]{Eijkhout}).
+
+      \bibliographystyle{alphadin}
+      \bibliography{datenbank}
+    \end{document}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}{Die Literaturdatenbank \texttt{datenbank.bib}}
+  \lstinputlisting[language=BibTeX,moretexcs={TeX}]{demo/datenbank.bib}
+\end{Frame}
+
+\begin{Frame}[fragile]{Kompilieren}
+  \begin{lstlisting}[language={},morekeywords={pdflatex,bibtex},gobble=4]
+    pdflatex arbeit
+    bibtex arbeit
+    pdflatex arbeit
+    pdflatex arbeit
+  \end{lstlisting}
+
+  \xxx
+  \pause
+
+  \begin{onlyenv}<presentation>
+    \vskip -3.1cm
+    \begin{tikzpicture}
+      \draw[red,very thick] (0,0) -- (2.8cm, 2.7cm);
+    \end{tikzpicture}
+    \vskip .5cm
+  \end{onlyenv}
+
+  \begin{lstlisting}[language={},morekeywords={latexmk},gobble=4]
+    latexmk -pdf arbeit
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}{Wie funktioniert \BibTeX?}
+  \begin{tikzpicture}[
+      on grid,
+      node distance=9mm and 23mm,
+      engine/.style={
+        font=\rmfamily\Large\bfseries,
+        inner sep=2pt
+      }
+    ]
+
+    \uncover<2->{\node[engine] (pdftex1) {pdf\TeX};}
+    \uncover<1->{\node[left=40mm of pdftex1, texicon] (tex) {\icon{TEX}};}
+    \uncover<1->{\node[right=40mm of pdftex1, bibicon] (bib) {\icon{BIB}};}
+    \uncover<3->{\node[below left=18mm and 23mm of pdftex1, auxicon] (aux1) {\icon{AUX}};}
+    \uncover<3>{\node[below right=of pdftex1, pdficon] (pdf1) {\icon{PDF}};}
+    \uncover<4->{\node[below right=of pdftex1, pdficon!30] {\icon{PDF}};}
+    \uncover<4->{\node[below=18mm of pdftex1, engine] (bibtex) {\BibTeX};}
+    \uncover<5->{\node[below right=of bibtex, bblicon] (bbl) {\icon{BBL}};}
+    \uncover<6->{\node[below=18mm of bibtex, engine] (pdftex2) {pdf\TeX};}
+    \uncover<7->{\node[below left=of pdftex2, auxicon] (aux2) {\icon{AUX}};}
+    \uncover<7>{\node[below right=of pdftex2, pdficon] (pdf2) {\icon{PDF}};}
+    \uncover<8->{\node[below right=of pdftex2, pdficon!30] {\icon{PDF}};}
+    \uncover<8->{\node[below=18mm of pdftex2, engine] (pdftex3) {pdf\TeX};}
+    \uncover<9>{\node[below left=of pdftex3, auxicon] (aux3) {\icon{AUX}};}
+    \uncover<10->{\node[below left=of pdftex3, auxicon!30] {\icon{AUX}};}
+    \uncover<9->{\node[below right=of pdftex3, pdficon] (pdf3) {\icon{PDF}};}
+
+    \uncover<2->{\path[very thick, ->]
+      (tex) edge (pdftex1);}
+
+    \uncover<3->{\path[very thick, ->]
+      (pdftex1) edge (aux1)
+                edge (pdf1);}
+
+    \uncover<4->{\path[very thick, ->, black!30]
+      (pdftex1) edge (pdf1);}
+
+    \uncover<4->{\path[very thick, ->]
+      (aux1) edge (bibtex);}
+
+    \uncover<4->{\draw[very thick, ->]
+      (bib.south) ++ (.2,0) |- (bibtex);}
+
+    \uncover<5->{\path[very thick, ->]
+      (bibtex) edge (bbl);}
+
+    \uncover<6->{\draw[very thick, ->]
+      (tex.south) ++ (.2,0) |- (pdftex2)
+      (bbl.south) ++ (.2,0) |- (pdftex2);}
+
+    \uncover<6->{\path[very thick, ->]
+      (aux1) edge (pdftex2);}
+
+    \uncover<7->{\path[very thick, ->]
+      (pdftex2) edge (aux2)
+                edge (pdf2);}
+
+    \uncover<8->{\path[very thick, ->, black!30]
+      (pdftex2) edge (pdf2);}
+
+    \uncover<8->{\draw[very thick, ->]
+      (tex.south) ++ (.2,0) |- (pdftex3)
+      (bbl) -- (bib |- bbl) -- ++(.2,0) |- (pdftex3);}
+
+    \uncover<8->{\path[very thick, ->]
+      (aux2) edge (pdftex3);}
+
+    \uncover<9->{\path[very thick, ->]
+      (pdftex3) edge (aux3)
+                edge (pdf3);}
+
+    \uncover<10->{\path[very thick, ->, black!30]
+      (pdftex3) edge (aux3);}
+  \end{tikzpicture}
+\end{Frame}
+
+\subsection{\BibTeX-Einträge}
+
+\begin{Frame}[fragile]{Quellenarten}
+  \begin{lstlisting}[gobble=4,language=BibTeX]
+    @book{texbook,
+      author = {Donald E. Knuth},
+      title = {The {\TeX book}},
+      year = {1984},
+      publisher = {Addison-Wesley Professional},
+    }
+  \end{lstlisting}
+
+  \xxx
+
+  \lstset{language=BibTeX}
+  \begin{tabular}{r@{ }l}
+    \lstinline-@book- & Buch \\
+    \lstinline-@article- & Zeitschriftenartikel \\
+    \lstinline-@inproceedings- & Tagungsbeitrag im Tagungsband \\
+    \lstinline-@techreport- & Technischer Bericht \\
+    \lstinline-@phdthesis- & Dissertation \\
+    \lstinline-@mastersthesis- & Master- oder Diplomarbeit \\
+    \lstinline-@misc- & andere Quelle (zum Beispiel Website)
+  \end{tabular}
+\end{Frame}
+
+\begin{Frame}[fragile,allowframebreaks]{Wichtige Angaben in \BibTeX-Einträgen}
+  \lstset{language=BibTeX}
+  \begin{Block}{\lstinline-author-}
+    Autoren der Arbeit getrennt durch \lstinline-and-
+  \end{Block}
+
+  \begin{Block}{\lstinline-editor-}
+    Herausgeber der Zeitschrift oder Organisator der Tagung
+    getrennt durch \lstinline-and-
+  \end{Block}
+
+  \begin{Block}{\lstinline-title-}
+    Titel der zitierten Quelle
+    (nicht des Bandes, der Zeitschrift,~\ldots)
+  \end{Block}
+
+  \framebreak
+
+  \begin{Block}{\lstinline-booktitle-}
+    Titel des Tagungsbandes
+    bei \lstinline-@inproceedings-
+  \end{Block}
+
+  \begin{Block}{\lstinline-journal-}
+    Name der Zeitschrift
+    bei \lstinline-@article-
+  \end{Block}
+
+  \begin{Block}{\lstinline-publisher-}
+    Verlag des Buches, der Zeitschift oder des Tagungsbandes
+  \end{Block}
+
+  \framebreak
+
+  \begin{Block}{\lstinline-series-}
+    Name der Serie (Verlage fassen Bücher
+    oder Tagungsbände zu Serien zusammen)
+  \end{Block}
+
+  \begin{Block}{\lstinline-volume-}
+    Nummer des Buches oder Tagungsbandes in der Serie
+    bei Verwendung von \lstinline-series-
+  \end{Block}
+
+  \begin{Block}{\lstinline-number-}
+    Unternummer des Bandes bei Zeitschriften
+    (Verlage fassen Zeitschriften zu Bänden zusammen)
+  \end{Block}
+
+  \framebreak
+
+  \begin{Block}{\lstinline-pages-}
+    Seitenzahlen eines Artikels innerhalb
+    eines Buches oder einer Zeitschrift
+    \alert{nicht für \lstinline-@book-!}
+  \end{Block}
+
+  \begin{Block}{\lstinline-year-}
+    Jahr der Veröffentlichung
+  \end{Block}
+
+  \begin{Block}{\lstinline-institution-}
+    \raggedright
+    Institution, an der die Arbeit angefertigt wurde
+    bei \lstinline-@phdthesis- oder \lstinline-@mastersthesis-
+  \end{Block}
+
+  \begin{Block}{\lstinline-note-}
+    Beliebiger Text; Bemerkungen aller Art,
+    die mit angezeigt werden sollen
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}[fragile]{Websites zitieren}
+  \begin{alertblock}{Wichtig}
+    \begin{itemize}
+      \item \BibTeX\ hat \alert{keine eigene Quellenart} für Websites
+      \item \alert{Artikel von Autoren} auf einer Website nur zitieren,
+        wenn die Website und die \alert{Autoren seriös} sind.
+    \end{itemize}
+  \end{alertblock}
+
+  \xxx
+
+  \begin{lstlisting}[language=BibTeX,gobble=4,moretexcs={url}]
+    @misc{codecommit,
+      author = {Daniel Spiewak},
+      title = {The Magic Behind Parser
+        Combinators},
+      year = {2011},
+      howpublished =
+        "\url{http://www.codecommit.com/blog/
+        scala/the-magic-behind-parser-combinators}",
+      note = "[Online; Zugriff am 30.11.2011]"
+    }
+  \end{lstlisting}
+\end{Frame}
+
+\subsection{\BibTeX-Stile}
+
+\begin{Frame}{Typische \BibTeX-Stile}
+  \begin{zebratabular}{llll}
+    \headerrow Stil & Referenzierung & Verzeichnis \\
+    \lstinline-plain- & [1] &  \\
+    \lstinline-abbrv- & [1] & nur Initialen \\
+    \lstinline-unsrt- & [1] & Reihenfolge \\
+    \lstinline-alpha- & [HMU01] & \\
+    \lstinline-apalike- & [Hopcroft et al., 2001] &
+  \end{zebratabular}
+
+  \xxx
+
+  \begin{Block}{Deutsche Stile nach DIN 1502}
+    \lstinline-plaindin-, \lstinline-abbrvdin-, \lstinline-unsrtdin-
+    und \lstinline-alphadin-\\
+    analog zu obigen Stilen
+  \end{Block}
+
+  \xxx
+
+  \begin{Block}{Empfehlung}
+    \lstinline-alphadin- ist deutsch, kurz und semantisch
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}[fragile]{KOMA-Script-Optionen}
+  \begin{tabular}{r@{ }l}
+    \lstinline-nottotoc- & kein Eintrag im Inhaltsverzeichnis\\
+    \lstinline-totoc- & Eintrag im Inhaltsverzeichnis\\
+    \lstinline-totocnumbered- & nummerierter Eintrag im Inhaltsverzeichnis\\
+    \lstinline-openstyle- & moderne, weitläufige Formatierung\\
+    \lstinline-oldstyle- & klassische, kompakte Formatierung
+  \end{tabular}
+
+  \xxx
+
+  \begin{Beispiel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \KOMAoptions{%
+        bibliography=totocnumbered,%
+        bibliography=openstyle}
+    \end{lstlisting}
+  \end{Beispiel}
 \end{Frame}
 
 \malte
