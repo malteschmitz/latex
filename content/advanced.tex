@@ -14,9 +14,9 @@
 
 \beamersection{\LaTeX\ verwenden}
 
-\subsection{Farbe}
+\subsection{Farben definieren}
 
-\begin{Frame}[fragile]{Farbe}
+\begin{Frame}[fragile]{Farbe (Erinnerung)}
   \begin{Block}{In der Präambel}
     \begin{lstlisting}[gobble=6,style=block]
       \usepackage{xcolor}
@@ -34,26 +34,7 @@
   \textcolor{orange}{Worte} hervorgehoben.
 \end{Frame}
 
-\newcommand{\colorsample}[1]{\textcolor{#1}{\rule[-.5ex]{2em}{2ex}} \texttt{#1}}
-
-\begin{Frame}{Farben}
-  \colorsample{red}\newline
-  \colorsample{green}\newline
-  \colorsample{blue}\newline
-  \colorsample{cyan}\newline
-  \colorsample{magenta}\newline
-  \colorsample{yellow}
-
-  \xxx
-
-  \colorsample{black}\newline
-  \colorsample{white}\newline
-  \colorsample{darkgray}\newline
-  \colorsample{gray}\newline
-  \colorsample{lightgray}
-\end{Frame}
-
-\begin{Frame}[fragile]{Eigene Farben}
+\begin{Frame}[fragile]{Farben definieren}
   % Red, Green, Blue von 0 bis 1
   % \xdefinecolor{uni-luebeck}{rgb}{0, 0.47, 0.55}
   % Hue, Saturation, Brightness von 0 bis 1
@@ -80,54 +61,6 @@
     \xdefinecolor{current}{HSB}{\h, 240, 240}%
     \textcolor{current}{\rule{1pt}{3ex}}%
   }\hfill
-\end{Frame}
-
-\begin{Frame}{Farben mischen}
-  \colorsample{red}\newline
-  \colorsample{red!75}\newline
-  \colorsample{red!75!green}\newline
-  \colorsample{red!75!green!50}\newline
-  \colorsample{red!75!green!50!blue}\newline
-  \colorsample{red!75!green!50!blue!25}\newline
-  \colorsample{red!75!green!50!blue!25!gray}
-
-  \xxx
-
-  \colorsample{-red}\newline
-  \colorsample{-red!75}\newline
-  \colorsample{-red!75!green}\newline
-  \colorsample{-red!75!green!50}\newline
-  \colorsample{-red!75!green!50!blue}\newline
-  \colorsample{-red!75!green!50!blue!25}\newline
-  \colorsample{-red!75!green!50!blue!25!gray}
-\end{Frame}
-
-\begin{Frame}[fragile]{Zebratabellen}
-  \begin{Block}{In der Präambel}
-    \begin{lstlisting}[gobble=6,style=block]
-      \usepackage[table]{xcolor}
-    \end{lstlisting}
-  \end{Block}
-
-  \begin{lstlisting}[gobble=4]
-    \rowcolors{1}{orange!25}{orange!5}
-    \begin{tabular}{lr}
-      \rowcolor{orange!50} Posten & Betrag \\
-      Messe & 333,20 \\
-      Kombüse & 47,60 \\
-      Summe & 380,80
-    \end{tabular}
-  \end{lstlisting}
-
-  \rowcolors{1}{orange!25}{orange!5}
-  \begin{center}
-    \begin{tabular}{lr}
-      \rowcolor{orange!50} Posten & Betrag \\
-      Messe & 333,20 \\
-      Kombüse & 47,60 \\
-      Summe & 380,80
-    \end{tabular}
-  \end{center}
 \end{Frame}
 
 \subsection{Eigene Befehle und Umgebungen}
