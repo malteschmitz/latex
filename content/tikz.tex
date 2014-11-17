@@ -1328,39 +1328,39 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
   \only<article>{\sideways}
   \begin{tikzpicture}
     % Define a macro to draw the filter symbol
-    \def\filterSS{\node{};  % This empty node draws the box.
+    \newcommand{\filterSS}[1]{\node (#1){};  % This empty node draws the box. 
        % Then we draw the inner curves
-       \draw[line width=1pt] (-2mm,-4mm) to[in=200,out=20] (-2mm, 4mm)
-                             (0mm,-4mm) to[in=200,out=20] (0mm, 4mm)
-                             (2mm,-4mm) to[in=200,out=20] (2mm, 4mm);
+       \draw[line width=1pt] (-2mm,-4mm) to[in=200,out=20] (-2mm, 4mm) 
+                             (0mm,-4mm) to[in=200,out=20] (0mm, 4mm) 
+                             (2mm,-4mm) to[in=200,out=20] (2mm, 4mm); 
        }
 
     % Define a macro to draw the MOD symbol
-    \def\MOD#1{\node{#1}; % The box with the text inside. Then draw the polygon around the text
+    \newcommand{\MOD}[2]{\node (#1) {#2}; % The box with the text inside. Then draw the polygon around the text
       \draw[line width=1pt,sharp corners](-0.75cm,0cm)--(-0.35cm,0.25cm)--
-           (0.35cm, 0.25cm)--(0.75cm, 0cm)--(0.35cm, -0.25cm)--(-0.35cm, -0.25cm) -- cycle;
+           (0.35cm, 0.25cm)--(0.75cm, 0cm)--(0.35cm, -0.25cm)--(-0.35cm, -0.25cm) -- cycle; 
       }
 
     % Define a macro to draw the Polariser symbol
-    \def\Polaris{\node[coordinate]{}; % Node of type coordinate is a simple point
+    \newcommand{\Polaris}[1]{\node[coordinate] (#1) {}; % Node of type coordinate is a simple point 
          % Now draw the three circles
-         \draw[line width=1pt] (0mm, -2mm)  circle (2mm)
+         \draw[line width=1pt] (0mm, -2mm)  circle (2mm) 
                                (-2mm,2mm)  circle (2mm)
                                (2mm, 2mm)  circle (2mm);}
 
     % Place all element in a matrix of nodes, called m
     % By default all nodes are rectangles with round corners
     % but some special sytles are defined also
-    \matrix (m) [matrix of nodes,
+    \matrix (m) [
       column sep=5mm,
       row sep=1cm,
       nodes={draw, % General options for all nodes
         line width=1pt,
-        anchor=center,
+        anchor=center, 
         text centered,
         rounded corners,
         minimum width=1.5cm, minimum height=8mm
-      },
+      }, 
       % Define styles for some special nodes
       right iso/.style={isosceles triangle,scale=0.5,sharp corners, anchor=center, xshift=-4mm},
       left iso/.style={right iso, rotate=180, xshift=-8mm},
@@ -1370,68 +1370,44 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
       ]
     {
     % First row of symbols (mostly empty, only the power meter at the right end)
-      % m-1-1 empty
-    & % m-1-2 empty
-    & % m-1-3 empty
-    & % m-1-4 empty
-    & % m-1-5 empty
-    & % m-1-6 empty
-    & % m-1-7
-      |[txt]| {Power Meter}
+      % empty
+    & % empty
+    & % empty
+    & % empty
+    & % empty
+    & % empty
+    & \node[txt] (top power meter) {Power Meter};
     \\
 
     % Second row of symbols
-    % m-2-1
-      Laser
-    & % m-2-2
-      \MOD{MOD}
-    & % m-2-3
-      |[right iso]|
-    & % m-2-4
-      SOA
-    & % m-2-5
-      \filterSS
-    & % m-2-6
-      VOA
-    & % m-2-7
-      |[ellip]|
-    & % m-2-8
-      |[coordinate, xshift=-1cm]|
+      \node (laser) {Laser};
+    & \MOD{mod}{MOD} 
+    & \node[right iso] (iso 1) {};
+    & \node (top soa) {SOA};
+    & \filterSS{top filter} 
+    & \node (top voa) {VOA};
+    & \node[ellip] (top connector) {};
+    & \node[coordinate, xshift=-1cm] (top right) {};
     \\
     % Third row of symbols
-      % m-3-1 empty
-    & % m-3-2
-      VOA
-    & % m-3-3
-      \filterSS
-    & % m-3-4
-      |[left iso]|
-    & % m-3-5
-      |[draw=orange!80!white, ultra thick]| \textbf{QDSOA}
-    & % m-3-6
-      |[left iso]|
-    & % m-3-7
-      \Polaris
-    & % m-3-8 (no symbol here, only a point to draw the path)
-      |[coordinate, xshift=-1cm]|
+    & \node (mid voa) {VOA};
+    & \filterSS{mid filter}  
+    & \node[left iso] (iso 2) {};
+    & \node[draw=orange!80!white, ultra thick] (qdsoa) {\textbf{QDSOA}};
+    & \node[left iso] (iso 3) {};
+    & \Polaris{Polaris} 
+    & % (no symbol here, only a point to draw the path)
+      \node[coordinate, xshift=-1cm] (mid right) {};
     \\
     % Fourth row of symbols
-      % m-4-1
-      |[txt]| {Power Meter}
-    & % m-4-2
-      |[ellip]|
-    & % m-4-3
-      |[right iso]|
-    & % m-4-4
-      SOA
-    & % m-4-5
-      |[right iso]|
-    & % m-4-6
-      \filterSS
-    & % m-4-7
-      Rx
-    & % m-4-8
-      |[txt]| {Error\newline Detector}
+      \node[txt] (low power meter) {Power Meter};
+    & \node[ellip] (low ellip) {};
+    & \node[right iso] (iso 4) {};
+    & \node (low soa) {SOA};
+    & \node[right iso] (iso 5) {};
+    & \filterSS{low filter} 
+    & \node (rx) {Rx};
+    & \node[txt] (error detector) {Error\\Detector};
     \\
     };  % End of matrix
 
@@ -1439,45 +1415,45 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     % The names of the nodes are automatically generated in the previous matrix. Since the
     % matrix was named ``m'', all nodes have the name m-row-column
     { [start chain,every on chain/.style={join}, every join/.style={line width=1pt}]
-      \chainin (m-2-1);
-      \chainin (m-2-2);
-      \chainin (m-2-3);
-      \chainin (m-2-4);
-      \chainin (m-2-5);
-      \chainin (m-2-6);
+      \chainin (laser);
+      \chainin (mod);
+      \chainin (iso 1);
+      \chainin (top soa);
+      \chainin (top filter);
+      \chainin (top voa);
       % Connect to the power meter, and put a label saying 10%
-      \path[line width=1pt] (m-1-7) edge node [right] {$10\%$} (m-2-7);
-      \chainin (m-2-7);
-      \chainin (m-2-8);
+      \path[line width=1pt] (top power meter) edge node [right] {$10\%$} (top connector);
+      \chainin (top connector);
+      \chainin (top right);
       % Draw the label saying 90%
-      \path (m-2-8) edge node [right] {$90\%$} (m-3-8) ;
-      \chainin (m-3-8);
-      \chainin (m-3-7);
-      \chainin (m-3-6);
-      \chainin (m-3-5);
-      \chainin (m-3-4);
-      \chainin (m-3-3);
-      \chainin (m-3-2);
+      \path (top right) edge node [right] {$90\%$} (mid right) ;
+      \chainin (mid right);
+      \chainin (Polaris);
+      \chainin (iso 3);
+      \chainin (qdsoa);
+      \chainin (iso 2);
+      \chainin (mid filter);
+      \chainin (mid voa);
       % Connect to the power meter, and put a label saying 10%
-      \path[line width=1pt] (m-4-1) edge node [above] {$10\%$} (m-4-2);
-      \chainin (m-4-2);
+      \path[line width=1pt] (low power meter) edge node [above] {$10\%$} (low ellip);
+      \chainin (low ellip);
       % Draw the label saying 90%
-      \path (m-4-2) edge node [below] {$90\%$} (m-4-3) ;
-      \chainin (m-4-3);
-      \chainin (m-4-4);
-      \chainin (m-4-5);
-      \chainin (m-4-6);
-      \chainin (m-4-7);
-      \chainin (m-4-8);
+      \path (low ellip) edge node [below] {$90\%$} (iso 4) ;
+      \chainin (iso 4);
+      \chainin (low soa);
+      \chainin (iso 5);
+      \chainin (low filter);
+      \chainin (rx);
+      \chainin (error detector);
       };
     % Finally, put some text above some symbols
-    \draw (m-2-3.left side) node[above, inner sep=5mm] {Isolator};
-    \draw (m-2-5.north) node[above, inner sep=3mm] {Filter};
-    \draw (m-3-7) node[above, inner sep=6mm, text centered, text width=2cm] {Polarisation\newline controller};
+    \draw (iso 1.left side) node[above, inner sep=5mm] {Isolator};
+    \draw (top filter.north) node[above, inner sep=3mm] {Filter};
+    \draw (Polaris) node[above, inner sep=6mm, text centered, text width=2cm] {Polarisation\\controller};
 
     % The big arrow over the MOD symbol is a bit laborious
-    \node[yshift=2mm] (MOD arrow) at (m-2-2.north) [anchor=east,single arrow, draw,line width=1pt,
-                  rotate=-90, minimum height=7mm, minimum width=1.3cm,
+    \node[yshift=2mm] (MOD arrow) at (mod.north) [anchor=east,single arrow, draw,line width=1pt, 
+                  rotate=-90, minimum height=7mm, minimum width=1.3cm, 
                   single arrow head extend=1.2mm, single arrow tip angle=120] {};
     % The text above the arrow (the starting of the arrow is at west in the arrow shape, even if the
     % arrow was rotated and it lies now at top)
@@ -1489,12 +1465,12 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
                                   inner sep=4mm, rectangle, rounded corners}};
 
     % Finally the blue dotted boxes are drawn as nodes fitted to other nodes
-    \node (first dotted box) [blue dotted,
-                              fit = (MOD text) (m-2-1) (m-2-4)] {};
+    \node (first dotted box) [blue dotted, 
+                              fit = (MOD text) (laser) (top soa)] {};
     \node (second dotted box) [blue dotted,
-                              fit = (m-4-4) (m-4-8)] {};
+                              fit = (low soa) (error detector)] {};
 
-    % Since these boxes are nodes, it is easy to put text above or below them
+    % Since these boxes are nodes, it is easy to put text above or below them                          
     \node at (first dotted box.north) [above, inner sep=3mm] {\textbf{Transmitter}};
     \node at (second dotted box.south) [below, inner sep=3mm] {\textbf{Receiver}};
   \end{tikzpicture}
