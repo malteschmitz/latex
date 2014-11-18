@@ -214,13 +214,12 @@
   \end{thebibliography}
 }
 
-% load logo collection from "Die TeXnische Komödie"
-\usepackage{dtklogos}
-% dtklogos tries to provide \tikz which does nothing
-% as the tikz package already defined that command.
-\newcommand\TikZ{Ti\textit{k}Z}
+% load logo collection inspired by the package
+% dtklogos from "Die TeXnische Komödie"
+% dtklogos overwrites \tikz which has very bad consequences
+\input{logos}
 
-\newcommand{\beamer}[0]{\texorpdfstring{\textsc{beamer}}{Beamer}}
+
 
 % Define command to start a section with its sectionframe.
 % We cannot use AtBeginSection to achieve this, because there is

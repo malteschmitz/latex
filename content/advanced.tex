@@ -545,7 +545,7 @@
     \item \lstinline[language={}]-letter-~($8\nicefrac12'' \times 11''$),
       \lstinline-legal-~($8\nicefrac12'' \times 14''$) und
       \lstinline-executive-~($7\nicefrac14'' \times 10\nicefrac12''$)
-    \item Eigene Formate in der Form \lstinline-Breite:Höhe-,\\
+    \item Eigene Formate in der Form \lstinline-Breite:Höhe-,\newline
       zum Beispiel \lstinline-10cm:20cm-
   \end{itemize}
 \end{Frame}
@@ -1190,7 +1190,7 @@
       }
     ]
 
-    \uncover<2->{\node[engine] (pdftex1) {pdf\TeX};}
+    \uncover<2->{\node[engine] (pdftex1) {\pdfTeX};}
     \uncover<1->{\node[left=40mm of pdftex1, texicon] (tex) {\icon{TEX}};}
     \uncover<1->{\node[right=40mm of pdftex1, bibicon] (bib) {\icon{BIB}};}
     \uncover<3->{\node[below left=18mm and 23mm of pdftex1, auxicon] (aux1) {\icon{AUX}};}
@@ -1198,11 +1198,11 @@
     \uncover<4->{\node[below right=of pdftex1, pdficon!30] {\icon{PDF}};}
     \uncover<4->{\node[below=18mm of pdftex1, engine] (bibtex) {\BibTeX};}
     \uncover<5->{\node[below right=of bibtex, bblicon] (bbl) {\icon{BBL}};}
-    \uncover<6->{\node[below=18mm of bibtex, engine] (pdftex2) {pdf\TeX};}
+    \uncover<6->{\node[below=18mm of bibtex, engine] (pdftex2) {\pdfTeX};}
     \uncover<7->{\node[below left=of pdftex2, auxicon] (aux2) {\icon{AUX}};}
     \uncover<7>{\node[below right=of pdftex2, pdficon] (pdf2) {\icon{PDF}};}
     \uncover<8->{\node[below right=of pdftex2, pdficon!30] {\icon{PDF}};}
-    \uncover<8->{\node[below=18mm of pdftex2, engine] (pdftex3) {pdf\TeX};}
+    \uncover<8->{\node[below=18mm of pdftex2, engine] (pdftex3) {\pdfTeX};}
     \uncover<9>{\node[below left=of pdftex3, auxicon] (aux3) {\icon{AUX}};}
     \uncover<10->{\node[below left=of pdftex3, auxicon!30] {\icon{AUX}};}
     \uncover<9->{\node[below right=of pdftex3, pdficon] (pdf3) {\icon{PDF}};}

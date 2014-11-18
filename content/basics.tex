@@ -128,7 +128,7 @@
   \begin{minipage}{\textwidth}\begin{center}
     \includegraphics[width=8cm]{images/miktex-update}
 
-    MiK\TeX\ Updater
+    \MiKTeX\ Updater
   \end{center}\end{minipage}
 \end{Frame}
 
@@ -193,7 +193,7 @@
     \begin{itemize}
       \item \TeX works
         \begin{itemize}
-          \item in MiK\TeX, \TeX\ Live und Mac\TeX\ enthalten
+          \item in \MiKTeX, \TeX\ Live und Mac\TeX\ enthalten
         \end{itemize}
       \item \TeX Shop
         \begin{itemize}
@@ -362,11 +362,11 @@
 
 \begin{Frame}[fragile]{Befehle}
   \begin{itemize}
-    \item Befehle beginnen mit einem Backslash.\\
+    \item Befehle beginnen mit einem Backslash.\newline
       z.\,B. \lstinline-\emph-
-    \item Parameter stehen in geschweiften Klammern.\\
+    \item Parameter stehen in geschweiften Klammern.\newline
       z.\,B. \lstinline-\emph{hervor}-
-    \item Weitere Parameter folgen in geschweiften Klammern.\\
+    \item Weitere Parameter folgen in geschweiften Klammern.\newline
       z.\,B. \lstinline-\textcolor{red}{Rosen}-
     \item Optionale Paramter stehen in eckigen Klammern.
       z.\,B. \lstinline-\footnote[42]{geb.}-
@@ -432,12 +432,12 @@
 
 \begin{Frame}[fragile]{Umgebungen}
   \begin{itemize}
-    \item Umgebungen beginnen mit \lstinline-\begin-\\
+    \item Umgebungen beginnen mit \lstinline-\begin-\newline
       z.\,B. \lstinline-\begin{center}-
-    \item und enden mit \lstinline-\end-.\\
+    \item und enden mit \lstinline-\end-.\newline
       z.\,B. \lstinline-\end{center}-
     \item Erster Parameter ist jeweils der Name der Umgebung.
-    \item Weitere Parameter nur nach \lstinline-\begin-.\\
+    \item Weitere Parameter nur nach \lstinline-\begin-.\newline
       z.\,B. \lstinline-\begin{tabular}{ll}-
   \end{itemize}
 \end{Frame}
@@ -1198,7 +1198,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 <article>
 
 \begin{Block}{Dateitypen}
-  Bei der Verwendung von pdf\TeX\ können Grafikdateien in den Formaten PDF, JPG und PNG verwendet werden.
+  Bei der Verwendung von \pdfTeX\ können Grafikdateien in den Formaten PDF, JPG und PNG verwendet werden.
   Soll das Dokument mit \TeX\ kompiliert werden, muss die Grafik als EPS-Datei vorliegen. Aus diesem Grund
   wird die Grafikdatei häufig ohne Dateierweiterung angegeben, sodass die für den jeweiligen Fall am besten
   geeignete Datei automatisch verwendet wird.
@@ -1298,7 +1298,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
          MiK\TeX-Logo auf \autoref{fig-miktex}
          in \autoref{sec-verweise}
        \end{lstlisting}
-       MiK\TeX-Logo auf Abbildung 5 in Abschnitt 3.2
+       \MiKTeX-Logo auf Abbildung 5 in Abschnitt 3.2
   \end{looseitemize}
 \end{Frame}
 
@@ -1308,7 +1308,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
       \node[examplecolor] (tex) {\icon{TEX}};
       \uncover<2->{
         \node[right=of tex, font=\rmfamily\Large\bfseries]
-          (pdfTeX1) {pdf\TeX};
+          (pdfTeX1) {\pdfTeX};
       }
       \uncover<3>{
         \node[right=of pdfTeX1, pdficon] (pdf1) {\icon{PDF}};
@@ -1323,7 +1323,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
       }
       \uncover<4->{
         \node[below=of aux1, xshift=1cm, font=\rmfamily\Large\bfseries]
-          (pdfTeX2) {pdf\TeX};
+          (pdfTeX2) {\pdfTeX};
       }
       \uncover<5>{
         \node[right=of pdfTeX2, pdficon] (pdf2) {\icon{PDF}};
