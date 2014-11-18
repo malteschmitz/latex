@@ -1108,6 +1108,63 @@
 
 \subsection{Dateien einbinden}
 
+\begin{Frame}{Dateien einbinden}
+  \tikzset{
+    every node/.style={
+      inner sep=1pt,
+      on grid,
+      label position=below,
+      auto
+    },
+    shorten >=1em,
+    shorten <=1em,
+    node distance=7em and 5em
+  }
+  \begin{center}
+    \begin{tikzpicture}
+      \node[inner sep=10pt] (large) {\tikz\node[examplecolor,label=\texttt{\ \ main}] {\only<1>{\icon[2]{TEX}}\only<2>{\icon[10]{TEX}}\only<3>{\icon[20]{TEX}}\only<4->{\icon[30]{TEX}}};};
+      \onslide<5->
+      \path[alertedcolor, line width=3pt, line cap=round, shorten >=0pt,shorten <=0pt]
+        (large.north east) edge (large.south west)
+        (large.north west) edge (large.south east);
+    \end{tikzpicture}
+    \qquad
+    \only<6->{%
+      \begin{tikzpicture}
+        \node[examplecolor,label=below:\texttt{\ \ main}] (main) {\icon[1]{TEX}};
+
+        \uncover<7->{%
+          \node[maincolor,label=\texttt{\ \ config}, above left=of main] (config) {\icon[2]{TEX}};
+          \path[very thick]
+            (config.east) edge[->] node[pos=.6, swap]
+              {\texttt{\color{texcs}\bfseries\textbackslash input}} (main);
+        }
+
+        \uncover<8->{%
+          \node[maincolor,label=\texttt{\ \ chap1}, above right=of main] (chap1) {\icon[3]{TEX}};
+          \path[very thick]
+            (chap1.west) edge[->] node[pos=.6]
+              {\texttt{\color{texcs}\bfseries\textbackslash include}} (main);
+        }
+
+        \uncover<9->{%
+          \node[maincolor,label=\texttt{\ \ chap2}, below right=of main] (chap2) {\icon[5]{TEX}};
+          \path[very thick]
+            (chap2.west) edge[->,shorten >=1.6em] node[pos=.5, swap]
+              {\texttt{\color{texcs}\bfseries\textbackslash include}} (main);
+        }
+
+        \uncover<10->{%
+          \node[maincolor,label=\texttt{\ \ chap3}, below left=of main] (chap3) {\icon[4]{TEX}};
+          \path[very thick]
+            (chap3.east) edge[->,shorten >=1.6em] node[pos=.5]
+              {\texttt{\color{texcs}\bfseries\textbackslash include}} (main);
+        }
+      \end{tikzpicture}
+    }
+  \end{center}
+\end{Frame}
+
 \begin{Frame}
   große Dokumente organisieren
 
