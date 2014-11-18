@@ -71,10 +71,32 @@
     \entry{2.5}{\TeX};
     \entry{3}{DTP-Tools wie z.\,B. Scribus};
     \entry{3.5}{Office Word, Writer, \ldots};
-    \entry{4}{\alert{\LaTeX}};
+    \entry{4}{\textcolor{examplecolor}{\LaTeX}};
     \entry{4.75}{HTML};
     \entry{5.5}{Outliner};
   \end{tikzpicture}
+\end{Frame}
+
+\begin{Frame}{\LaTeX\ vs. Office Word}
+  \begin{center}
+    \begin{tikzpicture}[thick]
+      \draw[->] (0,0) -- node[below] {Dokumentengr"o\ss e und -komplexit"at} (8,0);
+      \draw[->] (0,0) -- node[rotate=90, above] {Aufwand und Zeitbedarf} (0,6);
+      \begin{scope}[
+          every node/.style={font=\Large},
+        ]
+        \draw[alertedcolor, domain=0:3.68965] plot (\x, {exp(\x+.5)/12 + .5});
+        \path[alertedcolor, domain=0:3.3] plot (\x, {exp(\x+.5)/12 + .5}) node[above left] {Office Word};
+        \pause
+        \draw[dashed, maincolor] (0,5.5) -- node[above,near end] {hoffnungslos} (8,5.5);
+        \pause
+        \draw[examplecolor, domain=0:8] plot (\x, {\x^2/25 + 1.5});
+        \path[examplecolor, domain=0:6] plot (\x, {\x^2/25 + 1.5}) node[below right] {\LaTeX};
+        \pause
+        \draw[line width=3pt,maincolor] (2.15534, 1.68582) node[fill=maincolor,star,star point height=2mm] {} -- (2.15534,0);
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
 \end{Frame}
 
 \subsection{Installation}
