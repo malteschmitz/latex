@@ -1,0 +1,42 @@
+\documentclass{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage[ngerman]{babel}
+
+\usepackage[papersize={8cm,6.5cm},margin=2mm]{geometry}
+
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+\declaretheorem[style=plain,numberwithin=section]{theorem}
+\declaretheorem[style=definition,sibling=theorem]{definition}
+\declaretheorem[style=remark,name=Hinweis,sibling=theorem]{remark}
+
+\begin{document}
+  \thispagestyle{empty}
+
+  \section{Sandhaufen}
+
+  \begin{definition}[Sandhaufen]
+    Ein \emph{Sandhaufen} ist eine
+    angehäufte Menge Sandkörner.
+  \end{definition}
+
+  \begin{theorem}[Sandhaufensatz]
+    Es gibt keine Sandhaufen.
+  \end{theorem}
+
+  \begin{proof}
+    Ein Sandkorn ist noch kein Sandhaufen.
+    Sandkörner werden durch Hinzufügen
+    eines Sandkorns nicht zum Sandhaufen.
+    Induktiv folgt die Aussage.
+  \end{proof}
+
+  \begin{remark}
+    Das ist alles Quatsch.
+  \end{remark}
+\end{document}

@@ -1,0 +1,61 @@
+\documentclass{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage[ngerman]{babel}
+
+\usepackage[papersize={6.5cm,7cm},margin=2mm]{geometry}
+
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+\declaretheorem[style=plain]{theorem}
+\declaretheorem[style=plain,sibling=theorem]{lemma}
+\declaretheorem[style=plain,name=Korollar,sibling=theorem]{corollary}
+
+\usepackage{xcolor}
+\usepackage{bbding}
+\usepackage[scaled=.88]{DejaVuSansMono}
+
+\usepackage{hyperref}
+
+\begin{document}
+  \thispagestyle{empty}
+
+  \raggedright
+
+  \begin{lemma}\label{lemma-easy}
+    \LaTeX\ ist einfach.
+  \end{lemma}
+
+  \begin{proof}
+    Jeder kann es lernen.
+  \end{proof}
+
+  \begin{lemma}\label{lemma-fun}
+    \LaTeX\ macht Spaß.
+  \end{lemma}
+
+  \begin{proof}
+    \textcolor{violet}{\texttt{\bfseries\textbackslash FiveFlowerOpen}}\textcolor{orange}{\FiveFlowerOpen}
+  \end{proof}
+
+  \begin{theorem}\label{thm-love}
+    Alle lieben \LaTeX.
+  \end{theorem}
+
+  \begin{proof}
+    Die Aussage ergibt sich mit \autoref{lemma-easy} und \autoref{lemma-fun}.
+  \end{proof}
+
+  \begin{corollary}
+    \LaTeX\ ist gut.
+  \end{corollary}
+
+  \begin{proof}
+    Folgt aus \autoref{thm-love}.
+  \end{proof}
+
+\end{document}

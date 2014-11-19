@@ -364,12 +364,133 @@
 
 \subsection{Theoreme}
 
-\begin{Frame}{Theoreme}
-!!! TODO !!!
+\begin{Frame}{Beispiel für Theoreme}
+  \begin{center}
+    \includegraphics[width=8cm]{demo/theorems}
+  \end{center}
 \end{Frame}
 
+\begin{Frame}[fragile]{Beispiel für Theoreme}
+  \begin{lstlisting}[
+      gobble=4,
+      morekeywords={[2]theorem,definition,proof,
+        remark,lemma,corollary}
+    ]
+    \begin{definition}[Sandhaufen]
+      Ein \emph{Sandhaufen} ist ...
+    \end{definition}
 
+    \begin{theorem}[Sandhaufensatz]
+      Es gibt keine Sandhaufen.
+    \end{theorem}
 
+    \begin{proof}
+      ... Induktiv folgt die Aussage.
+    \end{proof}
+
+    \begin{remark}
+      Das ist alles Quatsch.
+    \end{remark}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Theoreme definieren}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \usepackage{amsthm}
+      \usepackage{thmtools}
+      \declaretheorem[style=plain,
+        numberwithin=section]{theorem}
+      \declaretheorem[style=definition,
+        sibling=theorem]{definition}
+      \declaretheorem[style=remark,
+        name=Hinweis,
+        sibling=theorem]{remark}
+    \end{lstlisting}
+  \end{Block}
+
+  \xxx
+
+  \begin{zebratabular}{lL{6cm}}
+    \headerrow Option & Zweck \\
+    \texttt{style} & Darstellung des Theorems \\
+    \texttt{numberwithin} & Nummerierung nach Abschnitt \\
+    \texttt{sibling} & gemeinsame Nummerierung \\
+    \texttt{name} & dargestellter Name 
+  \end{zebratabular}
+\end{Frame}
+
+\begin{Frame}{typische Arten von Theoremen}
+  \begin{zebratabular}{llL{48mm}}
+    \headerrow Art & Stil & Zweck \\
+    Definition & \texttt{definition} & Einführung eines Begriffs. \\
+    Theorem & \texttt{plain} & Wichtiger Satz mit Beweis. \\
+    Lemma & \texttt{plain} & Hilfssatz mit (langem) Beweis für ein folgendes Theorem. \\
+    Korollar & \texttt{plain} & Folgerung aus Theorem mit (einfachem) Beweis. \\
+    Beispiel & \texttt{definition} & Beispiel für Verständnis. \\
+    Anmerkung & \texttt{remark} & Weiterführender Hinweis.
+  \end{zebratabular}
+\end{Frame}
+
+\begin{Frame}{Auf Theoreme verweisen}
+  \begin{center}
+    \includegraphics[width=6.5cm]{demo/theorems-lemma}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}[fragile]{Auf Theoreme verweisen}
+  \begin{columns}
+    \column{.5\textwidth}
+      \begin{lstlisting}[
+          gobble=8,
+          morekeywords={[2]theorem,definition,proof,
+            remark,lemma,corollary}
+        ]
+        \begin{lemma}
+          \label{lmm-easy}
+          \LaTeX\ ist einfach.
+        \end{lemma}
+
+        \begin{proof}
+          Jeder kann es lernen.
+        \end{proof}
+
+        \begin{lemma}
+          \label{lmm-fun}
+          \LaTeX\ macht Spaß.
+        \end{lemma}
+
+        \begin{proof}
+          \FiveFlowerOpen
+        \end{proof}
+      \end{lstlisting}
+
+    \column{.5\textwidth}
+      \begin{lstlisting}[
+          gobble=8,
+          morekeywords={[2]theorem,definition,proof,
+            remark,lemma,corollary}
+        ]
+        \begin{theorem}
+          \label{thm-love}
+          Alle lieben \LaTeX.
+        \end{theorem}
+
+        \begin{proof}
+          m. \autoref{lmm-easy}
+          u. \autoref{lmm-fun}.
+        \end{proof}
+
+        \begin{corollary}
+          \LaTeX\ ist gut.
+        \end{corollary}
+
+        \begin{proof}
+          a. \autoref{thm-love}.
+        \end{proof}
+      \end{lstlisting}
+  \end{columns}
+\end{Frame}
 
 \mode
 <article>
@@ -1506,15 +1627,28 @@
 
 \begin{Frame}[fragile]{Zum Weiterlesen}
   \begin{mybib}
-    \bibitem{Kohm2}
+    \bibitem{Kohm}
       Markus Kohm, Jens-Uwe-Morawski.
       \newblock \emph{KOMA-Script},
-      \newblock \alt<presentation>{\href{http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide.pdf}{\texttt{scrguide.pdf}}}{\url{http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide.pdf}}, Juli 2012.
+      \newblock \alt<presentation>{\href{http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide.pdf}{\texttt{scrguide.pdf}}}{\url{http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide.pdf}}, Dezember 2013.
     \bibitem{Kern}
       Uwe Kern.
       \newblock \emph{Farbspielereien in \LaTeX mit dem xcolor-Paket},
       \newblock Die \TeX nische Komödie 2/2004, S. 35--53,
       \newblock \alt<presentation>{\href{http://jochen-lipps.de/latex/dtk200402.pdf}{\texttt{dtk200402.pdf}}}{\url{http://jochen-lipps.de/latex/dtk200402.pdf}}.
+    \bibitem{Schwarz}
+      Ulrich Schwarz.
+      \newblock \emph{Thmtools Users’ Guide}
+      \newblock \alt<presentation>{\href{http://mirrors.ctan.org/macros/latex/exptl/thmtools/thmtools.pdf}{\texttt{thmtools.pdf}}}{\url{http://mirrors.ctan.org/macros/latex/exptl/thmtools/thmtools.pdf}}, April 2014.
+  \end{mybib}
+\end{Frame}
+
+\begin{Frame}[fragile]{Zum weiteren Weiterlesen}
+  \begin{mybib}
+    \bibitem{Braune}
+      Klaus Braune, Joachim und Marion Lammarsch.
+      \newblock \emph{\LaTeX: Basissystem, Layout, Formelsatz},
+      \newblock Addison-Wesley, Mai 2006.
     \bibitem{Kopka}
       Helmut Kopka.
       \newblock \emph{\LaTeX, Band 1: Einführung},

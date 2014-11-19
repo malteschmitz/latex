@@ -82,12 +82,12 @@
     chapter*,part*,%
     qedhere,usetheme,useinnertheme,useoutertheme,%
     pause,uncover,only,alert,onslide,mode,mode*,usetikzlibrary,%
-    draw,filldraw,path,node,usefonttheme,setbeamertemplate},%
+    draw,filldraw,path,node,usefonttheme,setbeamertemplate,%
+    declaretheorem},%
   % LaTeX environments
   morekeywords={[2]lstlisting,document,letter,center,flushleft,%
     flushright,align,itemize,enumerate,description,tabular,%
-    titlepage,figure,table,frame,tikzpicture,quote,quotation,verse%
-    },%
+    titlepage,figure,table,frame,tikzpicture,quote,quotation,verse},%
   % other things (like packages) to highlight
   morekeywords={[3]listings,textcomp,courier,xcolor,scrartcl,%
     scrlttr2,inputenc,babel,%
@@ -95,7 +95,7 @@
     helvet,geometry,scrpage2,scrreprt,scrbook,%
     article,report,book,hyperref,%
     csquotes,amsmath,amssymb,la,beamer,beamerarticle,%
-    tikz},
+    tikz,amsthm,thmtools},
   alsoletter={0123456789*}
   }%
 
@@ -170,7 +170,10 @@
            {>}{{\textbf{\color{red}>}}}1
 }
 
-\usepackage{tabularx}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 % zebra tables
 \newcommand{\mainrowcolors}{\rowcolors{1}{maincolor!30}{maincolor!9}}

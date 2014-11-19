@@ -18,6 +18,8 @@ all:
 	latexmk -pdf kopfzeile-links
 	latexmk -pdf kopfzeile-mittig
 	latexmk -pdf kopfzeile-ultimativ
+	latexmk -pdf theorems
+	latexmk -pdf theorems-lemma
 	latexmk -pdf maketitle
 	latexmk -pdf titlepage
 	latexmk -pdf margin
@@ -42,6 +44,8 @@ force:
 	latexmk -pdf -g -f kopfzeile-links
 	latexmk -pdf -g -f kopfzeile-mittig
 	latexmk -pdf -g -f kopfzeile-ultimativ
+	latexmk -pdf -g -f theorems
+	latexmk -pdf -g -f theorems-lemma
 	latexmk -pdf -g -f maketitle
 	latexmk -pdf -g -f titlepage
 	latexmk -pdf -g -f margin
@@ -66,6 +70,8 @@ clean:
 	latexmk -pdf -c kopfzeile-links
 	latexmk -pdf -c kopfzeile-mittig
 	latexmk -pdf -c kopfzeile-ultimativ
+	latexmk -pdf -c theorems
+	latexmk -pdf -c theorems-lemma
 	latexmk -pdf -c maketitle
 	latexmk -pdf -c titlepage
 	latexmk -pdf -c margin
@@ -94,6 +100,8 @@ clear:
 	latexmk -pdf -C kopfzeile-links
 	latexmk -pdf -C kopfzeile-mittig
 	latexmk -pdf -C kopfzeile-ultimativ
+	latexmk -pdf -C theorems
+	latexmk -pdf -C theorems-lemma
 	latexmk -pdf -C maketitle
 	latexmk -pdf -C titlepage
 	latexmk -pdf -C margin
