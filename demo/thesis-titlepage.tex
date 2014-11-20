@@ -1,0 +1,53 @@
+\documentclass{scrbook}
+
+\KOMAoptions{
+  parskip=full,
+  DIV=calc
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\xdefinecolor{maincolor}{RGB}{0, 75, 90}
+
+\begin{document}
+\begin{titlepage}
+  \thispagestyle{empty}
+
+  \vspace{1cm}
+  \includegraphics[height=22mm]{beispiel-logo.pdf}
+  
+  \vspace{2.5cm}
+  \LARGE
+  \textbf{\sffamily\color{maincolor}Titelseiten von Bachelorarbeiten\\
+    mit \LaTeX\ setzen}
+
+  \textit{Typesetting Title Pages of Bachelor Thesis\\
+    with \LaTeX}
+
+  \normalfont\normalsize
+  \vspace{2em}
+  \textbf{\sffamily\color{maincolor}Masterarbeit}
+
+  im Rahmen des Studiengangs \\
+  \textbf{\sffamily\color{maincolor}Informatik} \\
+  der Universität zu Lübeck
+
+  \vspace{1em}
+  vorgelegt von \\
+  \textbf{\sffamily\color{maincolor}Max Mustermann}
+
+  \vspace{1em}
+  ausgegeben und betreut von \\
+  \textbf{\sffamily\color{maincolor}Prof. Dr. Erika Mustermann}
+
+  \vfill
+  Lübeck, den 21.11.2014
+\end{titlepage}
+
+\end{document}

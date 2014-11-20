@@ -870,7 +870,126 @@
 \subsection{Titelseite}
 
 \begin{Frame}
-  Schriftgrößen, Schriftvarianten, Positionierung
+  \includegraphics[height=\paperheight,trim=%
+           1cm % left
+           6cm % bottom
+           6cm % right
+           3cm,% top
+           clip=true]{demo/thesis-titlepage.pdf}
+\end{Frame}
+
+\begin{Frame}[fragile]{Schriftarten manuell umschalten}
+  Ein Dokument besitzt
+  \begin{itemize}
+    \item \textsf{eine serifenlose Schriftfamilie}\newline
+      (zum Beispiel für Überschriften)\newline
+      Verwendung durch \lstinline-\textrm- oder \lstinline-\rmfamily-
+    \item \textrm{eine Schriftfamilie mit Serifen}\newline
+      (zum Beispiel für den Fließtext)\newline
+      Verwendung durch \lstinline-\textsf- oder \lstinline-\sffamily-
+    \item \texttt{eine nichtproportionale Schriftfamilie}\newline
+      (zum Beispiel für Quelltext)\newline
+      Verwendung durch \lstinline-\texttt- oder \lstinline-\ttfamily-
+  \end{itemize}
+
+  \xxx
+
+  \begin{exampleblock}{Andere Schriftarten}
+    \begin{itemize}
+      \item Computer Modern ist Standard
+      \item \lstinline-\usepackage{lmodern}- lädt Latin Modern
+      \item Pakete für viele andere Schriftarten vorhanden
+    \end{itemize}
+  \end{exampleblock}
+\end{Frame}
+
+\begin{Frame}[fragile]{Schriftgrößen manuell umschalten}
+  \begin{center}
+    \tiny \lstinline-\tiny-
+
+    \scriptsize \lstinline-\scriptsize-
+
+    \footnotesize \lstinline-\footnotesize-
+
+    \small \lstinline-\small-
+
+    \normalsize \lstinline-\normalsize-
+
+    \large \lstinline-\large-
+
+    \Large \lstinline-\Large-
+
+    \LARGE \lstinline-\LARGE-
+
+    \huge \lstinline-\huge-
+
+    \Huge \lstinline-\Huge-
+  \end{center}
+
+  \normalsize
+\end{Frame}
+
+\begin{Frame}[fragile]{Abstände manuell ergänzen}
+  \begin{itemize}
+    \item \lstinline-\vspace{1cm}-, \lstinline-\hspace{1cm}-\newline
+      für zusätzlichen \alert{v}ertikalen oder \alert{h}orizontalen Abstand
+    \item \lstinline-\vfill-, \lstinline-\hfill-\newline
+      für flexiblen Abstand, sodass Seite voll wird
+  \end{itemize}
+
+  \xxx
+
+  \begin{alertblock}{Achtung}
+    \begin{itemize}
+      \item Nur sinnvoll auf Titelseiten oder Folien.
+      \item In Dokumenten macht \LaTeX\ das besser als Du!
+    \end{itemize}
+  \end{alertblock}
+\end{Frame}
+
+\begin{Frame}[fragile]{Quelltext der Titelseite}{Präambel}
+  \begin{lstlisting}[gobble=4]
+    % Wir wollen das Logo als Grafik einbinden
+    \usepackage{graphicx}
+    
+    % Wir brauchen Farbe
+    \usepackage{xcolor}
+    % Hausfarbe der Uni
+    \xdefinecolor{maincolor}{RGB}{0, 75, 90}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Quelltext der Titelseite}{Umgebung und Logo}
+  \begin{lstlisting}[gobble=4]
+    \begin{titlepage}
+      \thispagestyle{empty}
+
+      \vspace{1cm}
+      \includegraphics[height=22mm]%
+        {beispiel-logo.pdf}
+
+      ...
+    \end{titlepage}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Quelltext der Titelseite}{Titel}
+  \begin{lstlisting}[gobble=4]
+    \vspace{2.5cm}
+    \LARGE
+    \textbf{\sffamily\color{maincolor}
+      Titelseiten von Bachelorarbeiten\\
+      mit \LaTeX\ setzen}
+
+    \textit{Typesetting Title Pages
+      of Bachelor Thesis\\
+      with \LaTeX}
+
+    \normalfont\normalsize
+
+    \vspace{2em}
+    \textbf{\sffamily\color{maincolor}Masterarbeit}
+  \end{lstlisting}
 \end{Frame}
 
 \subsection{Kopf- und Fußzeilen}

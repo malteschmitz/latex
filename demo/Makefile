@@ -12,6 +12,7 @@ all:
 	latexmk -pdf beamer-Frankfurt
 	latexmk -pdf beamer-Luebeck
 	latexmk -pdf brief
+	latexmk -pdf thesis-titlepage
 	latexmk -pdf example
 	latexmk -pdf hello
 	latexmk -pdf kopfzeile-standard
@@ -38,6 +39,7 @@ force:
 	latexmk -pdf -g -f beamer-Frankfurt
 	latexmk -pdf -g -f beamer-Luebeck
 	latexmk -pdf -g -f brief
+	latexmk -pdf -g -f thesis-titlepage
 	latexmk -pdf -g -f example
 	latexmk -pdf -g -f hello
 	latexmk -pdf -g -f kopfzeile-standard
@@ -64,6 +66,7 @@ clean:
 	latexmk -pdf -c beamer-Frankfurt
 	latexmk -pdf -c beamer-Luebeck
 	latexmk -pdf -c brief
+	latexmk -pdf -c thesis-titlepage
 	latexmk -pdf -c example
 	latexmk -pdf -c hello
 	latexmk -pdf -c kopfzeile-standard
@@ -94,6 +97,7 @@ clear:
 	latexmk -pdf -C beamer-Frankfurt
 	latexmk -pdf -C beamer-Luebeck
 	latexmk -pdf -C brief
+	latexmk -pdf -C thesis-titlepage
 	latexmk -pdf -C example
 	latexmk -pdf -C hello
 	latexmk -pdf -C kopfzeile-standard
