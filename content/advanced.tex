@@ -967,36 +967,46 @@
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[fragile]{Quelltext der Titelseite}{Umgebung und Logo}
+\begin{Frame}[fragile]{Quelltext der Titelseite}
   \begin{lstlisting}[gobble=4]
     \begin{titlepage}
-      \thispagestyle{empty}
-
-      \vspace{1cm}
-      \includegraphics[height=22mm]%
+      \includegraphics[height=25mm]
         {beispiel-logo.pdf}
+      
+      \vspace{2.5cm}\LARGE
+      \textbf{\sffamily\color{maincolor}
+        Titelseiten von Bachelorarbeiten\\
+        mit \LaTeX\ setzen}
 
-      ...
-    \end{titlepage}
+      \textit{Typesetting Title Pages
+        of Bachelor Thesis\\
+        with \LaTeX}
+
+      \normalfont\normalsize\vspace{2em}
+      \textbf{\sffamily\color{maincolor}
+        Masterarbeit}
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[fragile]{Quelltext der Titelseite}{Titel}
+\begin{Frame}[fragile]{Quelltext der Titelseite}
   \begin{lstlisting}[gobble=4]
-    \vspace{2.5cm}
-    \LARGE
-    \textbf{\sffamily\color{maincolor}
-      Titelseiten von Bachelorarbeiten\\
-      mit \LaTeX\ setzen}
+      im Rahmen des Studiengangs \\
+      \textbf{\sffamily\color{maincolor}
+        Informatik} \\
+      der Universität zu Lübeck
 
-    \textit{Typesetting Title Pages
-      of Bachelor Thesis\\
-      with \LaTeX}
+      \vspace{1em}
+      vorgelegt von \\
+      \textbf{\sffamily\color{maincolor}
+        Max Mustermann}
 
-    \normalfont\normalsize
+      \vspace{1em}
+      ausgegeben und betreut von \\
+      \textbf{\sffamily\color{maincolor}
+        Prof. Dr. Erika Musterfrau}
 
-    \vspace{2em}
-    \textbf{\sffamily\color{maincolor}Masterarbeit}
+      \vfill Lübeck, den 21.11.2014
+    \end{titlepage}
   \end{lstlisting}
 \end{Frame}
 
@@ -1417,6 +1427,8 @@
   große Dokumente organisieren
 
   include
+
+  includeonly
 \end{Frame}
 
 \jonny
