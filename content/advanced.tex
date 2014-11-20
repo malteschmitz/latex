@@ -1380,7 +1380,7 @@
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[label=current,fragile]{Gestaltung der Abschnitte}
+\begin{Frame}[fragile]{Gestaltung der Abschnitte}
   \begin{enumerate}
     \item \lstinline-\frontmatter- Vorspann \begin{itemize}
         \item keine Kapitelnummerierung
@@ -1406,9 +1406,9 @@
   \end{enumerate}
 \end{Frame}
 
-\subsection{Dateien einbinden}
+\subsection{Modulare Dokumente}
 
-\begin{Frame}{Dateien einbinden}
+\begin{Frame}{Modulare Dokumente}
   \tikzset{
     every node/.style={
       inner sep=1pt,
@@ -1434,28 +1434,28 @@
         \node[examplecolor,label=below:\texttt{\ \ main}] (main) {\icon[1]{TEX}};
 
         \uncover<7->{%
-          \node[maincolor,label=\texttt{\ \ config}, above left=of main] (config) {\icon[2]{TEX}};
+          \node[maincolor,label=\texttt{\ \ styles}, above left=of main] (config) {\icon[2]{TEX}};
           \path[very thick]
             (config.east) edge[->] node[pos=.6, swap]
               {\texttt{\color{texcs}\bfseries\textbackslash input}} (main);
         }
 
         \uncover<8->{%
-          \node[maincolor,label=\texttt{\ \ chap1}, above right=of main] (chap1) {\icon[3]{TEX}};
+          \node[maincolor,label=\texttt{\ \ intro}, above right=of main] (chap1) {\icon[3]{TEX}};
           \path[very thick]
             (chap1.west) edge[->] node[pos=.6]
               {\texttt{\color{texcs}\bfseries\textbackslash include}} (main);
         }
 
         \uncover<9->{%
-          \node[maincolor,label=\texttt{\ \ chap2}, below right=of main] (chap2) {\icon[5]{TEX}};
+          \node[maincolor,label=\texttt{\ \ methods}, below right=of main] (chap2) {\icon[5]{TEX}};
           \path[very thick]
             (chap2.west) edge[->,shorten >=1.6em] node[pos=.5, swap]
               {\texttt{\color{texcs}\bfseries\textbackslash include}} (main);
         }
 
         \uncover<10->{%
-          \node[maincolor,label=\texttt{\ \ chap3}, below left=of main] (chap3) {\icon[4]{TEX}};
+          \node[maincolor,label=\texttt{\ \ conclusion}, below left=of main] (chap3) {\icon[4]{TEX}};
           \path[very thick]
             (chap3.east) edge[->,shorten >=1.6em] node[pos=.5]
               {\texttt{\color{texcs}\bfseries\textbackslash include}} (main);
@@ -1465,13 +1465,69 @@
   \end{center}
 \end{Frame}
 
-\begin{Frame}
-  große Dokumente organisieren
+\begin{Frame}[fragile]{Modulare Struktur}
+  \begin{columns}
+    \column{.4\textwidth}
+    \begin{tikzpicture}[%
+      node distance=0,%
+      grow via three points={one child at (1ex,-0.7) and
+      two children at (1ex,-0.7) and (1ex,-1.4)},
+      edge from parent path={([xshift=6pt]\tikzparentnode.south west) |- (\tikzchildnode.west)}]
+      \tikzstyle{every node}=[thick,anchor=west,xshift=-3mm]
+      \tikzstyle{every child}=[thick,draw=black]
+      \tikzstyle{dir}=[draw=gray,fill=gray!30]
+      \tikzstyle{optional}=[dashed]
+      \node [dir] {thesis}
+        child { node [dir] {content}
+          child { node [maincolor] {intro.tex}}
+          child { node [maincolor] (methods) {methods.tex}}
+          child { node [maincolor] (conclusion) {conclusion.tex}}
+        }
+        child [missing] {}
+        child [missing] {}
+        child [missing] {}
+        child { node [dir] {images}
+          child { node {\textellipsis}}
+        }
+        child [missing] {}
+        child { node [dir] {preamble}
+          child { node [maincolor] {styles.tex}}
+        }
+        child [missing] {}
+        child { node [examplecolor] {main.tex}};
+        \only<2>\path[alertedcolor, line width=1pt, line cap=round, shorten >=0pt,shorten <=0pt]
+          (methods.east) edge (methods.west);
+        \only<2>\path[alertedcolor, line width=1pt, line cap=round, shorten >=0pt,shorten <=0pt]
+          (conclusion.west) edge (conclusion.east);
+      \end{tikzpicture}
+    \column{0.6\textwidth}
+    \begin{lstlisting}[gobble=6,escapechar=-]
+      \input{preamble/styles}
+      \includeonly{-\alt<2>{intro}{}-}
+      \begin{document}
 
-  include
+      \frontmatter
+      \maketitle
+      \tableofcontents
 
-  includeonly
+      \mainmatter
+      \include{content/intro}
+      \include{content/methods}
+      \include{content/conclusion}
+      \end{document}
+    \end{lstlisting}
+  \end{columns}
 \end{Frame}
+
+\begin{Frame}[fragile]{Die Befehle}
+  \begin{itemize}[]
+    \item \lstinline-\input- Fügt den Inhalt der Datei an dieser Stelle ein.
+    \pause
+    \item \lstinline-\include- Fügt auch den Inhalt der Datei an dieser Stelle ein und Seitenumbrüche davor und dahinter.
+    \item \lstinline-\includeonly- Steuert die Verwendung von \lstinline-\include-.
+  \end{itemize}
+\end{Frame}
+
 
 \jonny
 
