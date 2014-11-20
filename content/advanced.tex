@@ -1360,8 +1360,50 @@
 
 \subsection{Abschnitte}
 
-\begin{Frame}
-  frontmatter, mainmatter, backmatter, appendix
+\begin{Frame}[fragile]{\lstinline-scrbook-: Abschnitte langer Dokumente}
+  \begin{lstlisting}[gobble=4]
+    \begin{document}
+      % Beginn des Vorspanns
+      \frontmatter
+      \maketitle
+      \tableofcontents
+      % Beginn des Hauptteils
+      \mainmatter
+      \chapter{Einführung}
+      % Beginn des Anhangs
+      \appendix
+      \chapter{Anhang 1}
+      % Beginn des Nachspanns
+      \backmatter
+      % z.B. Literaturverzeichnis
+    \end{document}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[label=current,fragile]{Gestaltung der Abschnitte}
+  \begin{enumerate}
+    \item \lstinline-\frontmatter- Vorspann \begin{itemize}
+        \item keine Kapitelnummerierung
+        \item römische Seitennummerierung
+      \end{itemize}
+    \pause
+    \item \lstinline-\mainmatter- Hauptteil \begin{itemize}
+        \item arabische Kapitelnummerierung
+        \item Neubeginn Seitennummerierung
+        \item arabische Seitennummerierung
+      \end{itemize}
+    \pause
+    \item \lstinline-\appendix- Anhang \begin{itemize}
+        \item Neubeginn Kapitelnummerierung
+        \item alphabetische Kapitelnummerierung
+        \item arabische Seitennummerierung
+      \end{itemize}
+    \pause
+    \item \lstinline-\backmatter- Nachspann \begin{itemize}
+        \item keine Kapitelnummerierung
+        \item arabische Seitennummerierung
+      \end{itemize}
+  \end{enumerate}
 \end{Frame}
 
 \subsection{Dateien einbinden}
