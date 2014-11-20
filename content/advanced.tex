@@ -1360,22 +1360,21 @@
 
 \subsection{Abschnitte}
 
-\begin{Frame}[fragile]{\lstinline-scrbook-: Abschnitte langer Dokumente}
+\begin{Frame}[fragile]{Abschnitte langer Dokumente (\lstinline-scrbook-)}
   \begin{lstlisting}[gobble=4]
     \begin{document}
-      % Beginn des Vorspanns
-      \frontmatter
-      \maketitle
+      \frontmatter % Vorspann
+      \begin{titlepage} ... \end{titlepage}
       \tableofcontents
-      % Beginn des Hauptteils
-      \mainmatter
-      \chapter{Einführung}
-      % Beginn des Anhangs
-      \appendix
-      \chapter{Anhang 1}
-      % Beginn des Nachspanns
-      \backmatter
-      % z.B. Literaturverzeichnis
+
+      \mainmatter % Hauptteil
+      \chapter{Einleitung}
+
+      \appendix % Anhang
+      \chapter{Glossar}
+      
+      \backmatter % Nachspann
+      \listoffigures
     \end{document}
   \end{lstlisting}
 \end{Frame}
@@ -1468,66 +1467,64 @@
 \begin{Frame}[fragile]{Modulare Struktur}
   \begin{columns}
     \column{.4\textwidth}
-    \begin{tikzpicture}[%
-      node distance=0,%
-      grow via three points={one child at (1ex,-0.7) and
-      two children at (1ex,-0.7) and (1ex,-1.4)},
-      edge from parent path={([xshift=6pt]\tikzparentnode.south west) |- (\tikzchildnode.west)}]
-      \tikzstyle{every node}=[thick,anchor=west,xshift=-3mm]
-      \tikzstyle{every child}=[thick,draw=black]
-      \tikzstyle{dir}=[draw=gray,fill=gray!30]
-      \tikzstyle{optional}=[dashed]
+    \begin{tikzpicture}[
+        node distance=0,
+        grow via three points={one child at (0,-0.7) and two children at (0,-0.7) and (0,-1.4)},
+        edge from parent path={([xshift=6pt]\tikzparentnode.south west) |- (\tikzchildnode.west)},
+        every node/.style={thick,anchor=west,xshift=-3mm,font=\ttfamily,text width=4em},
+        every child/.style={thick,draw=black},
+        dir/.style={draw=maincolor,fill=maincolor!10},
+        optional/.style={dashed}
+      ]
       \node [dir] {thesis}
+        child { node [dir] {inc}
+          child { node {title}}
+          child { node {styles}}
+        }
+        child [missing] {}
+        child [missing] {}
         child { node [dir] {content}
-          child { node [maincolor] {intro.tex}}
-          child { node [maincolor] (methods) {methods.tex}}
-          child { node [maincolor] (conclusion) {conclusion.tex}}
+          child { node {intro}}
+          child { node (methods) {methods}}
+          child { node (summary) {summary}}
         }
         child [missing] {}
         child [missing] {}
         child [missing] {}
-        child { node [dir] {images}
-          child { node {\textellipsis}}
-        }
-        child [missing] {}
-        child { node [dir] {preamble}
-          child { node [maincolor] {styles.tex}}
-        }
-        child [missing] {}
-        child { node [examplecolor] {main.tex}};
-        \only<2>\path[alertedcolor, line width=1pt, line cap=round, shorten >=0pt,shorten <=0pt]
-          (methods.east) edge (methods.west);
-        \only<2>\path[alertedcolor, line width=1pt, line cap=round, shorten >=0pt,shorten <=0pt]
-          (conclusion.west) edge (conclusion.east);
+        child { node {main}};
+        \only<2>\path[alertedcolor, line width=1pt, line cap=rounded]
+          (methods.south west) edge (methods.north east);
+        \only<2>\path[alertedcolor, line width=1pt, line cap=rounded]
+          (summary.south west) edge (summary.north east);
       \end{tikzpicture}
     \column{0.6\textwidth}
     \begin{lstlisting}[gobble=6,escapechar=-]
-      \input{preamble/styles}
-      \includeonly{-\alt<2>{intro}{}-}
+      \documentclass{scrbook}
+      \input{inc/styles}
+      -\alt<2>{\textcolor{texcs}{\bfseries\textbackslash includeonly}\textcolor{red}{\bfseries\{}content/intro\textcolor{red}{\bfseries\}}}{\textcolor{comment}{\itshape\% \textbackslash includeonly}}-
       \begin{document}
+        \frontmatter
+        \input{inc/title}
+        \tableofcontents
 
-      \frontmatter
-      \maketitle
-      \tableofcontents
-
-      \mainmatter
-      \include{content/intro}
-      \include{content/methods}
-      \include{content/conclusion}
+        \mainmatter
+        \include{content/intro}
+        \include{content/methods}
+        \include{content/summary}
       \end{document}
     \end{lstlisting}
   \end{columns}
 \end{Frame}
 
-\begin{Frame}[fragile]{Die Befehle}
-  \begin{itemize}[]
-    \item \lstinline-\input- Fügt den Inhalt der Datei an dieser Stelle ein.
-    \pause
-    \item \lstinline-\include- Fügt auch den Inhalt der Datei an dieser Stelle ein und Seitenumbrüche davor und dahinter.
-    \item \lstinline-\includeonly- Steuert die Verwendung von \lstinline-\include-.
-  \end{itemize}
+\begin{Frame}[fragile]{Befehle für modulare Struktur}
+  \begin{tabular}{rL{6cm}}
+    \lstinline-\input- & Inhalt der Datei einfügen. \\
+    \lstinline-\include- & Inhalt der Datei einfügen und \newline
+      Seitenumbrüche davor und dahinter.\\
+    \lstinline-\includeonly- & Liste der von \lstinline-\include- \newline
+      berücksichtigten Dateien.\\
+  \end{tabular}
 \end{Frame}
-
 
 \jonny
 

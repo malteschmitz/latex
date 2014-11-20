@@ -1,0 +1,22 @@
+\documentclass{scrbook}
+
+\input{inc/style}
+
+%\includeonly{}
+
+\begin{document}
+  \frontmatter
+  \input{inc/title}
+  \tableofcontents
+  
+  \mainmatter
+  \include{content/intro}
+  \include{content/methods}
+  \include{content/summary}
+
+  \appendix
+  \include{content/glossary}
+
+  \backmatter
+  \listoffigures
+\end{document}
