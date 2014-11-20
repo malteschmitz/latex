@@ -870,12 +870,20 @@
 \subsection{Titelseite}
 
 \begin{Frame}
-  \includegraphics[height=\paperheight,trim=%
-           1cm % left
-           6cm % bottom
-           6cm % right
-           3cm,% top
-           clip=true]{demo/thesis-titlepage.pdf}
+  \begin{center}
+    \fbox{\includegraphics[height=.9\paperheight]{demo/thesis-titlepage.pdf}}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}
+  \begin{center}
+    \includegraphics[height=\paperheight,trim=%
+      2.6cm % left
+      8.6cm % bottom
+      6cm % right
+      8.6cm,% top
+      clip=true]{demo/thesis-titlepage.pdf}
+  \end{center}
 \end{Frame}
 
 \begin{Frame}[fragile]{Schriftarten manuell umschalten}
