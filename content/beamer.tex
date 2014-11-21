@@ -19,13 +19,16 @@
 
 \begin{Frame}{Was ist \beamer?}
   \begin{itemize}
-    \item \alert{Dokumentenklasse für \LaTeX} für die Erzeugung von Präsentationen.\newline
-      (Diese Präsentation und das Skript wurden mit \beamer\ erzeugt.)
+    \item \alert{Dokumentenklasse für \LaTeX} für die Erzeugung von Präsentationen.
+      \only<article>{\newline(Diese Präsentation und das Skript wurden mit \beamer\ erzeugt.)}
     \item Keine eigene und \alert{keine graphische Anwendung}.
-    \item \beamer\ ist in \MiKTeX\ und \TeX\ Live enthalten.\newline
+    \item \strut\beamer\ ist in \MiKTeX\ und \TeX\ Live enthalten.\newline
       (\alert{Es kann direkt losgehen}.)
   \end{itemize}
 \end{Frame}
+
+\mode
+<article>
 
 \begin{Frame}{Historie}
   \begin{description}
@@ -37,6 +40,9 @@
     \item[2014] Aktuelle Version 3.33 wird kontinuierlich weiter entwickelt.
   \end{description}
 \end{Frame}
+
+\mode
+<all>
 
 \begin{Frame}{Workflow}
   \lstset{language={}}
@@ -62,7 +68,7 @@
   \end{itemize}
 \end{Frame}
 
-\begin{Frame}{\beamer vs. PowerPoint}
+\begin{Frame}{\beamer\ vs. PowerPoint}
   \begin{zebratabular}{rcc}
     \headerrow Aspekte & \beamer\ & PowerPoint \\
     Erlernen ohne \LaTeX-Kenntnisse & \badmark\badmark & \goodmark \\

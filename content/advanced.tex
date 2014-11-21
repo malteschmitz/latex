@@ -4,10 +4,11 @@
 \chapter{Abschlussarbeiten setzen}
 
 \targets{
+  
+  \item Lange Dokumente gut strukturieren können.
+  \item Papierformate und Satzspiegel kennen lernen.
+  \item Sehen, wie man Dokumente vom Titelblatt bis zur Kopfzeile gestaltet.
   \item Literaturverzeichnisse und Zitatverweise setzen können.
-  \item Mit eigenen Befehlen semantische \LaTeX-Dokumente erzeugen.
-  \item DIN-Briefe mit \LaTeX\ setzen können.
-  \item Gestalten eigener Layouts mit \LaTeX\ kennen lernen.
 }
 
 \website
@@ -37,7 +38,7 @@
 \begin{Frame}[fragile]{Farben definieren}{RGB-Modell}
   \begin{lstlisting}[gobble=4]
     % Red, Green, Blue von 0 bis 255
-    \xdefinecolor{uni-luebeck}{RGB}{0, 120, 140}
+    \xdefinecolor{uni-luebeck}{RGB}{0, 75, 90}
   \end{lstlisting}
 
   \xxx
@@ -444,7 +445,9 @@
       \begin{lstlisting}[
           gobble=8,
           morekeywords={[2]theorem,definition,proof,
-            remark,lemma,corollary}
+            remark,lemma,corollary},
+          escapechar=|,
+          frame=topline
         ]
         \begin{lemma}
           \label{lmm-easy}
@@ -453,8 +456,8 @@
 
         \begin{proof}
           Jeder kann es lernen.
-        \end{proof}
-
+        \end{proof}|\pause|
+        
         \begin{lemma}
           \label{lmm-fun}
           \LaTeX\ macht Spaß.
@@ -465,11 +468,14 @@
         \end{proof}
       \end{lstlisting}
 
+    \pause
     \column{.5\textwidth}
       \begin{lstlisting}[
           gobble=8,
           morekeywords={[2]theorem,definition,proof,
-            remark,lemma,corollary}
+            remark,lemma,corollary},
+          escapechar=|,
+          frame=bottomline
         ]
         \begin{theorem}
           \label{thm-love}
@@ -479,8 +485,8 @@
         \begin{proof}
           m. \autoref{lmm-easy}
           u. \autoref{lmm-fun}.
-        \end{proof}
-
+        \end{proof}|\pause|
+        
         \begin{corollary}
           \LaTeX\ ist gut.
         \end{corollary}
@@ -1845,14 +1851,15 @@
 
 \begin{frame}[fragile]{Zusammenfassung}
   \begin{enumerate}
-    \item Die Definition \alert{eigener Befehle und Umgebungen}
-      erzeugt \alert{mehr Struktur} und \alert{Semantik} im \LaTeX-Dokument,
-      sodass die \alert{Form zentral konfigurierbar} wird.
+    \item \LaTeX\ ist sehr gut geeignet für \alert{umfangreiche Dokumente}:
+      Es bietet viele Möglichkeiten zur \alert{Strukturierung} und
+      \alert{Gliederung}. Ein Dokument kann aus
+      \alert{vielen Quelldateien} bestehen.
     \item \alert{\BibTeX} generiert aus einer \alert{Datenbank} in einem eigenen Format
       ein \alert{Literaturverzeichnis}. Die \alert{Zitierweise} kann dabei mit
       \lstinline-\bibliographystyle- eingestellt werden.
-    \item Mit \alert{KOMA-Script} können sehr leicht \alert{Briefe
-          nach DIN~5008} gesetzt, \alert{Papierformate} eingestellt, \alert{Satzspiegel}
+    \item Mit \alert{KOMA-Script} können sehr leicht \alert{Papierformate}
+      eingestellt, \alert{Satzspiegel}
       berechnet, \alert{Kopf- und Fußzeilen} angepasst werden und vieles
       mehr konfiguriert werden.
     \item \alert{Lies die Anleitung!} Sie ist \emph{sehr} gut.
