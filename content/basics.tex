@@ -19,12 +19,12 @@
 \subsection{Einordnung}
 
 \begin{Frame}{Dimensionen eines Dokumentes}
-  \begin{onlyenv}<1>
+  \begin{onlyenv}<presentation:1| article:0>
     \begin{center}
       Inhalt ist die Bedeutung eines Textes.
     \end{center}
   \end{onlyenv}
-  \begin{onlyenv}<2>
+  \begin{onlyenv}<presentation:2| article:0>
     \begin{description}
       \item[\textnormal{\color{black}Inhalt}] ist die \emph{Bedeutung} eines Textes.
       \item[\textnormal{\color{black}Struktur}] ist der \emph{Aufbau} eines Textes.
@@ -362,7 +362,7 @@
   \xxx\pause
 
   \inhead{Optionale Parameter}
-  \begin{onlyenv}<1-2>
+  \begin{onlyenv}<presentation:1-2| article:0>
     \begin{lstlisting}[gobble=6]
       Vorm Senatsgebäude stieß Caesar\footnote{
         geb. 13. Juli 100 v. Chr. in Rom;
@@ -381,7 +381,7 @@
   \begin{minipage}{\textwidth}
     \renewcommand{\thempfootnote}{\arabic{mpfootnote}}
     Vorm Senatsgebäude stieß
-      Caesar\alt<1-2>{\footnote{
+      Caesar\alt<presentation:1-2| article:0>{\footnote{
         geb. 13. Juli 100 v. Chr. in Rom;
         gest. 15. März 44 v. Chr. ebenda}}
         {\footnote[42]{
@@ -399,7 +399,7 @@
       z.\,B. \lstinline-\emph{hervor}-
     \item Weitere Parameter folgen in geschweiften Klammern.\newline
       z.\,B. \lstinline-\textcolor{red}{Rosen}-
-    \item Optionale Paramter stehen in eckigen Klammern.
+    \item Optionale Paramter stehen in eckigen Klammern.\newline
       z.\,B. \lstinline-\footnote[42]{geb.}-
   \end{itemize}
 \end{Frame}
@@ -1028,7 +1028,7 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
 <article>
 
 \begin{Block}{Minuszeichen als binärer und unärer Operator}
-  \begin{lstlisting}[gobble=8]
+  \begin{lstlisting}[gobble=4]
     $2-4=-2$ (nicht -2)
   \end{lstlisting}
   $2-4=-2$ (nicht -2)

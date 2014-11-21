@@ -44,17 +44,17 @@
   \xxx
 
   \begin{itemize}
-    \item Red / Rot
+    \item Red / Rot\newline
       \foreach \r in {0, ..., 255} {%
         \xdefinecolor{current}{RGB}{\r, 0, 0}%
         \textcolor{current}{\rule{.94117647058pt}{3ex}}%
       }
-    \item Green / Grün
+    \item Green / Grün\newline
       \foreach \g in {0, ..., 255} {%
         \xdefinecolor{current}{RGB}{0, \g, 0}%
         \textcolor{current}{\rule{.94117647058pt}{3ex}}%
       }
-    \item Blue / Blau
+    \item Blue / Blau\newline
       \foreach \b in {0, ..., 255} {%
         \xdefinecolor{current}{RGB}{0, 0, \b}%
         \textcolor{current}{\rule{.94117647058pt}{3ex}}%
@@ -71,17 +71,17 @@
   \xxx
 
   \begin{itemize}
-    \item Hue / Farbton
+    \item Hue / Farbton\newline
       \foreach \h in {0, ..., 240} {%
         \xdefinecolor{current}{HSB}{\h, 240, 240}%
         \textcolor{current}{\rule{1pt}{3ex}}%
       }
-    \item Saturation / Sättigung
+    \item Saturation / Sättigung\newline
       \foreach \s in {0, ..., 240} {%
         \xdefinecolor{current}{HSB}{0, \s, 240}%
         \textcolor{current}{\rule{1pt}{3ex}}%
       }
-    \item Brightness / Helligkeit
+    \item Brightness / Helligkeit\newline
       \foreach \b in {0, ..., 240} {%
         \xdefinecolor{current}{HSB}{0, 240, \b}%
         \textcolor{current}{\rule{1pt}{3ex}}%
@@ -877,9 +877,16 @@
 
 \begin{Frame}
   \begin{center}
-    \fbox{\includegraphics[height=.9\paperheight]{demo/thesis-titlepage.pdf}}
+    \alt<presentation>{
+      \fbox{\includegraphics[height=.9\paperheight]{demo/thesis-titlepage.pdf}}
+    }{
+      \fbox{\includegraphics[width=.5\textwidth]{demo/thesis-titlepage.pdf}}
+    }
   \end{center}
 \end{Frame}
+
+\mode
+<presentation>
 
 \begin{Frame}
   \begin{center}
@@ -891,6 +898,9 @@
       clip=true]{demo/thesis-titlepage.pdf}
   \end{center}
 \end{Frame}
+
+\mode
+<all>
 
 \begin{Frame}[fragile]{Schriftarten manuell umschalten}
   Ein Dokument besitzt
@@ -1399,7 +1409,14 @@
 \end{Frame}
 
 \begin{Frame}[fragile]{Gestaltung der Abschnitte}
-  \parbox[b]{6.2cm}{
+  \newlength{\descriptionwidth}
+  \alt<presentation>{%
+    \setlength{\descriptionwidth}{6.2cm}
+  }{%
+    \setlength{\descriptionwidth}{7.2cm}
+  }
+  
+  \parbox[b]{\descriptionwidth}{
     \textcolor{texcs}{\ttfamily\bfseries\textbackslash frontmatter} Vorspann\\
     \strut\ \textcolor{maincolor}{--} keine Kapitelnummern\\
     \strut\ \textcolor{maincolor}{--} römische Seitennummern}
@@ -1407,7 +1424,7 @@
 
   \xxx
 
-  \parbox[b]{6.2cm}{
+  \parbox[b]{\descriptionwidth}{
     \textcolor{texcs}{\ttfamily\bfseries\textbackslash mainmatter} Hauptteil\\
     \strut\ \textcolor{maincolor}{--} arabische Kapitelnummern\\
     \strut\ \textcolor{maincolor}{--} \alert{neue} arabische Seitennummern}
@@ -1415,7 +1432,7 @@
   
   \xxx
 
-  \parbox[b]{6.2cm}{
+  \parbox[b]{\descriptionwidth}{
     \textcolor{texcs}{\ttfamily\bfseries\textbackslash appendix} Anhang\\
     \strut\ \textcolor{maincolor}{--} \alert{neue} alphabetische Kapitelnummern\\
     \strut\ \textcolor{maincolor}{--} arabische Seitennummern}
@@ -1423,7 +1440,7 @@
   
   \xxx
 
-  \parbox[b]{6.2cm}{
+  \parbox[b]{\descriptionwidth}{
     \textcolor{texcs}{\ttfamily\bfseries\textbackslash backmatter} Nachspann\\
     \strut\ \textcolor{maincolor}{--} keine Kapitelnummern\\
     \strut\ \textcolor{maincolor}{--} arabische Seitennummern}
@@ -1446,7 +1463,7 @@
   }
   \begin{center}
     \begin{tikzpicture}
-      \node[inner sep=10pt] (large) {\tikz\node[examplecolor,label=\texttt{\ \ main}] {\only<1>{\icon[2]{TEX}}\only<2>{\icon[10]{TEX}}\only<3>{\icon[20]{TEX}}\only<4->{\icon[30]{TEX}}};};
+      \node[inner sep=10pt] (large) {\tikz\node[examplecolor,label=\texttt{\ \ main}] {\only<presentation:1| article:0>{\icon[2]{TEX}}\only<presentation:2| article:0>{\icon[10]{TEX}}\only<presentation:3| article:0>{\icon[20]{TEX}}\only<4->{\icon[30]{TEX}}};};
       \onslide<5->
       \path[alertedcolor, line width=3pt, line cap=round, shorten >=0pt,shorten <=0pt]
         (large.north east) edge (large.south west)
