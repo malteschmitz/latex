@@ -1,0 +1,272 @@
+.fork {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+.fixed {
+  position: fixed;
+  z-index: 10;
+}
+
+@media print {
+  .fork {
+    display: none;
+  }
+}
+
+.license {
+  float: left;
+  margin: 5px 10px 5px 0px;
+}
+
+body {
+  padding-top: 1px; /* Prevents affix from flickering---whyever. */
+}
+
+/*
+ * Side navigation
+ *
+ * Scrollspy and affixed enhanced navigation to highlight sections and secondary
+ * sections of docs content.
+ */
+
+/* By default it's not affixed in mobile views, so undo that */
+.latex-sidebar.affix {
+  position: static;
+}
+
+/* First level of nav */
+.latex-sidenav {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top:    10px;
+  padding-bottom: 10px;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #f6ede3;
+  border-radius: 5px;
+}
+
+/* All levels of nav */
+.latex-sidebar .nav > li > a {
+  display: block;
+  color: #676058;
+  padding: 5px 20px;
+}
+.latex-sidebar .nav > li > a:hover,
+.latex-sidebar .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #ecdfcf;
+  border-right: 2px solid #e6ad6b;
+}
+.latex-sidebar .nav > .active > a,
+.latex-sidebar .nav > .active:hover > a,
+.latex-sidebar .nav > .active:focus > a {
+  font-weight: bold;
+  color: #e0660b;
+  background-color: transparent;
+  border-right: 2px solid #e0660b;
+}
+
+/* Nav: second level (shown on .active) */
+.latex-sidebar .nav .nav {
+  margin-bottom: 8px;
+}
+.latex-sidebar .nav .nav > li > a {
+  padding-top:    3px;
+  padding-bottom: 3px;
+  padding-left: 30px;
+  font-size: 90%;
+}
+
+/* Show and affix the side nav when space allows it */
+@media screen and (min-width: 992px) {
+  /* Widen the fixed sidebar */
+  .latex-sidebar.affix,
+  .latex-sidebar.affix-bottom {
+    width: 213px;
+  }
+  .latex-sidebar.affix {
+    position: fixed; /* Undo the static from mobile first approach */
+    top: 30px;
+  }
+  .latex-sidebar.affix-bottom {
+    position: absolute; /* Undo the static from mobile first approach */
+  }
+  .latex-sidebar.affix-bottom .latex-sidenav,
+  .latex-sidebar.affix .latex-sidenav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 1200px) {
+  /* Widen the fixed sidebar again */
+  .latex-sidebar.affix-bottom,
+  .latex-sidebar.affix {
+    width: 263px;
+  }
+}
+
+/*
+ * Page headers
+ *
+ * Jumbotron-esque headers at the top of every page that's not the homepage.
+ */
+
+p.authors {
+  margin-right: 50pt;
+  position: relative;
+  text-align: right;
+  font-size: 16pt;
+}
+
+p.authors a {
+  padding-left: 25pt;
+}
+
+/* Page headers */
+.latex-header {
+  padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
+  font-size: 16px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+}
+.latex-header p {
+  font-weight: 300;
+  line-height: 1.5;
+}
+.latex-header .container {
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .latex-header {
+    font-size: 21px;
+    text-align: left;
+  }
+  .latex-header h1 {
+    font-size: 60px;
+    line-height: 1;
+  }
+}
+
+/*
+ * Footer
+ *
+ * Separated section of content at the bottom of all pages, save the homepage.
+ */
+
+.latex-footer {
+  padding-top: 40px;
+  padding-bottom: 30px;
+  margin-top: 100px;
+  color: #777;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+}
+.footer-links {
+  margin: 10px 0;
+  text-align: right;
+  padding-left: 0;
+}
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .latex-footer {
+    text-align: left;
+  }
+  .latex-footer p {
+    margin-bottom: 0;
+  }
+}
+
+/*
+ * Slideshow Player
+ *
+ * Styles for the canvas and the player for the slideshow
+ */
+
+/* Display the canvas itself. */
+
+#slideshow canvas {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+#slideshow.fullscreen canvas {
+  border: none;
+  margin: auto;
+  display: block;
+}
+
+#slideshow.no-cursor, #slideshow.no-cursor canvas {
+  cursor: none;
+}
+
+/* Arrange canvas, navigation and footer. */
+
+#jp_container_1, #slide_navigation {
+  float: left;
+}
+
+#slide_navigation {
+  margin: 0 0 0 50px;
+}
+
+#back_to_talks {
+  clear: both;
+  padding-top: 50px;
+}
+
+/* Fixing box model confusion with Bootstrap and jPlayer */
+
+#jp_container_1, #jp_container_1 ul.jp-controls {
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+}
+
+/* Ennable annotation layer for hyperlinks on the canvas. */
+
+.annotationLayer > a {
+    display: block;
+    position: absolute;
+}
+
+.annotationLayer > a:hover {
+    opacity: 0.2;
+    background: #ff0;
+    box-shadow: 0px 2px 10px #ff0;
+}
+
+.annotText > div {
+    z-index: 200;
+    position: absolute;
+    padding: 0.6em;
+    max-width: 20em;
+    background-color: #FFFF99;
+    box-shadow: 0px 2px 10px #333;
+    border-radius: 7px;
+}
+
+.annotText > img {
+    position: absolute;
+    opacity: 0.6;
+}
+
+.annotText > img:hover {
+    opacity: 1;
+}
+
+.annotText > div > h1 {
+    font-size: 1.2em;
+    border-bottom: 1px solid #000000;
+    margin: 0px;
+}
