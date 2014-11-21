@@ -1386,6 +1386,38 @@
 \end{Frame}
 
 \begin{Frame}[fragile]{Gestaltung der Abschnitte}
+  \parbox[b]{6.2cm}{
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash frontmatter} Vorspann\\
+    \strut\ \textcolor{maincolor}{--} keine Kapitelnummern\\
+    \strut\ \textcolor{maincolor}{--} römische Seitennummern}
+  \fcolorbox{white}{examplecolor!10}{\includegraphics[height=1.3cm,page=2]{demo/matters.pdf}}
+
+  \xxx
+
+  \parbox[b]{6.2cm}{
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash mainmatter} Hauptteil\\
+    \strut\ \textcolor{maincolor}{--} arabische Kapitelnummern\\
+    \strut\ \textcolor{maincolor}{--} \alert{neue} arabische Seitennummern}
+  \fcolorbox{white}{examplecolor!10}{\includegraphics[height=1.3cm,page=4]{demo/matters.pdf}} \\
+  
+  \xxx
+
+  \parbox[b]{6.2cm}{
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash appendix} Anhang\\
+    \strut\ \textcolor{maincolor}{--} \alert{neue} alphabetische Kapitelnummern\\
+    \strut\ \textcolor{maincolor}{--} arabische Seitennummern}
+  \fcolorbox{white}{examplecolor!10}{\includegraphics[height=1.3cm,page=6]{demo/matters.pdf}} \\
+  
+  \xxx
+
+  \parbox[b]{6.2cm}{
+    \textcolor{texcs}{\ttfamily\bfseries\textbackslash backmatter} Nachspann\\
+    \strut\ \textcolor{maincolor}{--} keine Kapitelnummern\\
+    \strut\ \textcolor{maincolor}{--} arabische Seitennummern}
+  \fcolorbox{white}{examplecolor!10}{\includegraphics[height=1.3cm,page=8]{demo/matters.pdf}} \\
+\end{Frame}
+
+\begin{Frame}[fragile]{Gestaltung der Abschnitte}
   \begin{enumerate}
     \item \lstinline-\frontmatter- Vorspann \begin{itemize}
         \item keine Kapitelnummerierung

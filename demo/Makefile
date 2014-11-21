@@ -22,6 +22,7 @@ all:
 	latexmk -pdf theorems
 	latexmk -pdf theorems-lemma
 	latexmk -pdf maketitle
+	latexmk -pdf matters
 	latexmk -pdf titlepage
 	latexmk -pdf margin
 
@@ -49,6 +50,7 @@ force:
 	latexmk -pdf -g -f theorems
 	latexmk -pdf -g -f theorems-lemma
 	latexmk -pdf -g -f maketitle
+	latexmk -pdf -g -f matters
 	latexmk -pdf -g -f titlepage
 	latexmk -pdf -g -f margin
 
@@ -76,6 +78,7 @@ clean:
 	latexmk -pdf -c theorems
 	latexmk -pdf -c theorems-lemma
 	latexmk -pdf -c maketitle
+	latexmk -pdf -c matters
 	latexmk -pdf -c titlepage
 	latexmk -pdf -c margin
 	rm -f arbeit.bbl \
@@ -107,6 +110,7 @@ clear:
 	latexmk -pdf -C theorems
 	latexmk -pdf -C theorems-lemma
 	latexmk -pdf -C maketitle
+	latexmk -pdf -C matters
 	latexmk -pdf -C titlepage
 	latexmk -pdf -C margin
 	rm -f arbeit.bbl \

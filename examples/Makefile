@@ -18,6 +18,7 @@ all:
 	latexmk -pdf sandhaufen.beamer
 	latexmk -pdf pfade
 	latexmk -pdf knoten
+	cd include; latexmk -pdf main
 	latexmk -pdf automaten
 	latexmk -pdf baum
 	latexmk -pdf funktionen
@@ -43,6 +44,7 @@ force:
 	latexmk -pdf -g -f sandhaufen.beamer
 	latexmk -pdf -g -f pfade
 	latexmk -pdf -g -f knoten
+	cd include; latexmk -pdf -g -f main
 	latexmk -pdf -g -f automaten
 	latexmk -pdf -g -f baum
 	latexmk -pdf -g -f funktionen
@@ -68,6 +70,7 @@ clean:
 	latexmk -pdf -c sandhaufen.beamer
 	latexmk -pdf -c pfade
 	latexmk -pdf -c knoten
+	cd include; latexmk -pdf -c main
 	latexmk -pdf -c automaten
 	latexmk -pdf -c baum
 	latexmk -pdf -c funktionen
@@ -95,6 +98,7 @@ clear:
 	latexmk -pdf -C sandhaufen.beamer
 	latexmk -pdf -C pfade
 	latexmk -pdf -C knoten
+	cd include; latexmk -pdf -C main
 	latexmk -pdf -C automaten
 	latexmk -pdf -C baum
 	latexmk -pdf -C funktionen
