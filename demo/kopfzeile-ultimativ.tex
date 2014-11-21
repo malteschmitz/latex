@@ -12,9 +12,7 @@
 \usepackage{scrpage2}
 \pagestyle{scrheadings}
 
-\manualmark
-\renewcommand{\sectionmark}[1]{\markboth{\thesection\ #1}{}}
-\renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}
+\automark[subsection]{section}
 \clearscrheadfoot
 \ihead{\textbf{Jahresbericht 2014}\\\leftmark\ \\\rightmark}
 \ohead{\pagemark}

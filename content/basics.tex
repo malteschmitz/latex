@@ -297,22 +297,29 @@
 
 \beamersection{\LaTeX\ verwenden}
 
-\begin{Frame}[fragile]{Absätze und Umbrüche}
-  \begin{Block}{Absatz}
-    \begin{itemize}
-      \item leere Zeile in der Eingabe
-      \item Aussehen je nach Einstellungen (\lstinline-parskip-, \ldots)
-    \end{itemize}
-  \end{Block}
+\begin{Frame}[fragile]{Leerzeichen und Umbrüche}
+  \begin{itemize}
+    \item Zusätzliche \alert{Leerzeichen} werden ignoriert.
+    \item \alert{Zeilenumbrüche} werden ignoriert.
+  \end{itemize}
 
-  \begin{Block}{Manuelle Umbrüche}
+  \xxx
+
+  \begin{exampleblock}{Absatz}
     \begin{itemize}
-      \item braucht man nicht
-      \item machen das Dokument kaputt
-      \item Zeilenumbruch: \lstinline-\\-
-      \item Seitenumbruch: \lstinline-\newpage-
+      \item \alert{Absatz}: leere Zeile in der Eingabe
+      \item Aussehen variiert je nach Einstellungen.
     \end{itemize}
-  \end{Block}
+  \end{exampleblock}
+
+  \xxx
+
+  \begin{alertblock}{Manueller Zeilenumbruch}
+    \begin{itemize}
+      \item \alert{Zeilenumbruch}: \lstinline-\\-
+      \item Ist \alert{hässlich} und \alert{stört} den Lesefluss.
+    \end{itemize}
+  \end{alertblock}
 \end{Frame}
 
 \subsection{Befehle und Umgebungen}
@@ -710,7 +717,7 @@
     Unterstrich & \_ & \lstinline-\_-\\
     Zirkumflex & \textasciicircum & \lstinline-\textasciicircum-\\
     Kaufmanns-Und & \& & \lstinline-\&-\\
-    Prozentzeichen & \% & \lstinline[commentstyle=\color{black}]-\%-\\
+    Prozentzeichen & \% & \texttt{\textbackslash \%}\\
     Tilde & \textasciitilde & \lstinline-\textasciitilde-
   \end{zebratabular}
 \end{Frame}

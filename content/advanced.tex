@@ -974,7 +974,7 @@
 \end{Frame}
 
 \begin{Frame}[fragile]{Quelltext der Titelseite}
-  \begin{lstlisting}[gobble=4]
+  \begin{lstlisting}[gobble=4,frame=topline]
     \begin{titlepage}
       \includegraphics[height=25mm]
         {beispiel-logo.pdf}
@@ -995,7 +995,7 @@
 \end{Frame}
 
 \begin{Frame}[fragile]{Quelltext der Titelseite}
-  \begin{lstlisting}[gobble=4]
+  \begin{lstlisting}[gobble=4,frame=bottomline]
       im Rahmen des Studiengangs \\
       \textbf{\sffamily\color{maincolor}
         Informatik} \\
@@ -1047,7 +1047,9 @@
   \end{Block}
 \end{Frame}
 
-\begin{Frame}[fragile]{Kolumnentitel}
+\begin{Frame}[fragile,t]{Kolumnentitel}{Automatische Kolumnentitel}
+  \xxx\xxx
+
   \begin{Definition}[Lebende Kolumnentitel]
     Textabhängige Informationen in der Kopfzeile.\\
     Zum Beispiel aktuelles Kapitel und aktueller Abschnitt.
@@ -1058,28 +1060,39 @@
   \begin{lstlisting}[gobble=4]
     \automark[section]{chapter}
   \end{lstlisting}
-  Automatische Kolumnentitel:
   \begin{itemize}
     \item Kapitel auf linken/geraden Seiten
     \item Abschnitt auf rechten/ungeraden Seiten
   \end{itemize}
 
-
   Mögliche Werte sind dabei: \lstinline-part-, \lstinline-chapter-,
   \lstinline-section-, \lstinline-subsection-.
 \end{Frame}
 
-\begin{Frame}[fragile]{Manuelle Kolumnentitle}
+\begin{Frame}[fragile,t]{Kolumnentitel}{Manuelle Kolumnentitel}
+  \xxx\xxx
+
+  \only<presentation>{
+    \begin{Definition}[Lebende Kolumnentitel]
+      Textabhängige Informationen in der Kopfzeile.\\
+      Zum Beispiel aktuelles Kapitel und aktueller Abschnitt.
+    \end{Definition}
+  }
+
+  \xxx
+
   \begin{lstlisting}[gobble=4]
     \manualmark % Automatik aus
     \markboth{linke Seite}{rechte Seite}
     % oder nur
     \markright{rechte Seite}
   \end{lstlisting}
-  Manuelle Kolumnentitel setzen.
+\end{Frame}
 
-  \xxx
+\mode
+<article>
 
+\begin{Frame}[fragile]{Kolumnentitel}{Manuelle Automatik}
   \begin{lstlisting}[gobble=4]
     \manualmark % Automatik aus
     \renewcommand{\chaptermark}[1]{%
@@ -1090,6 +1103,9 @@
   \lstinline-\chaptermark- wird von \LaTeX\ mit Beginn
   jeden neuen Kapitels mit dem Namen des Kapitels aufgerufen.
 \end{Frame}
+
+\mode
+<all>
 
 \begin{Frame}[fragile]{Befehle zur Konfiguration des Seitenstils}
   \begin{tikzpicture}[
@@ -1342,10 +1358,7 @@
 
 \begin{Frame}[fragile]{Die ultimative Beispielkopfzeile}
   \begin{lstlisting}[gobble=4]
-    \renewcommand{\sectionmark}[1]%
-      {\markboth{\thesection\ #1}{}}
-    \renewcommand{\subsectionmark}[1]%
-      {\markright{\thesubsection\ #1}}
+    \automark[subsection]{section}
     \clearscrheadfoot
     \ihead{\textbf{Jahresbericht 2014}\\%
       \leftmark\ \\\rightmark}
@@ -1466,7 +1479,7 @@
         }
 
         \uncover<10->{%
-          \node[maincolor,label=\texttt{\ \ conclusion}, below left=of main] (chap3) {\icon[4]{TEX}};
+          \node[maincolor,label=\texttt{\ \ summary}, below left=of main] (chap3) {\icon[4]{TEX}};
           \path[very thick]
             (chap3.east) edge[->,shorten >=1.6em] node[pos=.5]
               {\texttt{\color{texcs}\bfseries\textbackslash include}} (main);
@@ -1530,9 +1543,9 @@
 
 \begin{Frame}[fragile]{Befehle für modulare Struktur}
   \begin{tabular}{rL{6cm}}
-    \lstinline-\input- & Inhalt der Datei einfügen. \\
+    \lstinline-\input- & Inhalt der Datei einfügen. \\[1ex]
     \lstinline-\include- & Inhalt der Datei einfügen und \newline
-      Seitenumbrüche davor und dahinter.\\
+      Seitenumbrüche davor und dahinter.\\[1ex]
     \lstinline-\includeonly- & Liste der von \lstinline-\include- \newline
       berücksichtigten Dateien.\\
   \end{tabular}
