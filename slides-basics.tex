@@ -1,0 +1,60 @@
+\documentclass[xcolor=table]{beamer}
+\input{style}
+
+\newcommand{\authorstring}{Johannes Thorn}
+\newcommand{\shortauthorstring}{\textcolor{authorjonny}{Johannes}}
+% author colors are updated in macros.tex
+
+\newcommand{\titlestring}{\LaTeX}
+\newcommand{\shorttitlestring}{\LaTeX}
+\newcommand{\datestring}{SWK HL 9}
+
+\begin{document}
+
+\mode
+<article>
+
+\input{titlepage}
+\dominitoc
+\markboth{Inhaltsverzeichnis}{}
+\tableofcontents
+
+\mode
+<all>
+
+\jonny
+
+\label{chapter-grundlagen}
+\part{Grundlagen}
+\title{\LaTeX\\Grundlagen}
+
+\begin{frame}[plain]
+\begin{center}
+  \textbf{\fontsize{36pt}{36pt}\selectfont\rmfamily\color{maincolor}\LaTeX}\\
+  \vskip2ex
+  \textbf{\fontsize{24pt}{24pt}\selectfont\rmfamily\color{maincolor}Grundlagen}
+  \par\vskip2ex
+  \large Johannes Thorn\\
+  Softwerkskammer Lübeck Nr.~9
+\end{center}
+\end{frame}
+
+\targets{
+  \item \LaTeX\ kennen lernen.
+  \item Aufbau von \LaTeX-Dokumenten, -Befehlen und -Umgebungen kennen.
+  \item \LaTeX\ verwenden können.
+  \item Verstehen, wofür man \LaTeX\ einsetzen kann und wofür nicht.
+}
+
+\website
+
+\input{basics-latex}
+\input{basics-usage}
+\input{basics-elements}
+\input{basics-summary}
+
+\mode
+<all>
+
+\end{document}
+
