@@ -1,0 +1,546 @@
+\beamersection{\LaTeX\ verwenden}
+
+\begin{Frame}[fragile]{Leerzeichen und Umbrüche}
+  \begin{itemize}
+    \item Zusätzliche \alert{Leerzeichen} werden ignoriert.
+    \item \alert{Zeilenumbrüche} werden ignoriert.
+  \end{itemize}
+
+  \xxx
+
+  \begin{exampleblock}{Absatz}
+    \begin{itemize}
+      \item \alert{Absatz}: leere Zeile in der Eingabe
+      \item Aussehen variiert je nach Einstellungen.
+    \end{itemize}
+  \end{exampleblock}
+
+  \xxx
+
+  \begin{alertblock}{Manueller Zeilenumbruch}
+    \begin{itemize}
+      \item \alert{Zeilenumbruch}: \lstinline-\\-
+      \item Ist \alert{hässlich} und \alert{stört} den Lesefluss.
+    \end{itemize}
+  \end{alertblock}
+\end{Frame}
+
+\subsection{Befehle und Umgebungen}
+
+\begin{Frame}[fragile]{Befehle}{Hervorheben von Text}
+  \begin{itemize}
+    \item \lstinline-\emph{hervor}- hebt Text \emph{hervor}
+    \item \lstinline-\textbf{fett}- macht Text \textbf{fett}
+  \end{itemize}
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    Vorm \textbf{Senatsgebäude} stieß Caesar
+    auf den \emph{Seher Spurinna}.
+  \end{lstlisting}
+
+  Vorm \textbf{Senatsgebäude} stieß Caesar
+    auf den \emph{Seher Spurinna}.
+
+  \xxx\pause
+
+  \inhead{Weitere Auszeichnungen}
+  \begin{itemize}
+    \item \lstinline-\texttt{nichtproportional}- setzt \texttt{nichtproportional}
+    \item \lstinline-\textsc{in Kapitälchen}- setzt \textsc{in Kapitälchen}
+    \item \ldots
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{komplexere Befehle}{Farbe und Fußnote}
+  \inhead{Mehrere Argumente}
+  \begin{lstlisting}[gobble=4]
+    \textcolor{red}{Rosen} sind rot,
+    \textcolor{blue}{Veilchen} sind blau.
+  \end{lstlisting}
+  \textcolor{red}{Rosen} sind rot,
+  \textcolor{blue}{Veilchen} sind blau.
+  
+  \xxx\pause
+
+  \inhead{Optionale Parameter}
+  \begin{onlyenv}<presentation:1-2| article:0>
+    \begin{lstlisting}[gobble=6]
+      Vorm Senatsgebäude stieß Caesar\footnote{
+        geb. 13. Juli 100 v. Chr. in Rom;
+        gest. 15. März 44 v. Chr. ebenda}
+      auf den Seher Spurinna.
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<3>
+    \begin{lstlisting}[gobble=6]
+      Vorm Senatsgebäude stieß Caesar\footnote[42]{
+        geb. 13. Juli 100 v. Chr. in Rom;
+        gest. 15. März 44 v. Chr. ebenda}
+      auf den Seher Spurinna.
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{minipage}{\textwidth}
+    \renewcommand{\thempfootnote}{\arabic{mpfootnote}}
+    Vorm Senatsgebäude stieß
+      Caesar\alt<presentation:1-2| article:0>{\footnote{
+        geb. 13. Juli 100 v. Chr. in Rom;
+        gest. 15. März 44 v. Chr. ebenda}}
+        {\footnote[42]{
+        geb. 13. Juli 100 v. Chr. in Rom;
+        gest. 15. März 44 v. Chr. ebenda}}
+      auf den Seher Spurinna.
+  \end{minipage}
+\end{Frame}
+
+\begin{Frame}[fragile]{Befehle}
+  \begin{itemize}
+    \item Befehle beginnen mit einem Backslash.\newline
+      z.\,B. \lstinline-\emph-
+    \item Parameter stehen in geschweiften Klammern.\newline
+      z.\,B. \lstinline-\emph{hervor}-
+    \item Weitere Parameter folgen in geschweiften Klammern.\newline
+      z.\,B. \lstinline-\textcolor{red}{Rosen}-
+    \item Optionale Paramter stehen in eckigen Klammern.\newline
+      z.\,B. \lstinline-\footnote[42]{geb.}-
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Umgebungen}{Zentrieren}
+  \begin{lstlisting}[gobble=4]
+    Normaler Text im Blocksatz.
+
+    \begin{center}
+      Ich bin zentriert.
+    \end{center}
+  \end{lstlisting}
+
+  \xxx
+
+  \begin{minipage}{\textwidth}
+    Normaler Text im Blocksatz.
+    \lorem
+  \end{minipage}  
+
+  \begin{center}
+    Ich bin zentriert. \lorem
+  \end{center}
+
+  \pause
+
+  \inhead{Weitere Ausrichtungen}
+  \begin{itemize}
+    \item \lstinline-flushleft- erzeugt \alert{linksbündigen Flattersatz}.
+    \item \lstinline-flushright- erzeugt \alert{rechtsbündigen Flattersatz}.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Umgebungen}{Zitieren}
+  \begin{lstlisting}[gobble=4]
+    \begin{quote}
+      Ich bin ein Zitat.
+    \end{quote}
+  \end{lstlisting}
+
+  \xxx
+
+  \begin{minipage}{\textwidth}
+    Normaler Text im Blocksatz.
+    \lorem
+  \end{minipage}
+
+  \begin{quote}
+    Ich bin ein Zitat. \lorem
+  \end{quote}
+
+  \pause
+
+  \inhead{Weitere Zitationen}
+  \begin{itemize}
+    \item \lstinline-quote- für \alert{kurze Zitate}.
+    \item \lstinline-quotation- für \alert{lange Zitate} über mehrere Absätze.
+    \item \lstinline-verse- für Zitate von \alert{Gedichten} u.\,ä.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Umgebungen}
+  \begin{itemize}
+    \item Umgebungen beginnen mit \lstinline-\begin-\newline
+      z.\,B. \lstinline-\begin{center}-
+    \item und enden mit \lstinline-\end-.\newline
+      z.\,B. \lstinline-\end{center}-
+    \item Erster Parameter ist jeweils der Name der Umgebung.
+    \item Weitere Parameter nur nach \lstinline-\begin-.\newline
+      z.\,B. \lstinline-\begin{tabular}{ll}-
+  \end{itemize}
+\end{Frame}
+
+\subsection{Aufbau und Präambel}
+
+\mode
+<article>
+
+\begin{Frame}[fragile]{Aufbau eines Dokuments}
+  \begin{lstlisting}[gobble=4]
+    % Dokumentenklasse
+    \documentclass{scrartcl}
+
+    % Präambel: Pakete laden
+    \usepackage[ngerman]{babel}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+
+    % Präambel: Einstellungen
+    \KOMAoptions{%
+      parskip=full,%
+      fontsize=12pt}
+
+    % Dokumentenkörper
+    \begin{document}
+      Franz jagt im komplett
+      verwahrlosten Taxi quer
+      durch Bayern.
+    \end{document}
+  \end{lstlisting}
+\end{Frame}
+
+\mode
+<presentation>
+
+\begin{Frame}[fragile]{Aufbau eines Dokuments}
+  \begin{tikzpicture}[%
+      auto,
+      every edge/.style={
+        draw,
+        decorate,
+        decoration=brace,
+        very thick
+      }
+    ]
+    \node[text width=\textwidth, anchor=south] (tex) {
+      \begin{lstlisting}[gobble=8]
+        \documentclass{scrartcl}
+
+        \usepackage[ngerman]{babel}
+        \usepackage[utf8]{inputenc}
+        \usepackage[T1]{fontenc}
+
+        \KOMAoptions{%
+          parskip=full,%
+          fontsize=12pt}
+
+        \begin{document}
+          Franz jagt im komplett
+          verwahrlosten Taxi quer
+          durch Bayern.
+        \end{document}
+      \end{lstlisting}
+    };
+
+    \pause
+    \draw
+      (1,7.6) edge node {Dokumentenklasse} (1,7.2);
+    \pause
+    \draw
+      (1,6.6) edge node {\shortstack{Pakete\\laden}} (1,5.3);
+    \pause
+    \draw
+      (0,4.7) edge node {Einstellungen} (0,3.5);
+    \pause
+    \draw
+      (3,6.6) edge node {Präambel} (3,3.5);
+    \pause
+    \draw
+      (1,2.6) edge node {Dokumentenkörper} (1,.9);
+  \end{tikzpicture}
+\end{Frame}
+
+\mode
+<all>
+
+\begin{Frame}[fragile]{Dokumentenklassen}
+  \lstinline-\documentclass{scrartcl}-\newline
+  kurzer Artikel
+
+  \xxx
+
+  \lstinline-\documentclass{scrreprt}-\newline
+  Bericht mit Titelseite und Kapiteln
+
+  \xxx
+
+  \lstinline-\documentclass{scrbook}-\newline
+  doppelseitiges Buch mit Teilen, Kapiteln und Kopfzeile
+
+  \xxx
+
+  \begin{alertblock}{amerikanische Dokumentenklassen}
+    Wir verwenden die deutschen Dokumentenklassen aus KOMA-Script statt der 
+    amerikanischen \lstinline-article-, \lstinline-report- und \lstinline-book-.
+  \end{alertblock}
+\end{Frame}
+
+\begin{Frame}[fragile]{Präambel: KOMA-Script-Optionen}
+  \begin{lstlisting}[gobble=4]
+    \KOMAoptions{
+      parskip=full,
+      % full - Absätze haben großen Abstand
+      % half - Absätze haben kleinen Abstand
+      % off  - Absätze haben Einzug (default)
+      fontsize=12pt,
+      % Grundschriftgröße (10pt default)
+      headings=small,
+      % small  - kleine Überschriften
+      % normal - normale Überschriften (default)
+      % big    - große Überschriften
+      paper=a5,
+      % Papierformat (a4 default)
+      pagesize=auto
+      % Papierformat auch für PDF verwenden
+    }
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Präambel: Pakete}
+  \lstset{
+    backgroundcolor={},
+    frame=no,
+    gobble=4,
+    aboveskip=3ex,
+    belowskip=0pt
+  }
+  \begin{lstlisting}
+    \usepackage[ngerman]{babel}
+  \end{lstlisting}
+  deutsche Silbentrennung und deutsche Übersetzung
+  \begin{lstlisting}
+    \usepackage[utf8]{inputenc}
+  \end{lstlisting}
+  UTF-8 als Zeichenkodierung verwenden
+  \begin{lstlisting}
+    \usepackage[T1]{fontenc}
+    \usepackage{lmodern}
+  \end{lstlisting}
+  schönere Schriftarten
+  \begin{lstlisting}
+    \usepackage[breaklinks=true]{hyperref}
+  \end{lstlisting}
+  bessere Unterstützung der PDF-Ausgabe
+  \begin{onlyenv}<article>
+    \begin{lstlisting}[gobble=6]
+      \usepackage[breaklinks=true, pdfborder={0 0 0},
+                  pdfhighlight={/N}]{hyperref}
+    \end{lstlisting}
+    noch bessere Unterstützung der PDF-Ausgabe
+  \end{onlyenv}
+\end{Frame}
+
+\subsection{Gliederung und Titel}
+
+\begin{Frame}[fragile,t]{Gliederung}
+  \xxx
+
+  \begin{onlyenv}<1>
+    \begin{Block}{Strukturbefehle}
+      \begin{itemize}
+        \item \lstinline-\part{name}- für Teile (nur in Büchern)
+        \item \lstinline-\chapter{name}- für Kapitel (nicht in Artikeln)
+        \item \lstinline-\section{name}- für Abschnitte
+        \item \lstinline-\subsection{name}- für Unterabschnitte
+      \end{itemize}
+    \end{Block}
+  \end{onlyenv}
+
+  \begin{onlyenv}<2-3>
+    \begin{Block}{Strukturbefehle}
+      \begin{itemize}
+        \item \lstinline-\part[kurz]{name}- für Teile (nur in Büchern)
+        \item \lstinline-\chapter[kurz]{name}- für Kapitel (nicht in Artikeln)
+        \item \lstinline-\section[kurz]{name}- für Abschnitte
+        \item \lstinline-\subsection[kurz]{name}- für Unterabschnitte
+      \end{itemize}
+    \end{Block}
+
+    Optionaler Parameter setzt Kurztitel für Inhaltsverzeichnis.
+  \end{onlyenv}
+
+  \begin{onlyenv}<4>
+    \begin{Block}{Strukturbefehle}
+      \begin{itemize}
+        \item \lstinline-\part*{name}- für Teile (nur in Büchern)
+        \item \lstinline-\chapter*{name}- für Kapitel (nicht in Artikeln)
+        \item \lstinline-\section*{name}- für Abschnitte
+        \item \lstinline-\subsection*{name}- für Unterabschnitte
+      \end{itemize}
+    \end{Block}
+
+    Variante mit \texttt{*} erscheint nicht im Inhaltsverzeichnis
+  \end{onlyenv}
+
+  \xxx
+
+  \begin{onlyenv}<3->
+    \begin{lstlisting}[gobble=6]
+      \tableofcontents
+    \end{lstlisting}
+    setzt das zugehörige Inhaltsverzeichnis.
+  \end{onlyenv}
+\end{Frame}
+
+\begin{Frame}[t,fragile]{Titelseite}{Automatisch}
+  \begin{Block}{In der Präambel}
+    \lstinputlisting[firstline=13, lastline=16, style=block]{demo/maketitle.tex}
+  \end{Block}
+
+  \begin{Block}{Am Anfang des Dokuments}
+    \begin{lstlisting}[gobble=6,style=block]
+      \maketitle
+    \end{lstlisting}
+  \end{Block}
+
+  \hfill \includegraphics[width=8cm]{demo/maketitle} \hfill
+\end{Frame}
+
+\begin{Frame}[fragile]{Titelseite}{Manuell}
+  \lstinputlisting[firstline=15, lastline=22]{demo/titlepage.tex}
+
+  \hfill \includegraphics[width=8cm]{demo/titlepage} \hfill
+\end{Frame}
+
+\subsection{Detailtypographie}
+
+\begin{Frame}[fragile]{Sonderzeichen}
+  \begin{zebratabular}{llll}
+    \headerrow Name & Symbol & \LaTeX-Code\\
+    Backslash & \textbackslash & \lstinline-\textbackslash-\\
+    geschweifte Klammern & \{, \} & \lstinline-\{-, \lstinline-\}-\\
+    Doppelkreuz & \# & \lstinline-\#-\\
+    Dollarzeichen & \$ & \lstinline-\$-\\
+    Unterstrich & \_ & \lstinline-\_-\\
+    Zirkumflex & \textasciicircum & \lstinline-\textasciicircum-\\
+    Kaufmanns-Und & \& & \lstinline-\&-\\
+    Prozentzeichen & \% & \texttt{\textbackslash \%}\\
+    Tilde & \textasciitilde & \lstinline-\textasciitilde-
+  \end{zebratabular}
+\end{Frame}
+
+\mode
+<article>
+
+Spitze Klammern < und > haben in bestimmten Kontexten eine spezielle Bedeutung. Deswegen können sie auch als \lstinline-\textless- und \lstinline-\textgreater- eingegeben werden. Durch die Verwendung des Pakets \lstinline-inputenc- können sie aber auch direkt eingegeben werden. Genauso kann das Paragraphenzeichen § auch als \lstinline-\S- eingegeben werden.
+
+Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zeichen werden in diesem Modus anders behandelt. Insbesondere die Kommandos, die mit \lstinline-\text- beginnen, sollten in diesem Modus mit Vorsicht verwendet werden. Statt \lstinline-\textbackslash- steht hier der Befehl \lstinline-\backslash- zur Verfügung, tatt \lstinline-\textasciitilde- sollte man \lstinline-\sim- verwenden und für \lstinline-\textasciicircum- existiert hier kein guter Ersatz.
+
+\mode
+<all>
+
+\begin{Frame}[fragile]{Binde- und sonstige Striche}
+  \begin{looseitemize}
+    \item Bindestrich
+      \begin{lstlisting}[gobble=8]
+        SOS-Ruf
+      \end{lstlisting}
+      SOS-Ruf
+    \item deutscher Gedankenstrich mit Leerzeichen
+      \begin{lstlisting}[gobble=8]
+        Er kam -- und ging gleich wieder.
+      \end{lstlisting}
+      Er kam -- und ging gleich wieder.
+    \item britischer Gedankenstrich ohne Leerzeichen
+      \begin{lstlisting}[gobble=8]
+        He came---and went.
+      \end{lstlisting}
+      He came---and went.
+    \item Gedankenstrich für Bereiche ohne Leerzeichen
+      \begin{lstlisting}[gobble=8]
+        Das Buch darf 10--12 Euro kosten.
+      \end{lstlisting}
+      Das Buch darf 10--12 Euro kosten.
+  \end{looseitemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Leerzeichen}
+  \begin{looseitemize}
+    \item normales flexibles Leerzeichen
+      \begin{lstlisting}[gobble=8]
+        Leerzeichen stehen zwischen Worten.
+      \end{lstlisting}
+    \item geschütztes flexibles Leerzeichen
+      \begin{lstlisting}[gobble=8]
+        Hier~wird~nicht~umgebrochen.
+      \end{lstlisting}
+    \item Abstand in der Breite eines Ms (1~quad)
+      \begin{lstlisting}[gobble=8]
+        Ein Satz.\quad Noch ein Satz.\qquad Ende.
+      \end{lstlisting}
+      Ein Satz.\quad Noch ein Satz. \qquad Ende.
+    \item Zwischenräume (3/18 bis 6/18 quad)
+      \begin{lstlisting}[gobble=8]
+        z.\,B. / z.\:B. / z.\;B. / z.\ B.
+      \end{lstlisting}
+      z.\,B. / z.\:B. / z.\;B. / z.\ B.
+  \end{looseitemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Abkürzungen}
+  \begin{Block}{Mehrgliedrige Abkürzungen}
+    \begin{itemize}
+      \item mehrgliedrige Abkürzungen eng zusammen setzen
+      \item 3/18 quad Abstand verwenden\newline
+        Beispiel: \lstinline-Abkürzungen, z.\, B. diese-
+    \end{itemize}
+  \end{Block}
+  
+  \begin{Block}{Umbrüche vermeiden}
+    \begin{itemize}
+      \item Zusammenhängende Kürzel nicht trennen
+      \item Maß- und Währungszeichen nicht von der Zahl trennen
+      \item geschütztes Leerzeichen \lstinline-~- verwenden\newline
+        Beispiele: \lstinline-Seite~5, 4~km, S.~5~ff.-
+    \end{itemize}
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}[fragile]{Anführungszeichen}
+  \begin{alertblock}{Verwendung}
+    Anführungszeichen sind nur für \alert{wörtliche Zitate}.
+  \end{alertblock}
+  
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \usepackage[german=guillemets]{csquotes}
+      % oder german=quotes
+      % oder english=british oder english=american
+    \end{lstlisting}
+  \end{Block}
+
+  \begin{lstlisting}[gobble=4]
+    Hans sagt: \enquote{Er habe \enquote{Franz'
+    Auto!} gerufen.}
+  \end{lstlisting}
+
+  Hans sagt: \enquote{Er habe \enquote{Franz' Auto!} gerufen.}
+\end{Frame}
+
+\mode
+<article>
+
+\begin{Frame}[fragile]{Schriftgröße}
+  \begin{itemize}
+    \item \lstinline-{\tiny winzig}- setzt {\tiny winzig}
+    \item \lstinline-{\scriptsize in Indexgröße}- setzt {\scriptsize in Indexgröße}
+    \item \lstinline-{\footnotesize in Fußzeilengröße}-\\ setzt {\footnotesize in Fußzeilengröße}
+    \item \lstinline-{\small klein}- setzt {\small klein}
+    \item \lstinline-{\normalsize in Normalgröße}-\\ setzt {\normalsize in Normalgröße}
+    \item \lstinline-{\large groß}- setzt {\large groß}
+    \item \lstinline-{\Large größer}- setzt {\Large größer}
+    \item \lstinline-{\LARGE am größten}- setzt {\LARGE am größten}
+    \item \lstinline-{\huge riesig}- setzt {\huge riesig}
+    \item \lstinline-{\Huge riesiger}- setzt {\Huge riesiger}
+  \end{itemize}
+\end{Frame}
+
+\mode
+<all>
+

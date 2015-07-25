@@ -1,0 +1,551 @@
+\beamersection{Elemente}
+
+\subsection{Farbe}
+
+\begin{Frame}[fragile]{Farben verwenden}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \usepackage{xcolor}
+    \end{lstlisting}
+  \end{Block}
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    In diesem \colorbox{orange}{Text} sind
+    \textcolor{orange}{Worte} hervorgehoben.
+  \end{lstlisting}
+
+  In diesem \colorbox{orange}{Text} sind
+  \textcolor{orange}{Worte} hervorgehoben.
+\end{Frame}
+
+\begin{Frame}{Vorhandene Farben}
+  \colorsample{red}\newline
+  \colorsample{green}\newline
+  \colorsample{blue}\newline
+  \colorsample{cyan}\newline
+  \colorsample{magenta}\newline
+  \colorsample{yellow}
+
+  \xxx
+
+  \colorsample{black}\newline
+  \colorsample{white}\newline
+  \colorsample{darkgray}\newline
+  \colorsample{gray}\newline
+  \colorsample{lightgray}
+\end{Frame}
+
+\begin{Frame}{Farben mischen}
+  \colorsample{red}\newline
+  \colorsample{red!75}\newline
+  \colorsample{red!75!green}\newline
+  \colorsample{red!75!green!50}\newline
+  \colorsample{red!75!green!50!blue}\newline
+  \colorsample{red!75!green!50!blue!25}\newline
+  \colorsample{red!75!green!50!blue!25!gray}
+
+  \xxx
+
+  \colorsample{-red}\newline
+  \colorsample{-red!75}\newline
+  \colorsample{-red!75!green}\newline
+  \colorsample{-red!75!green!50}\newline
+  \colorsample{-red!75!green!50!blue}\newline
+  \colorsample{-red!75!green!50!blue!25}\newline
+  \colorsample{-red!75!green!50!blue!25!gray}
+\end{Frame}
+
+\subsection{Formeln}
+
+\begin{Frame}[fragile]{Formelsatz in Matheumgebungen}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \usepackage{amsmath}
+      \usepackage{amssymb}
+    \end{lstlisting}
+  \end{Block}
+  
+  \begin{looseitemize}
+    \item in normalen Text: \lstinline-$x^y$- erzeugt $x^y$
+    \item abgesetzt: \lstinline-\[ x^3 \]- erzeugt
+      \[ x^3 \]
+    \item mehrzeilig: \lstinline-align-, ausgerichtet an \lstinline-&-, neue Zeile mit \lstinline-\\- 
+      \begin{lstlisting}[gobble=8]
+        \begin{align} % ohne Nummerierung mit align*
+          f(x) &= x^3 \\
+               &= x \cdot x \cdot x
+        \end{align}
+      \end{lstlisting}
+      \begin{align}
+        f(x) &= x^3 \\
+             &= x \cdot x \cdot x
+      \end{align}
+  \end{looseitemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Beispiele zum Formelsatz}
+  \only<presentation>{\lstset{aboveskip=3pt,belowskip=3pt}}
+
+  \newcommand{\mathexample}[1]{\alt<presentation>{%
+    $\displaystyle\displaystyle#1$%
+  }{%
+    \[ #1 \]
+  }}
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \alpha^{22} + \beta_{12}
+          = \gamma^2_a
+      \end{lstlisting}
+
+    \column{4cm}
+      \mathexample{\alpha^{22} + \beta_{12} = \gamma^2_a}
+  \end{columns}
+
+  \pause
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \sum_{i=1}^{n} i =
+          \frac{n (n+1)}{2}
+      \end{lstlisting}
+
+    \column{4cm}
+      \mathexample{\sum_{i=1}^n i = \frac{n (n+1)}{2}}
+  \end{columns}
+
+  \pause
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \sqrt{x^{4}} = x^{2}
+      \end{lstlisting}
+
+    \column{4cm}
+      \mathexample{\sqrt{x^4} = x^2}
+  \end{columns}
+
+  \pause
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \lim_{n\to\infty}
+          \frac{1}{n^{2}} = 0
+      \end{lstlisting}
+
+    \column{4cm}
+      \mathexample{\lim_{n\to\infty} \frac{1}{n^2} = 0}
+  \end{columns}
+  
+  \pause
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \int_{-1}^{2}
+          x\,\mathrm{d}x = \left[
+            \frac{1}{2}x^{2}
+          \right]_{1}^{2}
+      \end{lstlisting}
+
+    \column{4cm}
+      \mathexample{\int_{-1}^{2} x\,\mathrm{d}x=\left[ \frac{1}{2}x^2 \right]_1^2}
+  \end{columns}
+\end{Frame}
+
+\begin{Frame}[fragile]{Dezimaltrennzeichen in Zahlen}
+  \begin{Block}{Amerikanisches Format}
+    \begin{lstlisting}[gobble=6,style=block]
+      \[ 23,456.78 - 23\,456.78 + 23456.78 \]
+    \end{lstlisting}
+
+    \[ 23,456.78 - 23\,456.78 + 23456.78 \]
+  \end{Block}
+
+  \xxx
+
+  \begin{Block}{Deutsches Format}
+    \begin{lstlisting}[gobble=6,style=block]
+      \[ 23.456{,}78 - 23\,456{,}78 + 23456{,}78 \]
+    \end{lstlisting}
+
+    \[ 23.456{,}78 - 23\,456{,}78 + 23456{,}78 \]
+  \end{Block}
+\end{Frame}
+
+\mode
+<article>
+
+\begin{Block}{Minuszeichen als binärer und unärer Operator}
+  \begin{lstlisting}[gobble=4]
+    $2-4=-2$ (nicht -2)
+  \end{lstlisting}
+  $2-4=-2$ (nicht -2)
+  \only<article>{
+    \newline Als binärer Operator wird das Minuszeichen mit einem kleinen Abstand gesetzt.
+    Als unärer Operator wird das Minuszeichen als Vorzeichen ohne Abstand gesetzt.
+    \LaTeX\ übernimmt dies automatisch.
+  }
+\end{Block}
+
+\mode
+<all>
+
+\subsection{Listen und Tabellen}
+
+\begin{Frame}[fragile]{Listen}
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \begin{itemize}
+          \item Apfel
+            \begin{itemize}
+              \item Elstar
+              \item Braeburn
+            \end{itemize}
+          \item Birne
+        \end{itemize}
+      \end{lstlisting}
+    \column{4cm}
+      \begin{itemize}
+        \item Apfel
+          \begin{itemize}
+            \item Elstar
+            \item Braeburn
+          \end{itemize}
+        \item Birne
+      \end{itemize}
+  \end{columns}
+  
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \begin{enumerate}
+          \item Begrüßung
+          \item Anträge
+          \item Verabschiedung
+        \end{enumerate}
+      \end{lstlisting}
+    \column{4cm}
+      \begin{enumerate}
+        \item Begrüßung
+        \item Anträge
+        \item Verabschiedung
+      \end{enumerate}
+  \end{columns}
+\end{Frame}
+
+\begin{Frame}[fragile]{Listen}{Definitionslisten}
+  \begin{lstlisting}[gobble=4]
+    \begin{description}
+      \item[Das Schlagwort] steht am Anfang
+        einer Zeile und wird hervorgehoben,
+        während der zugehörige
+      \item[Text] dahinter in normaler
+        Schrift erscheint.
+    \end{description}
+  \end{lstlisting}
+
+  \begin{description}
+    \item[Das Schlagwort] steht am Anfang einer Zeile und wird
+      hervorgehoben, während der zugehörige
+    \item[Text] dahinter in normaler Schrift erscheint.
+  \end{description}
+\end{Frame}
+
+\begin{Frame}[fragile]{Tabellen}
+  \begin{lstlisting}[gobble=4]
+    \begin{tabular}{l|lr}
+      \textbf{Jahr} & \textbf{Prozessor} &
+          \textbf{MHz} \\
+      \hline
+      1975 & 6502 (C64) & 1 \\
+      1985 & 80386 & 16 \\
+      2005 & Pentium 4 & 2\,800 \\
+      2030 & Phoenix 3 & 7\,320\,000
+    \end{tabular}
+  \end{lstlisting}
+
+  \begin{center}
+    \begin{tabular}{l|lr}
+      \textbf{Jahr} & \textbf{Prozessor} &
+          \textbf{MHz} \\
+      \hline
+      1975 & 6502 (C64) & 1 \\
+      1985 & 80386 & 16 \\
+      2005 & Pentium 4 & 2\,800 \\
+      2030 & Phoenix 3 & 7\,320\,000
+    \end{tabular}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}[fragile]{Zebratabellen}
+  \begin{Block}{Option in der Präambel setzen}
+    \begin{lstlisting}[gobble=6,style=block]
+      \usepackage[table]{xcolor}
+    \end{lstlisting}
+  \end{Block}
+
+  \begin{lstlisting}[gobble=4]
+    \rowcolors{1}{orange!25}{orange!5}
+    \begin{tabular}{llr}
+      \rowcolor{orange!50}
+      Jahr & Prozessor & MHz \\
+      1975 & 6502 (C64) & 1 \\
+      1985 & 80386 & 16 \\
+      2005 & Pentium 4 & 2\,800
+    \end{tabular}
+  \end{lstlisting}
+
+  \rowcolors{1}{orange!25}{orange!5}
+  \begin{center}  
+    \begin{tabular}{llr}
+      \rowcolor{orange!50}
+      Jahr & Prozessor & MHz \\
+      1975 & 6502 (C64) & 1 \\
+      1985 & 80386 & 16 \\
+      2005 & Pentium 4 & 2\,800
+    \end{tabular}
+  \end{center}
+\end{Frame}
+
+\begin{frame}[fragile]{Fließumgebungen}
+  \inhead{Fließumgebungen}
+  \begin{itemize}
+    \item werden automatisch im Dokument positioniert.
+    \item erhalten Nummerierung und Beschriftung.
+    \item können referenziert werden.
+    \item werden in Verzeichnisse aufgenommen.
+  \end{itemize}
+
+  \begin{lstlisting}[gobble=4]
+    \begin{table} % Fließumgebung
+      \begin{tabular}{ll} % eigentliche Tabelle
+        Schafgarbe & gelb \\
+        Ochsenzunge & violett
+      \end{tabular}
+      \caption{Färberpflanzen} % Beschriftung
+    \end{table}
+  \end{lstlisting}
+\end{frame}
+
+\begin{Frame}[fragile]{Positionierungshinweise}
+  \begin{lstlisting}[gobble=4]
+    \begin{table}[htb]
+      \begin{tabular}{ll}
+        % ...
+      \end{tabular}
+      \caption{Färberpflanzen}
+    \end{table}
+  \end{lstlisting}
+
+  \xxx
+
+  Element platzieren
+  
+  \begin{tabular}{lr@{ }l}
+    & \lstinline-h- & an Position im Quelltext \\
+    & \lstinline-b- & am Ende einer Seite \\
+    & \lstinline-t- & am Anfang einer Seite \\
+    & \lstinline-p- & auf einer eigenen Abbildungsseite \\
+    & \lstinline-!- & \LaTeX s Bewertung der Platzierung abschalten
+  \end{tabular}
+\end{Frame}
+
+\subsection{Abbildungen und Verweise}
+
+\begin{Frame}[fragile]{Grafiken}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \usepackage{graphicx}
+    \end{lstlisting}
+  \end{Block}
+
+  \xxx
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \includegraphics%
+          [width=3.5cm]{miktex}
+      \end{lstlisting}
+    \column{4cm}
+      \includegraphics[width=3.5cm]{images/miktex}
+  \end{columns}
+\end{Frame}
+
+\mode
+<article>
+
+\begin{Block}{Dateitypen}
+  Bei der Verwendung von \pdfTeX\ können Grafikdateien in den Formaten PDF, JPG und PNG verwendet werden.
+  Soll das Dokument mit \TeX\ kompiliert werden, muss die Grafik als EPS-Datei vorliegen. Aus diesem Grund
+  wird die Grafikdatei häufig ohne Dateierweiterung angegeben, sodass die für den jeweiligen Fall am besten
+  geeignete Datei automatisch verwendet wird.
+
+  Leider gibt es keine Möglichkeit, SVG-Dateien direkt zu verwenden. Diese müssen vorher in PDF bwz. EPS konvertiert werden. Da beide Formate Vektorgrafiken unterstützen gehen bei dieser Konvertierung keine Informationen velohren.
+\end{Block}
+
+\mode
+<all>
+
+\begin{Frame}[fragile]{Grafiken rotieren und zuschneiden}
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \includegraphics%
+          [width=3.5cm,%
+           angle=20]{miktex}
+      \end{lstlisting}
+    \column{4cm}
+      \includegraphics[width=3.5cm,angle=20]{images/miktex}
+  \end{columns}
+
+  \xxx
+
+  \begin{columns}
+    \column{5cm}
+      \begin{lstlisting}[gobble=8]
+        \includegraphics%
+          [width=3.5cm,trim=%
+           3cm 5mm 4cm 12mm,%
+           clip=true]{miktex}
+      \end{lstlisting}
+    \column{4cm}
+      \includegraphics[width=3.5cm,trim=3cm 5mm 4cm 12mm,clip=true]{images/miktex}
+  \end{columns}
+
+  schneidet links 3\,cm, unten 5\,mm,\\ rechts 4\,cm und oben 12\,mm ab
+\end{Frame}
+
+\begin{frame}[fragile]{Fließumgebungen}
+  Fließumgebungen für Abbildungen funktionieren\\
+  wie Fließumgebungen für Tabellen.
+
+  \begin{lstlisting}[gobble=4]
+    \begin{figure} % Fließumgebung
+      % Grafik zentrieren
+      \centering
+      % eigentliche Grafik
+      \includegraphics[width=3.5cm]{miktex}
+      % Beschriftung
+      \caption{Färberpflanzen}
+    \end{figure}
+  \end{lstlisting}
+\end{frame}
+
+\begin{Frame}[fragile]{Verzeichnisse}
+  \begin{Block}{Inhaltsverzeichnis}
+    \begin{lstlisting}[gobble=6,style=block]
+      \tableofcontents
+    \end{lstlisting}
+  \end{Block}
+
+  \begin{Block}{Abbildungsverzeichnis}
+    \begin{lstlisting}[gobble=6,style=block]
+      \listoffigures
+    \end{lstlisting}
+  \end{Block}
+
+  \begin{Block}{Tabellenverzeichnis}
+    \begin{lstlisting}[gobble=6,style=block]
+      \listoftables
+    \end{lstlisting}
+  \end{Block}
+
+  \xxx
+
+  \begin{alertblock}{Warnung}
+    Welchen Nutzen haben Abbildungs- und Tabellenverzeichnis?
+  \end{alertblock}
+\end{Frame}
+
+\begin{Frame}[fragile]{Verweise}
+  \begin{looseitemize}
+    \item \alert{Nach} Strukturbefehl oder Beschriftung Label angeben
+      \begin{lstlisting}[gobble=8]
+        \section{Verzeichnisse und Verweise}
+        \label{sec-verweise}
+        % ...
+        \begin{figure} % oder auch table
+          %...
+          \caption{MiKTeX-Logo}
+          \label{fig-miktex}
+        \end{figure}
+      \end{lstlisting}
+     \item Label referenzieren
+       \begin{lstlisting}[gobble=8]
+         MiK\TeX-Logo auf \autoref{fig-miktex}
+         in \autoref{sec-verweise}
+       \end{lstlisting}
+       \MiKTeX-Logo auf Abbildung 5 in Abschnitt 3.2
+  \end{looseitemize}
+\end{Frame}
+
+\begin{Frame}{Mehrfach kompilieren hilft.}{Rerun to get cross-references right.}
+  \begin{center}
+    \begin{tikzpicture}[on grid, node distance=18mm and 35mm]
+      \node[examplecolor] (tex) {\icon{TEX}};
+      \uncover<2->{
+        \node[right=of tex, font=\rmfamily\Large\bfseries]
+          (pdfTeX1) {\pdfTeX};
+      }
+      \uncover<3>{
+        \node[right=of pdfTeX1, pdficon] (pdf1) {\icon{PDF}};
+        \node[below=of pdfTeX1, logicon, xshift=1cm] (log1) {\icon{LOG}};
+      }
+      \uncover<4->{
+        \node[right=of pdfTeX1, pdficon!30] (pdf1) {\icon{PDF}};
+        \node[below=of pdfTeX1, xshift=1cm, logicon!30] (log1) {\icon{LOG}};
+      }
+      \uncover<3->{
+        \node[below=of pdfTeX1, xshift=-1cm, auxicon] (aux1) {\icon{AUX}};
+      }
+      \uncover<4->{
+        \node[below=of aux1, xshift=1cm, font=\rmfamily\Large\bfseries]
+          (pdfTeX2) {\pdfTeX};
+      }
+      \uncover<5>{
+        \node[right=of pdfTeX2, pdficon] (pdf2) {\icon{PDF}};
+        \node[below=of pdfTeX2, xshift=1cm, logicon] (log2) {\icon{LOG}};
+        \node[below=of pdfTeX2, xshift=-1cm, auxicon] (aux2) {\icon{AUX}};
+      }
+      \only<2->{
+        \draw[very thick]
+          (tex) edge[->] (pdfTeX1);
+      }
+      \only<3->{
+        \draw[very thick]
+          (pdfTeX1) edge[->] (aux1);
+      }
+      \only<3>{
+        \draw[very thick]
+          (pdfTeX1) edge[->] (pdf1)
+                    edge[->] (log1);
+      }
+      \only<4->{
+        \draw[very thick, black!30]
+          (pdfTeX1) edge[->] (pdf1)
+                    edge[->] (log1);
+      }
+      \only<4->{
+        \draw[very thick]
+          (aux1) edge[->] (pdfTeX2);
+        \draw[->, very thick] (tex.south) ++ (.2,0) |- (pdfTeX2);
+      }
+      \only<5->{
+        \draw[very thick]
+          (pdfTeX2) edge[->] (pdf2)
+                    edge[->] (aux2)
+                    edge[->] (log2);
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{Frame}
+
