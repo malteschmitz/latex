@@ -1,0 +1,278 @@
+\beamersection{Was ist \LaTeX?}
+
+\subsection{Einordnung}
+
+\begin{Frame}{Dimensionen eines Dokumentes}
+  \begin{onlyenv}<presentation:1| article:0>
+    \begin{center}
+      Inhalt ist die Bedeutung eines Textes.
+    \end{center}
+  \end{onlyenv}
+  \begin{onlyenv}<presentation:2| article:0>
+    \begin{description}
+      \item[\textnormal{\color{black}Inhalt}] ist die \emph{Bedeutung} eines Textes.
+      \item[\textnormal{\color{black}Struktur}] ist der \emph{Aufbau} eines Textes.
+      \uncover<3>{\item Foo}
+    \end{description}
+  \end{onlyenv}
+  \begin{onlyenv}<3>
+    \begin{description}
+      \item[Inhalt] ist die \alert{Bedeutung} eines Textes.
+      \item[Struktur] ist der \alert{Aufbau} eines Textes.
+      \item[Form] ist das \alert{Aussehen} eines Textes.
+    \end{description}
+  \end{onlyenv}
+\end{Frame}
+
+\begin{Frame}{Struktur vs. Form}
+  \begin{Beispiele}[Struktur]
+    \begin{itemize}
+      \item Überschrift
+      \item Listeneintrag
+      \item Tabellenzelle
+    \end{itemize}
+  \end{Beispiele}
+
+  \xxx
+
+  \begin{Beispiele}[Form]
+    \begin{itemize}
+      \item 16~pt, Arial, fett, 2~em Abstand
+      \item 2~cm Einzug, Bullet-Zeichen \textbullet\ am Zeilenanfang
+      \item 3~cm breiter umrandeter Kasten
+    \end{itemize}
+  \end{Beispiele}
+\end{Frame}
+
+\begin{Frame}[fragile]{Seitenbeschreibungssprachen}
+  \newcommand{\entry}[2]{\draw[maincolor, thick] (-.2,#1) -- (.2,#1) node[right] {\color{black}#2};}
+  \hskip 8ex\begin{tikzpicture}
+    \draw[maincolor, thick] (0,0) node[below] {\textbf{Form}} edge[<->] (0,6);
+    \draw[maincolor] (0,6) node[above] {\textbf{Struktur}};
+    \entry{.5}{Pixelgrafiken bzw. Paint};
+    \entry{1}{Vektorgrafiken bzw. Inkscape};
+    \entry{1.5}{PDF};
+    \entry{2.5}{\TeX};
+    \entry{3}{DTP-Tools wie z.\,B. Scribus};
+    \entry{3.5}{Office Word, Writer, \ldots};
+    \entry{4}{\textcolor{examplecolor}{\LaTeX}};
+    \entry{4.75}{HTML};
+    \entry{5.5}{Outliner};
+  \end{tikzpicture}
+\end{Frame}
+
+\begin{Frame}{\LaTeX\ vs. Office Word}
+  \begin{center}
+    \begin{tikzpicture}[thick]
+      \draw[->] (0,0) -- node[below] {Dokumentengr"o\ss e und -komplexit"at} (8,0);
+      \draw[->] (0,0) -- node[rotate=90, above] {Aufwand und Zeitbedarf} (0,6);
+      \begin{scope}[
+          every node/.style={font=\Large},
+        ]
+        \draw[alertedcolor, domain=0:3.68965] plot (\x, {exp(\x+.5)/12 + .5});
+        \path[alertedcolor, domain=0:3.3] plot (\x, {exp(\x+.5)/12 + .5}) node[above left] {Office Word};
+        \pause
+        \draw[dashed, maincolor] (0,5.5) -- node[above,near end] {hoffnungslos} (8,5.5);
+        \pause
+        \draw[examplecolor, domain=0:8] plot (\x, {\x^2/25 + 1.5});
+        \path[examplecolor, domain=0:6] plot (\x, {\x^2/25 + 1.5}) node[below right] {\LaTeX};
+        \pause
+        \draw[line width=3pt,maincolor] (2.15534, 1.68582) node[fill=maincolor,star,star point height=2mm] {} -- (2.15534,0);
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+\end{Frame}
+
+\subsection{Installation}
+
+\begin{Frame}[t]{Distributionen}
+  \begin{Block}{Windows}
+    \begin{columns}
+      \column{1mm}
+      \column{5cm}
+      \vskip2pt\par
+      \includegraphics[width=3.5cm]{images/miktex}\\
+
+      \column{5cm}
+      installiert Pakete bei\\ erster Verwendung automatisch
+    \end{columns}
+
+    \url{www.miktex.org}
+  \end{Block}
+
+  \begin{Block}{Linux}
+    \begin{columns}
+      \column{1mm}
+      \column{5cm}
+      \vskip4pt\par
+      \xdefinecolor{texlive}{RGB}{12,99,170}
+      \textcolor{texlive}{\Huge\bfseries\TeX\ Live}
+
+      \column{5cm}
+      mit Installer als\\ DVD-Image verfügbar
+    \end{columns}
+
+    \only<presentation>{\vskip4pt}
+    \url{www.tug.org/texlive}
+  \end{Block}
+
+  \begin{Block}{Mac}
+    \begin{columns}
+      \column{1mm}
+      \column{4.5cm}
+      \includegraphics[width=3.5cm]{images/mactex}
+
+      \column{5cm}
+      \TeX\ Live und Tools\\ für Mac OS
+    \end{columns}
+
+    \url{www.tug.org/mactex}
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}{Pakete installieren und aktualisieren}{Windows}
+  \begin{minipage}{\textwidth}\begin{center}
+    \includegraphics[width=8cm]{images/miktex-update}
+
+    \MiKTeX\ Updater
+  \end{center}\end{minipage}
+\end{Frame}
+
+\begin{Frame}{Pakete installieren und aktualisieren}{Linux}
+  \begin{minipage}{\textwidth}\begin{center}
+    \includegraphics[width=7cm]{images/texlive-update}
+
+    \TeX\ Live Manager
+  \end{center}\end{minipage}
+\end{Frame}
+
+\begin{Frame}{Pakete installieren und aktualisieren}{Mac}
+  \begin{minipage}{\textwidth}\begin{center}
+    \includegraphics[width=8cm]{images/mactex-update}
+
+    \TeX\ Live Utiliy
+  \end{center}\end{minipage}
+\end{Frame}
+
+\mode
+<article>
+
+\begin{Frame}[fragile]{\TeX-Live-Pakete unter Ubuntu/Debian}
+  \begin{lstlisting}[gobble=4,language={},morekeywords={sudo,apt,get}]
+    sudo apt-get install texlive \
+      texlive-lang-german texlive-latex-extra
+  \end{lstlisting}
+
+  installiert die Pakete
+
+  \begin{description}
+    \item[texlive] vollständiges \TeX-System, 
+    \item[texlive-lang-german] deutsche Sprachunterstützung und
+    \item[texlive-latex-extra] viele zusätzliche \LaTeX-Pakete.
+  \end{description}
+
+  \begin{alertblock}{Manuelle Installation}
+    \begin{itemize}
+      \item manuelle Installation ist oft aktueller
+      \item vor Ubuntu 12.10 nur \TeX\ Live 2009 verfügbar
+      \item Paketmanagement mit Paket \texttt{texlive-dummy} austricksen
+        (vgl. Anleitung von ubuntuusers)
+    \end{itemize}
+  \end{alertblock}
+\end{Frame}
+
+\mode
+<all>
+
+
+\subsection{Verwendung}
+
+\begin{Frame}[fragile]{\LaTeX}
+  \begin{itemize}
+    \item Ein \LaTeX-Dokument ist ein \alert{reines Textdokument}.
+    \item Das \LaTeX-Dokument enthält \alert{Inhalt und Struktur}.
+    \item \LaTeX\ setzt den Inhalt und kümmert sich um \alert{gute Form}.
+  \end{itemize}
+
+  \xxx
+  
+  \begin{center}
+    \begin{tikzpicture}[
+        shorten <=5pt,
+        shorten >=5pt
+      ]
+      \matrix[column sep=3em] {
+        \node[text width=6em] (source) {
+          \lstinputlisting[
+              basicstyle=\ttfamily\fontsize{4}{4}\selectfont,
+              linerange={1-1,12-27}
+            ]{demo/example.tex}
+        };
+        &
+        \node[inner sep=0pt] (latex)
+          {\rmfamily\Large\bfseries\LaTeX};
+        &
+        \node[draw=maincolor, thick] (pdf) {
+          \includegraphics[width=6em]{demo/example.pdf}
+        };\\
+        \node {\shortstack{Inhalt \&\\ Struktur}};
+        & & 
+        \node {\shortstack{formatiertes\\Dokument}};\\
+      };
+      \path[very thick, ->]
+        (source) edge (latex)
+        (latex) edge (pdf);
+    \end{tikzpicture}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}[fragile,t]{Ein \LaTeX-Dokument}
+  \inhead{\texttt{hello.tex}}
+  \lstinputlisting[linerange={1-2,5-8}]{demo/hello.tex}
+
+  \pause
+  \xxx
+
+  \inhead{Kompilieren}
+  \begin{lstlisting}[language={},morekeywords={pdflatex},gobble=4]
+    pdflatex hello
+  \end{lstlisting}
+
+  \pause
+  \xxx
+
+  \inhead{\texttt{hello.pdf}}
+  \begin{center}
+    \includegraphics[width=4in]{demo/hello.pdf}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}{Editoren und IDEs}
+  \begin{Block}{Editoren}
+    \begin{itemize}
+      \item Notepad++ (Windows)
+      \item GEdit (Linux)
+      \item Sublime Text (Windows, Linux, Mac)
+    \end{itemize}
+  \end{Block}
+
+  \pause
+
+  \begin{Block}{IDEs}
+    \begin{itemize}
+      \item \TeX works
+        \begin{itemize}
+          \item in \MiKTeX, \TeX\ Live und Mac\TeX\ enthalten
+        \end{itemize}
+      \item \TeX Shop
+        \begin{itemize}
+          \item in Mac\TeX\ enthalten
+        \end{itemize}
+      \item Kile (Linux)
+      %\item Texmaker (Windows, Linux, Mac)
+      \item TeXstudio (Windows, Linux, Mac)
+      %\item \TeX nicCenter (Windows)
+    \end{itemize}
+  \end{Block}
+\end{Frame}
+
