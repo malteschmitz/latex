@@ -53,6 +53,146 @@
 \input{basics-elements}
 \input{basics-summary}
 
+\appendix
+
+\beamersection{Ausblick}
+
+\subsection{Quelltext}
+
+\begin{Frame}[fragile]{Quelltext}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[style=block,gobble=6]
+      \usepackage{listings}
+      \lstset{%
+        basicstyle=\ttfamily,%
+        showstringspaces=false,%
+        upquote=true}
+      \usepackage{textcomp} % für upquote
+      \usepackage{courier} % für schönere Schriftart
+    \end{lstlisting}
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}{Quelltext}{Am Beispiel von Java-Code}
+  \lstinputlisting{listing.tex}
+
+  \xxx
+
+  \lstset{backgroundcolor={},frame=no,aboveskip=0pt,%
+    belowskip=0pt,keywordstyle=\bfseries,literate={}}
+  \input{listing.tex}
+\end{Frame}
+
+\subsection{Literatur}
+
+\begin{Frame}[fragile]{Was ist \BibTeX?}
+  \begin{itemize}
+    \item \BibTeX\ ist ein \alert{eigenständiges Programm},\\
+    das \LaTeX\ ergänzt.
+    \item \BibTeX\ erzeugt aus einer \alert{Literaturdatenbank}\\
+      ein \alert{Literaturverzeichnis}.
+    \item Das Literaturverzeichnis enthält \alert{nur} die\\
+      mit \lstinline-\cite- \alert{zitierten Einträge} der Datenbank.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[t]{Ein Beispieldokument \texttt{arbeit.pdf}}
+  \includegraphics[width=9cm]{demo/arbeit.pdf}
+\end{Frame}
+
+\subsection{\TikZ}
+
+\begin{Frame}{Was ist \TikZ?}
+  \begin{itemize}
+    \item \TikZ\ ist kein Zeichenprogramm,\\
+      dient aber zum Zeichnen von Grafiken mit \LaTeX.
+    \item \TikZ\ wird entwickelt und gepflegt von Till Tantau.
+    \item \TikZ\ ist ein Makropaket für \TeX\ bzw. \LaTeX.
+    \item \TikZ\ verfügt über die beste Anleitung aller Zeiten.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}{Ein erstes Beispiel}{Trigonometrische Funktionen mit \TikZ}
+  \tikzexample{[scale=3.5]
+    % Gitter im Hintergrund
+    \draw[step=.5cm,gray,very thin] (0,0)
+      grid (1.4,1.4);
+    % Kreisbogen
+    \draw (1,0) arc (0:90:1cm);
+    % Koordinatenachsen
+    \draw[->] (0,0) -- (1.5,0) node[right] {$x$};
+    \draw[->] (0,0) -- (0,1.5) node[above] {$y$};
+    % Winkel
+    \filldraw[fill=green!20,draw=green!50!black]
+      (0,0) -- (3mm,0pt) arc (0:30:3mm);
+    \draw (15:2mm) node[green!50!black] {$\alpha$};
+    % Sinus und Kosinus
+    \draw[very thick,red]
+      (30:1cm) -- node[left]
+        {$\sin \alpha$} (30:1cm |- 0,0);
+    \draw[very thick,blue]
+      (0,0) -- node[below]
+        {$\cos \alpha$} (30:1cm |- 0,0);
+    % Schnittpunktberechnung und Tangens
+    \path [name path=upward line]
+      (1,0) -- (1,1);
+    \path [name path=sloped line]
+      (0,0) -- (30:1.5cm);
+    \draw [name intersections=
+      {of=upward line and sloped line, by=tan}]
+      [very thick,orange] (1,0) -- node [right]
+      {$\displaystyle \tan \alpha \color{black}=
+        \frac{{\color{red}\sin \alpha}}
+          {\color{blue}\cos \alpha}$} (tan);
+    \draw (0,0) -- (tan);
+  }
+\end{Frame}
+
+\begin{Frame}{Ein zweites Beispiel}{GGT mit \TikZ}
+  \tikzexample{
+    [io/.style={trapezium, trapezium left angle=70, trapezium right angle=110, fill=magenta!10, draw=magenta},
+    op/.style={rectangle, fill=orange!10, draw=orange},
+    cn/.style={diamond, aspect=2, inner sep=2pt, fill=red!10, draw=red},
+    node distance=5mm, thick]
+    \node[io] (in) {Eingabe $a,b$};
+    \node[op, below=of in] (div) {$r=a \mod b$};
+    \node[op, below=of div] (set) {$a=b,\ b=r$};
+    \node[cn, below=of set] (cond) {$b=0?$};
+    \node[io, below=of cond] (out) {Ausgabe $a$};
+    %
+    \path[->]
+      (in) edge (div)
+      (div) edge (set)
+      (set) edge (cond)
+      (cond) edge node[right] {Ja} (out);
+    \draw[->] (cond) -- node[below] {Nein} ++(1.5,0) |- (div);
+  }
+\end{Frame}
+
+\subsection{BEAMER}
+
+\begin{Frame}{Was ist \beamer?}
+  \begin{itemize}
+    \item \alert{Dokumentenklasse für \LaTeX} für die Erzeugung von Präsentationen.
+      \only<article>{\newline(Diese Präsentation und das Skript wurden mit \beamer\ erzeugt.)}
+    \item Keine eigene und \alert{keine graphische Anwendung}.
+    \item \strut\beamer\ ist in \MiKTeX\ und \TeX\ Live enthalten.\newline
+      (\alert{Es kann direkt losgehen}.)
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}{Funktionsweise von \beamer}
+  \begin{itemize}
+    \item Kompilieren wie jedes andere \LaTeX-Dokument auch.
+    \item Normale \LaTeX-Kommandos funktionieren.
+    \item Sinnvolles funktionales Aussehen von Vorträgen.
+    \item Einfaches Ein- und Ausblenden von Seitenteilen.
+    \item Automatische Gliederungen und Navigationsleisten.
+    \item Präsentationen im PDF-Format können auf jedem Computer dargestellt werden.
+    \item Erzeugung von Präsentation und Skriptfassung aus dem gleichen \LaTeX-Dokument.
+  \end{itemize}
+\end{Frame}
+
 \mode
 <all>
 
