@@ -94,7 +94,7 @@
   \end{minipage}
 \end{Frame}
 
-\begin{Frame}[fragile]{Befehle}
+\begin{Frame}[fragile]{Befehle}{Merkmale}
   \begin{itemize}
     \item Befehle beginnen mit einem Backslash.\newline
       z.\,B. \lstinline-\emph-
@@ -281,6 +281,9 @@
   \end{alertblock}
 \end{Frame}
 
+\mode
+<article>
+
 \begin{Frame}[fragile]{Präambel: KOMA-Script-Optionen}
   \begin{lstlisting}[gobble=4]
     \KOMAoptions{
@@ -302,6 +305,9 @@
   \end{lstlisting}
 \end{Frame}
 
+\mode
+<all>
+
 \begin{Frame}[fragile]{Präambel: Pakete}
   \lstset{
     backgroundcolor={},
@@ -320,9 +326,12 @@
   UTF-8 als Zeichenkodierung verwenden
   \begin{lstlisting}
     \usepackage[T1]{fontenc}
+  \end{lstlisting}
+  westeuropäische Schriftkodierung verwenden
+  \begin{lstlisting}
     \usepackage{lmodern}
   \end{lstlisting}
-  schönere Schriftarten
+  schönere Schriftarten verwenden
   \begin{lstlisting}
     \usepackage[breaklinks=true]{hyperref}
   \end{lstlisting}
@@ -452,11 +461,6 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
         He came---and went.
       \end{lstlisting}
       He came---and went.
-    \item Gedankenstrich für Bereiche ohne Leerzeichen
-      \begin{lstlisting}[gobble=8]
-        Das Buch darf 10--12 Euro kosten.
-      \end{lstlisting}
-      Das Buch darf 10--12 Euro kosten.
   \end{looseitemize}
 \end{Frame}
 
@@ -475,11 +479,6 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
         Ein Satz.\quad Noch ein Satz.\qquad Ende.
       \end{lstlisting}
       Ein Satz.\quad Noch ein Satz. \qquad Ende.
-    \item Zwischenräume (3/18 bis 6/18 quad)
-      \begin{lstlisting}[gobble=8]
-        z.\,B. / z.\:B. / z.\;B. / z.\ B.
-      \end{lstlisting}
-      z.\,B. / z.\:B. / z.\;B. / z.\ B.
   \end{looseitemize}
 \end{Frame}
 
@@ -487,8 +486,11 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
   \begin{Block}{Mehrgliedrige Abkürzungen}
     \begin{itemize}
       \item mehrgliedrige Abkürzungen eng zusammen setzen
-      \item 3/18 quad Abstand verwenden\newline
-        Beispiel: \lstinline-Abkürzungen, z.\, B. diese-
+      \item einen 3/18 quad Abstand verwenden
+        \begin{lstlisting}[gobble=10]
+          Abkürzungen, z.\,B. diese
+        \end{lstlisting}
+        Abkürzungen, z.\,B. diese
     \end{itemize}
   \end{Block}
   
@@ -496,8 +498,11 @@ Wir werden später sehen, dass \LaTeX\ einen eigenen Mathe-Modus hat. Einige Zei
     \begin{itemize}
       \item Zusammenhängende Kürzel nicht trennen
       \item Maß- und Währungszeichen nicht von der Zahl trennen
-      \item geschütztes Leerzeichen \lstinline-~- verwenden\newline
-        Beispiele: \lstinline-Seite~5, 4~km, S.~5~ff.-
+      \item geschütztes Leerzeichen \lstinline-~- verwenden
+        \begin{lstlisting}[gobble=10]
+          Seite~5, 4~km, S.~5~ff.
+        \end{lstlisting}
+        Seite~5, 4~km, S.~5~ff.
     \end{itemize}
   \end{Block}
 \end{Frame}
