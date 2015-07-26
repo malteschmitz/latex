@@ -163,11 +163,11 @@
 
 \subsection{Verwendung}
 
-\begin{Frame}[fragile]{\LaTeX}
+\begin{Frame}[fragile]{Ein \LaTeX-Dokument}
   \begin{itemize}
-    \item Ein \LaTeX-Dokument ist ein \alert{reines Textdokument}.
-    \item Das \LaTeX-Dokument enthält \alert{Inhalt und Struktur}.
-    \item \LaTeX\ setzt den Inhalt und kümmert sich um \alert{gute Form}.
+    \item<1-> ist eine \alert{reine Textdatei} mit \alert{Inhalt}
+    \item<2-> enthält darüber hinaus die \alert{Struktur} des Inhalts
+    \item<3-> wird durch \LaTeX\ in \alert{guter Form} gesetzt
   \end{itemize}
 
   \xxx
@@ -179,25 +179,28 @@
       ]
       \matrix[column sep=3em] {
         \node[text width=6em] (source) {
-          \lstinputlisting[
+          \only<1>{\lstinputlisting[
+              basicstyle=\ttfamily\fontsize{4}{4}\selectfont 
+            ]{demo/exampleContent.txt}}
+          \only<2->{\lstinputlisting[
               basicstyle=\ttfamily\fontsize{4}{4}\selectfont,
               linerange={1-1,12-27}
-            ]{demo/example.tex}
+            ]{demo/example.tex}}
         };
         &
-        \node[inner sep=0pt] (latex)
-          {\rmfamily\Large\bfseries\LaTeX};
+        \visible<3->{\node[inner sep=0pt] (latex)
+          {\rmfamily\Large\bfseries\LaTeX};}
         &
-        \node[draw=maincolor, thick] (pdf) {
+        \visible<3->{\node[draw=maincolor, thick] (pdf) {
           \includegraphics[width=6em]{demo/example.pdf}
-        };\\
-        \node {\shortstack{Inhalt \&\\ Struktur}};
+        };}\\
+        \node {\shortstack{Inhalt \visible<2->{\&\\ Struktur}}};
         & & 
-        \node {\shortstack{formatiertes\\Dokument}};\\
+        \visible<3->{\node {\shortstack{formatiertes\\Dokument}};}\\
       };
-      \path[very thick, ->]
+      \visible<3->{\path[very thick, ->]
         (source) edge (latex)
-        (latex) edge (pdf);
+        (latex) edge (pdf);}
     \end{tikzpicture}
   \end{center}
 \end{Frame}
