@@ -258,7 +258,7 @@ an, was auch als Summenformel bekannt ist.</pre>
 
 <p><span class="label label-info">FOLIEN</span> Siehe Folien.</p>
 
-<h3>Die ware Präambel</h3>
+<h3>Die wahre Präambel</h3>
 
 <pre class="sh_latex">\documentclass{scrartcl}
 

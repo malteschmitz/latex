@@ -32,6 +32,8 @@
         <div class="collapse navbar-collapse" id="latex-navbar">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.html">2015 <span class="sr-only">(current)</span></a></li>
+            <li><a href="../2014">2014</a></li>
+            <li><a href="../2013">2013</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Vorlagen <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -39,8 +41,6 @@
                 <li><a href="https://github.com/malteschmitz/latex-thesis">Abschlussarbeiten</a></li>
               </ul>
             </li>
-            <li><a href="../2014">2014 <span class="glyphicon glyphicon-book"></span></a></li>
-            <li><a href="../2013">2013 <span class="glyphicon glyphicon-play-circle"></span></a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
