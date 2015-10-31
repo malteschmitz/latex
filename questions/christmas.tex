@@ -1,0 +1,82 @@
+\documentclass[fontsize=13pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[scaled=.88]{DejaVuSansMono}
+\usepackage{textcomp}
+
+\usepackage{geometry}
+\geometry{paperwidth=12cm,paperheight=16.97cm,margin=5mm}
+
+\usepackage{tikz}
+\usetikzlibrary{%
+  lindenmayersystems,
+  decorations.pathmorphing,
+  decorations.markings,
+  shapes.geometric,
+  calc%
+}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstdefinelanguage[MyLaTeX]{TeX}[LaTeX]{TeX}{%
+  % TeX commands
+  moretexcs={pgfmathsetmacro,brad,path,pgfmathparse,let,lshape,pgfmathresult,%
+              pgfmathsetmacro,tint,node,lshape,coordinate,path,draw,foreach,%
+              height,colour,pgfgetlastxy,starx,stary},%
+  % LaTeX environments
+  morekeywords={[2]tikzpicture,scope},%
+  % other things (like packages) to highlight
+  morekeywords={[3]style,rounded,corners,ultra,thin,decorate,decoration,%
+                snake,amplitude,segment,length,markings,mark,between,%
+                positions,and,step,rand,shading,ball,color,circle,radius,%
+                with,inner,sep,ball,color,coordinate,line,width,cap,round,%
+                rotate,scale,trapezium,fill,minimum,size,to,bend,right,%
+                xshift,yshift,l-system,rule,set,axiom,in,star,point,ratio,%
+                at,angle},%
+  alsoletter={0123456789*}%
+  }%
+
+\colorlet{maincolor}{black!40}
+\colorlet{texcs}{violet!40}
+\colorlet{keyword}{violet!40}
+\colorlet{keywordnd}{green!70!black!40}
+\colorlet{keywordrd}{orange!70!black!40}
+\colorlet{comment}{gray!40}
+\colorlet{bracecolor}{red!40}
+
+\lstset{%
+  basicstyle=\color{maincolor}\ttfamily\tiny,%
+  language=[MyLaTeX]TeX,%
+  texcsstyle=*\color{texcs}\bfseries,%
+  keywordstyle=\color{keyword}\bfseries,%
+  keywordstyle={[2]\color{keywordnd}\bfseries},%
+  keywordstyle={[3]\color{keywordrd}\bfseries},%
+  commentstyle=\color{comment}\itshape,%
+  stringstyle=\itshape,%
+  numbers=none,%
+  showstringspaces=false,%
+  upquote=true,
+  literate={ö}{{\"o}}1
+           {Ö}{{\"O}}1
+           {ä}{{\"a}}1
+           {Ä}{{\"A}}1
+           {ü}{{\"u}}1
+           {Ü}{{\"U}}1
+           {ß}{{\ss}}1
+           {\$}{{\textbf{\color{bracecolor}\$}}}1
+           {\{}{{\textbf{\color{bracecolor}\{}}}1
+           {\}}{{\textbf{\color{bracecolor}\}}}}1
+           {[}{{\textbf{\color{bracecolor}[}}}1
+           {]}{{\textbf{\color{bracecolor}]}}}1
+           {<}{{\textbf{\color{bracecolor}<}}}1
+           {>}{{\textbf{\color{bracecolor}>}}}1
+}
+
+\begin{document}
+\pagestyle{empty}
+\lstinputlisting{christmas.inc}
+
+\vskip-12.5cm
+\hfill\input{christmas.inc}\hfill\strut
+\end{document}
