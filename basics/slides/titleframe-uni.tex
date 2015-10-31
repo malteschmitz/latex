@@ -1,0 +1,24 @@
+%!TEX root = basic.tex
+
+\pgfdeclareimage[width=6cm]{uni-logo}{uni-logo}
+
+{
+  \setbeamertemplate{background}{%
+    \rule{0pt}{18mm}%
+    \rule{5mm}{0pt}%
+    \pgfuseimage{uni-logo}
+  }
+
+  \begin{frame}
+    \begin{center}
+      \vskip3cm
+      {\bfseries\color{maincolor}{\fontsize{72pt}{72pt}\selectfont\rmfamily\LaTeX}
+      \par\vskip5mm
+      \Huge Einführung}
+      \par\vskip12mm
+      \large \underline{Malte Schmitz} \quad Johannes Thorn
+      \par\vskip2ex
+      Werkzeuge für das wissenschaftliche Arbeiten -- WS 15/16
+    \end{center}
+  \end{frame}
+}

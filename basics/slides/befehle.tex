@@ -1,0 +1,34 @@
+%!TEX root = basic.tex
+
+\begin{frame}[fragile]{Befehle und Umgebungen}
+  \LARGE
+
+  \lstset{
+    gobble=4,
+    escapechar=\%,
+    escapebegin={\normalsize<},
+    escapeend={>},
+    literate={\{}{{\textbf{\color{red}\{}}}1
+           {\}}{{\textbf{\color{red}\}}}}1
+           {[}{{\textbf{\color{red}[}}}1
+           {]}{{\textbf{\color{red}]}}}1
+           {\\}{{\textbf{\color{red}\textbackslash}}}1,
+    morekeywords={begin,end},
+    backgroundcolor={},
+    frame=no,
+    aboveskip=0pt,
+    belowskip=0pt
+  }
+
+  \begin{lstlisting}
+    \%Name%[%Optional%]{%Argument%}%\ldots%
+  \end{lstlisting}
+
+  \vfill
+
+  \begin{lstlisting}
+    \begin{%Name%}[%Optional%]{%Argument%}%\ldots%
+      %Inhalt%
+    \end{%Name%}
+  \end{lstlisting}
+\end{frame}

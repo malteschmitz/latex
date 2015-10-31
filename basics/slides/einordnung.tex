@@ -1,0 +1,122 @@
+%!TEX root = basic.tex
+
+\begin{frame}{Dimensionen eines Dokumentes}
+  \begin{onlyenv}<presentation:1| article:0>
+    \begin{center}
+      Inhalt ist die Bedeutung eines Textes.
+    \end{center}
+  \end{onlyenv}
+  \begin{onlyenv}<presentation:2| article:0>
+    \begin{description}
+      \item[\textnormal{\color{black}Inhalt}] ist die \emph{Bedeutung} eines Textes.
+      \item[\textnormal{\color{black}Struktur}] ist der \emph{Aufbau} eines Textes.
+      \uncover<3>{\item Foo}
+    \end{description}
+  \end{onlyenv}
+  \begin{onlyenv}<3>
+    \begin{description}
+      \item[Inhalt] ist die \alert{Bedeutung} eines Textes.
+      \item[Struktur] ist der \alert{Aufbau} eines Textes.
+      \item[Form] ist das \alert{Aussehen} eines Textes.
+    \end{description}
+  \end{onlyenv}
+\end{frame}
+
+\begin{frame}{Struktur vs. Form}
+  \begin{Beispiele}[Struktur]
+    \begin{itemize}
+      \item Überschrift
+      \item Gruppierung
+      \item Listeneintrag
+    \end{itemize}
+  \end{Beispiele}
+
+  \xxx
+
+  \begin{Beispiele}[Form]
+    \begin{itemize}
+      \item 13{,}37~cm breiter farbiger Kasten
+      \item 0{,}6~cm Einzug
+      \item Aufzählungszeichen $\blacktriangleright$ am Zeilenanfang
+    \end{itemize}
+  \end{Beispiele}
+\end{frame}
+
+\begin{frame}[fragile]{Seitenbeschreibungssprachen}
+  \newcommand{\entry}[2]{\draw[maincolor, thick] (-.2,#1) -- (.2,#1) node[right] {\color{black}#2};}
+  \hskip 8ex\begin{tikzpicture}
+    \draw[maincolor, thick] (0,0) node[below] {\textbf{Form}} edge[<->] (0,6);
+    \draw[maincolor] (0,6) node[above] {\textbf{Struktur}};
+    \entry{.5}{Pixelgrafiken bzw. Paint};
+    \entry{1}{Vektorgrafiken bzw. Inkscape};
+    \entry{1.5}{PDF};
+    \entry{2.5}{\TeX};
+    \entry{3}{DTP-Tools wie z.\,B. Scribus};
+    \entry{3.5}{Office Word, Writer, \ldots};
+    \entry{4}{\textcolor{examplecolor}{\LaTeX}};
+    \entry{4.75}{HTML};
+    \entry{5.5}{Outliner};
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{\LaTeX\ vs. Office Word}
+  \begin{center}
+    \begin{tikzpicture}[thick]
+      \draw[->] (0,0) -- node[below] {Dokumentengröße und -komplexität} (8,0);
+      \draw[->] (0,0) -- node[rotate=90, above] {Aufwand und Zeitbedarf} (0,6);
+      \begin{scope}[
+          every node/.style={font=\Large},
+        ]
+        \draw[alertedcolor, domain=0:3.68965] plot (\x, {exp(\x+.5)/12 + .5});
+        \path[alertedcolor, domain=0:3.3] plot (\x, {exp(\x+.5)/12 + .5}) node[above left] {Office Word};
+        \pause
+        \draw[dashed, maincolor] (0,5.5) -- node[above,near end] {hoffnungslos} (8,5.5);
+        \pause
+        \draw[examplecolor, domain=0:8] plot (\x, {\x^2/25 + 1.5});
+        \path[examplecolor, domain=0:6] plot (\x, {\x^2/25 + 1.5}) node[below right] {\LaTeX};
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Ein \LaTeX-Dokument}
+  \begin{itemize}
+    \item<1-> ist eine \alert{reine Textdatei} mit \alert{Inhalt}
+    \item<2-> enthält darüber hinaus die \alert{Struktur} des Inhalts
+    \item<3-> wird durch \LaTeX\ in \alert{guter Form} gesetzt
+  \end{itemize}
+
+  \xxx
+  
+  \begin{center}
+    \begin{tikzpicture}[
+        shorten <=5pt,
+        shorten >=5pt
+      ]
+      \matrix[column sep=3em] {
+        \node[text width=6em] (source) {
+          \only<1>{\lstinputlisting[
+              basicstyle=\ttfamily\fontsize{4}{4}\selectfont 
+            ]{demo/exampleContent.txt}}
+          \only<2->{\lstinputlisting[
+              basicstyle=\ttfamily\fontsize{4}{4}\selectfont,
+              linerange={1-1,12-27}
+            ]{demo/example.tex}}
+        };
+        &
+        \visible<3->{\node[inner sep=0pt] (latex)
+          {\rmfamily\Large\bfseries\LaTeX};}
+        &
+        \visible<3->{\node[draw=maincolor, thick] (pdf) {
+          \includegraphics[width=6em]{demo/example.pdf}
+        };}\\
+        \node {\shortstack{Inhalt \visible<2->{\&\\ Struktur}}};
+        & & 
+        \visible<3->{\node {\shortstack{formatiertes\\Dokument}};}\\
+      };
+      \visible<3->{\path[very thick, ->]
+        (source) edge (latex)
+        (latex) edge (pdf);}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}

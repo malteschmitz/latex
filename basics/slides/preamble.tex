@@ -1,0 +1,169 @@
+%!TEX root = basic.tex
+
+\begin{frame}[fragile]{Aufbau eines Dokuments}
+  \begin{tikzpicture}[%
+      auto,
+      every edge/.style={
+        draw,
+        decorate,
+        decoration=brace,
+        very thick
+      }
+    ]
+    \node[text width=\textwidth, anchor=south] (tex) {
+      \begin{lstlisting}[gobble=8]
+        \documentclass{scrartcl}
+
+        \usepackage[ngerman]{babel}
+        \usepackage[utf8]{inputenc}
+        \usepackage[T1]{fontenc}
+
+        \KOMAoptions{%
+          parskip=full,%
+          fontsize=12pt}
+
+        \begin{document}
+          Franz jagt im komplett
+          verwahrlosten Taxi quer
+          durch Bayern.
+        \end{document}
+      \end{lstlisting}
+    };
+
+    \pause
+    \draw
+      (1,7.6) edge node {Dokumentenklasse} (1,7.2);
+    \pause
+    \draw
+      (1,6.6) edge node {\shortstack{Pakete\\laden}} (1,5.3);
+    \pause
+    \draw
+      (0,4.7) edge node {Einstellungen} (0,3.5);
+    \pause
+    \draw
+      (3,6.6) edge node {Präambel} (3,3.5);
+    \pause
+    \draw
+      (1,2.6) edge node {Dokumentenkörper} (1,.9);
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]{Dokumentenklassen}
+  \lstinline-\documentclass{scrartcl}-\newline
+  kurzer Artikel
+
+  \xxx
+
+  \lstinline-\documentclass{scrreprt}-\newline
+  Bericht mit Titelseite und Kapiteln
+
+  \xxx
+
+  \lstinline-\documentclass{scrbook}-\newline
+  doppelseitiges Buch mit Teilen, Kapiteln und Kopfzeile
+
+  \xxx
+
+  \begin{alertblock}{amerikanische Dokumentenklassen}
+    Wir verwenden die deutschen Dokumentenklassen aus KOMA-Script statt der 
+    amerikanischen \lstinline-article-, \lstinline-report- und \lstinline-book-.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Präambel: KOMA-Script-Optionen}
+  \lstset{
+    backgroundcolor={},
+    frame=no,
+    gobble=4,
+    aboveskip=3ex,
+    belowskip=0pt
+  }
+
+  \begin{lstlisting}
+    \KOMAoptions{parskip=full}
+  \end{lstlisting}
+  \begin{description}
+    \item[\texttt{full}] Absätze haben großen Abstand
+    \item[\texttt{half}] Absätze haben kleinen Abstand
+    \item[\texttt{off}] Absätze haben Einzug (default)
+  \end{description}
+
+  \begin{lstlisting}
+    \KOMAoptions{fontsize=12pt}
+  \end{lstlisting}
+  Grundschriftgröße (10pt default)
+
+  \begin{lstlisting}
+    \KOMAoptions{headings=small}
+  \end{lstlisting}
+  \begin{description}
+    \item[\texttt{small}] kleine Überschriften
+    \item[\texttt{normal}] normale Überschriften (default)
+    \item[\texttt{big}] große Überschriften
+  \end{description}
+\end{frame}
+
+\begin{frame}[fragile]{Präambel: Standard-Pakete}
+  \lstset{
+    backgroundcolor={},
+    frame=no,
+    gobble=4,
+    aboveskip=3ex,
+    belowskip=0pt
+  }
+  
+  \begin{lstlisting}
+    \usepackage[utf8]{inputenc}
+  \end{lstlisting}
+  UTF-8 als Zeichenkodierung verwenden
+  
+  \begin{lstlisting}
+    \usepackage[ngerman]{babel}
+  \end{lstlisting}
+  deutsche Silbentrennung und deutsche Übersetzung
+  
+  \begin{lstlisting}
+    \usepackage[T1]{fontenc}
+  \end{lstlisting}
+  westeuropäische Schriftkodierung verwenden
+  
+  \begin{lstlisting}
+    \usepackage{lmodern}
+  \end{lstlisting}
+  schönere Schriftarten verwenden
+\end{frame}
+
+\begin{frame}[fragile]{Präambel: zusätzliche Pakete}
+  \lstset{
+    backgroundcolor={},
+    frame=no,
+    gobble=4,
+    aboveskip=3ex,
+    belowskip=0pt
+  }
+
+  \begin{lstlisting}
+    \usepackage{xcolor}
+  \end{lstlisting}
+  Befehl \lstinline-\textcolor- für Farbe
+
+  \begin{lstlisting}
+    \usepackage{graphicx}  
+  \end{lstlisting}
+  Befehl \lstinline-\includegraphics- für Abbildungen
+
+  \begin{lstlisting}
+    \usepackage[german=guillemets]{csquotes}
+  \end{lstlisting}
+  Befehl \lstinline-\enquote- für Anführungszeichen
+
+  \begin{lstlisting}
+    \usepackage{amsmath}
+  \end{lstlisting}
+  Umgebung \lstinline-align- für ausgerichtete Formeln
+
+  \begin{lstlisting}
+    \usepackage[breaklinks=true]{hyperref}
+  \end{lstlisting}
+  bessere Unterstützung der PDF-Ausgabe
+\end{frame}
