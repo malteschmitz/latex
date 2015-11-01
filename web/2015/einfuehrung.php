@@ -22,7 +22,7 @@
 
 <h2>Was ist LaTeX?</h2>
 
-<p><span class="label label-info">FOLIEN</span> Siehe Folien.</p>
+<p><span class="label label-info">FOLIEN</span> Was ist LaTeX und wann wird es eingesetzt?</p>
 
 <h3>Distributionen</h3>
 
@@ -123,7 +123,7 @@ Nun sind \textcolor{orange}{Gummibärchen} weder wabbelig noch zäh.</pre>
 
 <h3>Befehle und Umgebungen</h3>
 
-<p><span class="label label-info">FOLIEN</span> Siehe Folien.</p>
+<p><span class="label label-info">FOLIEN</span> Zusammenfassung der Syntax von Befehlen und Umgebungen.</p>
 
 <h3>Abschnitte</h3>
 
@@ -256,7 +256,7 @@ an, was auch als Summenformel bekannt ist.</pre>
 
 <h2>Aufbau und Präambel</h2>
 
-<p><span class="label label-info">FOLIEN</span> Siehe Folien.</p>
+<p><span class="label label-info">FOLIEN</span> Struktur eines Dokumentes und Elemente der Präambel</p>
 
 <h3>Die wahre Präambel</h3>
 

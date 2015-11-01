@@ -1,0 +1,241 @@
+%!TEX root = advanced.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{aurical}
+\usepackage{mathptmx}
+\usepackage[scaled]{helvet}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage[scaled=.88]{DejaVuSansMono}
+
+\usepackage[ngerman]{babel}
+\usepackage[german=guillemets]{csquotes}
+
+\usepackage{amsmath}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,%
+  fit,%
+  arrows,%
+  automata,%
+  trees,%
+  intersections,%
+  mindmap,%
+  shapes.geometric,%
+  shapes.arrows,%
+  decorations,%
+  decorations.pathmorphing,%
+  decorations.pathreplacing,%
+  matrix,%
+  chains,%
+  scopes,%
+  circuits,%
+  circuits.ee.IEC,%
+  calc,%
+  fadings,%
+  lindenmayersystems,%
+  decorations.markings%
+}
+
+\usepackage{pifont}
+\newcommand{\goodmark}{\textcolor{green!50!black}{\Pisymbol{pzd}{52}}}
+\newcommand{\badmark}{\textcolor{red}{\Pisymbol{pzd}{56}}}
+
+% define colors used by presentation theme AND article
+\colorlet{maincolor}{orange}
+\colorlet{alertedcolor}{red}
+\colorlet{examplecolor}{green!50!black}
+
+% color system
+% - color!9 used as light fill color (e.g. for block content)
+% - color!18 used as default fill color (e.g. for state)
+% - color!30 used as highlight fill color (e.g. for block header)
+% - color!50 used as strong highlight fill color (e.g. for header row)
+
+\usepackage{listings}
+\lstdefinelanguage[MyLaTeX]{TeX}[LaTeX]{TeX}%
+  % TeX commands
+  {moretexcs={enquote,includegraphics,%
+    part,chapter,section,subsection,paragraph,subparagraph%
+    tableofcontents,listoffigures,listoftables,maketitle,%
+    subsection,subsubsection,paragraph,autoref,it,%
+    textcolor,colorbox,xdefinecolor,colorlet,foreach,%
+    rowcolors,rowcolor,lstdefinestyle,lstset,KOMAoptions,%
+    setkomavar,setkomavar*,opening,closing,encl,%
+    lehead,cehead,rehead,lefoot,cefoot,refoot,%
+    lohead,cohead,rohead,lofoot,cofoot,rofoot,%
+    ohead,chead,ihead,ofoot,cfoot,ifoot,%
+    areaset,color,%
+    automark,manualmark,markright,markboth,%
+    tableofcontents,url,clearscrheadfoot,pagemark,headmark,%
+    setheadtopline,setkomafont,setheadsepline,setfootsepline,%
+    setfootbotline,chaptermark,thesection,thechapter,%
+    thesubsection,subtitle,inst,section*,subsection*,institute,%
+    chapter*,part*,%
+    qedhere,usetheme,useinnertheme,useoutertheme,%
+    pause,uncover,only,alert,onslide,mode,mode*,usetikzlibrary,%
+    draw,filldraw,path,node,usefonttheme,setbeamertemplate,%
+    declaretheorem,FiveFlowerOpen,%
+    frontmatter,mainmatter,appendix,backmatter,%
+    operatorname},%
+  % LaTeX environments
+  morekeywords={[2]lstlisting,document,letter,center,flushleft,%
+    flushright,align,itemize,enumerate,description,tabular,%
+    titlepage,figure,table,frame,tikzpicture,quote,quotation,verse},%
+  % other things (like packages) to highlight
+  morekeywords={[3]listings,textcomp,courier,xcolor,scrartcl,%
+    scrlttr2,inputenc,babel,%
+    fontenc,lmodern,mathptmx,%
+    helvet,geometry,scrpage2,scrreprt,scrbook,%
+    article,report,book,hyperref,%
+    csquotes,amsmath,amssymb,la,beamer,beamerarticle,%
+    tikz,amsthm,thmtools},
+  alsoletter={0123456789*}
+  }%
+
+\lstdefinelanguage{BibTeX}
+  {keywords={%
+      @article,@book,@collectedbook,@conference,@electronic,@ieeetranbstctl,%
+      @inbook,@incollectedbook,@incollection,@injournal,@inproceedings,%
+      @manual,@mastersthesis,@misc,@patent,@periodical,@phdthesis,@preamble,%
+      @proceedings,@standard,@string,@techreport,@unpublished%
+      },
+   comment=[l][\itshape]{@comment},
+   morekeywords={[2]author,title,year,publisher,editor,booktitle,journal,series,volume,number,pages,institution,note,howpublished},
+  }
+
+\colorlet{texcs}{violet}
+\colorlet{keyword}{violet}
+\colorlet{keywordnd}{green!70!black}
+\colorlet{keywordrd}{orange!70!black}
+\colorlet{comment}{gray}
+
+\lstset{%
+  basicstyle=\ttfamily,%
+  language=[MyLaTeX]TeX,%
+  texcsstyle=*\color{texcs}\bfseries,%
+  keywordstyle=\color{keyword}\bfseries,%
+  keywordstyle={[2]\color{keywordnd}\bfseries},%
+  keywordstyle={[3]\color{keywordrd}\bfseries},%
+  commentstyle=\color{comment}\itshape,%
+  stringstyle=\itshape,%
+  numbers=none,%
+  frame=lines,%
+  backgroundcolor=\color{maincolor!10},%
+  rulecolor=\color{maincolor!70},%
+  framerule=1pt,%
+  showstringspaces=false,%
+  upquote=true,%
+  framexleftmargin=3pt,%
+  framexrightmargin=3pt}
+
+\lstdefinestyle{pseudo}{language={},%
+  basicstyle=\normalfont,%
+  morecomment=[l]{//},%
+  morekeywords={for,to,while,do,if,then,else},%
+  mathescape=true,%
+  columns=fullflexible}
+
+\lstdefinestyle{block}{%
+  backgroundcolor={},%
+  frame=no,%
+  aboveskip=0pt,%
+  belowskip=0pt
+}
+
+% german umlauts and red braces
+\lstset{
+  literate={ö}{{\"o}}1
+           {Ö}{{\"O}}1
+           {ä}{{\"a}}1
+           {Ä}{{\"A}}1
+           {ü}{{\"u}}1
+           {Ü}{{\"U}}1
+           {ß}{{\ss}}1
+           {\{}{{\textbf{\color{red}\{}}}1
+           {\}}{{\textbf{\color{red}\}}}}1
+           {[}{{\textbf{\color{red}[}}}1
+           {]}{{\textbf{\color{red}]}}}1
+           {<}{{\textbf{\color{red}<}}}1
+           {>}{{\textbf{\color{red}>}}}1
+}
+
+% logos like \BibTeX
+\usepackage{logos}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% zebra tables
+\newcommand{\mainrowcolors}{\rowcolors{1}{maincolor!30}{maincolor!9}}
+\newenvironment{zebratabular}{\mainrowcolors\begin{tabular}}{\end{tabular}}
+\newcommand{\setrownumber}[1]{\global\rownum#1\relax}
+\newcommand{\headerrow}{\rowcolor{maincolor!50}\setrownumber1}
+
+% easier use of operatorname
+\newcommand{\op}[1]{\operatorname{#1}}
+
+\newcommand{\xxx}{\only<presentation>{\vskip1em}}
+
+\newenvironment{mybib}{%
+  \begin{thebibliography}{10}
+}{%
+  \end{thebibliography}
+}
+
+\makeatletter
+% Reverts "Heiko's fix for correct generation of section* and
+% subsection* bookmarks" in beamerbasecompatibility.sty which
+% disables bookmarks in \section* and \subsection*.
+% This is done by disabling \Hy@writebookmark in \beamer@section
+% and \beamer@subsection if their second argument is empty.
+% This is the case for \section* and \subsection* as these
+% commands are mapped to \beamer@section[{#1}]{} resp.
+% \beamer@subsection[{#1}]{}. By defining \beamer@section and
+% \beamer@subsection again to the original and not patched version
+% in the macro \beamer@lastminutepatches where the patch is applied
+% this behaviour gets disabled. This is mainly reverted because
+% bookmarks of parts are not added after \section*{Conclusion} due
+% to this patch.
+\g@addto@macro\beamer@lastminutepatches{
+  \ifx\org@beamer@section\undefined{}%
+  \else
+    \let\beamer@section\org@beamer@section{}%
+  \fi
+  \ifx\org@beamer@subsection\undefined{}%
+  \else
+    \let\beamer@subsection\org@beamer@subsection{}%
+  \fi
+}
+\makeatother
+
+% display math in serif font on the slides
+\usefonttheme[onlymath]{serif}
+
+\newcommand{\inhead}[1]{\textbf{\color{maincolor}#1}}
+
+\useinnertheme{default}
+\usefonttheme{structurebold}
+\setbeamertemplate{navigation symbols}{} % hide navigation symbols
+
+\setbeamercolor{structure}{fg=maincolor}
+
+\setbeamercolor{block title}{fg=black,bg=maincolor!30}
+\setbeamercolor{block title alerted}{fg=black,bg=alertedcolor!30}
+\setbeamercolor{block title example}{fg=black,bg=examplecolor!30}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=maincolor!9}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title,bg=alertedcolor!9}
+\setbeamercolor{block body example}{parent=normal text,use=block title,bg=examplecolor!9}
+
+\setbeamercolor{page number in head/foot}{fg=black}
+
+\setbeamercolor{alerted text}{fg=alertedcolor}
+\setbeamercolor{example text}{fg=examplecolor}
+
+\pgfdeclareimage[width=8cm]{live-coding}{live-coding}
+\newcommand{\livecoding}[1]{\frame{\frametitle{#1}\centerline{\pgfuseimage{live-coding}}}}

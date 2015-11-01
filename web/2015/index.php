@@ -72,7 +72,7 @@
           <?php
             include('nook.php');
             include('einfuehrung.php');
-            //include('abschlussarbeiten.php');
+            include('abschlussarbeiten.php');
             //include('tikz.php');
             //include('beamer.php');
             include('lizenz.php');

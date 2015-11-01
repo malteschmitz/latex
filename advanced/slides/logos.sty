@@ -1,0 +1,35 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{logos}[2014/11/18 Logo collection]
+
+% logo collection inspired by the package
+% dtklogos from "Die TeXnische Komödie"
+% dtklogos overwrites \tikz which has very bad consequences
+
+\DeclareRobustCommand{\pdfTeX}{pdf\TeX}
+
+\DeclareRobustCommand{\MiKTeX}{MiK\TeX}
+
+\DeclareRobustCommand{\BibTeX}{B\kern-.05em%
+    \hbox{$\m@th$% %% force math size calculations
+          \csname S@\f@size\endcsname
+          \fontsize\sf@size\z@
+          \math@fontsfalse\selectfont
+          I\kern-.025emB}%
+    \kern-.08em%
+    \-\TeX}
+
+\DeclareRobustCommand{\TikZ}{Ti\textit{k}Z}
+
+\DeclareRobustCommand{\beamer}{%
+    \texorpdfstring{%
+    \hbox{$\m@th$% %% force math size calculations
+          \csname S@\f@size\endcsname
+          \fontsize\sf@size\z@
+          \math@fontsfalse\selectfont
+          BEAMER}}%
+    {Beamer}}
+
+%\DeclareRobustCommand{\beamer}{\texorpdfstring{\textsc{beamer}}{Beamer}}
+
+\endinput

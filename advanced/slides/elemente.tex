@@ -1,0 +1,148 @@
+%!TEX root = advanced.tex
+
+\section{Elemente}
+
+\subsection{Farben definieren}
+
+\livecoding{Farben definieren}
+
+\begin{frame}[fragile]{Farben definieren}{RGB-Modell}
+  \begin{lstlisting}[gobble=4]
+    % Red, Green, Blue von 0 bis 255
+    \xdefinecolor{uni-luebeck}{RGB}{0, 75, 90}
+  \end{lstlisting}
+
+  \xxx
+
+  \begin{itemize}
+    \item Red / Rot\newline
+      \foreach \r in {0, ..., 255} {%
+        \xdefinecolor{current}{RGB}{\r, 0, 0}%
+        \textcolor{current}{\rule{.94117647058pt}{3ex}}%
+      }
+    \item Green / Grün\newline
+      \foreach \g in {0, ..., 255} {%
+        \xdefinecolor{current}{RGB}{0, \g, 0}%
+        \textcolor{current}{\rule{.94117647058pt}{3ex}}%
+      }
+    \item Blue / Blau\newline
+      \foreach \b in {0, ..., 255} {%
+        \xdefinecolor{current}{RGB}{0, 0, \b}%
+        \textcolor{current}{\rule{.94117647058pt}{3ex}}%
+      }
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Farben definieren}{HSB-Modell}
+  \begin{lstlisting}[gobble=4]
+    % Hue, Saturation, Brightness von 0 bis 240
+    \xdefinecolor{skyblue}{HSB}{217, 47, 87}
+  \end{lstlisting}
+
+  \xxx
+
+  \begin{itemize}
+    \item Hue / Farbton\newline
+      \foreach \h in {0, ..., 240} {%
+        \xdefinecolor{current}{HSB}{\h, 240, 240}%
+        \textcolor{current}{\rule{1pt}{3ex}}%
+      }
+    \item Saturation / Sättigung\newline
+      \foreach \s in {0, ..., 240} {%
+        \xdefinecolor{current}{HSB}{0, \s, 240}%
+        \textcolor{current}{\rule{1pt}{3ex}}%
+      }
+    \item Brightness / Helligkeit\newline
+      \foreach \b in {0, ..., 240} {%
+        \xdefinecolor{current}{HSB}{0, 240, \b}%
+        \textcolor{current}{\rule{1pt}{3ex}}%
+      }
+  \end{itemize}
+\end{frame}
+
+\subsection{Quelltext und Pseudocode}
+
+\livecoding{Quelltext und Pseudocode}
+
+\begin{frame}[fragile]{In der Präambel für Quelltext}
+  \begin{lstlisting}[gobble=4]
+    \usepackage{listings}
+    \lstset{%
+      upquote=true,%
+      showstringspaces=false,%
+      basicstyle=\ttfamily,%
+      keywordstyle=\color{keywordcolor}\slshape,%
+      commentstyle=\color{commentcolor}\itshape,%
+      stringstyle=\color{stringcolor}}
+    \usepackage{textcomp} % für upquote
+    \usepackage{courier} % für schönere Schriftart
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{In der Präambel für Umlaute}
+  \texttt{listings} hat Probleme mit UTF-8 und Umlauten
+  \begin{lstlisting}[gobble=4]
+    \lstset{
+      literate={ö}{{\"o}}1
+               {Ö}{{\"O}}1
+               {ä}{{\"a}}1
+               {Ä}{{\"A}}1
+               {ü}{{\"u}}1
+               {Ü}{{\"U}}1
+               {ß}{{\ss}}1
+    }
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{In der Präambel für Pseudocode}
+  \begin{lstlisting}[gobble=4]
+    \lstdefinestyle{pseudo}{language={},%
+      basicstyle=\normalfont,%
+      morecomment=[l]{//},%
+      morekeywords={for,to,while,do,if,then,else},%
+      mathescape=true,%
+      columns=fullflexible}
+  \end{lstlisting}
+\end{frame}
+
+\subsection{Theoreme}
+
+\livecoding{Theoreme}
+
+\begin{frame}{Typische Arten von Theoremen}
+  \begin{zebratabular}{llL{48mm}}
+    \headerrow Art & Stil & Zweck \\
+    Definition & \texttt{definition} & Einführung eines Begriffs. \\
+    Theorem & \texttt{plain} & Wichtiger Satz mit Beweis. \\
+    Lemma & \texttt{plain} & Hilfssatz mit (langem) Beweis für ein folgendes Theorem. \\
+    Korollar & \texttt{plain} & Folgerung aus Theorem mit (einfachem) Beweis. \\
+    Beispiel & \texttt{definition} & Beispiel für Verständnis. \\
+    Anmerkung & \texttt{remark} & Weiterführender Hinweis.
+  \end{zebratabular}
+\end{frame}
+
+\livecoding{Auf Theoreme verweisen}
+
+\begin{frame}[fragile]{In der Präambel Theoreme definieren}
+  \begin{lstlisting}[gobble=4]
+    \usepackage{amsthm}
+    \usepackage{thmtools}
+    \declaretheorem[style=plain,
+      numberwithin=section]{theorem}
+    \declaretheorem[style=definition,
+      sibling=theorem]{definition}
+    \declaretheorem[style=remark,
+      name=Hinweis,
+      sibling=theorem]{remark}
+  \end{lstlisting}
+
+  \xxx
+
+  \begin{zebratabular}{lL{6cm}}
+    \headerrow Option & Zweck \\
+    \texttt{style} & Darstellung des Theorems \\
+    \texttt{numberwithin} & Nummerierung nach Abschnitt \\
+    \texttt{sibling} & gemeinsame Nummerierung \\
+    \texttt{name} & dargestellter Name 
+  \end{zebratabular}
+\end{frame}
