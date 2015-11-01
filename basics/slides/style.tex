@@ -235,4 +235,4 @@
 \setbeamercolor{example text}{fg=examplecolor}
 
 \pgfdeclareimage[width=8cm]{live-coding}{live-coding}
-\newcommand{\livecoding}{\frame{\centerline{\pgfuseimage{live-coding}}}}
+\newcommand{\livecoding}[1]{\frame{\frametitle{#1}\centerline{\pgfuseimage{live-coding}}}}
