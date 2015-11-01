@@ -6,9 +6,9 @@
 
 <p>Das TeX-Paket Ti<em>k</em>Z ermöglicht es, in LaTeX Zeichnungen zu setzen. Wir wollen in diesem Vortrag aufzeigen, wie simple Zeichnungen, aber auch Graphen, Bäume und Mind-Maps durch wenige einfache Befehle direkt aus einem LaTeX-Dokument heraus gezeichnet werden können. </p>
 
-<p> Warum will man das? Weil schnell professionelle Zeichnungen entstehen. Weil die Zeichnungen perfekt zum restlichen LaTeX-Dokument passen, da sie das Schriftbild des umgebenden Dokuments übernehmen. Und weil es Spaß macht.</p>
+<p>Warum will man das? Weil schnell professionelle Zeichnungen entstehen. Weil die Zeichnungen perfekt zum restlichen LaTeX-Dokument passen, da sie das Schriftbild des umgebenden Dokuments übernehmen. Und weil es Spaß macht.</p>
 
-<p> <strong>Voraussetungen:</strong> Für diesen Vortrag sind nur sehr grundlegende Erfahrungen mit LaTeX nötig, da TikZ eine relativ eigenständige Syntax hat.</p>
+<p><strong>Voraussetungen:</strong> Für diesen Vortrag sind nur sehr grundlegende Erfahrungen mit LaTeX nötig, da Ti<em>k</em>Z eine relativ eigenständige Syntax hat.</p>
 
 <ul>
   <li>Einführung
@@ -33,6 +33,10 @@
     </ul>
   </li>
 </ul>
+
+<h2 id="tikz-folien">Folien</h2>
+
+<p>Die Folien des Vortrags können hier im PDF-Format heruntergeladen werden, sobald sie fertig sind. Solange sei auf die <a href="../2014">Folien von 2014</a> verwiesen. Der Quelltext der Vorträge selber befindet sich bei <a href="https://github.com/malteschmitz/latex">Github</a>.</p>
 
 <h2 id="tikz-beispiele">Beispieldokumente</h2>
 

@@ -34,6 +34,10 @@
   </li>
 </ul>
 
+<h2 id="beamer-folien">Folien</h2>
+
+<p>Die Folien des Vortrags können hier im PDF-Format heruntergeladen werden, sobald sie fertig sind. Solange sei auf die <a href="../2014">Folien von 2014</a> verwiesen. Der Quelltext der Vorträge selber befindet sich bei <a href="https://github.com/malteschmitz/latex">Github</a>.</p>
+
 <h2 id="beamer-beispiele">Beispieldokumente</h2>
 
 <ul>
