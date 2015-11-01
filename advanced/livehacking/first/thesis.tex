@@ -1,0 +1,72 @@
+\documentclass{scrbook}
+
+\input{style}
+\input{macros}
+
+% Set title and author used in the PDF meta data
+\hypersetup{
+  pdftitle={Wie schreibe ich eine Masterarbeit?},
+  pdfauthor={Erika Mustermann}
+}
+
+% Depending on which of the following two color schemes you import your thesis will be in color or grayscale. I recommend to generate a colored version as a PDF and a grayscale version for printing.
+
+\input{schema-color}
+%\input{schema-gray}
+
+\newcommand{\duedate}{15. Juli 2016}
+
+\begin{document}
+  \input{gummibaerchen}
+\end{document}
+
+\begin{document}
+  \frontmatter
+  \input{title}
+  \input{declaration}
+  
+  \input{abstract}
+  
+  \cleardoublepage
+  \phantomsection
+  \pdfbookmark{Inhaltsverzeichnis}{tableofcontents}
+  \markboth{Inhaltsverzeichnis}{}
+  \tableofcontents
+  
+  \mainmatter
+  \input{einleitung}
+  \input{grundlagen}
+  \input{konzept}
+  \input{evaluation}
+  \input{fazit}
+  
+  \appendix
+
+  \input{appendix}
+  
+  \backmatter
+
+  \cleardoublepage
+  \phantomsection
+  \pdfbookmark{Abbildungs- und Tabellenverzeichnis}{listof}
+  \listoffigures
+  {
+    % print list of tables on same page
+    \let\cleardoublepage\relax
+    \listoftables
+    \thispagestyle{scrheadings}
+  }
+
+  \cleardoublepage
+  \phantomsection
+  \pdfbookmark{Definitions- und Theoremverzeichnis}{listoftheorems}
+  \renewcommand{\listtheoremname}{Definitions- und Theoremverzeichnis}
+  \listoftheorems[ignoreall,show={Theorem,Lemma,Definition}]
+
+  \input{abkuerzungen}
+
+  \cleardoublepage
+  \phantomsection
+  \pdfbookmark{Literaturverzeichnis}{bibliography}
+  \bibliography{literature}
+\end{document}
