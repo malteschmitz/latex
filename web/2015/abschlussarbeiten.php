@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Abschlussarbeiten setzen</h1>
+  <h1 id="abschlussarbeiten">Abschlussarbeiten setzen</h1>
 </div>
 
 <p class="lead">Wie schreibe ich meine Bachelorarbeit in LaTeX?</p>
@@ -12,7 +12,15 @@
 
 <p><strong>Voraussetungen:</strong> Es werden grundlegende Kenntnisse von LaTeX vorausgesetzt, wie sie zum Beispiel im Einführungsvortrag vermittelt werden.</p>
 
-<h2>Dokumentenelemente</h2>
+<h2 id="abschlussarbeiten-folien">Folien</h2>
+
+<p>Die Folien des Vortrags können hier im PDF-Format heruntergeladen werden. Der Quelltext der Vorträge selber befindet sich bei <a href="https://github.com/malteschmitz/latex">Github</a>.</p>
+
+<p>
+  <a href="advanced.pdf" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-download"></span> Folien herunterladen</a>
+</p>
+
+<h2 id="abschlussarbeiten-dokumentenelemente">Dokumentenelemente</h2>
 
 <h3>Farben definieren</h3>
 
@@ -118,7 +126,7 @@ Aus diesem Theorem folgen weitere praktische Erkenntnisse.
 
 <p><span class="label label-info">FOLIEN</span> Einstellungen in der Präambel</p>
 
-<h2>Strukturierung</h2>
+<h2 id="abschlussarbeiten-strukturierung">Strukturierung</h2>
 
 <h3>Abbildungen und Verweise</h3>
 
@@ -138,15 +146,70 @@ Aus diesem Theorem folgen weitere praktische Erkenntnisse.
 
 <h3>Titelseite</h3>
 
+<p><span class="label label-info">FOLIEN</span> Techniken zur freien Gestaltung einer Titelseite</p>
+
+<p><span class="label label-primary">REGIE</span> <code>title.tex</code> zeigen.</p>
+
+
 <h3>Kopf- und Fußzeilen</h3>
+
+<p><span class="label label-info">FOLIEN</span> Techniken zur Gestaltung von Kopf- und Fußzeilen</p>
+
+<p><span class="label label-primary">REGIE</span> <code>style.tex</code> zeigen.</p>
+
+<p>Bereits vorhandene Stilanpassungen:</p>
+
+<pre class="sh_latex">% header and footer
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\setkomafont{pagenumber}{\normalfont\sffamily\color{maincolor}}
+\setkomafont{pageheadfoot}{\normalfont\sffamily}
+\setheadsepline{0.5pt}[\color{maincolor}]</pre>
+
+<p>Ohne Anpassungen ist wird das aktuelle Kapitel als linker Kolumnentitel und der aktuelle Abschnitt als rechter Kolumnentitel gesetzt.</p>
+
+<p>Kopf- und Fußzeile auf geraden und ungeraden Seiten gleich:</p>
+
+<pre class="sh_latex">% Alles löschen
+\clearscrheadfoot
+
+% Kapitel und Abschnitt immer oben mittig
+\lehead{\leftmark{} | \rightmark}
+\lohead{\leftmark{} | \rightmark}
+% Seitenzahl immer unten mittig
+\cfoot[-- \pagemark{} --]{Seite \pagemark}</pre>
+
+<p>Man beachte im Ergebnis den Unterschied der Seitenzahl auf ersten Seiten eines Kapitels (<code>scrplain</code>) und den restlichen Seiten eines Kapitels (<code>scrheadings</code>).</p>
 
 <h3>Abschnitte</h3>
 
+<p><span class="label label-info">FOLIEN</span> Abschnitte langer Dokumente</p>
+
+<p><span class="label label-primary">REGIE</span> In <code>thesis.tex</code> die anderen Abschnitte einbinden.</p>
+
 <h3>Dateien einbinden</h3>
 
-<h2>Literaturverzeichnisse</h2>
+<p><span class="label label-info">FOLIEN</span> Dateien einbinden</p>
 
-<h2>Zum Weiterlesen</h2>
+<p>Am Ende der Präambel ergänzen:</p>
+
+<pre class="sh_latex">\includeonly{title}</pre>
+
+<p>Man beachte, dass im Ergebnis der Inhalt fehlt, das Inhalts- und Literaturverzeichnis aber noch vollständig sind, da die Informationen aus den vorhandenen <code>aux</code>-Dateien weiter verwendet werden.</p>
+
+<h2 id="abschlussarbeiten-literaturverzeichnisse">Literaturverzeichnisse</h2>
+
+<p><span class="label label-info">FOLIEN</span> Literaturverzeichnisse</p>
+
+<p><span class="label label-primary">REGIE</span> Verschiedene Arten von Literatur in <code>literature.bib</code> zeigen.</p>
+
+<p><span class="label label-info">FOLIEN</span> Typische BibTeX-Stile</p>
+
+<h2 id="abschlussarbeiten-zusammenfassung">Zusammenfassung</h2>
+
+<p><span class="label label-info">FOLIEN</span> Zusammenfassung.</p>
+
+<h2 id="abschlussarbeiten-zum-weiterlesen">Zum Weiterlesen</h2>
 
 <p>Markus Kohm, Jens-Uwe-Morawski.<br>
 <em>KOMA-Script</em>,<br>
@@ -181,7 +244,7 @@ Addison-Wesley, Mai 2002.</p>
 <em>The LaTeX Font Catalogue</em>,<br>
 <a href="http://www.tug.dk/FontCatalogue/"><tt>tug.dk/FontCatalogue</tt></a>, 2012.</p>
 
-<h2>Zum Weiterlesen für maximal Interessierte</h2>
+<h3>Zum Weiterlesen für maximal Interessierte</h3>
 
 <p>Donald E. Knuth.<br>
 <em>The TeXbook</em>,<br>
@@ -199,7 +262,7 @@ Schmidt (Hermann), Mainz, 4. Auflage, Juni 2004.</p>
 <em>Lesetypografie</em>,<br>
 Verlag Hermann Schmidt, Mainz, Oktober 2005.</p>
 
-<h2>Beispieldokumente</h2>
+<h2 id="abschlussarbeiten-beispieldokumente">Beispieldokumente</h2>
 
 <ul>
   <li>[<a href="examples/farbe.tex">TEX</a>] [<a href="examples/farbe.pdf">PDF</a>] Farbe</li>

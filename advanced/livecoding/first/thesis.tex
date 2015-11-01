@@ -16,16 +16,16 @@
 
 \newcommand{\duedate}{15. Juli 2016}
 
-\begin{document}
-  \input{gummibaerchen}
-\end{document}
+%\begin{document}
+%  \input{gummibaerchen}
+%\end{document}
 
 \begin{document}
   \frontmatter
-  \input{title}
-  \input{declaration}
+  \include{title}
+  \include{declaration}
   
-  \input{abstract}
+  \include{abstract}
   
   \cleardoublepage
   \phantomsection
@@ -34,28 +34,27 @@
   \tableofcontents
   
   \mainmatter
-  \input{einleitung}
-  \input{grundlagen}
-  \input{konzept}
-  \input{evaluation}
-  \input{fazit}
+  \include{einleitung}
+  \include{grundlagen}
+  \include{konzept}
+  \include{evaluation}
+  \include{fazit}
   
   \appendix
 
-  \input{appendix}
+  \include{appendix}
   
   \backmatter
 
   \cleardoublepage
   \phantomsection
-  \pdfbookmark{Abbildungs- und Tabellenverzeichnis}{listof}
+  \pdfbookmark{Abbildungsverzeichnis}{listof}
   \listoffigures
-  {
-    % print list of tables on same page
-    \let\cleardoublepage\relax
-    \listoftables
-    \thispagestyle{scrheadings}
-  }
+
+  \cleardoublepage
+  \phantomsection
+  \pdfbookmark{Tabellenverzeichnis}{listof}
+  \listoftables
 
   \cleardoublepage
   \phantomsection
@@ -63,7 +62,7 @@
   \renewcommand{\listtheoremname}{Definitions- und Theoremverzeichnis}
   \listoftheorems[ignoreall,show={Theorem,Lemma,Definition}]
 
-  \input{abkuerzungen}
+  \include{abkuerzungen}
 
   \cleardoublepage
   \phantomsection

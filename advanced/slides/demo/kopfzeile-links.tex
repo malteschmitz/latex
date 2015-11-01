@@ -1,0 +1,46 @@
+\documentclass{scrbook}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage[ngerman]{babel}
+\usepackage{blindtext}
+
+\usepackage{xcolor}
+
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+
+% Alles löschen
+\clearscrheadfoot
+% Kapitel als linker Kolumnentitel
+% Abschnitt als rechter Kolumnentitel
+\automark[section]{chapter}
+% Kapitel und Abschnitt immer links oben
+\lehead{\leftmark{} | \rightmark}
+\lohead{\leftmark{} | \rightmark}
+% Seitenzahl unten mittig
+\cfoot[\pagemark]{Seite \pagemark}
+
+\usepackage{pgffor}
+
+\usepackage[papersize={8cm,8cm},top=2cm,%
+  bottom=4cm,inner=1cm,outer=0cm]{geometry}
+
+\usepackage{hyperref}
+\hypersetup{breaklinks=true,
+            pdfborder={0 0 0},
+            pdfhighlight={/N}}
+
+\begin{document}
+  \chapter{Einleitung}
+  \chapter{Vorstandsbericht}
+  \chapter{Kassenbericht}
+  \section{Einnahmen}
+  \section{Ausgaben}
+
+  \foreach \i in {1,...,100} {
+    \blindtext
+  }
+\end{document}

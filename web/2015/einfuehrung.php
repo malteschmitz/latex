@@ -12,15 +12,15 @@
 
 <p><strong>Voraussetzungen.</strong> Es werden grundlegende Kenntnisse im Umgang mit Computern erwartet ;)</p>
 
-<h2>Folien</h2>
+<h2 id="einfuehrung-folien">Folien</h2>
 
 <p>Die Folien des Vortrags können hier im PDF-Format heruntergeladen werden. Der Quelltext der Vorträge selber befindet sich bei <a href="https://github.com/malteschmitz/latex">Github</a>.</p>
 
 <p>
-  <a href="basic.pdf" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-download"></span> Folien</a>
+  <a href="basic.pdf" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-download"></span> Folien herunterladen</a>
 </p>
 
-<h2>Was ist LaTeX?</h2>
+<h2 id="einfuehrung-was-ist-latex">Was ist LaTeX?</h2>
 
 <p><span class="label label-info">FOLIEN</span> Was ist LaTeX und wann wird es eingesetzt?</p>
 
@@ -64,7 +64,7 @@
   <li><a href="http://www.texniccenter.org/">TeXnicCenter (Windows)</a></li>
 </ul>
 
-<h2>LaTeX verwenden</h2>
+<h2 id="einfuehrung-latex-verwenden">LaTeX verwenden</h2>
 
 <pre class="sh_latex">\documentclass{easyarticle}
 
@@ -254,7 +254,7 @@ an, was auch als Summenformel bekannt ist.</pre>
 
 <pre class="sh_latex">Der AD aus MG nimmt diesen Blindtext aus \autoref{fig:flower} als Filet.</pre>
 
-<h2>Aufbau und Präambel</h2>
+<h2 id="einfuehrung-aufbau">Aufbau und Präambel</h2>
 
 <p><span class="label label-info">FOLIEN</span> Struktur eines Dokumentes und Elemente der Präambel</p>
 
@@ -292,11 +292,11 @@ an, was auch als Summenformel bekannt ist.</pre>
 % set special behaviour for hyperlinks in pdfs
 \usepackage[breaklinks=true]{hyperref}</pre>
 
-<h2>Zusammenfassung</h2>
+<h2 id="einfuehrung-zusammenfassung">Zusammenfassung</h2>
 
-<p><span class="label label-info">FOLIEN</span> Siehe Folien.</p>
+<p><span class="label label-info">FOLIEN</span> Zusammenfassung.</p>
 
-<h2>Zum Weiterlesen</h2>
+<h2 id="einfuehrung-zum-weiterlesen">Zum Weiterlesen</h2>
 
 <p>Markus Kohm, Jens-Uwe-Morawski.<br>
 <em>KOMA-Script</em>,<br>
@@ -330,7 +330,7 @@ Addison-Wesley, Mai 2006.</p>
 <em>Detexify<sup>2</sup> &ndash; LaTeX symbol classifier</em>,<br>
 <a href="http://detexify.kirelabs.org"><tt>detexify.kirelabs.org</tt></a></p>
 
-<h2>Beispieldokumente</h2>
+<h2 id="einfuehrung-beispieldokumente">Beispieldokumente</h2>
 
 <ul>
   <li>[<a href="examples/dokument.tex">TEX</a>] [<a href="examples/dokument.pdf">PDF</a>] Einfaches Dokument mit Titel und Inhaltsverzeichnis</li>

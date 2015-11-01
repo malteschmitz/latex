@@ -1,0 +1,97 @@
+\documentclass{scrbook}
+
+% Set german to default language and load english as well
+\usepackage[english,ngerman]{babel}
+
+% Set UTF8 as input encoding
+\usepackage[utf8]{inputenc}
+
+% Set T1 as font encoding
+\usepackage[T1]{fontenc}
+% Load a slightly more modern font
+\usepackage{lmodern}
+% Use the symbol collection textcomp, which is needed by listings.
+\usepackage{textcomp}
+% Load a better font for monospace.
+\usepackage{courier}
+
+% Set some options regarding the document layout. See KOMA guide
+\KOMAoptions{%
+  paper=a4,
+  fontsize=12pt,
+  parskip=half,
+  headings=normal,
+  BCOR=1cm,
+  headsepline,
+  bibliography=openstyle,
+  DIV=12}
+
+% do not align bottom of pages
+\raggedbottom
+
+% load the color package and enable colored tables
+\usepackage[table]{xcolor}
+
+% define color of example university
+\xdefinecolor{exampleuniversity}{rgb}{1, 0.5, 0}
+
+\colorlet{maincolor}{exampleuniversity}
+
+\newcommand{\imagesuffix}{-color}
+
+% load TikZ to draw diagrams
+\usepackage{tikz}
+
+\newcommand{\duedate}{15. Juli 2016}
+
+\begin{document}
+\begin{titlepage}
+  \thispagestyle{empty}
+
+  \vskip1cm
+
+  \pgfimage[height=2.5cm]{uni-logo-example\imagesuffix}
+  
+  \vskip2.5cm
+  
+  \LARGE
+  
+  \textbf{\sffamily\color{maincolor}Wie schreibe ich eine Masterarbeit?}
+
+  \textit{How to Write a Master Thesis?}
+
+  \normalfont\normalsize
+
+  \vskip2em
+  
+  \textbf{\sffamily\color{maincolor}Masterarbeit}
+
+  im Rahmen des Studiengangs \\
+  \textbf{\sffamily\color{maincolor}Informatik} \\
+  der Universität zum Beispiel
+
+  \vskip1em
+
+  vorgelegt von \\
+  \textbf{\sffamily\color{maincolor}Max Mustermann}
+
+  \vskip1em
+  
+  ausgegeben und betreut von \\
+  \textbf{\sffamily\color{maincolor}Prof. Dr. Erika Musterfrau}
+
+  \vskip1em
+
+  mit Unterstützung von\\
+  Lieschen Müller
+
+  \vskip1em
+
+  Die Arbeit ist im Rahmen einer Tätigkeit bei der Firma Muster GmbH entstanden.
+
+
+  \vfill
+
+  Musterhausen, den \duedate
+\end{titlepage}
+\end{document}

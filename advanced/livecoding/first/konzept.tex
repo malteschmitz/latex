@@ -16,8 +16,9 @@ Quellen sind wichtig für gutes wissenschaftliches Arbeiten. Eine Quelle kann da
   \item ein Buch \cite{scala},
   \item ein Beitrag im Berichtsband einer Konferenz \cite{rltl},
   \item ein technischer Bericht \cite{bitkom},
+  \item eine Dissertation \cite{Leucker02},
   \item eine Abschlussarbeit \cite{RltlConv},
-  \item ein noch nicht veröffentlichter Artikel \cite{ptLTL} oder
+  \item ein (noch) nicht veröffentlichter Artikel \cite{ptLTL} oder
   \item ein Artikel auf einer Website \cite{codecommit} sein.
 \end{compactitem}
 
@@ -84,6 +85,17 @@ Quelltext sollte in Abschlussarbeiten nur äußerst sparsam eingesetzt werden. W
       System.out.println("Hello World");
     }
   }
+\end{lstlisting}
+
+\section{Pseudocode}
+
+Um Algorithmen zu erklären ist Pseudocode viel besser geeignet als Quelltext. Im Pseudocode kann man alles unwichtige weglassen und sich auf die mathematische Modellierung des Algorithmus konzentrieren. So kann die Struktur des Verfahrens unabhängig von Implementierungsdetails des jeweiligen Frameworks erklärt werden.
+
+\begin{lstlisting}[style=pseudo,gobble=2]
+  // Schleife von 1 bis 5
+    for $i \gets 1$ to $5$ do
+      while $S[i] \neq S[S[i]]$ do
+        $S[i] \gets S[S[i]]$
 \end{lstlisting}
 
 \section{Formeln mit \pdfepsilon}
