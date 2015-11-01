@@ -255,7 +255,7 @@
   \end{columns}
 \end{Frame}
 
-\begin{Frame}[t,fragile]{Beschriftete Kanten}
+\begin{Frame}[t,fragile]{Beschriftete Kanten}{\lstinline|examples/knoten.tex|}
   \xxx\xxx
   \begin{columns}[T]
     \column{35mm}
@@ -287,35 +287,6 @@
             ++(1.5,0) |- (div);
       \end{lstlisting}
   \end{columns}
-\end{Frame}
-
-\begin{Frame}[fragile,allowframebreaks]{Vollständiger Quelltext des Beispiels}
-  \begin{lstlisting}[gobble=4]
-    \begin{tikzpicture}[io/.style={trapezium,
-          trapezium left angle=70,
-          trapezium right angle=110,
-          fill=magenta!10, draw=magenta},
-        op/.style={rectangle,
-          fill=orange!10, draw=orange},
-        cn/.style={diamond, aspect=2,
-          inner sep=2pt, fill=red!10, draw=red},
-        node distance=5mm, thick]
-
-      \node[io] (in) {Eingabe $a,b$};
-      \node[op, below=of in] (div) {$r=a \mod b$};
-      \node[op, below=of div] (set) {$a=b,\ b=r$};
-      \node[cn, below=of set] (cond) {$b=0?$};
-      \node[io, below=of cond] (out) {Ausgabe $a$};
-
-      \path[->]
-        (in) edge (div)
-        (div) edge (set)
-        (set) edge (cond)
-        (cond) edge (out);
-      \draw[->] (cond) -- node[below] {Nein}
-        ++(1.5,0) |- (div);
-    \end{tikzpicture}
-  \end{lstlisting}
 \end{Frame}
 
 \subsection{Automaten}
@@ -350,7 +321,7 @@
 
 \subsection{Bäume}
 
-\begin{Frame}[fragile]{Bäume}
+\begin{Frame}[fragile]{Bäume}{\lstinline|examples/baum.tex|}
   \begin{columns}
     \column{42mm}
       \tikzexample[left]{[
@@ -391,24 +362,5 @@
       %\pause[4]%  }%\onslide%;
     \end{lstlisting}
   \end{columns}
-\end{Frame}
-
-\begin{Frame}[fragile]{Vollständiger Quelltext des Baums}
-  \begin{lstlisting}[gobble=4]
-    \begin{tikzpicture}[
-      every node/.style={draw,circle,inner sep=0pt,
-        minimum width=15pt},
-      level/.style={sibling distance=20mm/#1},
-      level distance=10mm, thick]
-      \node {a}
-        child { node {b}
-          child { node {c} }
-          child { node {d} } }
-        child { node {e}
-          child { node {f} }
-          child { node {g} }
-        };
-    \end{tikzpicture}
-  \end{lstlisting}
 \end{Frame}
 
