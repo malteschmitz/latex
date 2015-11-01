@@ -1,7 +1,7 @@
 TEXINPUTS := ./inc:./content:$(TEXINPUTS)
 
 all: script presentation
-all-slides: slides-basics
+all-slides: slides-basics slides-tikz
 
 script: demo
 	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf latex-script
@@ -12,8 +12,11 @@ presentation: demo
 slides-basics: demo
 	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf slides-basics
 
+slides-tikz: demo
+	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf slides-tikz
+
 force-all: force-script force-presentation
-force-all-slides: force-basics
+force-all-slides: force-basics force-tikz
 
 force-script: force-demo
 	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf -g -f latex-script
@@ -24,10 +27,14 @@ force-presentation: force-demo
 force-basics: force-demo
 	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf -g -f slides-basics
 
+force-tikz: force-demo
+	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf -g -f slides-tikz
+
 clean: demo-clean
 	latexmk -pdf -c latex
 	latexmk -pdf -c latex-script
 	latexmk -pdf -c slides-basics
+	latexmk -pdf -c slides-tikz
 	rm -f \
 		latex.nav \
 		latex.snm \
@@ -35,6 +42,9 @@ clean: demo-clean
 		slides-basics.nav \
 		slides-basics.snm \
 		slides-basics.vrb \
+		slides-tikz.nav \
+		slides-tikz.snm \
+		slides-tikz.vrb \
 		latex-script.bbl \
 		latex-script.maf \
 		latex-script.mtc*
@@ -43,6 +53,7 @@ clear: demo-clear
 	latexmk -pdf -C latex
 	latexmk -pdf -C latex-script
 	latexmk -pdf -C slides-basics
+	latexmk -pdf -C slides-tikz
 	rm -f \
 		latex.nav \
 		latex.snm \
@@ -50,6 +61,9 @@ clear: demo-clear
 		slides-basics.nav \
 		slides-basics.snm \
 		slides-basics.vrb \
+		slides-tikz.nav \
+		slides-tikz.snm \
+		slides-tikz.vrb \
 		latex-script.bbl \
 		latex-script.maf \
 		latex-script.mtc*
