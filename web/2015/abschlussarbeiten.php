@@ -29,12 +29,12 @@
 <pre class="sh_latex">In diesem \colorbox{orange}{Text} sind
 \textcolor{orange}{Worte} hervorgehoben.</pre>
 
-<p><span class="label label-info">FOLIEN</span> Verschiedene Farbmodelle</p>
-
 <p><span class="label label-primary">REGIE</span> <code>schema-color.tex</code> zeigen.</p>
 
 <pre class="sh_latex">In diesem \colorbox{maincolor!10}{Text} sind
 \textcolor{maincolor}{Worte} hervorgehoben.</pre>
+
+<p><span class="label label-info">FOLIEN</span> Verschiedene Farbmodelle</p>
 
 <h3>Quelltext und Pseudocode</h3>
 
