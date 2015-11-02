@@ -1,7 +1,7 @@
 TEXINPUTS := ./inc:./content:$(TEXINPUTS)
 
 all: script presentation
-all-slides: slides-basics slides-tikz
+all-slides: slides-basics slides-tikz slides-beamer
 
 script: demo
 	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf latex-script
@@ -15,8 +15,11 @@ slides-basics: demo
 slides-tikz: demo
 	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf slides-tikz
 
+slides-beamer: demo
+	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf slides-beamer
+
 force-all: force-script force-presentation
-force-all-slides: force-basics force-tikz
+force-all-slides: force-basics force-tikz force-beamer
 
 force-script: force-demo
 	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf -g -f latex-script
@@ -30,11 +33,15 @@ force-basics: force-demo
 force-tikz: force-demo
 	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf -g -f slides-tikz
 
+force-beamer: force-demo
+	TEXINPUTS="$(TEXINPUTS)" latexmk -pdf -g -f slides-beamer
+
 clean: demo-clean
 	latexmk -pdf -c latex
 	latexmk -pdf -c latex-script
 	latexmk -pdf -c slides-basics
 	latexmk -pdf -c slides-tikz
+	latexmk -pdf -c slides-beamer
 	rm -f \
 		latex.nav \
 		latex.snm \
@@ -45,6 +52,9 @@ clean: demo-clean
 		slides-tikz.nav \
 		slides-tikz.snm \
 		slides-tikz.vrb \
+		slides-beamer.nav \
+		slides-beamer.snm \
+		slides-beamer.vrb \
 		latex-script.bbl \
 		latex-script.maf \
 		latex-script.mtc*
@@ -54,6 +64,7 @@ clear: demo-clear
 	latexmk -pdf -C latex-script
 	latexmk -pdf -C slides-basics
 	latexmk -pdf -C slides-tikz
+	latexmk -pdf -C slides-beamer
 	rm -f \
 		latex.nav \
 		latex.snm \
@@ -64,6 +75,9 @@ clear: demo-clear
 		slides-tikz.nav \
 		slides-tikz.snm \
 		slides-tikz.vrb \
+		slides-beamer.nav \
+		slides-beamer.snm \
+		slides-beamer.vrb \
 		latex-script.bbl \
 		latex-script.maf \
 		latex-script.mtc*
