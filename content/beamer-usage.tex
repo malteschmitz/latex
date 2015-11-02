@@ -1,0 +1,268 @@
+\beamersection{Verwendung von \beamer}
+
+\begin{Frame}[fragile]{Beispiel}
+  \begin{lstlisting}[gobble=4]
+    \documentclass{beamer}
+
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{lmodern}
+    \usepackage[ngerman]{babel}
+
+    \begin{document}
+      \begin{frame}{Funktionen von Beamer}
+        Kompilieren wie jedes andere
+        \LaTeX-Dokument auch.
+      \end{frame}
+    \end{document}
+  \end{lstlisting}
+\end{Frame}
+
+\beamerexample{demo/beamer.pdf}
+
+\subsection{Folien}
+
+\begin{Frame}[fragile]{Folien}
+  \begin{itemize}
+    \item Ein \beamer-Dokument besteht aus Folien.
+    \item Die Umgebung \lstinline-frame- verarbeitet
+      bis zu zwei Parameter in gescheiften Klammern \lstinline-{}-
+    \item Der erste Parameter ist der Folientitel.
+    \item Der zweite Parameter ist der Untertitel.
+    \item Innerhalb der Umgebung \lstinline|frame| wird normaler \LaTeX-Code
+      verwendet.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Titelfolie}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[gobble=6,style=block]
+      \title[Kurztitel]{%
+        Lange Version des langen Titels}
+      \subtitle{Ein langer Untertitel beschreibt
+        alles noch etwas genauer.}
+      \author[Thorn, Schmitz]{%
+        Johannes Thorn \and Malte Schmitz}
+      \date[KPT 2014]{Konferenz über
+        Präsentationstechniken, 2014}
+    \end{lstlisting}
+  \end{Block}
+
+  \begin{lstlisting}[gobble=4]
+    \begin{frame}
+      \maketitle
+    \end{frame}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Angabe von Instituten}
+  \begin{lstlisting}[gobble=4]
+    \author[Thorn, Schmitz]{%
+      Johannes Thorn\inst{1}
+      \and Malte Schmitz\inst{2}}
+
+    \institute[Hier und Dort]{%
+      \inst{1}Ein Institut\\
+      Universität Hier
+      \and
+      \inst{2}Noch ein Institut\\
+      Universität Dort}
+  \end{lstlisting}
+\end{Frame}
+
+\beamerexample{demo/beamer-titlepage.pdf}
+
+\begin{Frame}[fragile]{Inhaltsverzeichnis}
+  \begin{itemize}
+    \item Strukturbefehle außerhalb von \lstinline-frame-\\
+      normal verwenden.
+      \begin{itemize}
+        \item ca. 3 Abschnitte mit \lstinline-\section-
+        \item je max. 4 Unterabschnitte mit \lstinline-\subsection-
+      \end{itemize}
+    \item \lstinline-\tableofcontents- im \lstinline-frame- setzt das Inhaltsverzeichnis.
+    \item Je nach Theme erscheinen \lstinline-\section- und
+      \lstinline-\subsection- auch in Navigationsleisten.
+    \item \lstinline-\section*- und \lstinline-\subsection*- erscheinen in
+      Navigationsleisten aber nicht im Inhaltsverzeichnis.
+  \end{itemize}
+\end{Frame}
+
+\subsection{Strukturelemente}
+
+\begin{Frame}[fragile]{Listen, Tabellen und Grafiken}
+  \begin{itemize}
+    \item Listen mit \lstinline-itemize- und \lstinline-enumerate-,
+    \item Tabellen mit \lstinline-tabular- und
+    \item Grafiken mit \lstinline-\includegraphics- funktionieren wie immer in \LaTeX.
+  \end{itemize}
+
+  \xxx
+
+  \begin{itemize}
+    \item Eine Folie ist 128~mm $\times$ 96~mm groß.
+    \item Zeilenumbruch \lstinline-\\- zum Ausrichten von Text sinnvoll.
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}[fragile]{Formelsatz}
+  \begin{itemize}
+    \item Formelsatz wie immer in \LaTeX
+    \item zum Beispiel \lstinline-$1+1=2$-\\
+      oder \lstinline-\[1+1=2\]-
+  \end{itemize}
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    % Formeln mit Serifen setzen
+    \usefonttheme[onlymath]{serif}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Blöcke}
+  \begin{lstlisting}[gobble=4]
+    \begin{block}{Überschrift}
+      Dieser Text steht im normalen Block.
+    \end{block}
+
+    \begin{alertblock}{Achtung}
+      Dieser Text steht im hervorgehobenen Block.
+    \end{alertblock}
+
+    \begin{exampleblock}{Beispiel}
+      Dieser Text steht im Beispielblock.
+    \end{exampleblock}
+  \end{lstlisting}
+\end{Frame}
+
+\beamerexample{demo/beamer-struktur.pdf}
+
+\begin{Frame}[fragile]{Theorem-Umgebungen}
+  \begin{lstlisting}[gobble=4]
+    \begin{Satz}[Sandhaufensatz]
+      Es gibt keine Sandhaufen.
+    \end{Satz}
+
+    \begin{Beweis}
+      \begin{enumerate}
+        \item Ein Sandkorn ist kein Sandhaufen.
+        \item Sandkörner werden durch Hinzufügen
+          eines Sandkorns nicht zum Sandhaufen.
+        \item Induktiv folgt die Aussage. \qedhere
+      \end{enumerate}
+    \end{Beweis}
+
+    \begin{Beispiel}
+      Vergleiche unsere Baustellen.
+    \end{Beispiel}
+  \end{lstlisting}
+\end{Frame}
+
+\beamerexample[2]{demo/beamer-struktur.pdf}
+
+\begin{Frame}[fragile]{Spalten}
+  \begin{lstlisting}[gobble=4]
+    \begin{frame}{Spalten}
+      \begin{columns}
+        \begin{column}{5cm}
+          Linke Spalte.
+        \end{column}
+        \begin{column}{5cm}
+          Rechte Spalte.
+        \end{column}
+      \end{columns}
+    \end{frame}
+  \end{lstlisting}
+\end{Frame}
+
+\beamerexample[3]{demo/beamer-struktur.pdf}
+
+\begin{Frame}[fragile]{Quelltext ist fragil.}
+  \begin{Block}{In der Präambel}
+    \begin{lstlisting}[style=block,gobble=6]
+      \usepackage{listings}
+      \lstset{%
+        basicstyle=\ttfamily,%
+        showstringspaces=false,%
+        upquote=true}
+      \usepackage{textcomp} % für upquote
+      \usepackage{courier} % für schönere Schriftart
+    \end{lstlisting}
+  \end{Block}
+
+  \xxx
+
+  \lstinputlisting{demo/beamer-listing-content.tex}
+\end{Frame}
+
+\beamerexample{demo/beamer-listing.pdf}
+
+\subsection{Form}
+
+\begin{Frame}[fragile]{Themes}
+  \begin{Block}{Theme}
+    Wird geladen mit \lstinline-\usetheme{name}- und bestimmt die
+    \alert{allgemeine Form} der Präsentation.
+  \end{Block}
+
+  \begin{Block}{Inner Theme}
+    Wird geladen mit \lstinline-\useinnertheme{name}- und bestimmt
+    die \alert{Form des Folieninhalts}.
+  \end{Block}
+
+  \begin{Block}{Outer Theme}
+    Wird geladen mit \lstinline-\useoutertheme{name}- und bestimmt
+    die \alert{Form der Layoutelemente}.
+  \end{Block}
+
+  \begin{Block}{Color Theme}
+    Wird geladen mit \lstinline-\usecolortheme{name}- und bestimmt
+    die \alert{allgemeine Farbe} der Präsentation.
+  \end{Block}
+\end{Frame}
+
+\beamerexample[23]{demo/beamer-Boadilla.pdf}
+
+\beamerexample[23]{demo/beamer-Madrid.pdf}
+
+\beamerexample[23]{demo/beamer-Rochester.pdf}
+
+\beamerexample[23]{demo/beamer-Montpellier.pdf}
+
+\beamerexample[23]{demo/beamer-Goettingen.pdf}
+
+\beamerexample[23]{demo/beamer-Frankfurt.pdf}
+
+\beamerexample[23]{demo/beamer-Luebeck.pdf}
+
+\begin{Frame}{Themes Matrix}
+  \begin{itemize}
+    \item Das war nur eine kleine Auswahl der möglichen Kombinationen.
+    \item Die vollen Variationsmöglichkeiten ergeben sich erst aus der
+      Kombination von Theme, Inner Theme, Outer Theme und Color Theme.
+  \end{itemize}
+
+  \xxx
+
+  \begin{mybib}
+    \bibitem{themes}
+      Sebastian Pipping.
+      \newblock The \beamer\ Theme Matrix.
+      \newblock \alt<presentation>{\href{http://www.hartwork.org/beamer-theme-matrix/}{\texttt{hartwork.org/beamer-theme-matrix}}}{\url{http://www.hartwork.org/beamer-theme-matrix/}}, April 2009.
+  \end{mybib}
+\end{Frame}
+
+\mode
+<article>
+
+\begin{Block}{Navigationssymbole ausblenden}
+  \begin{lstlisting}[gobble=4]
+    % hide navigation symbols
+    \setbeamertemplate{navigation symbols}{}
+  \end{lstlisting}
+\end{Block}
+
+\mode
+<all>
+
