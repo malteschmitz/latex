@@ -1,0 +1,78 @@
+\documentclass[xcolor=table]{beamer}
+\input{style}
+
+\usepackage{multicol}
+
+\newcommand{\authorstring}{Johannes und Malte}
+\newcommand{\shortauthorstring}{\textcolor{authormalte}{Malte} \& \textcolor{authorjonny}{Johannes}}
+% author colors are updated in macros.tex
+
+\newcommand{\titlestring}{\LaTeX}
+\newcommand{\shorttitlestring}{\LaTeX}
+\newcommand{\datestring}{MetaNoOK 2015}
+
+\begin{document}
+
+\mode
+<article>
+
+\input{titlepage}
+\dominitoc
+\markboth{Inhaltsverzeichnis}{}
+\tableofcontents
+
+\mode
+<all>
+
+\jonny
+
+\label{chapter-tikz}
+\setcounter{part}{1}
+\chapter{Zeichnen mit \TikZ}
+
+\targets{
+  \item \TikZ\ kennen und lieben lernen.
+  \item Pfade mit \TikZ\ zeichnen können.
+  \item Das Konzept von Knoten und deren Positionierung verstehen.
+  \item Fortgeschrittene Verwendung von \TikZ\ kennen lernen.
+}
+\website
+
+\input{tikz-introduction}
+\input{tikz-graphs}
+\input{tikz-advanced}
+\input{tikz-summary}
+
+\beamersection{Ausblick}
+
+\subsection{BEAMER}
+
+\begin{Frame}{Was ist \beamer?}
+  \begin{itemize}
+    \item \alert{Dokumentenklasse für \LaTeX} für die Erzeugung von Präsentationen.
+      \only<article>{\newline(Diese Präsentation und das Skript wurden mit \beamer\ erzeugt.)}
+    \item Keine eigene und \alert{keine graphische Anwendung}.
+    \item \strut\beamer\ ist in \MiKTeX\ und \TeX\ Live enthalten.\newline
+      (\alert{Es kann direkt losgehen}.)
+  \end{itemize}
+\end{Frame}
+
+\begin{Frame}{Funktionsweise von \beamer}
+  \begin{itemize}
+    \item Kompilieren wie jedes andere \LaTeX-Dokument auch.
+    \item Normale \LaTeX-Kommandos funktionieren.
+    \item Sinnvolles funktionales Aussehen von Vorträgen.
+    \item Einfaches Ein- und Ausblenden von Seitenteilen.
+    \item Automatische Gliederungen und Navigationsleisten.
+    \item Präsentationen im PDF-Format können auf jedem Computer dargestellt werden.
+    \item Erzeugung von Präsentation und Skriptfassung aus dem gleichen \LaTeX-Dokument.
+  \end{itemize}
+\end{Frame}
+
+\mode
+<all>
+
+\website
+
+\end{document}
+
