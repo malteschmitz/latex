@@ -49,8 +49,8 @@
 
   \onslide<5->
 
-  Der \alert<6>{Induktionsbeweis} ist
-  \alert<7>{falsch}!
+  Der Induktionsbeweis ist
+  \alert<6>{falsch}!
 \end{Frame}
 
 \mode
@@ -113,7 +113,7 @@
 
   \begin{alertblock}{Problem}
     \begin{tabular}{r@{ }l}
-      \textbf{Folien} & Dokumentenklasse von \beamer.\\
+      \textbf{Präsentation} & Dokumentenklasse von \beamer.\\
       \textbf{Artikel} & Dokumentenklasse von KOMA-Script.
     \end{tabular}
   \end{alertblock}
@@ -123,8 +123,8 @@
 
   \begin{Block}{Lösung}
     \begin{itemize}
+      \item Ein \LaTeX-Dokument für den Inhalt.
       \item Zwei \LaTeX-Dokumente für beide Dokumentenklassen.
-      \item Drittes \LaTeX-Dokument für den Inhalt.
       \item Einbinden des Inhalts mit \lstinline-\input-.
     \end{itemize}
   \end{Block}
@@ -189,10 +189,7 @@
 
 \begin{Frame}[fragile]{Inhalt \texttt{content.tex}}
   \begin{lstlisting}[gobble=4]
-    \usepackage[utf8]{inputenc}
-    \usepackage[T1]{fontenc}
-    \usepackage{lmodern}
-    \usepackage[ngerman]{babel}
+    % Präambel
 
     \title{Mein Vortrag}
     \author{Mein Name}
@@ -224,8 +221,6 @@
   \begin{lstlisting}[gobble=4]
     % KOMA-Script als Dokumentenklasse verwenden
     \documentclass{scrartcl}
-    % Einstellungen für KOMA-Script
-    \KOMAoptions{parskip=full}
     % Beamer als Paket laden
     \usepackage{beamerarticle}
     % gemeinsamen Inhalt einbinden

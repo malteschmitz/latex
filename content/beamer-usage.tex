@@ -24,10 +24,11 @@
 
 \begin{Frame}[fragile]{Folien}
   \begin{itemize}
-    \item Ein \beamer-Dokument besteht aus Folien.
+    \item Ein \beamer-Dokument besteht aus mehreren Frames.
+    \item Jeder Frame kann aus mehreren Slides bestehen.
     \item Die Umgebung \lstinline-frame- verarbeitet
       bis zu zwei Parameter in gescheiften Klammern \lstinline-{}-
-    \item Der erste Parameter ist der Folientitel.
+    \item Der erste Parameter ist der Titel.
     \item Der zweite Parameter ist der Untertitel.
     \item Innerhalb der Umgebung \lstinline|frame| wird normaler \LaTeX-Code
       verwendet.
@@ -55,24 +56,9 @@
   \end{lstlisting}
 \end{Frame}
 
-\begin{Frame}[fragile]{Angabe von Instituten}
-  \begin{lstlisting}[gobble=4]
-    \author[Thorn, Schmitz]{%
-      Johannes Thorn\inst{1}
-      \and Malte Schmitz\inst{2}}
-
-    \institute[Hier und Dort]{%
-      \inst{1}Ein Institut\\
-      Universität Hier
-      \and
-      \inst{2}Noch ein Institut\\
-      Universität Dort}
-  \end{lstlisting}
-\end{Frame}
-
 \beamerexample{demo/beamer-titlepage.pdf}
 
-\begin{Frame}[fragile]{Inhaltsverzeichnis}
+\begin{Frame}[fragile]{Gliederung}
   \begin{itemize}
     \item Strukturbefehle außerhalb von \lstinline-frame-\\
       normal verwenden.
@@ -152,10 +138,6 @@
         \item Induktiv folgt die Aussage. \qedhere
       \end{enumerate}
     \end{Beweis}
-
-    \begin{Beispiel}
-      Vergleiche unsere Baustellen.
-    \end{Beispiel}
   \end{lstlisting}
 \end{Frame}
 
@@ -187,7 +169,6 @@
         showstringspaces=false,%
         upquote=true}
       \usepackage{textcomp} % für upquote
-      \usepackage{courier} % für schönere Schriftart
     \end{lstlisting}
   \end{Block}
 
