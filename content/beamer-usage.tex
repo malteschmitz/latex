@@ -201,25 +201,28 @@
 \subsection{Form}
 
 \begin{Frame}[fragile]{Themes}
-  \begin{Block}{Theme}
-    Wird geladen mit \lstinline-\usetheme{name}- und bestimmt die
-    \alert{allgemeine Form} der Präsentation.
-  \end{Block}
-
-  \begin{Block}{Inner Theme}
-    Wird geladen mit \lstinline-\useinnertheme{name}- und bestimmt
-    die \alert{Form des Folieninhalts}.
-  \end{Block}
-
-  \begin{Block}{Outer Theme}
-    Wird geladen mit \lstinline-\useoutertheme{name}- und bestimmt
-    die \alert{Form der Layoutelemente}.
-  \end{Block}
-
-  \begin{Block}{Color Theme}
-    Wird geladen mit \lstinline-\usecolortheme{name}- und bestimmt
-    die \alert{allgemeine Farbe} der Präsentation.
-  \end{Block}
+  \begin{description}[labelwidth=5em]
+    \item[Theme]
+      \begin{itemize}
+        \item geladen durch \lstinline-\usetheme{name}- 
+        \item bestimmt die \alert{allgemeine Form} der Präsentation
+      \end{itemize}
+    \item[Inner Theme]
+      \begin{itemize}
+        \item geladen durch \lstinline-\useinnertheme{name}- 
+        \item bestimmt die \alert{Form des Folieninhalts}
+      \end{itemize}
+    \item[Outer Theme]
+      \begin{itemize}
+        \item geladen durch \lstinline-\useoutertheme{name}- 
+        \item bestimmt die \alert{Form der Layoutelemente}
+      \end{itemize}
+    \item[Color Theme]
+      \begin{itemize}
+        \item geladen durch \lstinline-\usecolortheme{name}- 
+        \item bestimmt die \alert{allgemeine Farbe} der Präsentation
+      \end{itemize}
+  \end{description}
 \end{Frame}
 
 \beamerexample[23]{demo/beamer-Boadilla.pdf}
