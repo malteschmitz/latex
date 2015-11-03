@@ -1,0 +1,257 @@
+\beamersection{Fortgeschrittene Verwendung}
+
+\subsection{Overlays}
+
+\begin{Frame}[fragile]{Einfache Overlays}
+  Kommando \lstinline-\pause- blendet Elemente schrittweise ein.
+
+  \begin{lstlisting}[gobble=4]
+    \begin{enumerate}
+      \item Ein Sandkorn ist kein Sandhaufen.
+        \pause
+      \item Sandkörner werden durch Hinzufügen
+        eines Sandkorns nicht zum Sandhaufen.
+        \pause
+      \item Induktiv folgt die Aussage.
+    \end{enumerate}
+  \end{lstlisting}
+
+  \xxx
+
+  \begin{onlyenv}<presentation>
+    \begin{enumerate}
+      \item Ein Sandkorn ist kein Sandhaufen.
+        \pause
+      \item Sandkörner werden durch Hinzufügen
+        eines Sandkorns nicht zum Sandhaufen.
+        \pause
+      \item Induktiv folgt die Aussage.
+    \end{enumerate}
+  \end{onlyenv}
+\end{Frame}
+
+\mode
+<presentation>
+
+\begin{Frame}{Overlay-Spezifikationen}
+  \begin{Satz}[Sandhaufensatz]
+    Es gibt keine Sandhaufen.
+  \end{Satz}
+
+  \begin{Beweis}<2->
+    \begin{enumerate}
+      \item<3-> Ein Sandkorn ist kein Sandhaufen.
+      \item<4-> Sandkörner werden durch Hinzufügen
+        eines Sandkorns nicht zum Sandhaufen.
+      \item Induktiv folgt die Aussage. \qedhere
+    \end{enumerate}
+  \end{Beweis}
+
+  \onslide<5->
+
+  Der Induktionsbeweis ist
+  \alert<6>{falsch}!
+\end{Frame}
+
+\mode
+<article>
+
+\frame{}
+
+\mode
+<all>
+
+\begin{Frame}[fragile]{Overlay-Spezifikationen}
+  \begin{lstlisting}[gobble=4]
+    \begin{Satz}[Sandhaufensatz]
+      Es gibt keine Sandhaufen.
+    \end{Satz}
+
+    \begin{Beweis}<2->
+      \begin{enumerate}
+        \item<3-> Ein Sandkorn ist kein Sandhaufen.
+        \item<4-> Sandkörner werden durch Hinzufügen
+          eines Sandkorns nicht zum Sandhaufen.
+        \item Induktiv folgt die Aussage. \qedhere
+      \end{enumerate}
+    \end{Beweis}
+
+    \onslide<5->
+    Der Induktionsbeweis ist \alert<6>{falsch}!
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Ein- und Ausblenden}
+  \begin{itemize}
+    \item \lstinline|\uncover<3->{Inhalt}| blendet Inhalt erst ab
+      Folie~3 ein. Der Platz wird jedoch vorher schon belegt.
+    \item \lstinline|\only<3->{Inhalt}| setzt Inhalt erst ab Folie~3.
+      Zuvor wird kein Platz belegt.
+  \end{itemize}
+
+  \xxx
+  \pause
+
+  \begin{lstlisting}[gobble=4]
+    In diesem \uncover<2->{Satz} werden
+    \only<3->{Worte }eingeblendet.
+  \end{lstlisting}
+  \only<presentation>{In diesem \uncover<3->{Satz} werden
+    \only<4->{Worte }eingeblendet.}
+\end{Frame}
+
+\subsection{Artikelfassung}
+
+\begin{Frame}[fragile]{Artikelfassung}
+  \begin{Block}{Ziel}
+    Generierung von Artikelfassung und Präsentation
+    aus demselben Quellen-Dokument.
+  \end{Block}
+
+  \xxx
+  \pause
+
+  \begin{alertblock}{Problem}
+    \begin{tabular}{r@{ }l}
+      \textbf{Präsentation} & Dokumentenklasse von \beamer.\\
+      \textbf{Artikel} & Dokumentenklasse von KOMA-Script.
+    \end{tabular}
+  \end{alertblock}
+
+  \xxx
+  \pause
+
+  \begin{Block}{Lösung}
+    \begin{itemize}
+      \item Ein \LaTeX-Dokument für den Inhalt.
+      \item Zwei \LaTeX-Dokumente für beide Dokumentenklassen.
+      \item Einbinden des Inhalts mit \lstinline-\input-.
+    \end{itemize}
+  \end{Block}
+\end{Frame}
+
+\begin{Frame}[fragile]{Einbinden des Inhalts}
+  \begin{center}
+    \begin{tikzpicture}[
+        on grid,
+        auto,
+        node distance=18mm and 30mm,
+        engine/.style={
+          font=\rmfamily\Large\bfseries,
+          inner sep=2pt
+        }
+      ]
+
+      \node (content tex) {\shortstack{\textcolor{texicon}{\icon{TEX}}\\\texttt{content.tex}}};
+
+      \uncover<2->{
+        \node[below left=of content tex] (beamer tex)
+          {\shortstack{\textcolor{texicon}{\icon{TEX}}\\\texttt{beamer.tex}}};
+        \node[below right=of content tex] (article tex)
+          {\shortstack{\textcolor{texicon}{\icon{TEX}}\\\texttt{article.tex}}};
+      }
+
+      \uncover<3->{
+        \node[below=of beamer tex, engine]
+          (make beamer) {\LaTeX.mk};
+
+        \node[below=of article tex, engine]
+          (make article) {\LaTeX.mk};
+
+        \node[below=of make beamer] (beamer pdf)
+          {\shortstack{\textcolor{pdficon}{\icon{PDF}}\\\texttt{beamer.pdf}}};
+        \node[below=of make article] (article pdf)
+          {\shortstack{\textcolor{pdficon}{\icon{PDF}}\\\texttt{article.pdf}}};
+      }
+
+      \only<2->{
+        \draw[very thick]
+        (content tex.west) edge[->] node[swap, near start]
+          {\texttt{\color{texcs}\bfseries\textbackslash input}} (beamer tex.north);
+
+        \draw[very thick]
+          (content tex.east) edge[->] node[near start]
+            {\texttt{\color{texcs}\bfseries\textbackslash input}} (article tex.north);
+      }
+
+      \only<3->{
+        \draw[very thick]
+          (beamer tex) edge[->] (make beamer)
+          (article tex) edge[->] (make article);
+
+        \draw[very thick]
+          (make beamer) edge[->] (beamer pdf)
+          (make article) edge[->] (article pdf);
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{Frame}
+
+\begin{Frame}[fragile]{Inhalt \texttt{content.tex}}
+  \begin{lstlisting}[gobble=4]
+    % Präambel
+
+    \title{Mein Vortrag}
+    \author{Mein Name}
+
+    \begin{document}
+      \begin{frame}
+        \maketitle
+      \end{frame}
+
+      \begin{frame}{Folientitel}
+        Hier passierts \dots
+      \end{frame}
+    \end{document}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Dokumentenklassen}
+  \inhead{Für die Folien \texttt{beamer.tex}}
+  \begin{lstlisting}[gobble=4]
+    % Beamer als Dokumentenklasse verwenden
+    \documentclass{beamer}
+    % gemeinsamen Inhalt einbinden
+    \input{content.tex}
+  \end{lstlisting}
+
+  \xxx
+
+  \inhead{Für den Artikel \texttt{article.tex}}
+  \begin{lstlisting}[gobble=4]
+    % KOMA-Script als Dokumentenklasse verwenden
+    \documentclass{scrartcl}
+    % Beamer als Paket laden
+    \usepackage{beamerarticle}
+    % gemeinsamen Inhalt einbinden
+    \input{content.tex}
+  \end{lstlisting}
+\end{Frame}
+
+\begin{Frame}[fragile]{Modes}
+  \begin{tabular}{r@{ }l}
+    \texttt{presentation} & nur für Folien\\
+    \texttt{article} & nur für Artikel\\
+    \texttt{all} & für Folien und Artikel (Standard)
+  \end{tabular}
+
+  \vskip3ex
+
+  \begin{lstlisting}[gobble=4]
+    \mode
+    <name>
+  \end{lstlisting}
+  Wechselt den aktuellen Mode.
+
+  \xxx
+
+  \begin{lstlisting}[gobble=4]
+    \mode*
+  \end{lstlisting}
+  Automatische Modeumschaltung:
+  \begin{itemize}
+    \item Innerhalb von \lstinline-frame- Mode {all}.
+    \item Außerhalb von \lstinline-frame- Mode {article}.
+  \end{itemize}
+\end{Frame}
+
