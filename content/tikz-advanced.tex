@@ -60,9 +60,9 @@
     \draw[->] (0,-1.5) -- (0,1.5) node[above] {$f(x)$};
     %
     \foreach \x in {1,...,4}
-      \draw[xshift=\x cm] (0,2pt) -- (0,-2pt) node[below,fill=tikzexample] {$\x$};
+      \draw (\x cm,2pt) -- (\x cm,-2pt) node[below,fill=tikzexample] {$\x$};
     \foreach \y in {-1,...,1}
-      \draw[yshift=\y cm] (2pt,0) -- (-2pt,0) node[left,fill=tikzexample] {$\y$};
+      \draw (2pt,\y cm) -- (-2pt,\y cm) node[left,fill=tikzexample] {$\y$};
     %
     \draw[blue,domain=0:5] plot (\x,{sin(\x r)});
     \draw[orange,domain=0:4] plot (\x,{exp(\x)/50});
@@ -72,10 +72,10 @@
 
   \begin{lstlisting}[gobble=4]
     \foreach \x in {1,...,4}
-      \draw[xshift=\x cm] (0,2pt) -- (0,-2pt)
+      \draw (\x cm,2pt) -- (\x cm,-2pt)
         node[below,fill=white] {$\x$};
     \foreach \y in {-1,...,1}
-      \draw[yshift=\y cm] (2pt,0) -- (-2pt,0)
+      \draw (2pt,\y cm) -- (-2pt,\y cm)
         node[left,fill=white] {$\y$};
   \end{lstlisting}
 \end{Frame}
@@ -188,6 +188,7 @@
 \subsection{Showcase}
 
 \begin{Frame}[shrink]{Computer science mindmap}{Autor: Till Tantau}
+  \centering
   \begin{tikzpicture}
     \path[mindmap,concept color=black,text=white]
       node[concept] {Computer Science}
@@ -212,6 +213,7 @@
 \end{Frame}
 
 \begin{Frame}{A family tree}{Autor: Stefan Kottwitz}
+  \centering
   \begin{tikzpicture}[
     man/.style={rectangle,draw,fill=blue!20},
     woman/.style={rectangle,draw,fill=red!20,rounded corners=.8ex},
@@ -242,6 +244,7 @@
 \end{Frame}
 
 \begin{Frame}{Circuit libraries}{Autor: Till Tantau}
+  \centering
   \begin{tikzpicture}[rotate=-90,circuit ee IEC,x=3.25cm,y=2.25cm]
     %  Let us start with some contacts:
     \foreach \contact/\y in {3/3.5,4/4.5,5/5.5}
@@ -271,6 +274,7 @@
 \end{Frame}
 
 \begin{Frame}[fragile,shrink]{BER measurement on fibre optical system}{Author: Jose Luis Diaz}
+  \centering
   \only<presentation>{\vspace*{2.5cm}}
   \only<article>{\sideways}
   \begin{tikzpicture}
@@ -431,6 +435,7 @@
         (-.4, .7) .. controls (0, .75) ..  (.4, .7) --
         (.35, -1.7) ..  controls(0, -1.72) ..  (-.35, -1.7) -- cycle;
   }
+  \centering
   \begin{tikzpicture}
     [ x=.5mm, y=.5mm, scale=0.6,
       font={\sffamily},
@@ -505,6 +510,7 @@
 \end{Frame}
 
 \begin{Frame}[fragile]{Lipid vesicle}{Autor: Henrik Skov Midtiby}
+  \centering
   % Define decoration
   \pgfdeclaredecoration{lipidleaflet}{initial}
   {
@@ -553,6 +559,7 @@
 \end{Frame}
 
 \begin{Frame}{Daniell's pile}{Autor: Agustin E. Bolzan}
+  \centering
   \definecolor{copper}{cmyk}{0,0.9,0.9,0.2}
   \colorlet{lightgray}{black!25}
   \colorlet{darkgray}{black!75}
@@ -624,6 +631,7 @@
 \end{Frame}
 
 \begin{Frame}{Membrane-like surface}{Autor: Yotam Avital}
+  \centering
   \begin{tikzpicture}[scale=0.8]
     \def\nuPi{3.1459265}
     \foreach \i in {11,10,...,0}{% This one doesn't matter
@@ -651,6 +659,7 @@
 \end{Frame}
 
 \begin{Frame}[fragile]{Christmas fractal tree}{Autor: Andrew Stacey}
+  \centering
   \tikzset{
     tinsel/.style={
       #1,

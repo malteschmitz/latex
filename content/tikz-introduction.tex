@@ -4,9 +4,8 @@
   \begin{itemize}
     \item \TikZ\ ist kein Zeichenprogramm,\\
       dient aber zum Zeichnen von Grafiken mit \LaTeX.
-    \item \TikZ\ wird entwickelt und gepflegt von Till Tantau.
     \item \TikZ\ ist ein Makropaket für \TeX\ bzw. \LaTeX.
-    \item \TikZ\ verfügt über die beste Anleitung aller Zeiten.
+    \item \TikZ\ verfügt über eine sehr ausführliche und gute Anleitung.
   \end{itemize}
 \end{Frame}
 
@@ -20,6 +19,8 @@
     % Koordinatenachsen
     \draw[->] (0,0) -- (1.5,0) node[right] {$x$};
     \draw[->] (0,0) -- (0,1.5) node[above] {$y$};
+    \draw (1,1pt) -- (1,-1pt) node[below] {$1$};
+    \draw (1pt,1) -- (-1pt,1) node[left] {$1$};
     % Winkel
     \filldraw[fill=green!20,draw=green!50!black]
       (0,0) -- (3mm,0pt) arc (0:30:3mm);
@@ -481,7 +482,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
 \end{Frame}
 
 \begin{Frame}[t,fragile]{Beschriftungen der Achsen}
-  \tikzexample{[scale=2]
+  \tikzexample{[scale=2.5]
     \draw[step=0.5cm,gray,very thin]
       (0,0) grid (1.4,1.4);
     \draw[->] (0,0) -- (1.5,0) node[right] {$x$};
@@ -494,7 +495,7 @@ von \lstinline-(30:1cm)- und der Y-Koordinate von
     \filldraw[fill=green!20,draw=green!50!black]
       (0,0) -- (3mm,0pt) arc (0:30:3mm) -- cycle;
     \draw[very thick,red]
-      (30:1cm) -- node[left] {$\sin \alpha$} (30:1cm |- 0,0);
+      (30:1cm) -- node[left, near end] {$\sin \alpha$} (30:1cm |- 0,0);
     \draw[very thick,blue]
       (0,0) -- node[below] {$\cos \alpha$} (30:1cm |- 0,0);
     %
