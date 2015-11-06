@@ -110,9 +110,9 @@ Nun folgt die Kernaussage der Arbeit.
 \end{theorem}
 
 \begin{proof}
-  Folgt mit \autoref{lemma:easy}
-  und \autoref{lemma:fun}.
-\end{proof}|\pause|
+  Folgt mit \vref{lemma:easy}
+  und \vref{lemma:fun}.
+\end{proof}
 
 Aus diesem Theorem folgen weitere praktische Erkenntnisse.
 
@@ -121,7 +121,7 @@ Aus diesem Theorem folgen weitere praktische Erkenntnisse.
 \end{corollary}
 
 \begin{proof}
-  Folgt aus \autoref{thm-love}.
+  Folgt aus \vref{thm-love}.
 \end{proof}</pre>
 
 <p><span class="label label-info">FOLIEN</span> Einstellungen in der Präambel</p>
@@ -141,7 +141,7 @@ Aus diesem Theorem folgen weitere praktische Erkenntnisse.
 
 <p>Eine Fließumgebung kann referenziert werden:</p>
 
-<pre class="sh_latex">Der AD aus MG nimmt diesen Blindtext aus \autoref{fig:flower} als Filet.</pre>
+<pre class="sh_latex">Der AD aus MG nimmt diesen Blindtext aus \vref{fig:flower} als Filet.</pre>
 
 
 <h3>Titelseite</h3>
