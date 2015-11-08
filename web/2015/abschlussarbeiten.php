@@ -62,21 +62,21 @@
 
 <h3>Theoreme</h3>
 
-<pre class="sh_latex">\begin{definition}[Sandhaufen]
+<pre class="sh_latex">\begin{Definition}[Sandhaufen]
   Ein \emph{Sandhaufen} ist ...
-\end{definition}
+\end{Definition}
 
-\begin{theorem}[Sandhaufensatz]
+\begin{Theorem}[Sandhaufensatz]
   Es gibt keine Sandhaufen.
-\end{theorem}
+\end{Theorem}
 
 \begin{proof}
   ... Induktiv folgt die Aussage.
 \end{proof}
 
-\begin{remark}
+\begin{Bemerkung}
   Das ist alles Quatsch.
-\end{remark}</pre>
+\end{Bemerkung}</pre>
 
 <p><span class="label label-info">FOLIEN</span> Typische Arten von Theoremen</p>
 
@@ -84,19 +84,19 @@
 
 <pre class="sh_latex">Wir beginnen mit einige Lemmata.
 
-\begin{lemma}
+\begin{Lemma}
   \label{lemma:easy}
   \LaTeX\ ist einfach.
-\end{lemma}
+\end{Lemma}
 
 \begin{proof}
   Jeder kann es lernen.
 \end{proof}
 
-\begin{lemma}
+\begin{Lemma}
   \label{lemma:fun}
   \LaTeX\ macht Spaß.
-\end{lemma}
+\end{Lemma}
 
 \begin{proof}
   \FiveFlowerOpen
@@ -104,10 +104,10 @@
 
 Nun folgt die Kernaussage der Arbeit.
 
-\begin{theorem}
+\begin{Theorem}
   \label{thm-love}
   Alle lieben \LaTeX.
-\end{theorem}
+\end{Theorem}
 
 \begin{proof}
   Folgt mit \vref{lemma:easy}
@@ -116,9 +116,9 @@ Nun folgt die Kernaussage der Arbeit.
 
 Aus diesem Theorem folgen weitere praktische Erkenntnisse.
 
-\begin{corollary}
+\begin{Korollar}
   \LaTeX\ ist gut.
-\end{corollary}
+\end{Korollar}
 
 \begin{proof}
   Folgt aus \vref{thm-love}.
