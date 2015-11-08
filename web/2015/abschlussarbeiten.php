@@ -24,6 +24,8 @@
 
 <h3>Farben definieren</h3>
 
+<p>Die folgenden Beispiele verwenden die <a href="https://github.com/malteschmitz/latex-thesis">Vorlage für Abschlussarbeiten</a>. Anstelle der Datei <code>gummibaerchen.tex</code> kann jedes beliebige Kapitel verwendet werden.</p>
+
 <p><span class="label label-primary">REGIE</span> Anpassungen in <code>gummibaerchen.tex</code> machen.</p>
 
 <pre class="sh_latex">In diesem \colorbox{orange}{Text} sind

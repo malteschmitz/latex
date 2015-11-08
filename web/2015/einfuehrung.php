@@ -241,6 +241,8 @@ an, was auch als Summenformel bekannt ist.</pre>
 
 <pre class="sh_latex">\includegraphics[width=6cm]{flower}</pre>
 
+<p><span class="label label-default">DOWNLOAD</span> Anstelle der Bilddatei <code><a href="flower.png">flower.png</a></code> kann natürlich auch jede andere Bilddatei im JPEG-, PNG- oder PDF-Format verwendet werden.</p>
+
 <p>Genau wie bei den Tabellen die dazu passende Fließumgebung:</p>
 
 <pre class="sh_latex">\begin{figure}
@@ -291,6 +293,8 @@ an, was auch als Summenformel bekannt ist.</pre>
 
 % set special behaviour for hyperlinks in pdfs
 \usepackage[breaklinks=true]{hyperref}</pre>
+
+<p><span class="label label-default">DOWNLOAD</span> Das Ergebnis der Beispiele kann als <code><a href="final.tex">final.tex</a></code> heruntergeladen werden.</p>
 
 <h2 id="einfuehrung-zusammenfassung">Zusammenfassung</h2>
 
