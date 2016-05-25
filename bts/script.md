@@ -49,20 +49,22 @@
 *REGIE* Mehr Texte aus blindtext.txt übernehmen.
 
     \chapter{Gummibärchen}
-
+    
     \section{Forscherdrang}
-
+    
     \subsection{Der Blindtext-Fall}
-
+    
     \section{Weit hinter den Wortbergen}
 
 ## Mathematik
 *REGIE* Text aus pythagoras.txt übernehmen.
 
 Inline:
+
     Es gilt $a^2 + b^2 = c^2$.
 
 Abgesetzt:
+
     Darüber hinaus gilt $\alpha^{22} + \beta_{12} = \gamma^2_a$.
     Anschließend wenden wir
     \[ \sum^n_{i=1}i = \frac{n(n+1)}2 \]
