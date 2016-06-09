@@ -1,4 +1,4 @@
-%!TEX root = basic.tex
+%!TEX root = bts.tex
 
 \subsection{Einordnung}
 
@@ -91,7 +91,7 @@
   \end{itemize}
 
   \xxx
-  
+
   \begin{center}
     \begin{tikzpicture}[
         shorten <=5pt,
@@ -100,7 +100,7 @@
       \matrix[column sep=3em] {
         \node[text width=6em] (source) {
           \only<1>{\lstinputlisting[
-              basicstyle=\ttfamily\fontsize{4}{4}\selectfont 
+              basicstyle=\ttfamily\fontsize{4}{4}\selectfont
             ]{demo/exampleContent.txt}}
           \only<2->{\lstinputlisting[
               basicstyle=\ttfamily\fontsize{4}{4}\selectfont,
@@ -115,7 +115,7 @@
           \includegraphics[width=6em]{demo/example.pdf}
         };}\\
         \node {\shortstack{Inhalt \visible<2->{\&\\ Struktur}}};
-        & & 
+        & &
         \visible<3->{\node {\shortstack{formatiertes\\Dokument}};}\\
       };
       \visible<3->{\path[very thick, ->]
