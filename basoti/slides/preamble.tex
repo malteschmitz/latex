@@ -1,0 +1,175 @@
+%!TEX root = basic.tex
+
+\subsection{Structure of a Document}
+
+\begin{frame}[fragile]{Structure of a Document}
+  \begin{tikzpicture}[%
+      auto,
+      every edge/.style={
+        draw,
+        decorate,
+        decoration=brace,
+        very thick
+      }
+    ]
+    \node[text width=\textwidth, anchor=south] (tex) {
+      \begin{lstlisting}[gobble=8]
+        \documentclass{scrartcl}
+
+        \usepackage[utf8]{inputenc}
+        \usepackage[T1]{fontenc}
+        \usepackage{lmodern}
+
+        \KOMAoptions{%
+          parskip=full,%
+          fontsize=12pt}
+
+        \begin{document}
+          The quick brown fox
+          jumps over
+          the lazy dog.
+        \end{document}
+      \end{lstlisting}
+    };
+
+    \pause
+    \draw
+      (1,7.6) edge node {document class} (1,7.2);
+    \pause
+    \draw
+      (1,6.6) edge node {\shortstack{load\\packages}} (1,5.3);
+    \pause
+    \draw
+      (0,4.7) edge node {settings} (0,3.5);
+    \pause
+    \draw
+      (3,6.6) edge node {preamble} (3,3.5);
+    \pause
+    \draw
+      (1,2.6) edge node {document body} (1,.9);
+  \end{tikzpicture}
+\end{frame}
+
+\subsection{Document Classes}
+
+\begin{frame}[fragile]{Document Classes}
+  \lstinline-\documentclass{scrartcl}-\newline
+  short article
+
+  \xxx
+
+  \lstinline-\documentclass{scrreprt}-\newline
+  report with title page and chapters
+
+  \xxx
+
+  \lstinline-\documentclass{scrbook}-\newline
+  double-page book with parts, chapters and running title
+
+  \xxx
+
+  \begin{alertblock}{original document classes are US American}
+    We are using the configurable KOMA script classes instead of the original
+    \lstinline-article-, \lstinline-report- und \lstinline-book-.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Preamble: KOMA script options}
+  \lstset{
+    backgroundcolor={},
+    frame=no,
+    gobble=4,
+    aboveskip=3ex,
+    belowskip=0pt
+  }
+
+  \begin{lstlisting}
+    \KOMAoptions{parskip=full}
+  \end{lstlisting}
+  \begin{description}
+    \item[\texttt{full}] Large vertical space
+    \item[\texttt{half}] Small vertical space
+    \item[\texttt{off}] No vertical space, but indent (default)
+  \end{description}
+
+  \begin{lstlisting}
+    \KOMAoptions{fontsize=12pt}
+  \end{lstlisting}
+  base font size (10pt default)
+
+  \begin{lstlisting}
+    \KOMAoptions{headings=small}
+  \end{lstlisting}
+  \begin{description}
+    \item[\texttt{small}] small headings
+    \item[\texttt{normal}] regular headings (default)
+    \item[\texttt{big}] large headings
+  \end{description}
+\end{frame}
+
+\subsection{Loading Packages}
+
+\begin{frame}[fragile]{Preamble: Typical Packages}
+  \lstset{
+    backgroundcolor={},
+    frame=no,
+    gobble=4,
+    aboveskip=3ex,
+    belowskip=0pt
+  }
+  
+  \begin{lstlisting}
+    \usepackage[utf8]{inputenc}
+  \end{lstlisting}
+  Use UTF-8 input encoding
+  
+  \begin{lstlisting}
+    \usepackage[ngerman]{babel}
+  \end{lstlisting}
+  Use German hyphenation and translation
+  
+  \begin{lstlisting}
+    \usepackage[T1]{fontenc}
+  \end{lstlisting}
+  Use European font encoding
+  
+  \begin{lstlisting}
+    \usepackage{lmodern}
+  \end{lstlisting}
+  Use nicer font family
+\end{frame}
+
+\begin{frame}[fragile]{Preamble: Additional Packages}
+  \lstset{
+    backgroundcolor={},
+    frame=no,
+    gobble=4,
+    aboveskip=3ex,
+    belowskip=0pt
+  }
+
+  \begin{lstlisting}
+    \usepackage{xcolor}
+  \end{lstlisting}
+  Load macro \lstinline-\textcolor-
+
+  \begin{lstlisting}
+    \usepackage{graphicx}  
+  \end{lstlisting}
+  Load macro \lstinline-\includegraphics-
+
+  \begin{lstlisting}
+    \usepackage[english=american]{csquotes}
+  \end{lstlisting}
+  Load macro \lstinline-\enquote-
+
+  \begin{lstlisting}
+    \usepackage{amsmath}
+  \end{lstlisting}
+  Load \lstinline-align- environment for formulas
+
+  \begin{lstlisting}
+    \usepackage[breaklinks=true]{hyperref}
+  \end{lstlisting}
+  Enable better PDF support
+\end{frame}

@@ -1,0 +1,22 @@
+%!TEX root = basic.tex
+
+\pgfdeclareimage[width=6cm]{uni-logo}{uni-logo}
+
+{
+  \setbeamertemplate{background}{%
+    \rule{0pt}{18mm}%
+    \rule{5mm}{0pt}%
+    \pgfuseimage{uni-logo}
+  }
+
+  \begin{frame}
+    \begin{center}
+      \vskip3cm
+      {\color{maincolor}\fontsize{72pt}{72pt}\selectfont\rmfamily\LaTeX}
+      \par\vskip12mm
+      \large Malte Schmitz
+      \par\vskip2ex
+      BaSoTI 2016
+    \end{center}
+  \end{frame}
+}

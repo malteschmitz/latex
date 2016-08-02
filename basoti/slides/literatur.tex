@@ -1,0 +1,218 @@
+%!TEX root = advanced.tex
+
+\section{Bibliography}
+
+\subsection{Using \texorpdfstring{\BibTeX}{BibTeX}}
+
+\begin{frame}[fragile]{What is \BibTeX?}
+  \begin{itemize}
+    \item \BibTeX\ is an \alert{additional application},\\
+    extending \LaTeX.
+    \item \BibTeX\ generates a bibliography form a \alert{literature database}.
+    \item The generated bibliography \alert{contains only\\
+      the cited entries} of the literature database.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Example document \texttt{main.pdf}}
+  \centerline{\includegraphics[width=9cm]{demo/arbeit.pdf}}
+\end{frame}
+
+\begin{frame}[fragile]{The \LaTeX Document \texttt{main.tex}}
+  \begin{lstlisting}[gobble=4]
+    \documentclass{scrartcl}
+    %...
+
+    \begin{document}
+      \cite{Knuth} describes \TeX{}. Every
+      character has its own category code
+      (see \cite[S.~28~ff.]{Eijkhout}).
+
+      \bibliographystyle{alphadin}
+      \bibliography{literature}
+    \end{document}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{The Literature Database \texttt{literature.bib}}
+  \lstinputlisting[language=BibTeX,moretexcs={TeX}]{demo/datenbank.bib}
+\end{frame}
+
+\begin{frame}[fragile]{Compiling}
+  \begin{lstlisting}[language={},morekeywords={pdflatex,bibtex},gobble=4]
+    pdflatex main
+    bibtex main
+    pdflatex main
+    pdflatex main
+  \end{lstlisting}
+
+  \xxx
+  \pause
+
+  \vskip -3.1cm
+  \begin{tikzpicture}
+    \draw[red,very thick] (0,0) -- (2.8cm, 2.7cm);
+  \end{tikzpicture}
+  \vskip .5cm
+
+  \begin{lstlisting}[language={},morekeywords={latexmk},gobble=4]
+    latexmk -pdf main
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{\BibTeX\ Internals}
+  \begin{tikzpicture}[
+      on grid,
+      node distance=9mm and 23mm,
+      engine/.style={
+        font=\rmfamily\Large\bfseries,
+        inner sep=2pt
+      }
+    ]
+
+    \uncover<2->{\node[engine] (pdftex1) {\pdfTeX};}
+    \uncover<1->{\node[left=40mm of pdftex1, texicon] (tex) {\icon{TEX}};}
+    \uncover<1->{\node[right=40mm of pdftex1, bibicon] (bib) {\icon{BIB}};}
+    \uncover<3->{\node[below left=18mm and 23mm of pdftex1, auxicon] (aux1) {\icon{AUX}};}
+    \uncover<3>{\node[below right=of pdftex1, pdficon] (pdf1) {\icon{PDF}};}
+    \uncover<4->{\node[below right=of pdftex1, pdficon!30] {\icon{PDF}};}
+    \uncover<4->{\node[below=18mm of pdftex1, engine] (bibtex) {\BibTeX};}
+    \uncover<5->{\node[below right=of bibtex, bblicon] (bbl) {\icon{BBL}};}
+    \uncover<6->{\node[below=18mm of bibtex, engine] (pdftex2) {\pdfTeX};}
+    \uncover<7->{\node[below left=of pdftex2, auxicon] (aux2) {\icon{AUX}};}
+    \uncover<7>{\node[below right=of pdftex2, pdficon] (pdf2) {\icon{PDF}};}
+    \uncover<8->{\node[below right=of pdftex2, pdficon!30] {\icon{PDF}};}
+    \uncover<8->{\node[below=18mm of pdftex2, engine] (pdftex3) {\pdfTeX};}
+    \uncover<9>{\node[below left=of pdftex3, auxicon] (aux3) {\icon{AUX}};}
+    \uncover<10->{\node[below left=of pdftex3, auxicon!30] {\icon{AUX}};}
+    \uncover<9->{\node[below right=of pdftex3, pdficon] (pdf3) {\icon{PDF}};}
+
+    \uncover<2->{\path[very thick, ->]
+      (tex) edge (pdftex1);}
+
+    \uncover<3->{\path[very thick, ->]
+      (pdftex1) edge (aux1)
+                edge (pdf1);}
+
+    \uncover<4->{\path[very thick, ->, black!30]
+      (pdftex1) edge (pdf1);}
+
+    \uncover<4->{\path[very thick, ->]
+      (aux1) edge (bibtex);}
+
+    \uncover<4->{\draw[very thick, ->]
+      (bib.south) ++ (.2,0) |- (bibtex);}
+
+    \uncover<5->{\path[very thick, ->]
+      (bibtex) edge (bbl);}
+
+    \uncover<6->{\draw[very thick, ->]
+      (tex.south) ++ (.2,0) |- (pdftex2)
+      (bbl.south) ++ (.2,0) |- (pdftex2);}
+
+    \uncover<6->{\path[very thick, ->]
+      (aux1) edge (pdftex2);}
+
+    \uncover<7->{\path[very thick, ->]
+      (pdftex2) edge (aux2)
+                edge (pdf2);}
+
+    \uncover<8->{\path[very thick, ->, black!30]
+      (pdftex2) edge (pdf2);}
+
+    \uncover<8->{\draw[very thick, ->]
+      (tex.south) ++ (.2,0) |- (pdftex3)
+      (bbl) -- (bib |- bbl) -- ++(.2,0) |- (pdftex3);}
+
+    \uncover<8->{\path[very thick, ->]
+      (aux2) edge (pdftex3);}
+
+    \uncover<9->{\path[very thick, ->]
+      (pdftex3) edge (aux3)
+                edge (pdf3);}
+
+    \uncover<10->{\path[very thick, ->, black!30]
+      (pdftex3) edge (aux3);}
+  \end{tikzpicture}
+\end{frame}
+
+\subsection{\texorpdfstring{\BibTeX}{BibTeX}\ Entries}
+
+\begin{frame}{Sources}
+  \begin{itemize}
+    \item Primary literature
+      \begin{itemize}
+        \item Journal papers
+        \item Conference papers
+      \end{itemize}
+    \item Secondary literature \& educational materials
+      \begin{itemize}
+        \item Textbook
+        \item Technical reports
+        \item Websites, lecture scripts
+        \item Wikipedia articles
+      \end{itemize}
+  \end{itemize}
+
+  \xxx
+
+  \centerline{\Large\alert{Good sources have known and reputable authors!}}
+\end{frame}
+
+\begin{frame}[fragile]{\BibTeX\ Sources}
+  \begin{lstlisting}[gobble=4,language=BibTeX]
+    @book{texbook,
+      author = {Donald E. Knuth},
+      title = {The {\TeX book}},
+      year = {1984},
+      publisher = {Addison-Wesley Professional},
+    }
+  \end{lstlisting}
+
+  \xxx
+
+  \lstset{language=BibTeX}
+  \begin{tabular}{r@{ }l}
+    \lstinline-@article- & journal paper\\
+    \lstinline-@inproceedings- & conference paper\\
+    \lstinline-@book- & Buch\\
+    \lstinline-@incollection- & part of a book\\
+    \lstinline-@techreport- & technical report\\
+    \lstinline-@phdthesis- & PHD thesis\\
+    \lstinline-@mastersthesis- & bachelor, master or diploma thesis\\
+    \lstinline-@unpublished- & not (yet) published paper\\
+    \lstinline-@misc- & other source (e.\,g. posting on a website)
+  \end{tabular}
+\end{frame}
+
+\livecoding{\BibTeX\ Examples}
+
+\subsection{\texorpdfstring{\BibTeX}{BibTeX}\ Styles}
+
+\begin{frame}{Typical \BibTeX\ Styles}
+  \begin{center}
+    \begin{zebratabular}{llll}
+      \headerrow Style & Citing & Entry \\
+      \lstinline-plain- & [1] &  \\
+      \lstinline-abbrv- & [1] & only initials \\
+      \lstinline-unsrt- & [1] & unsorted \\
+      \lstinline-alpha- & [HMU01] & \\
+      \lstinline-apalike- & [Hopcroft et al., 2001] &
+    \end{zebratabular}
+  \end{center}
+
+  \xxx
+
+  % \begin{block}{Deutsche Stile nach DIN 1502}
+  %   \lstinline-plaindin-, \lstinline-abbrvdin-, \lstinline-unsrtdin-
+  %   und \lstinline-alphadin-\\
+  %   analog zu obigen Stilen
+  % \end{block}
+
+  % \xxx
+
+  % \begin{block}{Suggestion}
+  %   \lstinline-alpha- short, but with some semantics
+  % \end{block}
+\end{frame}
+
