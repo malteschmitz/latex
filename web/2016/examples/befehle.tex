@@ -1,0 +1,77 @@
+\documentclass{scrartcl}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
+
+\KOMAoptions{%
+  % Absätze durch Abstände
+  parskip=full,%
+  % Satzspiegel berechnen lassen
+  DIV=calc%
+}
+
+% Unterstützung für Farben laden
+\usepackage[table]{xcolor}
+
+% eigene Befehle definieren
+\newcommand{\mycommand}[2]{#1 liest #2.}
+
+% Beispiel (Mehr Struktur)
+\newcommand{\gui}[1]{\textsl{\textsf{#1}}}
+\newcommand{\user}[1]{\texttt{#1}}
+
+% Beispiel (Optionale Parameter)
+\newcommand{\wichtig}[2][red]{\textcolor{#1}{\emph{#2}}}
+
+% Beispiel (Eigene Umgebung)
+\newenvironment{achtung}[1][Achtung]{%
+  \rule{\textwidth}{1pt}\\%
+  \textbf{#1}: %
+}{%
+  \\\rule[1ex]{\textwidth}{1pt}%
+}
+
+\begin{document}
+  \section{Eigene Befehle}
+  % eigene Befehle verwenden
+  \mycommand{Malte}{ein Buch}
+
+  % Beispiel (Mehr Struktur)
+  Geben Sie in das Feld \gui{Prüfziffer}
+  den Wert \user{fgdhsjk} ein.
+
+  % Beispiel (Optionale Parameter)
+  \wichtig{Hier} sind \wichtig[orange]{Worte}
+  unterschiedlich \wichtig[blue]{hervorgehoben}.
+
+  \section{Befehle umdefinieren}
+
+  Ich bin mit \textbackslash emph \emph{hervorgehoben}.
+
+  \renewcommand{\emph}[1]{\textsl{#1}}
+
+  Ich bin auch mit \textbackslash emph \emph{hervorgehoben}.
+
+  \section{Eigene Umgebungen}
+
+  \begin{achtung}%
+    Bitte verwenden Sie diesen Artikel nicht.
+    Sie erhalten in Kürze eine berichtigte Neufassung.
+  \end{achtung}
+
+  Auch für eigene Umgebungen sind optionale Parameter möglich.
+
+  \begin{achtung}[Hinweis]%
+    Bitte nicht knicken.
+  \end{achtung}
+\end{document}

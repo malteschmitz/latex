@@ -1,0 +1,56 @@
+\documentclass{scrartcl}
+
+% Kodierung dieser Datei angeben
+\usepackage[utf8]{inputenc}
+
+% Schönere Schriftart laden
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Deutsche Silbentrennung verwenden
+\usepackage[ngerman]{babel}
+
+% Bessere Unterstützung für PDF-Features
+\usepackage[breaklinks=true]{hyperref}
+
+\KOMAoptions{%
+  % full - Absätze haben großen Abstand
+  % half - Absätze haben kleinen Abstand
+  % off - Absätze haben Einzug (default)
+  parskip=full,%
+  % Grunschriftgröße (10pt default)
+  fontsize=12pt,%
+  % small - kleine Überschriften
+  % normal - normale Überschriften (default)
+  % big - große Überschriften
+  headings=small,%
+  % Satzspiegel berechnen
+  DIV=calc%
+}
+
+% Einfachere Verwendung von korrekten Anführungszeichen
+\usepackage[german=guillemets]{csquotes}
+% oder german=quotes
+% oder english=british oder english=american
+
+\author{Malte Schmitz}
+\title{Meine Arbeit}
+\date{Oktober 2014}
+
+\begin{document}
+  \maketitle
+
+  \tableofcontents
+
+  \section{Ein Abschnitt}
+
+  Ich bin der Text im ersten Abschnitt.
+
+  Ich bin ein neuer Absatz.
+
+  \subsection{Unterabschnitt}
+
+  Ich bin ein Unterabschnitt.
+
+  Hans sagt: \enquote{Er habe \enquote{Franz' Auto!} gerufen.}
+\end{document}
